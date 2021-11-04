@@ -36,7 +36,7 @@ namespace kanbanboard1
             TaskTab.FormBorderStyle = FormBorderStyle.None;
             this.panel3.Controls.Add(TaskTab);
             TaskTab.Show();
-            panel4.Location = button2.Location;
+            panel4.Location = TasksButton.Location;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -47,7 +47,7 @@ namespace kanbanboard1
             ProfileTab.FormBorderStyle = FormBorderStyle.None;
             this.panel3.Controls.Add(ProfileTab);
             ProfileTab.Show();
-            panel4.Location = button1.Location;
+            panel4.Location = ProfileButton.Location;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -58,7 +58,7 @@ namespace kanbanboard1
             MsgrTab.FormBorderStyle = FormBorderStyle.None;
             this.panel3.Controls.Add(MsgrTab);
             MsgrTab.Show();
-            panel4.Location = button3.Location;
+            panel4.Location = MessengerButton.Location;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -69,7 +69,7 @@ namespace kanbanboard1
             CalenderTab.FormBorderStyle = FormBorderStyle.None;
             this.panel3.Controls.Add(CalenderTab);
             CalenderTab.Show();
-            panel4.Location = button4.Location;
+            panel4.Location = CalendarButton.Location;
         }
 
         private void panel2_MouseEnter(object sender, EventArgs e)
@@ -92,6 +92,11 @@ namespace kanbanboard1
             Hide();
             Login LoginForm = new Login();
             LoginForm.Show();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.panel4.Location = ProfileButton.Location;
         }
     }
 }

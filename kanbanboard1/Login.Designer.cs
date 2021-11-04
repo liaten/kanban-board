@@ -29,58 +29,78 @@ namespace kanbanboard1
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnReg = new System.Windows.Forms.Button();
+            this.AuthorizationLabel = new System.Windows.Forms.Label();
+            this.RegistrationButton = new System.Windows.Forms.Button();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.loginLabel = new System.Windows.Forms.Label();
             this.passLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.EmailLabel = new System.Windows.Forms.Label();
-            this.checkBoxStayLogged = new System.Windows.Forms.CheckBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnLogin = new System.Windows.Forms.Button();
+            this.StayLoggedCheckBox = new System.Windows.Forms.CheckBox();
+            this.AuthorizationPictureBox = new System.Windows.Forms.PictureBox();
+            this.LoginButton = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.CheckBoxRegistration = new System.Windows.Forms.CheckBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AuthorizationPictureBox)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // AuthorizationLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.label1.Location = new System.Drawing.Point(76, 28);
-            this.label1.Name = "label1";
-            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(189, 31);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Авторизация";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-
+            this.AuthorizationLabel.AutoSize = true;
+            this.AuthorizationLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AuthorizationLabel.Font = new System.Drawing.Font("Roboto", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AuthorizationLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.AuthorizationLabel.Location = new System.Drawing.Point(40, 15);
+            this.AuthorizationLabel.Name = "AuthorizationLabel";
+            this.AuthorizationLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.AuthorizationLabel.Size = new System.Drawing.Size(181, 33);
+            this.AuthorizationLabel.TabIndex = 1;
+            this.AuthorizationLabel.Text = "Авторизация";
+            this.AuthorizationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnReg
+            // RegistrationButton
             // 
-            this.btnReg.BackColor = System.Drawing.Color.Transparent;
-            this.btnReg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReg.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.btnReg.Location = new System.Drawing.Point(206, 265);
-            this.btnReg.Name = "btnReg";
-            this.btnReg.Size = new System.Drawing.Size(95, 33);
-            this.btnReg.TabIndex = 2;
-            this.btnReg.Text = "Регистрация";
-            this.btnReg.UseVisualStyleBackColor = false;
-
+            this.RegistrationButton.BackColor = System.Drawing.Color.Transparent;
+            this.RegistrationButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RegistrationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RegistrationButton.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RegistrationButton.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.RegistrationButton.Location = new System.Drawing.Point(15, 15);
+            this.RegistrationButton.Name = "RegistrationButton";
+            this.RegistrationButton.Size = new System.Drawing.Size(145, 29);
+            this.RegistrationButton.TabIndex = 2;
+            this.RegistrationButton.Text = "Регистрация";
+            this.RegistrationButton.UseVisualStyleBackColor = false;
             // 
             // textBoxLogin
             // 
             this.textBoxLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.textBoxLogin.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxLogin.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxLogin.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.textBoxLogin.Location = new System.Drawing.Point(98, 26);
+            this.textBoxLogin.Location = new System.Drawing.Point(17, 15);
             this.textBoxLogin.Name = "textBoxLogin";
-            this.textBoxLogin.Size = new System.Drawing.Size(189, 20);
+            this.textBoxLogin.Size = new System.Drawing.Size(189, 19);
             this.textBoxLogin.TabIndex = 3;
             this.textBoxLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxLogin.MouseEnter += new System.EventHandler(this.textBox1_MouseEnter);
@@ -90,11 +110,11 @@ namespace kanbanboard1
             // 
             this.textBoxPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.textBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxPassword.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxPassword.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.textBoxPassword.Location = new System.Drawing.Point(98, 65);
+            this.textBoxPassword.Location = new System.Drawing.Point(17, 53);
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(189, 20);
+            this.textBoxPassword.Size = new System.Drawing.Size(189, 19);
             this.textBoxPassword.TabIndex = 4;
             this.textBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxPassword.UseSystemPasswordChar = true;
@@ -104,144 +124,277 @@ namespace kanbanboard1
             // loginLabel
             // 
             this.loginLabel.AutoSize = true;
-            this.loginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.loginLabel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.loginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.loginLabel.Location = new System.Drawing.Point(35, 28);
+            this.loginLabel.Location = new System.Drawing.Point(14, 15);
             this.loginLabel.Name = "loginLabel";
-            this.loginLabel.Size = new System.Drawing.Size(50, 16);
+            this.loginLabel.Size = new System.Drawing.Size(44, 15);
             this.loginLabel.TabIndex = 6;
-            this.loginLabel.Text = "Логин:";
+            this.loginLabel.Text = "Логин";
             // 
             // passLabel
             // 
             this.passLabel.AutoSize = true;
-            this.passLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.passLabel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.passLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.passLabel.Location = new System.Drawing.Point(25, 67);
+            this.passLabel.Location = new System.Drawing.Point(14, 53);
             this.passLabel.Name = "passLabel";
-            this.passLabel.Size = new System.Drawing.Size(60, 16);
+            this.passLabel.Size = new System.Drawing.Size(52, 15);
             this.passLabel.TabIndex = 7;
-            this.passLabel.Text = "Пароль:";
+            this.passLabel.Text = "Пароль";
             this.passLabel.Click += new System.EventHandler(this.label3_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
-            this.panel1.Controls.Add(this.textBoxEmail);
-            this.panel1.Controls.Add(this.EmailLabel);
-            this.panel1.Controls.Add(this.textBoxLogin);
-            this.panel1.Controls.Add(this.loginLabel);
-            this.panel1.Controls.Add(this.passLabel);
-            this.panel1.Controls.Add(this.textBoxPassword);
-            this.panel1.Location = new System.Drawing.Point(48, 85);
+            this.panel1.Controls.Add(this.panel5);
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.MinimumSize = new System.Drawing.Size(300, 200);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(316, 159);
+            this.panel1.Padding = new System.Windows.Forms.Padding(0, 70, 0, 0);
+            this.panel1.Size = new System.Drawing.Size(342, 304);
             this.panel1.TabIndex = 9;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.textBoxEmail);
+            this.panel5.Controls.Add(this.textBoxLogin);
+            this.panel5.Controls.Add(this.textBoxPassword);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(114, 70);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(228, 234);
+            this.panel5.TabIndex = 1;
             // 
             // textBoxEmail
             // 
             this.textBoxEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.textBoxEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxEmail.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxEmail.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.textBoxEmail.Location = new System.Drawing.Point(98, 104);
+            this.textBoxEmail.Location = new System.Drawing.Point(17, 89);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(189, 20);
+            this.textBoxEmail.Size = new System.Drawing.Size(189, 19);
             this.textBoxEmail.TabIndex = 8;
-            this.textBoxEmail.Text = "Если регистрируетесь";
             this.textBoxEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxEmail.Click += new System.EventHandler(this.textBoxEmail_Click);
             this.textBoxEmail.MouseEnter += new System.EventHandler(this.textBoxEmail_MouseEnter);
             this.textBoxEmail.MouseLeave += new System.EventHandler(this.textBoxEmail_MouseLeave);
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.loginLabel);
+            this.panel4.Controls.Add(this.passLabel);
+            this.panel4.Controls.Add(this.EmailLabel);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel4.Location = new System.Drawing.Point(0, 70);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(114, 234);
+            this.panel4.TabIndex = 0;
+            // 
             // EmailLabel
             // 
             this.EmailLabel.AutoSize = true;
-            this.EmailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.EmailLabel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.EmailLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.EmailLabel.Location = new System.Drawing.Point(40, 106);
+            this.EmailLabel.Location = new System.Drawing.Point(12, 91);
             this.EmailLabel.Name = "EmailLabel";
-            this.EmailLabel.Size = new System.Drawing.Size(45, 16);
+            this.EmailLabel.Size = new System.Drawing.Size(91, 30);
             this.EmailLabel.TabIndex = 9;
-            this.EmailLabel.Text = "Email:";
+            this.EmailLabel.Text = "Электронная \n почта";
             // 
-            // checkBoxStayLogged
+            // StayLoggedCheckBox
             // 
-            this.checkBoxStayLogged.AutoSize = true;
-            this.checkBoxStayLogged.Checked = true;
-            this.checkBoxStayLogged.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxStayLogged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBoxStayLogged.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBoxStayLogged.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
-            this.checkBoxStayLogged.Location = new System.Drawing.Point(127, 325);
-            this.checkBoxStayLogged.Name = "checkBoxStayLogged";
-            this.checkBoxStayLogged.Size = new System.Drawing.Size(158, 17);
-            this.checkBoxStayLogged.TabIndex = 10;
-            this.checkBoxStayLogged.Text = "Оставаться в системе";
-            this.checkBoxStayLogged.UseVisualStyleBackColor = true;
-            this.checkBoxStayLogged.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.StayLoggedCheckBox.AutoSize = true;
+            this.StayLoggedCheckBox.Checked = true;
+            this.StayLoggedCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.StayLoggedCheckBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.StayLoggedCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StayLoggedCheckBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.StayLoggedCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
+            this.StayLoggedCheckBox.Location = new System.Drawing.Point(15, 0);
+            this.StayLoggedCheckBox.Name = "StayLoggedCheckBox";
+            this.StayLoggedCheckBox.Size = new System.Drawing.Size(312, 17);
+            this.StayLoggedCheckBox.TabIndex = 10;
+            this.StayLoggedCheckBox.Text = "Оставаться в системе";
+            this.StayLoggedCheckBox.UseVisualStyleBackColor = true;
+            this.StayLoggedCheckBox.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // pictureBox1
+            // AuthorizationPictureBox
             // 
-            this.pictureBox1.Image = global::kanbanboard1.Properties.Resources.user;
-            this.pictureBox1.Location = new System.Drawing.Point(279, 20);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(52, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
+            this.AuthorizationPictureBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.AuthorizationPictureBox.Image = global::kanbanboard1.Properties.Resources.user;
+            this.AuthorizationPictureBox.Location = new System.Drawing.Point(0, 0);
+            this.AuthorizationPictureBox.Name = "AuthorizationPictureBox";
+            this.AuthorizationPictureBox.Padding = new System.Windows.Forms.Padding(15);
+            this.AuthorizationPictureBox.Size = new System.Drawing.Size(70, 70);
+            this.AuthorizationPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.AuthorizationPictureBox.TabIndex = 11;
+            this.AuthorizationPictureBox.TabStop = false;
             // 
-            // btnLogin
+            // LoginButton
             // 
-            this.btnLogin.BackColor = System.Drawing.Color.Transparent;
-            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.btnLogin.Location = new System.Drawing.Point(118, 265);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(82, 33);
-            this.btnLogin.TabIndex = 0;
-            this.btnLogin.Text = "Войти";
-            this.btnLogin.UseVisualStyleBackColor = false;
-            this.btnLogin.Click += new System.EventHandler(this.button1_Click);
+            this.LoginButton.BackColor = System.Drawing.Color.Transparent;
+            this.LoginButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LoginButton.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LoginButton.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.LoginButton.Location = new System.Drawing.Point(15, 15);
+            this.LoginButton.Margin = new System.Windows.Forms.Padding(50);
+            this.LoginButton.Name = "LoginButton";
+            this.LoginButton.Padding = new System.Windows.Forms.Padding(3);
+            this.LoginButton.Size = new System.Drawing.Size(131, 29);
+            this.LoginButton.TabIndex = 1;
+            this.LoginButton.Text = "Войти";
+            this.LoginButton.UseVisualStyleBackColor = false;
+            this.LoginButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.panel11);
+            this.panel2.Controls.Add(this.AuthorizationPictureBox);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(342, 70);
+            this.panel2.TabIndex = 12;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.AuthorizationLabel);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel11.Location = new System.Drawing.Point(70, 0);
+            this.panel11.Name = "panel11";
+            this.panel11.Padding = new System.Windows.Forms.Padding(40, 15, 40, 15);
+            this.panel11.Size = new System.Drawing.Size(272, 70);
+            this.panel11.TabIndex = 13;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.panel7);
+            this.panel3.Controls.Add(this.panel6);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 199);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(342, 105);
+            this.panel3.TabIndex = 13;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.CheckBoxRegistration);
+            this.panel7.Controls.Add(this.StayLoggedCheckBox);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(0, 65);
+            this.panel7.Name = "panel7";
+            this.panel7.Padding = new System.Windows.Forms.Padding(15, 0, 15, 15);
+            this.panel7.Size = new System.Drawing.Size(342, 40);
+            this.panel7.TabIndex = 12;
+            // 
+            // CheckBoxRegistration
+            // 
+            this.CheckBoxRegistration.AutoSize = true;
+            this.CheckBoxRegistration.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CheckBoxRegistration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CheckBoxRegistration.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CheckBoxRegistration.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
+            this.CheckBoxRegistration.Location = new System.Drawing.Point(15, 17);
+            this.CheckBoxRegistration.Name = "CheckBoxRegistration";
+            this.CheckBoxRegistration.Size = new System.Drawing.Size(312, 17);
+            this.CheckBoxRegistration.TabIndex = 11;
+            this.CheckBoxRegistration.Text = "Регистрация";
+            this.CheckBoxRegistration.UseVisualStyleBackColor = true;
+            this.CheckBoxRegistration.CheckedChanged += new System.EventHandler(this.CheckBoxRegistration_CheckedChanged);
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.panel9);
+            this.panel6.Controls.Add(this.panel8);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Padding = new System.Windows.Forms.Padding(3);
+            this.panel6.Size = new System.Drawing.Size(342, 65);
+            this.panel6.TabIndex = 11;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.RegistrationButton);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(164, 3);
+            this.panel9.Name = "panel9";
+            this.panel9.Padding = new System.Windows.Forms.Padding(15);
+            this.panel9.Size = new System.Drawing.Size(175, 59);
+            this.panel9.TabIndex = 4;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.LoginButton);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel8.Location = new System.Drawing.Point(3, 3);
+            this.panel8.Name = "panel8";
+            this.panel8.Padding = new System.Windows.Forms.Padding(15);
+            this.panel8.Size = new System.Drawing.Size(161, 59);
+            this.panel8.TabIndex = 3;
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(410, 368);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.checkBoxStayLogged);
+            this.ClientSize = new System.Drawing.Size(342, 304);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btnReg);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnLogin);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Name = "Login";
-            this.Text = "Login";
+            this.Text = "Авторизация";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);
             this.Load += new System.EventHandler(this.Login_Load);
+            this.Resize += new System.EventHandler(this.Login_Resize);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AuthorizationPictureBox)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnReg;
+        private System.Windows.Forms.Button LoginButton;
+        private System.Windows.Forms.Label AuthorizationLabel;
+        private System.Windows.Forms.Button RegistrationButton;
         private System.Windows.Forms.TextBox textBoxLogin;
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Label loginLabel;
         private System.Windows.Forms.Label passLabel;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.CheckBox checkBoxStayLogged;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.CheckBox StayLoggedCheckBox;
+        private System.Windows.Forms.PictureBox AuthorizationPictureBox;
         private System.Windows.Forms.TextBox textBoxEmail;
         private System.Windows.Forms.Label EmailLabel;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.CheckBox CheckBoxRegistration;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel11;
     }
 }

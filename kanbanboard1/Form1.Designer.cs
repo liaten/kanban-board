@@ -31,11 +31,11 @@ namespace kanbanboard1
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ExitButton = new System.Windows.Forms.Button();
+            this.CalendarButton = new System.Windows.Forms.Button();
+            this.MessengerButton = new System.Windows.Forms.Button();
+            this.TasksButton = new System.Windows.Forms.Button();
+            this.ProfileButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.UsernameLabel = new System.Windows.Forms.Label();
@@ -53,14 +53,15 @@ namespace kanbanboard1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.panel1.Controls.Add(this.panel4);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.ExitButton);
+            this.panel1.Controls.Add(this.CalendarButton);
+            this.panel1.Controls.Add(this.MessengerButton);
+            this.panel1.Controls.Add(this.TasksButton);
+            this.panel1.Controls.Add(this.ProfileButton);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.MinimumSize = new System.Drawing.Size(205, 450);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(205, 450);
             this.panel1.TabIndex = 0;
@@ -69,85 +70,86 @@ namespace kanbanboard1
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.panel4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panel4.Location = new System.Drawing.Point(3, 152);
+            this.panel4.Location = new System.Drawing.Point(3, 76);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(2, 52);
             this.panel4.TabIndex = 0;
             // 
-            // button5
+            // ExitButton
             // 
-            this.button5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.button5.FlatAppearance.BorderSize = 2;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.button5.Location = new System.Drawing.Point(0, 420);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(205, 30);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "Выход";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.ExitButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ExitButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.ExitButton.FlatAppearance.BorderSize = 2;
+            this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExitButton.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ExitButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.ExitButton.Location = new System.Drawing.Point(0, 420);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(205, 30);
+            this.ExitButton.TabIndex = 5;
+            this.ExitButton.Text = "Выход";
+            this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button4
+            // CalendarButton
             // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("MS Reference Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.button4.Location = new System.Drawing.Point(0, 220);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(205, 50);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Календарь";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.CalendarButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CalendarButton.FlatAppearance.BorderSize = 0;
+            this.CalendarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CalendarButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CalendarButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.CalendarButton.Location = new System.Drawing.Point(0, 220);
+            this.CalendarButton.Name = "CalendarButton";
+            this.CalendarButton.Size = new System.Drawing.Size(205, 50);
+            this.CalendarButton.TabIndex = 4;
+            this.CalendarButton.Text = "Календарь";
+            this.CalendarButton.UseVisualStyleBackColor = true;
+            this.CalendarButton.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button3
+            // MessengerButton
             // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("MS Reference Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.button3.Location = new System.Drawing.Point(0, 170);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(205, 50);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Мессенджер";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.MessengerButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.MessengerButton.FlatAppearance.BorderSize = 0;
+            this.MessengerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MessengerButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MessengerButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.MessengerButton.Location = new System.Drawing.Point(0, 170);
+            this.MessengerButton.Name = "MessengerButton";
+            this.MessengerButton.Size = new System.Drawing.Size(205, 50);
+            this.MessengerButton.TabIndex = 3;
+            this.MessengerButton.Text = "Мессенджер";
+            this.MessengerButton.UseVisualStyleBackColor = true;
+            this.MessengerButton.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button2
+            // TasksButton
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("MS Reference Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.button2.Location = new System.Drawing.Point(0, 120);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(205, 50);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Задачи";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.TasksButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TasksButton.FlatAppearance.BorderSize = 0;
+            this.TasksButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TasksButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TasksButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.TasksButton.Location = new System.Drawing.Point(0, 120);
+            this.TasksButton.Name = "TasksButton";
+            this.TasksButton.Size = new System.Drawing.Size(205, 50);
+            this.TasksButton.TabIndex = 2;
+            this.TasksButton.Text = "Задачи";
+            this.TasksButton.UseVisualStyleBackColor = true;
+            this.TasksButton.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
+            // ProfileButton
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("MS Reference Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.button1.Location = new System.Drawing.Point(0, 70);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(205, 50);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Профиль";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.ProfileButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ProfileButton.FlatAppearance.BorderSize = 0;
+            this.ProfileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ProfileButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ProfileButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.ProfileButton.Location = new System.Drawing.Point(0, 70);
+            this.ProfileButton.Name = "ProfileButton";
+            this.ProfileButton.Size = new System.Drawing.Size(205, 50);
+            this.ProfileButton.TabIndex = 1;
+            this.ProfileButton.Text = "Профиль";
+            this.ProfileButton.UseVisualStyleBackColor = true;
+            this.ProfileButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
@@ -192,7 +194,7 @@ namespace kanbanboard1
             this.pictureBox1.Location = new System.Drawing.Point(9, 14);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(40, 36);
+            this.pictureBox1.Size = new System.Drawing.Size(40, 40);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -218,25 +220,29 @@ namespace kanbanboard1
             // 
             // panel5
             // 
+            this.panel5.AutoSize = true;
             this.panel5.Controls.Add(this.label3);
             this.panel5.Controls.Add(this.panel3);
-            this.panel5.Location = new System.Drawing.Point(200, 0);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(205, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(600, 450);
+            this.panel5.Size = new System.Drawing.Size(595, 450);
             this.panel5.TabIndex = 3;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Канбан-доска";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -244,6 +250,7 @@ namespace kanbanboard1
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -251,16 +258,16 @@ namespace kanbanboard1
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button TasksButton;
+        private System.Windows.Forms.Button ProfileButton;
+        private System.Windows.Forms.Button CalendarButton;
+        private System.Windows.Forms.Button MessengerButton;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label UsernameLabel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
     }

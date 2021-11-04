@@ -23,8 +23,13 @@ namespace kanbanboard1
         private void Login_Load(object sender, EventArgs e)
         {
             //string path = AppDomain.CurrentDomain.BaseDirectory + @"kanban-board.json";
-           // Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
-           // database = FirestoreDb.Create("kanban-board-fvdi");
+            // Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+            // database = FirestoreDb.Create("kanban-board-fvdi");
+            panel8.Width = this.Size.Width / 2;
+            int HeaderPadding = (this.Width - AuthorizationLabel.Width-AuthorizationPictureBox.Width) / 2;
+            this.panel11.Padding = new Padding(HeaderPadding, 15, HeaderPadding, 15);
+            EmailLabel.Visible = false;
+            textBoxEmail.Visible = false;
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -57,21 +62,21 @@ namespace kanbanboard1
         private void button1_Click(object sender, EventArgs e) // логин в приложение
         {
             
-        btnLogin.Text = "";
-        btnLogin.Image = kanbanboard1.Properties.Resources.check;
+        LoginButton.Text = "";
+        LoginButton.Image = kanbanboard1.Properties.Resources.check;
         this.Hide();
         Form1 main = new Form1();
         main.Show();            
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxStayLogged.Checked)
+            if (StayLoggedCheckBox.Checked)
             {
-                checkBoxStayLogged.ForeColor = Color.FromArgb(200, 255, 200); 
+                StayLoggedCheckBox.ForeColor = Color.FromArgb(200, 255, 200); 
             }
             else
             {
-                checkBoxStayLogged.ForeColor = Color.FromArgb(200, 200, 200);
+                StayLoggedCheckBox.ForeColor = Color.FromArgb(200, 200, 200);
             }
         }
 
@@ -95,6 +100,26 @@ namespace kanbanboard1
         private void textBoxEmail_Click(object sender, EventArgs e)
         {
             textBoxEmail.Text = "";
+        }
+        private void Login_Resize(object sender, EventArgs e)
+        {
+            panel8.Width = this.Size.Width / 2;
+            int HeaderPadding = (this.Width - AuthorizationLabel.Width - AuthorizationPictureBox.Width) / 2;
+            this.panel11.Padding = new Padding(HeaderPadding, 15, HeaderPadding, 15);
+        }
+
+        private void CheckBoxRegistration_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CheckBoxRegistration.Checked)
+            {
+                EmailLabel.Visible = true;
+                textBoxEmail.Visible = true;
+            }
+            else
+            {
+                EmailLabel.Visible = false;
+                textBoxEmail.Visible = false;
+            }
         }
     }
 }
