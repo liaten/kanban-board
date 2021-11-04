@@ -26,10 +26,13 @@ namespace kanbanboard1
             // Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
             // database = FirestoreDb.Create("kanban-board-fvdi");
             panel8.Width = this.Size.Width / 2;
+            this.MinimumSize = new System.Drawing.Size(350, 360 - EmailLabelPanel.Height);
+            this.Size = new System.Drawing.Size(350, 360 - EmailLabelPanel.Height);
             int HeaderPadding = (this.Width - AuthorizationLabel.Width-AuthorizationPictureBox.Width) / 2;
             this.panel11.Padding = new Padding(HeaderPadding, 15, HeaderPadding, 15);
             EmailLabel.Visible = false;
             textBoxEmail.Visible = false;
+            CheckBoxRegistration.ForeColor = Color.FromArgb(200, 200, 200);
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -114,11 +117,15 @@ namespace kanbanboard1
             {
                 EmailLabel.Visible = true;
                 textBoxEmail.Visible = true;
+                this.MinimumSize = new System.Drawing.Size(350, 360);
+                CheckBoxRegistration.ForeColor = Color.FromArgb(200, 250, 200);
             }
             else
             {
                 EmailLabel.Visible = false;
                 textBoxEmail.Visible = false;
+                this.MinimumSize = new System.Drawing.Size(350, 360-EmailLabelPanel.Height);
+                CheckBoxRegistration.ForeColor = Color.FromArgb(200, 200, 200);
             }
         }
     }
