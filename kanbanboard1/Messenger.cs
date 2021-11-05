@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace kanbanboard1
 {
-    public partial class Msgr : Form
+    public partial class Messenger : Form
     {
-        public Msgr()
+        public Messenger()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

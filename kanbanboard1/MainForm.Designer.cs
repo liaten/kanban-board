@@ -1,7 +1,7 @@
 ﻿
 namespace kanbanboard1
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -43,17 +43,25 @@ namespace kanbanboard1
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.ExitButtonPanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.ExitButtonPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.panel1.Controls.Add(this.ExitButtonPanel);
             this.panel1.Controls.Add(this.panel4);
-            this.panel1.Controls.Add(this.ExitButton);
             this.panel1.Controls.Add(this.CalendarButton);
             this.panel1.Controls.Add(this.MessengerButton);
             this.panel1.Controls.Add(this.TasksButton);
@@ -77,15 +85,15 @@ namespace kanbanboard1
             // 
             // ExitButton
             // 
-            this.ExitButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ExitButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ExitButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.ExitButton.FlatAppearance.BorderSize = 2;
             this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExitButton.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ExitButton.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ExitButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.ExitButton.Location = new System.Drawing.Point(0, 420);
+            this.ExitButton.Location = new System.Drawing.Point(40, 5);
             this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(205, 30);
+            this.ExitButton.Size = new System.Drawing.Size(125, 33);
             this.ExitButton.TabIndex = 5;
             this.ExitButton.Text = "Выход";
             this.ExitButton.UseVisualStyleBackColor = true;
@@ -96,7 +104,7 @@ namespace kanbanboard1
             this.CalendarButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.CalendarButton.FlatAppearance.BorderSize = 0;
             this.CalendarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CalendarButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CalendarButton.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CalendarButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.CalendarButton.Location = new System.Drawing.Point(0, 220);
             this.CalendarButton.Name = "CalendarButton";
@@ -111,7 +119,7 @@ namespace kanbanboard1
             this.MessengerButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.MessengerButton.FlatAppearance.BorderSize = 0;
             this.MessengerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MessengerButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MessengerButton.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.MessengerButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.MessengerButton.Location = new System.Drawing.Point(0, 170);
             this.MessengerButton.Name = "MessengerButton";
@@ -126,7 +134,7 @@ namespace kanbanboard1
             this.TasksButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.TasksButton.FlatAppearance.BorderSize = 0;
             this.TasksButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.TasksButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TasksButton.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TasksButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.TasksButton.Location = new System.Drawing.Point(0, 120);
             this.TasksButton.Name = "TasksButton";
@@ -141,7 +149,7 @@ namespace kanbanboard1
             this.ProfileButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.ProfileButton.FlatAppearance.BorderSize = 0;
             this.ProfileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ProfileButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ProfileButton.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ProfileButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.ProfileButton.Location = new System.Drawing.Point(0, 70);
             this.ProfileButton.Name = "ProfileButton";
@@ -154,9 +162,8 @@ namespace kanbanboard1
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(20)))), ((int)(((byte)(44)))));
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.UsernameLabel);
-            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.panel7);
+            this.panel2.Controls.Add(this.panel6);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
@@ -168,11 +175,11 @@ namespace kanbanboard1
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label2.Location = new System.Drawing.Point(54, 35);
+            this.label2.Location = new System.Drawing.Point(87, 40);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 15);
+            this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "User_Info";
             // 
@@ -180,18 +187,19 @@ namespace kanbanboard1
             // 
             this.UsernameLabel.AutoSize = true;
             this.UsernameLabel.BackColor = System.Drawing.Color.Transparent;
-            this.UsernameLabel.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.UsernameLabel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.UsernameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.UsernameLabel.Location = new System.Drawing.Point(54, 14);
+            this.UsernameLabel.Location = new System.Drawing.Point(87, 14);
             this.UsernameLabel.Name = "UsernameLabel";
-            this.UsernameLabel.Size = new System.Drawing.Size(80, 16);
+            this.UsernameLabel.Size = new System.Drawing.Size(67, 15);
             this.UsernameLabel.TabIndex = 1;
             this.UsernameLabel.Text = "Username";
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::kanbanboard1.Properties.Resources.user;
-            this.pictureBox1.Location = new System.Drawing.Point(9, 14);
+            this.pictureBox1.Location = new System.Drawing.Point(15, 15);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(40, 40);
@@ -203,52 +211,97 @@ namespace kanbanboard1
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("MS Reference Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label3.Location = new System.Drawing.Point(21, 14);
+            this.label3.Location = new System.Drawing.Point(28, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(172, 40);
+            this.label3.Size = new System.Drawing.Size(153, 38);
             this.label3.TabIndex = 1;
             this.label3.Text = "Профиль";
             // 
             // panel3
             // 
-            this.panel3.Location = new System.Drawing.Point(0, 69);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(600, 381);
+            this.panel3.Padding = new System.Windows.Forms.Padding(0, 70, 0, 0);
+            this.panel3.Size = new System.Drawing.Size(783, 450);
             this.panel3.TabIndex = 2;
             // 
             // panel5
             // 
             this.panel5.AutoSize = true;
-            this.panel5.Controls.Add(this.label3);
+            this.panel5.Controls.Add(this.panel8);
             this.panel5.Controls.Add(this.panel3);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(205, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(595, 450);
+            this.panel5.Size = new System.Drawing.Size(783, 450);
             this.panel5.TabIndex = 3;
             // 
-            // Form1
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.label2);
+            this.panel6.Controls.Add(this.UsernameLabel);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(205, 70);
+            this.panel6.TabIndex = 1;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.pictureBox1);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Padding = new System.Windows.Forms.Padding(15);
+            this.panel7.Size = new System.Drawing.Size(70, 70);
+            this.panel7.TabIndex = 2;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.label3);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(783, 70);
+            this.panel8.TabIndex = 3;
+            // 
+            // ExitButtonPanel
+            // 
+            this.ExitButtonPanel.Controls.Add(this.ExitButton);
+            this.ExitButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ExitButtonPanel.Location = new System.Drawing.Point(0, 407);
+            this.ExitButtonPanel.Name = "ExitButtonPanel";
+            this.ExitButtonPanel.Padding = new System.Windows.Forms.Padding(40, 5, 40, 5);
+            this.ExitButtonPanel.Size = new System.Drawing.Size(205, 43);
+            this.ExitButtonPanel.TabIndex = 0;
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(988, 450);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Канбан-доска";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            this.ExitButtonPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,6 +323,10 @@ namespace kanbanboard1
         private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel ExitButtonPanel;
     }
 }
 

@@ -1,7 +1,7 @@
 ﻿
 namespace kanbanboard1
 {
-    partial class Calender
+    partial class Calendar
     {
         /// <summary>
         /// Required designer variable.
@@ -31,14 +31,14 @@ namespace kanbanboard1
         {
             this.SuspendLayout();
             // 
-            // Calender
+            // Calendar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(584, 336);
-            this.Name = "Calender";
-            this.Text = "Calender";
+            this.Name = "Calendar";
+            this.Text = "Календарь";
             this.ResumeLayout(false);
 
         }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace kanbanboard1
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             this.panel3.Controls.Clear();
@@ -54,7 +54,7 @@ namespace kanbanboard1
         {
             label3.Text = "Мессенджер";
             this.panel3.Controls.Clear();
-            Msgr MsgrTab = new Msgr() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            Messenger MsgrTab = new Messenger() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             MsgrTab.FormBorderStyle = FormBorderStyle.None;
             this.panel3.Controls.Add(MsgrTab);
             MsgrTab.Show();
@@ -65,7 +65,7 @@ namespace kanbanboard1
         {
             label3.Text = "Календарь";
             this.panel3.Controls.Clear();
-            Calender CalenderTab = new Calender() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            Calendar CalenderTab = new Calendar() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             CalenderTab.FormBorderStyle = FormBorderStyle.None;
             this.panel3.Controls.Add(CalenderTab);
             CalenderTab.Show();

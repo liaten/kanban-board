@@ -68,7 +68,7 @@ namespace kanbanboard1
         LoginButton.Text = "";
         LoginButton.Image = kanbanboard1.Properties.Resources.check;
         this.Hide();
-        Form1 main = new Form1();
+        MainForm main = new MainForm();
         main.Show();            
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
