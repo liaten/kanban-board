@@ -29,6 +29,7 @@ namespace kanbanboard1
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.AuthorizationLabel = new System.Windows.Forms.Label();
             this.RegistrationButton = new System.Windows.Forms.Button();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
@@ -425,6 +426,7 @@ namespace kanbanboard1
             this.Controls.Add(this.HeaderPanel);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(350, 360);
             this.Name = "Login";
             this.Text = "Авторизация";

@@ -29,6 +29,7 @@ namespace kanbanboard1
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.ExitButton = new System.Windows.Forms.Button();
@@ -91,11 +92,11 @@ namespace kanbanboard1
             this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ExitButton.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ExitButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.ExitButton.Location = new System.Drawing.Point(40, 5);
+            this.ExitButton.Location = new System.Drawing.Point(10, 10);
             this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(125, 33);
+            this.ExitButton.Size = new System.Drawing.Size(185, 36);
             this.ExitButton.TabIndex = 5;
-            this.ExitButton.Text = "Выход";
+            this.ExitButton.Text = "Выход из аккаунта";
             this.ExitButton.UseVisualStyleBackColor = true;
             this.ExitButton.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -272,10 +273,10 @@ namespace kanbanboard1
             // 
             this.ExitButtonPanel.Controls.Add(this.ExitButton);
             this.ExitButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ExitButtonPanel.Location = new System.Drawing.Point(0, 407);
+            this.ExitButtonPanel.Location = new System.Drawing.Point(0, 394);
             this.ExitButtonPanel.Name = "ExitButtonPanel";
-            this.ExitButtonPanel.Padding = new System.Windows.Forms.Padding(40, 5, 40, 5);
-            this.ExitButtonPanel.Size = new System.Drawing.Size(205, 43);
+            this.ExitButtonPanel.Padding = new System.Windows.Forms.Padding(10);
+            this.ExitButtonPanel.Size = new System.Drawing.Size(205, 56);
             this.ExitButtonPanel.TabIndex = 0;
             // 
             // MainForm
@@ -288,6 +289,7 @@ namespace kanbanboard1
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Канбан-доска";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
