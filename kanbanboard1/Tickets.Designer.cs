@@ -130,6 +130,21 @@
             this.ticketPanel4.Size = new System.Drawing.Size(202, 171);
             this.ticketPanel4.TabIndex = 3;
             // 
+            this.ticketPanel4.Location = new System.Drawing.Point(136, 224);
+            this.ticketPanel4.Margin = new System.Windows.Forms.Padding(10);
+            this.ticketPanel4.Name = "ticketPanel4";
+            this.ticketPanel4.Size = new System.Drawing.Size(202, 178);
+            this.ticketPanel4.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(129, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(216, 16);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "GGGSAGASGASGSAGSAGASGSAGAS";
+            // 
             // ticketPanel6
             // 
             this.ticketPanel6.AutoSize = true;
