@@ -87,6 +87,18 @@
     <Compile Include="Tasks.Designer.cs">
       <DependentUpon>Tasks.cs</DependentUpon>
     </Compile>
+    <Compile Include="TicketPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tickets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tickets.Designer.cs">
+      <DependentUpon>Tickets.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Tickets.resx">
+      <DependentUpon>Tickets.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Resources\send-message %281%29.png" />
     <None Include="Resources\send-message.png" />
     <None Include="Resources\check.png" />
