@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">kanban-board</string>
+    <string name="login">Авторизация</string>
+    <string name="SingIn">Войти</string>
+    <string name="Register">Регистрация</string>
+    <string name="Forgot">Забыли пароль?</string>
+</resources>
