@@ -28,3 +28,19 @@ C:\Users\Admin\Desktop\kanban-board\kanbanboard1\obj\Debug\KanbanBoard.csproj.Co
 C:\Users\Admin\Desktop\kanban-board\kanbanboard1\obj\Debug\kanbanboard1.exe
 C:\Users\Admin\Desktop\kanban-board\kanbanboard1\obj\Debug\kanbanboard1.pdb
 C:\Users\Admin\Desktop\kanban-board\kanbanboard1\obj\Debug\kanbanboard1.Tickets.resources
+E:\work 3\kanban-board\kanbanboard1\bin\Debug\kanbanboard1.exe.config
+E:\work 3\kanban-board\kanbanboard1\bin\Debug\kanbanboard1.exe
+E:\work 3\kanban-board\kanbanboard1\bin\Debug\kanbanboard1.pdb
+E:\work 3\kanban-board\kanbanboard1\obj\Debug\KanbanBoard.csproj.AssemblyReference.cache
+E:\work 3\kanban-board\kanbanboard1\obj\Debug\kanbanboard1.Tickets.resources
+E:\work 3\kanban-board\kanbanboard1\obj\Debug\kanbanboard1.Calendar.resources
+E:\work 3\kanban-board\kanbanboard1\obj\Debug\kanbanboard1.MainForm.resources
+E:\work 3\kanban-board\kanbanboard1\obj\Debug\kanbanboard1.Login.resources
+E:\work 3\kanban-board\kanbanboard1\obj\Debug\kanbanboard1.Messenger.resources
+E:\work 3\kanban-board\kanbanboard1\obj\Debug\kanbanboard1.Profile.resources
+E:\work 3\kanban-board\kanbanboard1\obj\Debug\kanbanboard1.Properties.Resources.resources
+E:\work 3\kanban-board\kanbanboard1\obj\Debug\kanbanboard1.Tasks.resources
+E:\work 3\kanban-board\kanbanboard1\obj\Debug\KanbanBoard.csproj.GenerateResource.cache
+E:\work 3\kanban-board\kanbanboard1\obj\Debug\KanbanBoard.csproj.CoreCompileInputs.cache
+E:\work 3\kanban-board\kanbanboard1\obj\Debug\kanbanboard1.exe
+E:\work 3\kanban-board\kanbanboard1\obj\Debug\kanbanboard1.pdb

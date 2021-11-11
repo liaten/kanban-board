@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,10 +45,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnSingIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showMainWindow();
+            }
+        });
+
     }
 
-    private void showForgotWindow() {
-        AlertDialog.Builder forgot = new AlertDialog.Builder(this);
+    private void showMainWindow() {
+        startActivity(new  Intent(MainActivity.this, Kanban_menu.class));
+        finish();
+    }
+
+    private void showForgotWindow() {        AlertDialog.Builder forgot = new AlertDialog.Builder(this);
         forgot.setTitle("Восстановление учетной записи");
         forgot.setMessage("Введите адрес почты, используемый при регистрации:");
 
