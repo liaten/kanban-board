@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Desktop/kanban-board/kanban-board_android/app/src/main/res/layout/activity_kanban_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/kanban-board/kanban-board_android/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/kanban-board/kanban-board_android/app/src/main/res/layout/forgot_w.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/kanban-board/kanban-board_android/app/src/main/res/layout/fragment_calendar.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/kanban-board/kanban-board_android/app/src/main/res/layout/fragment_messages.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/kanban-board/kanban-board_android/app/src/main/res/layout/fragment_profile.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/kanban-board/kanban-board_android/app/src/main/res/layout/fragment_tasks.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/kanban-board/kanban-board_android/app/src/main/res/layout/reg_w.xml" value="0.36666666666666664" />
         <entry key="..\:/work 3/kanban-board/kanban-board_android/app/src/main/res/drawable/ic_calendar.xml" value="0.3828125" />
         <entry key="..\:/work 3/kanban-board/kanban-board_android/app/src/main/res/drawable/ic_profile.xml" value="0.3828125" />
         <entry key="..\:/work 3/kanban-board/kanban-board_android/app/src/main/res/drawable/ic_work.xml" value="0.3828125" />
