@@ -38,9 +38,15 @@ namespace kanbanboard1
             this.passLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.panel16 = new System.Windows.Forms.Panel();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.EmailLabelPanel = new System.Windows.Forms.Panel();
             this.EmailLabel = new System.Windows.Forms.Label();
+            this.PasswordLabelPanel = new System.Windows.Forms.Panel();
+            this.loginLabelPanel = new System.Windows.Forms.Panel();
             this.StayLoggedCheckBox = new System.Windows.Forms.CheckBox();
             this.AuthorizationPictureBox = new System.Windows.Forms.PictureBox();
             this.LoginButton = new System.Windows.Forms.Button();
@@ -52,15 +58,15 @@ namespace kanbanboard1
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.loginLabelPanel = new System.Windows.Forms.Panel();
-            this.PasswordLabelPanel = new System.Windows.Forms.Panel();
-            this.EmailLabelPanel = new System.Windows.Forms.Panel();
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.panel16 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel16.SuspendLayout();
+            this.panel15.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.EmailLabelPanel.SuspendLayout();
+            this.PasswordLabelPanel.SuspendLayout();
+            this.loginLabelPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AuthorizationPictureBox)).BeginInit();
             this.HeaderPanel.SuspendLayout();
             this.panel11.SuspendLayout();
@@ -69,12 +75,6 @@ namespace kanbanboard1
             this.panel6.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
-            this.panel10.SuspendLayout();
-            this.loginLabelPanel.SuspendLayout();
-            this.PasswordLabelPanel.SuspendLayout();
-            this.EmailLabelPanel.SuspendLayout();
-            this.panel15.SuspendLayout();
-            this.panel16.SuspendLayout();
             this.SuspendLayout();
             // 
             // AuthorizationLabel
@@ -86,7 +86,7 @@ namespace kanbanboard1
             this.AuthorizationLabel.Location = new System.Drawing.Point(40, 15);
             this.AuthorizationLabel.Name = "AuthorizationLabel";
             this.AuthorizationLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.AuthorizationLabel.Size = new System.Drawing.Size(181, 33);
+            this.AuthorizationLabel.Size = new System.Drawing.Size(182, 33);
             this.AuthorizationLabel.TabIndex = 1;
             this.AuthorizationLabel.Text = "Авторизация";
             this.AuthorizationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -144,7 +144,7 @@ namespace kanbanboard1
             this.loginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.loginLabel.Location = new System.Drawing.Point(15, 15);
             this.loginLabel.Name = "loginLabel";
-            this.loginLabel.Size = new System.Drawing.Size(44, 15);
+            this.loginLabel.Size = new System.Drawing.Size(42, 15);
             this.loginLabel.TabIndex = 6;
             this.loginLabel.Text = "Логин";
             // 
@@ -156,7 +156,7 @@ namespace kanbanboard1
             this.passLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.passLabel.Location = new System.Drawing.Point(15, 15);
             this.passLabel.Name = "passLabel";
-            this.passLabel.Size = new System.Drawing.Size(52, 15);
+            this.passLabel.Size = new System.Drawing.Size(51, 15);
             this.passLabel.TabIndex = 7;
             this.passLabel.Text = "Пароль";
             this.passLabel.Click += new System.EventHandler(this.label3_Click);
@@ -185,6 +185,16 @@ namespace kanbanboard1
             this.panel5.Size = new System.Drawing.Size(224, 251);
             this.panel5.TabIndex = 1;
             // 
+            // panel16
+            // 
+            this.panel16.Controls.Add(this.textBoxEmail);
+            this.panel16.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel16.Location = new System.Drawing.Point(0, 90);
+            this.panel16.Name = "panel16";
+            this.panel16.Padding = new System.Windows.Forms.Padding(15);
+            this.panel16.Size = new System.Drawing.Size(224, 55);
+            this.panel16.TabIndex = 11;
+            // 
             // textBoxEmail
             // 
             this.textBoxEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
@@ -201,6 +211,26 @@ namespace kanbanboard1
             this.textBoxEmail.MouseEnter += new System.EventHandler(this.textBoxEmail_MouseEnter);
             this.textBoxEmail.MouseLeave += new System.EventHandler(this.textBoxEmail_MouseLeave);
             // 
+            // panel15
+            // 
+            this.panel15.Controls.Add(this.textBoxPassword);
+            this.panel15.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel15.Location = new System.Drawing.Point(0, 45);
+            this.panel15.Name = "panel15";
+            this.panel15.Padding = new System.Windows.Forms.Padding(15);
+            this.panel15.Size = new System.Drawing.Size(224, 45);
+            this.panel15.TabIndex = 10;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.textBoxLogin);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel10.Location = new System.Drawing.Point(0, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Padding = new System.Windows.Forms.Padding(15);
+            this.panel10.Size = new System.Drawing.Size(224, 45);
+            this.panel10.TabIndex = 9;
+            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.EmailLabelPanel);
@@ -212,6 +242,16 @@ namespace kanbanboard1
             this.panel4.Size = new System.Drawing.Size(110, 251);
             this.panel4.TabIndex = 0;
             // 
+            // EmailLabelPanel
+            // 
+            this.EmailLabelPanel.Controls.Add(this.EmailLabel);
+            this.EmailLabelPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.EmailLabelPanel.Location = new System.Drawing.Point(0, 90);
+            this.EmailLabelPanel.Name = "EmailLabelPanel";
+            this.EmailLabelPanel.Padding = new System.Windows.Forms.Padding(10);
+            this.EmailLabelPanel.Size = new System.Drawing.Size(110, 55);
+            this.EmailLabelPanel.TabIndex = 12;
+            // 
             // EmailLabel
             // 
             this.EmailLabel.AutoSize = true;
@@ -220,9 +260,29 @@ namespace kanbanboard1
             this.EmailLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.EmailLabel.Location = new System.Drawing.Point(10, 10);
             this.EmailLabel.Name = "EmailLabel";
-            this.EmailLabel.Size = new System.Drawing.Size(91, 30);
+            this.EmailLabel.Size = new System.Drawing.Size(89, 30);
             this.EmailLabel.TabIndex = 9;
             this.EmailLabel.Text = "Электронная \n почта";
+            // 
+            // PasswordLabelPanel
+            // 
+            this.PasswordLabelPanel.Controls.Add(this.passLabel);
+            this.PasswordLabelPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PasswordLabelPanel.Location = new System.Drawing.Point(0, 45);
+            this.PasswordLabelPanel.Name = "PasswordLabelPanel";
+            this.PasswordLabelPanel.Padding = new System.Windows.Forms.Padding(15);
+            this.PasswordLabelPanel.Size = new System.Drawing.Size(110, 45);
+            this.PasswordLabelPanel.TabIndex = 11;
+            // 
+            // loginLabelPanel
+            // 
+            this.loginLabelPanel.Controls.Add(this.loginLabel);
+            this.loginLabelPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.loginLabelPanel.Location = new System.Drawing.Point(0, 0);
+            this.loginLabelPanel.Name = "loginLabelPanel";
+            this.loginLabelPanel.Padding = new System.Windows.Forms.Padding(15);
+            this.loginLabelPanel.Size = new System.Drawing.Size(110, 45);
+            this.loginLabelPanel.TabIndex = 10;
             // 
             // StayLoggedCheckBox
             // 
@@ -356,66 +416,6 @@ namespace kanbanboard1
             this.panel8.Size = new System.Drawing.Size(161, 65);
             this.panel8.TabIndex = 3;
             // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.textBoxLogin);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel10.Location = new System.Drawing.Point(0, 0);
-            this.panel10.Name = "panel10";
-            this.panel10.Padding = new System.Windows.Forms.Padding(15);
-            this.panel10.Size = new System.Drawing.Size(224, 45);
-            this.panel10.TabIndex = 9;
-            // 
-            // loginLabelPanel
-            // 
-            this.loginLabelPanel.Controls.Add(this.loginLabel);
-            this.loginLabelPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.loginLabelPanel.Location = new System.Drawing.Point(0, 0);
-            this.loginLabelPanel.Name = "loginLabelPanel";
-            this.loginLabelPanel.Padding = new System.Windows.Forms.Padding(15);
-            this.loginLabelPanel.Size = new System.Drawing.Size(110, 45);
-            this.loginLabelPanel.TabIndex = 10;
-            // 
-            // PasswordLabelPanel
-            // 
-            this.PasswordLabelPanel.Controls.Add(this.passLabel);
-            this.PasswordLabelPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PasswordLabelPanel.Location = new System.Drawing.Point(0, 45);
-            this.PasswordLabelPanel.Name = "PasswordLabelPanel";
-            this.PasswordLabelPanel.Padding = new System.Windows.Forms.Padding(15);
-            this.PasswordLabelPanel.Size = new System.Drawing.Size(110, 45);
-            this.PasswordLabelPanel.TabIndex = 11;
-            // 
-            // EmailLabelPanel
-            // 
-            this.EmailLabelPanel.Controls.Add(this.EmailLabel);
-            this.EmailLabelPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.EmailLabelPanel.Location = new System.Drawing.Point(0, 90);
-            this.EmailLabelPanel.Name = "EmailLabelPanel";
-            this.EmailLabelPanel.Padding = new System.Windows.Forms.Padding(10);
-            this.EmailLabelPanel.Size = new System.Drawing.Size(110, 55);
-            this.EmailLabelPanel.TabIndex = 12;
-            // 
-            // panel15
-            // 
-            this.panel15.Controls.Add(this.textBoxPassword);
-            this.panel15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel15.Location = new System.Drawing.Point(0, 45);
-            this.panel15.Name = "panel15";
-            this.panel15.Padding = new System.Windows.Forms.Padding(15);
-            this.panel15.Size = new System.Drawing.Size(224, 45);
-            this.panel15.TabIndex = 10;
-            // 
-            // panel16
-            // 
-            this.panel16.Controls.Add(this.textBoxEmail);
-            this.panel16.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel16.Location = new System.Drawing.Point(0, 90);
-            this.panel16.Name = "panel16";
-            this.panel16.Padding = new System.Windows.Forms.Padding(15);
-            this.panel16.Size = new System.Drawing.Size(224, 55);
-            this.panel16.TabIndex = 11;
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -435,7 +435,19 @@ namespace kanbanboard1
             this.Resize += new System.EventHandler(this.Login_Resize);
             this.panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.panel16.ResumeLayout(false);
+            this.panel16.PerformLayout();
+            this.panel15.ResumeLayout(false);
+            this.panel15.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
             this.panel4.ResumeLayout(false);
+            this.EmailLabelPanel.ResumeLayout(false);
+            this.EmailLabelPanel.PerformLayout();
+            this.PasswordLabelPanel.ResumeLayout(false);
+            this.PasswordLabelPanel.PerformLayout();
+            this.loginLabelPanel.ResumeLayout(false);
+            this.loginLabelPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AuthorizationPictureBox)).EndInit();
             this.HeaderPanel.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
@@ -446,18 +458,6 @@ namespace kanbanboard1
             this.panel6.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
-            this.loginLabelPanel.ResumeLayout(false);
-            this.loginLabelPanel.PerformLayout();
-            this.PasswordLabelPanel.ResumeLayout(false);
-            this.PasswordLabelPanel.PerformLayout();
-            this.EmailLabelPanel.ResumeLayout(false);
-            this.EmailLabelPanel.PerformLayout();
-            this.panel15.ResumeLayout(false);
-            this.panel15.PerformLayout();
-            this.panel16.ResumeLayout(false);
-            this.panel16.PerformLayout();
             this.ResumeLayout(false);
 
         }
