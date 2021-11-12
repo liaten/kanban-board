@@ -22,7 +22,7 @@ namespace kanbanboard
             };
         }
 
-        //Ресайз таблицы
+        // Ресайз таблицы
         public void ResizeTable()
         {
             BeginInvoke((MethodInvoker)(() =>
@@ -52,7 +52,7 @@ namespace kanbanboard
             TableLayoutPanel.RowStyles.Clear();
             TableLayoutPanel.ColumnStyles.Clear();
             TableLayoutPanel.Controls.Clear();
-            
+
             AddControlToPanel(new TicketPanel(), 0, 1);
             AddControlToPanel(new TicketPanel(), 1, 1);
             AddControlToPanel(new TicketPanel(), 2, 1);
@@ -88,7 +88,7 @@ namespace kanbanboard
                 Text = text,
                 TextAlign = ContentAlignment.MiddleCenter,
                 Font = new Font("Tahoma", 9.75F, FontStyle.Regular),
-                ForeColor = Color.FromArgb(160,160,160),
+                ForeColor = Color.FromArgb(160, 160, 160),
                 Margin = new Padding(5),
                 AutoSize = true
             }, column, 0);
@@ -106,7 +106,8 @@ namespace kanbanboard
                 TableLayoutPanel.Controls.OfType<TicketPanel>().First(x => x.Name == kanbanTicketPanelColumnRow)
                     .Controls.OfType<Label>().First(x => x.Name == whichLabel)
                     .Text = inputText;
-            } catch { }
+            }
+            catch { }
         }
 
         // Добавить контрол (в основном тикет) в таблицу
@@ -167,7 +168,7 @@ namespace kanbanboard
         {
             StripPanel.Visible = true;
             LabelHead.Text = "Задачи";
-            
+
             TableLayoutPanel.BringToFront();
 
             StripPanel.Location = TasksButton.Location;
@@ -212,7 +213,7 @@ namespace kanbanboard
             var LoginForm = new Login();
             LoginForm.Show();
         }
-        
+
         private void UserPanel_Resize(object sender, EventArgs e)
         {
             UserLabel.ToCenter(UserPanel);
