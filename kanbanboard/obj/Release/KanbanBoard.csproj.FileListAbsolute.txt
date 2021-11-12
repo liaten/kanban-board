@@ -1,0 +1,14 @@
+C:\Users\Admin\Desktop\kanban-board\kanbanboard\bin\Release\kanbanboard.exe.config
+C:\Users\Admin\Desktop\kanban-board\kanbanboard\bin\Release\kanbanboard.exe
+C:\Users\Admin\Desktop\kanban-board\kanbanboard\bin\Release\kanbanboard.pdb
+C:\Users\Admin\Desktop\kanban-board\kanbanboard\obj\Release\KanbanBoard.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\kanban-board\kanbanboard\obj\Release\kanbanboard.Tickets.resources
+C:\Users\Admin\Desktop\kanban-board\kanbanboard\obj\Release\kanbanboard.Calendar.resources
+C:\Users\Admin\Desktop\kanban-board\kanbanboard\obj\Release\kanbanboard.MainForm.resources
+C:\Users\Admin\Desktop\kanban-board\kanbanboard\obj\Release\kanbanboard.Login.resources
+C:\Users\Admin\Desktop\kanban-board\kanbanboard\obj\Release\kanbanboard.Messenger.resources
+C:\Users\Admin\Desktop\kanban-board\kanbanboard\obj\Release\kanbanboard.Properties.Resources.resources
+C:\Users\Admin\Desktop\kanban-board\kanbanboard\obj\Release\KanbanBoard.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\kanban-board\kanbanboard\obj\Release\KanbanBoard.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\kanban-board\kanbanboard\obj\Release\kanbanboard.exe
+C:\Users\Admin\Desktop\kanban-board\kanbanboard\obj\Release\kanbanboard.pdb
