@@ -2,9 +2,6 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-
-
-
 namespace kanbanboard
 {
     public partial class Login : Form

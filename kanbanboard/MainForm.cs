@@ -100,16 +100,6 @@ namespace kanbanboard
             TableLayoutPanel.Controls.Add(control, column, row);
         }
 
-        // Добавление пустых лейблов в добавленные специально колонки и строки с абсолютным размером в 0 для корректной работы автосайза.
-        private void ForAutoSizeInPanel()
-        {
-            TableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 0F));
-            TableLayoutPanel.Controls.Add(new Label(), TableLayoutPanel.ColumnStyles.Count - 1, 1);
-
-            TableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 0F));
-            TableLayoutPanel.Controls.Add(new Label(), 0, TableLayoutPanel.RowStyles.Count - 1);
-        }
-
         // *Для дебага. Получить позицию при клике
         private void TableLayoutPanel_MouseClick(object sender, MouseEventArgs e)
         {
