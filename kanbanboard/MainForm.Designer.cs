@@ -37,7 +37,6 @@ namespace kanbanboard
             this.CalendarButton = new System.Windows.Forms.Button();
             this.MessengerButton = new System.Windows.Forms.Button();
             this.TasksButton = new System.Windows.Forms.Button();
-            this.ProfileButton = new System.Windows.Forms.Button();
             this.UserControlsPanel = new System.Windows.Forms.Panel();
             this.UsernameLabel = new System.Windows.Forms.Label();
             this.UserInfoLabel = new System.Windows.Forms.Label();
@@ -69,20 +68,19 @@ namespace kanbanboard
             this.ControlsPanel.Controls.Add(this.CalendarButton);
             this.ControlsPanel.Controls.Add(this.MessengerButton);
             this.ControlsPanel.Controls.Add(this.TasksButton);
-            this.ControlsPanel.Controls.Add(this.ProfileButton);
             this.ControlsPanel.Controls.Add(this.UserControlsPanel);
             this.ControlsPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.ControlsPanel.Location = new System.Drawing.Point(0, 0);
-            this.ControlsPanel.MinimumSize = new System.Drawing.Size(205, 450);
+            this.ControlsPanel.MinimumSize = new System.Drawing.Size(205, 400);
             this.ControlsPanel.Name = "ControlsPanel";
-            this.ControlsPanel.Size = new System.Drawing.Size(205, 450);
+            this.ControlsPanel.Size = new System.Drawing.Size(205, 441);
             this.ControlsPanel.TabIndex = 0;
             // 
             // ExitButtonPanel
             // 
             this.ExitButtonPanel.Controls.Add(this.ExitButton);
             this.ExitButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ExitButtonPanel.Location = new System.Drawing.Point(0, 394);
+            this.ExitButtonPanel.Location = new System.Drawing.Point(0, 385);
             this.ExitButtonPanel.Name = "ExitButtonPanel";
             this.ExitButtonPanel.Padding = new System.Windows.Forms.Padding(10);
             this.ExitButtonPanel.Size = new System.Drawing.Size(205, 56);
@@ -120,7 +118,7 @@ namespace kanbanboard
             this.CalendarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CalendarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CalendarButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.CalendarButton.Location = new System.Drawing.Point(0, 220);
+            this.CalendarButton.Location = new System.Drawing.Point(0, 170);
             this.CalendarButton.Name = "CalendarButton";
             this.CalendarButton.Size = new System.Drawing.Size(205, 50);
             this.CalendarButton.TabIndex = 4;
@@ -135,7 +133,7 @@ namespace kanbanboard
             this.MessengerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MessengerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.MessengerButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.MessengerButton.Location = new System.Drawing.Point(0, 170);
+            this.MessengerButton.Location = new System.Drawing.Point(0, 120);
             this.MessengerButton.Name = "MessengerButton";
             this.MessengerButton.Size = new System.Drawing.Size(205, 50);
             this.MessengerButton.TabIndex = 3;
@@ -150,28 +148,13 @@ namespace kanbanboard
             this.TasksButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TasksButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TasksButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.TasksButton.Location = new System.Drawing.Point(0, 120);
+            this.TasksButton.Location = new System.Drawing.Point(0, 70);
             this.TasksButton.Name = "TasksButton";
             this.TasksButton.Size = new System.Drawing.Size(205, 50);
             this.TasksButton.TabIndex = 2;
             this.TasksButton.Text = "Задачи";
             this.TasksButton.UseVisualStyleBackColor = true;
             this.TasksButton.Click += new System.EventHandler(this.TasksButton_Click);
-            // 
-            // ProfileButton
-            // 
-            this.ProfileButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ProfileButton.FlatAppearance.BorderSize = 0;
-            this.ProfileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ProfileButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ProfileButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.ProfileButton.Location = new System.Drawing.Point(0, 70);
-            this.ProfileButton.Name = "ProfileButton";
-            this.ProfileButton.Size = new System.Drawing.Size(205, 50);
-            this.ProfileButton.TabIndex = 1;
-            this.ProfileButton.Text = "Профиль";
-            this.ProfileButton.UseVisualStyleBackColor = true;
-            this.ProfileButton.Click += new System.EventHandler(this.ProfileButton_Click);
             // 
             // UserControlsPanel
             // 
@@ -184,6 +167,7 @@ namespace kanbanboard
             this.UserControlsPanel.Name = "UserControlsPanel";
             this.UserControlsPanel.Size = new System.Drawing.Size(205, 70);
             this.UserControlsPanel.TabIndex = 0;
+            this.UserControlsPanel.Click += new System.EventHandler(this.UserControlsPanel_Click);
             this.UserControlsPanel.MouseEnter += new System.EventHandler(this.UserPanel_MouseEnter);
             this.UserControlsPanel.MouseLeave += new System.EventHandler(this.UserPanel_MouseLeave);
             // 
@@ -198,6 +182,9 @@ namespace kanbanboard
             this.UsernameLabel.Size = new System.Drawing.Size(79, 16);
             this.UsernameLabel.TabIndex = 1;
             this.UsernameLabel.Text = "Username";
+            this.UsernameLabel.Click += new System.EventHandler(this.UserControlsPanel_Click);
+            this.UsernameLabel.MouseEnter += new System.EventHandler(this.UserPanel_MouseEnter);
+            this.UsernameLabel.MouseLeave += new System.EventHandler(this.UserPanel_MouseLeave);
             // 
             // UserInfoLabel
             // 
@@ -209,6 +196,9 @@ namespace kanbanboard
             this.UserInfoLabel.Size = new System.Drawing.Size(53, 13);
             this.UserInfoLabel.TabIndex = 2;
             this.UserInfoLabel.Text = "User_Info";
+            this.UserInfoLabel.Click += new System.EventHandler(this.UserControlsPanel_Click);
+            this.UserInfoLabel.MouseEnter += new System.EventHandler(this.UserPanel_MouseEnter);
+            this.UserInfoLabel.MouseLeave += new System.EventHandler(this.UserPanel_MouseLeave);
             // 
             // UserPhotoPanel
             // 
@@ -219,6 +209,9 @@ namespace kanbanboard
             this.UserPhotoPanel.Padding = new System.Windows.Forms.Padding(15);
             this.UserPhotoPanel.Size = new System.Drawing.Size(70, 70);
             this.UserPhotoPanel.TabIndex = 2;
+            this.UserPhotoPanel.Click += new System.EventHandler(this.UserControlsPanel_Click);
+            this.UserPhotoPanel.MouseEnter += new System.EventHandler(this.UserPanel_MouseEnter);
+            this.UserPhotoPanel.MouseLeave += new System.EventHandler(this.UserPanel_MouseLeave);
             // 
             // UserPictureBox
             // 
@@ -231,6 +224,9 @@ namespace kanbanboard
             this.UserPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.UserPictureBox.TabIndex = 0;
             this.UserPictureBox.TabStop = false;
+            this.UserPictureBox.Click += new System.EventHandler(this.UserControlsPanel_Click);
+            this.UserPictureBox.MouseEnter += new System.EventHandler(this.UserPanel_MouseEnter);
+            this.UserPictureBox.MouseLeave += new System.EventHandler(this.UserPanel_MouseLeave);
             // 
             // LabelHead
             // 
@@ -262,9 +258,10 @@ namespace kanbanboard
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
-            this.TableLayoutPanel.Size = new System.Drawing.Size(783, 380);
+            this.TableLayoutPanel.Size = new System.Drawing.Size(779, 371);
             this.TableLayoutPanel.TabIndex = 1;
             this.TableLayoutPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TableLayoutPanel_MouseClick);
+            this.TableLayoutPanel.Resize += new System.EventHandler(this.TableLayoutPanel_Resize);
             // 
             // BasicPanel
             // 
@@ -274,7 +271,7 @@ namespace kanbanboard
             this.BasicPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BasicPanel.Location = new System.Drawing.Point(205, 0);
             this.BasicPanel.Name = "BasicPanel";
-            this.BasicPanel.Size = new System.Drawing.Size(783, 450);
+            this.BasicPanel.Size = new System.Drawing.Size(779, 441);
             this.BasicPanel.TabIndex = 3;
             // 
             // BasicContentPanel
@@ -284,7 +281,7 @@ namespace kanbanboard
             this.BasicContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BasicContentPanel.Location = new System.Drawing.Point(0, 70);
             this.BasicContentPanel.Name = "BasicContentPanel";
-            this.BasicContentPanel.Size = new System.Drawing.Size(783, 380);
+            this.BasicContentPanel.Size = new System.Drawing.Size(779, 371);
             this.BasicContentPanel.TabIndex = 2;
             // 
             // UserPanel
@@ -293,7 +290,7 @@ namespace kanbanboard
             this.UserPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UserPanel.Location = new System.Drawing.Point(0, 0);
             this.UserPanel.Name = "UserPanel";
-            this.UserPanel.Size = new System.Drawing.Size(783, 380);
+            this.UserPanel.Size = new System.Drawing.Size(779, 371);
             this.UserPanel.TabIndex = 0;
             this.UserPanel.Resize += new System.EventHandler(this.UserPanel_Resize);
             // 
@@ -314,7 +311,7 @@ namespace kanbanboard
             this.HeadPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.HeadPanel.Location = new System.Drawing.Point(0, 0);
             this.HeadPanel.Name = "HeadPanel";
-            this.HeadPanel.Size = new System.Drawing.Size(783, 70);
+            this.HeadPanel.Size = new System.Drawing.Size(779, 70);
             this.HeadPanel.TabIndex = 3;
             // 
             // MainForm
@@ -323,17 +320,17 @@ namespace kanbanboard
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(988, 450);
+            this.ClientSize = new System.Drawing.Size(984, 441);
             this.Controls.Add(this.BasicPanel);
             this.Controls.Add(this.ControlsPanel);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(1000, 480);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Канбан-доска";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
-            this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.ControlsPanel.ResumeLayout(false);
             this.ExitButtonPanel.ResumeLayout(false);
             this.UserControlsPanel.ResumeLayout(false);
@@ -357,7 +354,6 @@ namespace kanbanboard
         private System.Windows.Forms.Panel ControlsPanel;
         private System.Windows.Forms.Panel UserControlsPanel;
         private System.Windows.Forms.Button TasksButton;
-        private System.Windows.Forms.Button ProfileButton;
         private System.Windows.Forms.Button CalendarButton;
         private System.Windows.Forms.Button MessengerButton;
         private System.Windows.Forms.PictureBox UserPictureBox;

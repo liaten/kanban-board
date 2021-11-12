@@ -33,24 +33,24 @@ namespace kanbanboard
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.DialogMainPanel = new System.Windows.Forms.Panel();
-            this.MessageMainPanel = new System.Windows.Forms.Panel();
-            this.SendMessageButton = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.diaUsernameLabel = new System.Windows.Forms.Label();
-            this.SendMessageButtonPanel = new System.Windows.Forms.Panel();
-            this.MessagePanel = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.DialogMainPanel = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.diaUsernameLabel = new System.Windows.Forms.Label();
+            this.MessageMainPanel = new System.Windows.Forms.Panel();
+            this.MessagePanel = new System.Windows.Forms.Panel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.SendMessageButtonPanel = new System.Windows.Forms.Panel();
+            this.SendMessageButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            this.DialogMainPanel.SuspendLayout();
-            this.MessageMainPanel.SuspendLayout();
-            this.SendMessageButtonPanel.SuspendLayout();
-            this.MessagePanel.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.DialogMainPanel.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.MessageMainPanel.SuspendLayout();
+            this.MessagePanel.SuspendLayout();
+            this.SendMessageButtonPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -87,6 +87,26 @@ namespace kanbanboard
             this.panel1.Size = new System.Drawing.Size(221, 513);
             this.panel1.TabIndex = 2;
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.textBox1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 52);
+            this.panel4.Name = "panel4";
+            this.panel4.Padding = new System.Windows.Forms.Padding(15);
+            this.panel4.Size = new System.Drawing.Size(221, 57);
+            this.panel4.TabIndex = 5;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(15);
+            this.panel3.Size = new System.Drawing.Size(221, 52);
+            this.panel3.TabIndex = 5;
+            // 
             // DialogMainPanel
             // 
             this.DialogMainPanel.AutoSize = true;
@@ -101,6 +121,28 @@ namespace kanbanboard
             this.DialogMainPanel.Size = new System.Drawing.Size(757, 513);
             this.DialogMainPanel.TabIndex = 3;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.diaUsernameLabel);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(15);
+            this.panel2.Size = new System.Drawing.Size(757, 52);
+            this.panel2.TabIndex = 4;
+            // 
+            // diaUsernameLabel
+            // 
+            this.diaUsernameLabel.AutoSize = true;
+            this.diaUsernameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.diaUsernameLabel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.diaUsernameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.diaUsernameLabel.Location = new System.Drawing.Point(15, 15);
+            this.diaUsernameLabel.Name = "diaUsernameLabel";
+            this.diaUsernameLabel.Size = new System.Drawing.Size(105, 15);
+            this.diaUsernameLabel.TabIndex = 2;
+            this.diaUsernameLabel.Text = "Dialog Username";
+            // 
             // MessageMainPanel
             // 
             this.MessageMainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
@@ -112,19 +154,15 @@ namespace kanbanboard
             this.MessageMainPanel.Size = new System.Drawing.Size(757, 83);
             this.MessageMainPanel.TabIndex = 3;
             // 
-            // SendMessageButton
+            // MessagePanel
             // 
-            this.SendMessageButton.AutoSize = true;
-            this.SendMessageButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SendMessageButton.FlatAppearance.BorderSize = 0;
-            this.SendMessageButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SendMessageButton.Image = global::kanbanboard.Properties.Resources.send_message__1_;
-            this.SendMessageButton.Location = new System.Drawing.Point(0, 0);
-            this.SendMessageButton.Margin = new System.Windows.Forms.Padding(10);
-            this.SendMessageButton.Name = "SendMessageButton";
-            this.SendMessageButton.Size = new System.Drawing.Size(88, 83);
-            this.SendMessageButton.TabIndex = 3;
-            this.SendMessageButton.UseVisualStyleBackColor = true;
+            this.MessagePanel.Controls.Add(this.textBox2);
+            this.MessagePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MessagePanel.Location = new System.Drawing.Point(0, 0);
+            this.MessagePanel.Name = "MessagePanel";
+            this.MessagePanel.Padding = new System.Windows.Forms.Padding(15);
+            this.MessagePanel.Size = new System.Drawing.Size(669, 83);
+            this.MessagePanel.TabIndex = 1;
             // 
             // textBox2
             // 
@@ -140,18 +178,6 @@ namespace kanbanboard
             this.textBox2.Size = new System.Drawing.Size(639, 53);
             this.textBox2.TabIndex = 2;
             // 
-            // diaUsernameLabel
-            // 
-            this.diaUsernameLabel.AutoSize = true;
-            this.diaUsernameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.diaUsernameLabel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.diaUsernameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.diaUsernameLabel.Location = new System.Drawing.Point(15, 15);
-            this.diaUsernameLabel.Name = "diaUsernameLabel";
-            this.diaUsernameLabel.Size = new System.Drawing.Size(105, 15);
-            this.diaUsernameLabel.TabIndex = 2;
-            this.diaUsernameLabel.Text = "Dialog Username";
-            // 
             // SendMessageButtonPanel
             // 
             this.SendMessageButtonPanel.Controls.Add(this.SendMessageButton);
@@ -161,45 +187,19 @@ namespace kanbanboard
             this.SendMessageButtonPanel.Size = new System.Drawing.Size(88, 83);
             this.SendMessageButtonPanel.TabIndex = 0;
             // 
-            // MessagePanel
+            // SendMessageButton
             // 
-            this.MessagePanel.Controls.Add(this.textBox2);
-            this.MessagePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MessagePanel.Location = new System.Drawing.Point(0, 0);
-            this.MessagePanel.Name = "MessagePanel";
-            this.MessagePanel.Padding = new System.Windows.Forms.Padding(15);
-            this.MessagePanel.Size = new System.Drawing.Size(669, 83);
-            this.MessagePanel.TabIndex = 1;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.diaUsernameLabel);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(15);
-            this.panel2.Size = new System.Drawing.Size(757, 52);
-            this.panel2.TabIndex = 4;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(15);
-            this.panel3.Size = new System.Drawing.Size(221, 52);
-            this.panel3.TabIndex = 5;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.textBox1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 52);
-            this.panel4.Name = "panel4";
-            this.panel4.Padding = new System.Windows.Forms.Padding(15);
-            this.panel4.Size = new System.Drawing.Size(221, 57);
-            this.panel4.TabIndex = 5;
+            this.SendMessageButton.AutoSize = true;
+            this.SendMessageButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SendMessageButton.FlatAppearance.BorderSize = 0;
+            this.SendMessageButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SendMessageButton.Image = global::kanbanboard.Properties.Resources.send_message__1_;
+            this.SendMessageButton.Location = new System.Drawing.Point(0, 0);
+            this.SendMessageButton.Margin = new System.Windows.Forms.Padding(10);
+            this.SendMessageButton.Name = "SendMessageButton";
+            this.SendMessageButton.Size = new System.Drawing.Size(88, 83);
+            this.SendMessageButton.TabIndex = 3;
+            this.SendMessageButton.UseVisualStyleBackColor = true;
             // 
             // Messenger
             // 
@@ -214,18 +214,18 @@ namespace kanbanboard
             this.Name = "Messenger";
             this.Text = "Мессенджер";
             this.panel1.ResumeLayout(false);
-            this.DialogMainPanel.ResumeLayout(false);
-            this.MessageMainPanel.ResumeLayout(false);
-            this.SendMessageButtonPanel.ResumeLayout(false);
-            this.SendMessageButtonPanel.PerformLayout();
-            this.MessagePanel.ResumeLayout(false);
-            this.MessagePanel.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.DialogMainPanel.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.MessageMainPanel.ResumeLayout(false);
+            this.MessagePanel.ResumeLayout(false);
+            this.MessagePanel.PerformLayout();
+            this.SendMessageButtonPanel.ResumeLayout(false);
+            this.SendMessageButtonPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

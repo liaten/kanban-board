@@ -15,11 +15,35 @@ namespace kanbanboard
             Load += (s, a) =>
             {
                 UsernameLabel.Text = Login.Username;
-                StripPanel.Location = ProfileButton.Location;
+                StripPanel.Visible = false;
                 Table();
                 SetDoubleBuffered(TableLayoutPanel);
-                MainForm_Resize(null, null);
+                ResizeTable();
             };
+        }
+
+        //Ресайз таблицы
+        public void ResizeTable()
+        {
+            BeginInvoke((MethodInvoker)(() =>
+            {
+                foreach (ColumnStyle column in TableLayoutPanel.ColumnStyles)
+                {
+                    column.SizeType = SizeType.Percent;
+                    column.Width = 100 / TableLayoutPanel.ColumnCount;
+                }
+                TableLayoutPanel.Controls.OfType<TicketPanel>().ToList().ForEach(x => x.Width = TableLayoutPanel.Width / TableLayoutPanel.ColumnCount);
+
+                for (int i = 1; i < TableLayoutPanel.RowCount; i++)
+                {
+                    TableLayoutPanel.RowStyles[i].SizeType = SizeType.Percent;
+                    TableLayoutPanel.RowStyles[i].Height = 100 / TableLayoutPanel.RowCount;
+                }
+                TableLayoutPanel.Controls.OfType<TicketPanel>().ToList().ForEach(x =>
+                {
+                    if (TableLayoutPanel.GetCellPosition(x).Row != 0) x.Height = TableLayoutPanel.Height / TableLayoutPanel.RowCount;
+                });
+            }));
         }
 
         // Таблица с тикетами
@@ -138,33 +162,10 @@ namespace kanbanboard
             aProp?.SetValue(c, true, null);
         }
 
-        // Событие при изменении размера формы
-        private void MainForm_Resize(object sender, EventArgs e)
-        {
-            BeginInvoke((MethodInvoker)(() =>
-            {
-                foreach (ColumnStyle column in TableLayoutPanel.ColumnStyles)
-                {
-                    column.SizeType = SizeType.Percent;
-                    column.Width = 100 / TableLayoutPanel.ColumnCount;
-                }
-                TableLayoutPanel.Controls.OfType<TicketPanel>().ToList().ForEach(x => x.Width = TableLayoutPanel.Width / TableLayoutPanel.ColumnCount);
-
-                for (int i = 1; i < TableLayoutPanel.RowCount; i++)
-                {
-                    TableLayoutPanel.RowStyles[i].SizeType = SizeType.Percent;
-                    TableLayoutPanel.RowStyles[i].Height = 100 / TableLayoutPanel.RowCount;
-                }
-                TableLayoutPanel.Controls.OfType<TicketPanel>().ToList().ForEach(x =>
-                {
-                    if (TableLayoutPanel.GetCellPosition(x).Row != 0) x.Height = TableLayoutPanel.Height / TableLayoutPanel.RowCount;
-                });
-            }));
-        }
-
         // Обработчик задач
         private void TasksButton_Click(object sender, EventArgs e)
         {
+            StripPanel.Visible = true;
             LabelHead.Text = "Задачи";
             
             TableLayoutPanel.BringToFront();
@@ -172,38 +173,21 @@ namespace kanbanboard
             StripPanel.Location = TasksButton.Location;
         }
 
-        // Обработчик профиля
-        private void ProfileButton_Click(object sender, EventArgs e)
-        {
-            LabelHead.Text = "Профиль";
-            
-            UserPanel.BringToFront();
-
-            StripPanel.Location = ProfileButton.Location;
-        }
-
         // Обработчик мессенджера
         private void MessengerButton_Click(object sender, EventArgs e)
         {
+            StripPanel.Visible = true;
             LabelHead.Text = "Мессенджер";
-            BasicContentPanel.Controls.Clear();
-            var MsgrTab = new Messenger() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-            MsgrTab.FormBorderStyle = FormBorderStyle.None;
-            BasicContentPanel.Controls.Add(MsgrTab);
-            MsgrTab.Show();
-
+            UserPanel.BringToFront();
             StripPanel.Location = MessengerButton.Location;
         }
 
         // Обработчик календаря
         private void CalendarButton_Click(object sender, EventArgs e)
         {
+            StripPanel.Visible = true;
             LabelHead.Text = "Календарь";
-            BasicContentPanel.Controls.Clear();
-            var calenderTab = new Calendar() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, FormBorderStyle = FormBorderStyle.None };
-            BasicContentPanel.Controls.Add(calenderTab);
-            calenderTab.Show();
-
+            UserPanel.BringToFront();
             StripPanel.Location = CalendarButton.Location;
         }
 
@@ -232,6 +216,20 @@ namespace kanbanboard
         private void UserPanel_Resize(object sender, EventArgs e)
         {
             UserLabel.ToCenter(UserPanel);
+        }
+
+        private void TableLayoutPanel_Resize(object sender, EventArgs e)
+        {
+            ResizeTable();
+        }
+
+        private void UserControlsPanel_Click(object sender, EventArgs e)
+        {
+            LabelHead.Text = "Профиль";
+
+            UserPanel.BringToFront();
+
+            StripPanel.Visible = false;
         }
     }
 }
