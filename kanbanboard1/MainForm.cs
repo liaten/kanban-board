@@ -32,10 +32,11 @@ namespace kanbanboard1
         {
             label3.Text = "Задачи";
             this.panel3.Controls.Clear();
-            Tasks TaskTab = new Tasks() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            Tickets TaskTab = new Tickets() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             TaskTab.FormBorderStyle = FormBorderStyle.None;
             this.panel3.Controls.Add(TaskTab);
             TaskTab.Show();
+
             panel4.Location = TasksButton.Location;
         }
 
