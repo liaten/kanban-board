@@ -36,12 +36,12 @@ namespace kanbanboard
                 TableLayoutPanel.Controls.OfType<TicketPanel>().ToList().ForEach(x => x.Width = TableLayoutPanel.Width / TableLayoutPanel.ColumnCount);
                 TableLayoutPanel.RowStyles[0].SizeType = SizeType.Absolute;
                 TableLayoutPanel.RowStyles[0].Height = 30;
-                for (int i=1;i< TableLayoutPanel.RowStyles.Count; i++)
+                for (int i = 1; i < TableLayoutPanel.RowStyles.Count; i++)
                 {
                     TableLayoutPanel.RowStyles[i].SizeType = SizeType.Absolute;
-                        TableLayoutPanel.RowStyles[i].Height = 100;
+                    TableLayoutPanel.RowStyles[i].Height = 100;
                 }
-                
+
                 TableLayoutPanel.Controls.OfType<TicketPanel>().ToList().ForEach(x =>
                 {
                     if (TableLayoutPanel.GetCellPosition(x).Row != 0) x.Height = TableLayoutPanel.Height / TableLayoutPanel.RowCount;
@@ -90,7 +90,7 @@ namespace kanbanboard
             {
                 Text = text,
                 TextAlign = ContentAlignment.MiddleCenter,
-                Font = new Font("Roboto", 9.75F, FontStyle.Regular),
+                Font = new Font("Roboto", 12F, FontStyle.Bold),
                 ForeColor = Color.FromArgb(160, 160, 160),
                 Margin = new Padding(5),
                 AutoSize = true,
@@ -143,7 +143,7 @@ namespace kanbanboard
                     var rectangle = new Rectangle(horizontalOffset, verticalOffset, w, h);
                     if (rectangle.Contains(e.Location))
                     {
-                        MessageBox.Show($"row {row}, column {column+1} was clicked");
+                        MessageBox.Show($"row {row}, column {column + 1} was clicked");
                         return;
                     }
 
