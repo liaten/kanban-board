@@ -93,7 +93,8 @@ namespace kanbanboard
                 Font = new Font("Roboto", 9.75F, FontStyle.Regular),
                 ForeColor = Color.FromArgb(160, 160, 160),
                 Margin = new Padding(5),
-                AutoSize = true
+                AutoSize = true,
+                Dock = DockStyle.Fill
             }, column, 0);
         }
 
@@ -149,7 +150,6 @@ namespace kanbanboard
                     horizontalOffset += w;
                     column++;
                 }
-
                 verticalOffset += h;
                 row++;
             }

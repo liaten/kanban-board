@@ -177,7 +177,7 @@ namespace kanbanboard
             this.UsernameLabel.BackColor = System.Drawing.Color.Transparent;
             this.UsernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.UsernameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.UsernameLabel.Location = new System.Drawing.Point(87, 14);
+            this.UsernameLabel.Location = new System.Drawing.Point(87, 15);
             this.UsernameLabel.Name = "UsernameLabel";
             this.UsernameLabel.Size = new System.Drawing.Size(79, 16);
             this.UsernameLabel.TabIndex = 1;
@@ -231,9 +231,10 @@ namespace kanbanboard
             // LabelHead
             // 
             this.LabelHead.AutoSize = true;
+            this.LabelHead.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LabelHead.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelHead.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.LabelHead.Location = new System.Drawing.Point(28, 20);
+            this.LabelHead.Location = new System.Drawing.Point(15, 15);
             this.LabelHead.Name = "LabelHead";
             this.LabelHead.Size = new System.Drawing.Size(150, 37);
             this.LabelHead.TabIndex = 1;
@@ -311,6 +312,7 @@ namespace kanbanboard
             this.HeadPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.HeadPanel.Location = new System.Drawing.Point(0, 0);
             this.HeadPanel.Name = "HeadPanel";
+            this.HeadPanel.Padding = new System.Windows.Forms.Padding(15);
             this.HeadPanel.Size = new System.Drawing.Size(779, 70);
             this.HeadPanel.TabIndex = 3;
             // 
