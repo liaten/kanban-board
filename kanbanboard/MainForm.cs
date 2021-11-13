@@ -22,23 +22,26 @@ namespace kanbanboard
             };
         }
 
-        // Ресайз таблицы
-        public void ResizeTable()
+        // Изменение размера таблицы
+        private void ResizeTable()
         {
             BeginInvoke((MethodInvoker)(() =>
             {
                 foreach (ColumnStyle column in TableLayoutPanel.ColumnStyles)
                 {
                     column.SizeType = SizeType.Percent;
-                    column.Width = 100 / TableLayoutPanel.ColumnCount;
+                    //column.Width = 100 / TableLayoutPanel.ColumnCount;
+                    column.Width = 25;
                 }
                 TableLayoutPanel.Controls.OfType<TicketPanel>().ToList().ForEach(x => x.Width = TableLayoutPanel.Width / TableLayoutPanel.ColumnCount);
-
-                for (int i = 1; i < TableLayoutPanel.RowCount; i++)
+                TableLayoutPanel.RowStyles[0].SizeType = SizeType.Absolute;
+                TableLayoutPanel.RowStyles[0].Height = 30;
+                for (int i=1;i< TableLayoutPanel.RowStyles.Count; i++)
                 {
-                    TableLayoutPanel.RowStyles[i].SizeType = SizeType.Percent;
-                    TableLayoutPanel.RowStyles[i].Height = 100 / TableLayoutPanel.RowCount;
+                    TableLayoutPanel.RowStyles[i].SizeType = SizeType.Absolute;
+                        TableLayoutPanel.RowStyles[i].Height = 100;
                 }
+                
                 TableLayoutPanel.Controls.OfType<TicketPanel>().ToList().ForEach(x =>
                 {
                     if (TableLayoutPanel.GetCellPosition(x).Row != 0) x.Height = TableLayoutPanel.Height / TableLayoutPanel.RowCount;
@@ -70,12 +73,12 @@ namespace kanbanboard
             // TableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
 
             // Заголовки
-            AddTitle("Что-то начать делать", 0);
-            AddTitle("Что-то делают", 1);
-            AddTitle("Что-то сделано", 2);
-            AddTitle("Что-то нужно сдать", 3);
+            AddTitle("Сделать", 0);
+            AddTitle("В процессе", 1);
+            AddTitle("На рассмотрении", 2);
+            AddTitle("Готово", 3);
 
-            TableLayoutPanel.RowCount -= 1;
+            //TableLayoutPanel.RowCount -= 1;
             BasicContentPanel.Controls.Add(TableLayoutPanel);
         }
 
@@ -87,7 +90,7 @@ namespace kanbanboard
             {
                 Text = text,
                 TextAlign = ContentAlignment.MiddleCenter,
-                Font = new Font("Tahoma", 9.75F, FontStyle.Regular),
+                Font = new Font("Roboto", 9.75F, FontStyle.Regular),
                 ForeColor = Color.FromArgb(160, 160, 160),
                 Margin = new Padding(5),
                 AutoSize = true
@@ -114,7 +117,7 @@ namespace kanbanboard
         private void AddControlToPanel(Control control, int column, int row)
         {
             // Инициализация имени панели тикета
-            control.Name = $"ticket{column}{row}";
+            control.Name = $"ticket c{column}r{row}";
             control.Click += (s, a) => MessageBox.Show(control.Name);
 
             // Нужно ли добавлять доп. строки и/или колонки
@@ -128,18 +131,18 @@ namespace kanbanboard
         // *Для дебага. Получить позицию при клике
         private void TableLayoutPanel_MouseClick(object sender, MouseEventArgs e)
         {
-            var row = 0;
-            var verticalOffset = 0;
-            foreach (var h in TableLayoutPanel.GetRowHeights())
+            int row = 0;
+            int verticalOffset = 0;
+            foreach (int h in TableLayoutPanel.GetRowHeights())
             {
-                var column = 0;
-                var horizontalOffset = 0;
+                int column = 0;
+                int horizontalOffset = 0;
                 foreach (var w in TableLayoutPanel.GetColumnWidths())
                 {
                     var rectangle = new Rectangle(horizontalOffset, verticalOffset, w, h);
                     if (rectangle.Contains(e.Location))
                     {
-                        MessageBox.Show($"row {row}, column {column} was clicked");
+                        MessageBox.Show($"row {row}, column {column+1} was clicked");
                         return;
                     }
 
