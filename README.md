@@ -5,7 +5,7 @@
 
 ![изображение](https://user-images.githubusercontent.com/35489460/141598476-668d484a-41c4-4414-9993-7edc7faf9017.png)
 
-![изображение](https://user-images.githubusercontent.com/35489460/141598486-5961e9f0-86e6-4296-b958-75612eb39825.png)
+![изображение](https://user-images.githubusercontent.com/35489460/141607411-152a3974-ba08-45e8-9c35-db82a516324e.png)
 
 #### 2. Android
 
