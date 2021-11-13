@@ -8,23 +8,83 @@
     android:background="@color/back">
 
     <LinearLayout
-        android:id="@+id/view_auth"
+        android:id="@+id/Profile_kanban"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:orientation="vertical"
         android:layout_marginTop="55dp"
+        android:layout_marginBottom="50dp"
         >
 
         <TextView
+            style="@style/View_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:textAlignment="center" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/user_name_kanban"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Profile_kanban"
+        android:background="@color/back_2"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="50dp">
+
+        <TextView
+            android:id="@+id/profile_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"
-            android:text="Profile"
+            android:text="user_login"
             android:textAlignment="center"
             android:textColor="@color/btn_sing_in_stroke"
             android:textSize="35dp" />
+
+
+
+
+
+
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/enter_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/user_name_kanban"
+        android:orientation="vertical"
+        android:gravity="center">
+
+
+
+        <Button
+            style="@style/Buttons_def"
+            android:id="@+id/LogOut"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="6dp"
+            android:layout_weight="1"
+            android:text="@string/log_out"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp" />
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
 
 </RelativeLayout>

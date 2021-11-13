@@ -21,13 +21,12 @@
         >
 
         <TextView
+            style="@style/View_top"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat"
             android:text="@string/login"
             android:textAlignment="center"
-            android:textColor="@color/btn_sing_in_stroke"
-            android:textSize="35dp" />
+ />
     </LinearLayout>
 
     <!-- Строки ввода -->
@@ -38,13 +37,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/view_auth"
         android:background="@color/back_2"
-        android:orientation="vertical"
->
+        android:orientation="vertical">
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/login_field_e"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:hint="Логин"
             android:inputType="text"
             android:text=""
@@ -52,16 +52,15 @@
             app:met_baseColor="@color/btn_sing_in_stroke"
             app:met_floatingLabel="highlight"
             app:met_primaryColor="@color/btn_sing_in_stroke"
-            app:met_singleLineEllipsis="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-/>
+            app:met_singleLineEllipsis="true" />
 
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/password_field_e"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:hint="Пароль"
             android:inputType="textPassword"
             android:text=""
@@ -69,11 +68,35 @@
             app:met_baseColor="@color/btn_sing_in_stroke"
             app:met_floatingLabel="highlight"
             app:met_primaryColor="@color/btn_sing_in_stroke"
-            app:met_singleLineEllipsis="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-/>
+            app:met_singleLineEllipsis="true" />
 
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/enter_login"
+        android:orientation="horizontal"
+        android:id="@+id/check_box_l"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
+        android:paddingTop="5dp">
+
+        <CheckBox
+            android:id="@+id/rem_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/back"
+            android:buttonTint="@color/btn_sing_in_stroke"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/remember_me"
+            android:textColor="@color/btn_sing_in_stroke"
+            android:textSize="17dp"
+            android:layout_marginLeft="6dp">
+
+        </CheckBox>
 
     </LinearLayout>
 
@@ -82,37 +105,35 @@
         android:id="@+id/buttons_e"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/enter_login"
+        android:layout_below="@id/check_box_l"
         android:layout_marginStart="15dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="10dp"
         android:orientation="horizontal"
-        android:paddingTop="20dp"
+        android:paddingTop="5dp"
         android:weightSum="2">
 
 
         <Button
+            style="@style/Buttons_def"
             android:id="@+id/SingIn"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="6dp"
             android:layout_weight="1"
-            android:background="@drawable/sing_in"
-            android:fontFamily="@font/montserrat"
             android:text="@string/SingIn"
-            android:textColor="@color/btn_sing_in_stroke" />
+ />
 
         <Button
+            style="@style/Buttons_def"
             android:id="@+id/Register"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="6dp"
             android:layout_weight="1"
-            android:background="@drawable/register"
-            android:fontFamily="@font/montserrat"
             android:text="@string/Register"
-            android:textColor="@color/btn_sing_in_stroke" />
+ />
     </LinearLayout>
 
     <LinearLayout
@@ -132,7 +153,7 @@
             android:text="@string/Forgot"
             android:textAlignment="center"
             android:textColor="@color/btn_sing_in_stroke"
-            android:textSize="15dp" />
+            android:textSize="17dp" />
 
 
     </LinearLayout>
