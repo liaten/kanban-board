@@ -38,7 +38,9 @@ namespace kanbanboard
             this.MessengerButton = new System.Windows.Forms.Button();
             this.TasksButton = new System.Windows.Forms.Button();
             this.UserControlsPanel = new System.Windows.Forms.Panel();
+            this.UserNamePanel = new System.Windows.Forms.Panel();
             this.UsernameLabel = new System.Windows.Forms.Label();
+            this.UserInfoPanel = new System.Windows.Forms.Panel();
             this.UserInfoLabel = new System.Windows.Forms.Label();
             this.UserPhotoPanel = new System.Windows.Forms.Panel();
             this.UserPictureBox = new System.Windows.Forms.PictureBox();
@@ -47,17 +49,50 @@ namespace kanbanboard
             this.BasicPanel = new System.Windows.Forms.Panel();
             this.BasicContentPanel = new System.Windows.Forms.Panel();
             this.UserPanel = new System.Windows.Forms.Panel();
-            this.UserLabel = new System.Windows.Forms.Label();
+            this.FullNamePanel = new System.Windows.Forms.Panel();
+            this.FullNameGetLabelPanel = new System.Windows.Forms.Panel();
+            this.FULLNAME_GET = new System.Windows.Forms.Label();
+            this.FullNameLabelPanel = new System.Windows.Forms.Panel();
+            this.FullName = new System.Windows.Forms.Label();
             this.HeadPanel = new System.Windows.Forms.Panel();
+            this.NickNamePanel = new System.Windows.Forms.Panel();
+            this.NickNameGetPanel = new System.Windows.Forms.Panel();
+            this.NICKNAME_GET = new System.Windows.Forms.Label();
+            this.NickNameLabelPanel = new System.Windows.Forms.Panel();
+            this.NickName = new System.Windows.Forms.Label();
+            this.TimeZonePanel = new System.Windows.Forms.Panel();
+            this.TimeZoneGetPanel = new System.Windows.Forms.Panel();
+            this.TIMEZONE_GET = new System.Windows.Forms.Label();
+            this.TimeZoneLabelPanel = new System.Windows.Forms.Panel();
+            this.TimeZoneLabel = new System.Windows.Forms.Label();
+            this.OrganizationPanel = new System.Windows.Forms.Panel();
+            this.OrganizationGetPanel = new System.Windows.Forms.Panel();
+            this.ORGANIZATION_GET = new System.Windows.Forms.Label();
+            this.OrganizationLabelPanel = new System.Windows.Forms.Panel();
+            this.OrganizationLabel = new System.Windows.Forms.Label();
             this.ControlsPanel.SuspendLayout();
             this.ExitButtonPanel.SuspendLayout();
             this.UserControlsPanel.SuspendLayout();
+            this.UserNamePanel.SuspendLayout();
+            this.UserInfoPanel.SuspendLayout();
             this.UserPhotoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UserPictureBox)).BeginInit();
             this.BasicPanel.SuspendLayout();
             this.BasicContentPanel.SuspendLayout();
             this.UserPanel.SuspendLayout();
+            this.FullNamePanel.SuspendLayout();
+            this.FullNameGetLabelPanel.SuspendLayout();
+            this.FullNameLabelPanel.SuspendLayout();
             this.HeadPanel.SuspendLayout();
+            this.NickNamePanel.SuspendLayout();
+            this.NickNameGetPanel.SuspendLayout();
+            this.NickNameLabelPanel.SuspendLayout();
+            this.TimeZonePanel.SuspendLayout();
+            this.TimeZoneGetPanel.SuspendLayout();
+            this.TimeZoneLabelPanel.SuspendLayout();
+            this.OrganizationPanel.SuspendLayout();
+            this.OrganizationGetPanel.SuspendLayout();
+            this.OrganizationLabelPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // ControlsPanel
@@ -159,8 +194,8 @@ namespace kanbanboard
             // UserControlsPanel
             // 
             this.UserControlsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(20)))), ((int)(((byte)(44)))));
-            this.UserControlsPanel.Controls.Add(this.UsernameLabel);
-            this.UserControlsPanel.Controls.Add(this.UserInfoLabel);
+            this.UserControlsPanel.Controls.Add(this.UserNamePanel);
+            this.UserControlsPanel.Controls.Add(this.UserInfoPanel);
             this.UserControlsPanel.Controls.Add(this.UserPhotoPanel);
             this.UserControlsPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.UserControlsPanel.Location = new System.Drawing.Point(0, 0);
@@ -171,31 +206,60 @@ namespace kanbanboard
             this.UserControlsPanel.MouseEnter += new System.EventHandler(this.UserPanel_MouseEnter);
             this.UserControlsPanel.MouseLeave += new System.EventHandler(this.UserPanel_MouseLeave);
             // 
+            // UserNamePanel
+            // 
+            this.UserNamePanel.Controls.Add(this.UsernameLabel);
+            this.UserNamePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.UserNamePanel.Location = new System.Drawing.Point(70, 30);
+            this.UserNamePanel.Name = "UserNamePanel";
+            this.UserNamePanel.Padding = new System.Windows.Forms.Padding(3);
+            this.UserNamePanel.Size = new System.Drawing.Size(135, 17);
+            this.UserNamePanel.TabIndex = 3;
+            this.UserNamePanel.Click += new System.EventHandler(this.UserControlsPanel_Click);
+            this.UserNamePanel.MouseEnter += new System.EventHandler(this.UserPanel_MouseEnter);
+            this.UserNamePanel.MouseLeave += new System.EventHandler(this.UserPanel_MouseLeave);
+            // 
             // UsernameLabel
             // 
             this.UsernameLabel.AutoSize = true;
             this.UsernameLabel.BackColor = System.Drawing.Color.Transparent;
+            this.UsernameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UsernameLabel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.UsernameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.UsernameLabel.Location = new System.Drawing.Point(87, 15);
+            this.UsernameLabel.Location = new System.Drawing.Point(3, 3);
             this.UsernameLabel.Name = "UsernameLabel";
-            this.UsernameLabel.Size = new System.Drawing.Size(67, 15);
+            this.UsernameLabel.Size = new System.Drawing.Size(105, 15);
             this.UsernameLabel.TabIndex = 1;
-            this.UsernameLabel.Text = "Username";
+            this.UsernameLabel.Text = "USERNAME_GET";
+            this.UsernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.UsernameLabel.Click += new System.EventHandler(this.UserControlsPanel_Click);
             this.UsernameLabel.MouseEnter += new System.EventHandler(this.UserPanel_MouseEnter);
             this.UsernameLabel.MouseLeave += new System.EventHandler(this.UserPanel_MouseLeave);
             // 
+            // UserInfoPanel
+            // 
+            this.UserInfoPanel.Controls.Add(this.UserInfoLabel);
+            this.UserInfoPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.UserInfoPanel.Location = new System.Drawing.Point(70, 47);
+            this.UserInfoPanel.Name = "UserInfoPanel";
+            this.UserInfoPanel.Padding = new System.Windows.Forms.Padding(3);
+            this.UserInfoPanel.Size = new System.Drawing.Size(135, 23);
+            this.UserInfoPanel.TabIndex = 4;
+            this.UserInfoPanel.Click += new System.EventHandler(this.UserControlsPanel_Click);
+            this.UserInfoPanel.MouseEnter += new System.EventHandler(this.UserPanel_MouseEnter);
+            this.UserInfoPanel.MouseLeave += new System.EventHandler(this.UserPanel_MouseLeave);
+            // 
             // UserInfoLabel
             // 
             this.UserInfoLabel.AutoSize = true;
+            this.UserInfoLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UserInfoLabel.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.UserInfoLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.UserInfoLabel.Location = new System.Drawing.Point(87, 40);
+            this.UserInfoLabel.Location = new System.Drawing.Point(3, 3);
             this.UserInfoLabel.Name = "UserInfoLabel";
-            this.UserInfoLabel.Size = new System.Drawing.Size(54, 13);
+            this.UserInfoLabel.Size = new System.Drawing.Size(85, 13);
             this.UserInfoLabel.TabIndex = 2;
-            this.UserInfoLabel.Text = "User_Info";
+            this.UserInfoLabel.Text = "USERINFO_GET";
             this.UserInfoLabel.Click += new System.EventHandler(this.UserControlsPanel_Click);
             this.UserInfoLabel.MouseEnter += new System.EventHandler(this.UserPanel_MouseEnter);
             this.UserInfoLabel.MouseLeave += new System.EventHandler(this.UserPanel_MouseLeave);
@@ -230,13 +294,12 @@ namespace kanbanboard
             // 
             // LabelHead
             // 
-            this.LabelHead.AutoSize = true;
-            this.LabelHead.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LabelHead.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.LabelHead.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelHead.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.LabelHead.Location = new System.Drawing.Point(15, 15);
+            this.LabelHead.Location = new System.Drawing.Point(15, 17);
             this.LabelHead.Name = "LabelHead";
-            this.LabelHead.Size = new System.Drawing.Size(153, 38);
+            this.LabelHead.Size = new System.Drawing.Size(749, 38);
             this.LabelHead.TabIndex = 1;
             this.LabelHead.Text = "Профиль";
             // 
@@ -287,7 +350,10 @@ namespace kanbanboard
             // 
             // UserPanel
             // 
-            this.UserPanel.Controls.Add(this.UserLabel);
+            this.UserPanel.Controls.Add(this.TimeZonePanel);
+            this.UserPanel.Controls.Add(this.OrganizationPanel);
+            this.UserPanel.Controls.Add(this.NickNamePanel);
+            this.UserPanel.Controls.Add(this.FullNamePanel);
             this.UserPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UserPanel.Location = new System.Drawing.Point(0, 0);
             this.UserPanel.Name = "UserPanel";
@@ -295,26 +361,228 @@ namespace kanbanboard
             this.UserPanel.TabIndex = 0;
             this.UserPanel.Resize += new System.EventHandler(this.UserPanel_Resize);
             // 
-            // UserLabel
+            // FullNamePanel
             // 
-            this.UserLabel.AutoSize = true;
-            this.UserLabel.Font = new System.Drawing.Font("Roboto", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.UserLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.UserLabel.Location = new System.Drawing.Point(333, 169);
-            this.UserLabel.Name = "UserLabel";
-            this.UserLabel.Size = new System.Drawing.Size(113, 42);
-            this.UserLabel.TabIndex = 0;
-            this.UserLabel.Text = "Текст";
+            this.FullNamePanel.Controls.Add(this.FullNameGetLabelPanel);
+            this.FullNamePanel.Controls.Add(this.FullNameLabelPanel);
+            this.FullNamePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.FullNamePanel.Location = new System.Drawing.Point(0, 0);
+            this.FullNamePanel.Name = "FullNamePanel";
+            this.FullNamePanel.Size = new System.Drawing.Size(779, 36);
+            this.FullNamePanel.TabIndex = 2;
+            // 
+            // FullNameGetLabelPanel
+            // 
+            this.FullNameGetLabelPanel.Controls.Add(this.FULLNAME_GET);
+            this.FullNameGetLabelPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FullNameGetLabelPanel.Location = new System.Drawing.Point(55, 0);
+            this.FullNameGetLabelPanel.Name = "FullNameGetLabelPanel";
+            this.FullNameGetLabelPanel.Padding = new System.Windows.Forms.Padding(5);
+            this.FullNameGetLabelPanel.Size = new System.Drawing.Size(724, 36);
+            this.FullNameGetLabelPanel.TabIndex = 4;
+            // 
+            // FULLNAME_GET
+            // 
+            this.FULLNAME_GET.AutoSize = true;
+            this.FULLNAME_GET.Font = new System.Drawing.Font("Roboto", 12.25F);
+            this.FULLNAME_GET.ForeColor = System.Drawing.SystemColors.Control;
+            this.FULLNAME_GET.Location = new System.Drawing.Point(5, 5);
+            this.FULLNAME_GET.Name = "FULLNAME_GET";
+            this.FULLNAME_GET.Size = new System.Drawing.Size(135, 20);
+            this.FULLNAME_GET.TabIndex = 1;
+            this.FULLNAME_GET.Text = "FULLNAME_GET";
+            // 
+            // FullNameLabelPanel
+            // 
+            this.FullNameLabelPanel.Controls.Add(this.FullName);
+            this.FullNameLabelPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.FullNameLabelPanel.Location = new System.Drawing.Point(0, 0);
+            this.FullNameLabelPanel.Name = "FullNameLabelPanel";
+            this.FullNameLabelPanel.Padding = new System.Windows.Forms.Padding(5);
+            this.FullNameLabelPanel.Size = new System.Drawing.Size(55, 36);
+            this.FullNameLabelPanel.TabIndex = 3;
+            // 
+            // FullName
+            // 
+            this.FullName.AutoSize = true;
+            this.FullName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FullName.Font = new System.Drawing.Font("Roboto", 12.25F, System.Drawing.FontStyle.Bold);
+            this.FullName.ForeColor = System.Drawing.SystemColors.Control;
+            this.FullName.Location = new System.Drawing.Point(5, 5);
+            this.FullName.Name = "FullName";
+            this.FullName.Size = new System.Drawing.Size(47, 20);
+            this.FullName.TabIndex = 0;
+            this.FullName.Text = "ФИО";
             // 
             // HeadPanel
             // 
             this.HeadPanel.Controls.Add(this.LabelHead);
             this.HeadPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.HeadPanel.Location = new System.Drawing.Point(0, 0);
+            this.HeadPanel.MinimumSize = new System.Drawing.Size(779, 70);
             this.HeadPanel.Name = "HeadPanel";
             this.HeadPanel.Padding = new System.Windows.Forms.Padding(15);
             this.HeadPanel.Size = new System.Drawing.Size(779, 70);
             this.HeadPanel.TabIndex = 3;
+            // 
+            // NickNamePanel
+            // 
+            this.NickNamePanel.Controls.Add(this.NickNameGetPanel);
+            this.NickNamePanel.Controls.Add(this.NickNameLabelPanel);
+            this.NickNamePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.NickNamePanel.Location = new System.Drawing.Point(0, 36);
+            this.NickNamePanel.Name = "NickNamePanel";
+            this.NickNamePanel.Size = new System.Drawing.Size(779, 36);
+            this.NickNamePanel.TabIndex = 3;
+            // 
+            // NickNameGetPanel
+            // 
+            this.NickNameGetPanel.Controls.Add(this.NICKNAME_GET);
+            this.NickNameGetPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NickNameGetPanel.Location = new System.Drawing.Point(154, 0);
+            this.NickNameGetPanel.Name = "NickNameGetPanel";
+            this.NickNameGetPanel.Padding = new System.Windows.Forms.Padding(3);
+            this.NickNameGetPanel.Size = new System.Drawing.Size(625, 36);
+            this.NickNameGetPanel.TabIndex = 4;
+            // 
+            // NICKNAME_GET
+            // 
+            this.NICKNAME_GET.AutoSize = true;
+            this.NICKNAME_GET.Font = new System.Drawing.Font("Roboto", 12.25F);
+            this.NICKNAME_GET.ForeColor = System.Drawing.SystemColors.Control;
+            this.NICKNAME_GET.Location = new System.Drawing.Point(3, 3);
+            this.NICKNAME_GET.Name = "NICKNAME_GET";
+            this.NICKNAME_GET.Size = new System.Drawing.Size(136, 20);
+            this.NICKNAME_GET.TabIndex = 1;
+            this.NICKNAME_GET.Text = "NICKNAME_GET";
+            // 
+            // NickNameLabelPanel
+            // 
+            this.NickNameLabelPanel.Controls.Add(this.NickName);
+            this.NickNameLabelPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.NickNameLabelPanel.Location = new System.Drawing.Point(0, 0);
+            this.NickNameLabelPanel.Name = "NickNameLabelPanel";
+            this.NickNameLabelPanel.Padding = new System.Windows.Forms.Padding(3);
+            this.NickNameLabelPanel.Size = new System.Drawing.Size(154, 36);
+            this.NickNameLabelPanel.TabIndex = 3;
+            // 
+            // NickName
+            // 
+            this.NickName.AutoSize = true;
+            this.NickName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NickName.Font = new System.Drawing.Font("Roboto", 12.25F, System.Drawing.FontStyle.Bold);
+            this.NickName.ForeColor = System.Drawing.SystemColors.Control;
+            this.NickName.Location = new System.Drawing.Point(3, 3);
+            this.NickName.Name = "NickName";
+            this.NickName.Size = new System.Drawing.Size(144, 20);
+            this.NickName.TabIndex = 0;
+            this.NickName.Text = "Никнейм / логин";
+            // 
+            // TimeZonePanel
+            // 
+            this.TimeZonePanel.Controls.Add(this.TimeZoneGetPanel);
+            this.TimeZonePanel.Controls.Add(this.TimeZoneLabelPanel);
+            this.TimeZonePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TimeZonePanel.Location = new System.Drawing.Point(0, 108);
+            this.TimeZonePanel.Name = "TimeZonePanel";
+            this.TimeZonePanel.Size = new System.Drawing.Size(779, 36);
+            this.TimeZonePanel.TabIndex = 4;
+            // 
+            // TimeZoneGetPanel
+            // 
+            this.TimeZoneGetPanel.Controls.Add(this.TIMEZONE_GET);
+            this.TimeZoneGetPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TimeZoneGetPanel.Location = new System.Drawing.Point(154, 0);
+            this.TimeZoneGetPanel.Name = "TimeZoneGetPanel";
+            this.TimeZoneGetPanel.Padding = new System.Windows.Forms.Padding(3);
+            this.TimeZoneGetPanel.Size = new System.Drawing.Size(625, 36);
+            this.TimeZoneGetPanel.TabIndex = 4;
+            // 
+            // TIMEZONE_GET
+            // 
+            this.TIMEZONE_GET.AutoSize = true;
+            this.TIMEZONE_GET.Font = new System.Drawing.Font("Roboto", 12.25F);
+            this.TIMEZONE_GET.ForeColor = System.Drawing.SystemColors.Control;
+            this.TIMEZONE_GET.Location = new System.Drawing.Point(3, 3);
+            this.TIMEZONE_GET.Name = "TIMEZONE_GET";
+            this.TIMEZONE_GET.Size = new System.Drawing.Size(133, 20);
+            this.TIMEZONE_GET.TabIndex = 1;
+            this.TIMEZONE_GET.Text = "TIMEZONE_GET";
+            // 
+            // TimeZoneLabelPanel
+            // 
+            this.TimeZoneLabelPanel.Controls.Add(this.TimeZoneLabel);
+            this.TimeZoneLabelPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TimeZoneLabelPanel.Location = new System.Drawing.Point(0, 0);
+            this.TimeZoneLabelPanel.Name = "TimeZoneLabelPanel";
+            this.TimeZoneLabelPanel.Padding = new System.Windows.Forms.Padding(3);
+            this.TimeZoneLabelPanel.Size = new System.Drawing.Size(154, 36);
+            this.TimeZoneLabelPanel.TabIndex = 3;
+            // 
+            // TimeZoneLabel
+            // 
+            this.TimeZoneLabel.AutoSize = true;
+            this.TimeZoneLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TimeZoneLabel.Font = new System.Drawing.Font("Roboto", 12.25F, System.Drawing.FontStyle.Bold);
+            this.TimeZoneLabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.TimeZoneLabel.Location = new System.Drawing.Point(3, 3);
+            this.TimeZoneLabel.Name = "TimeZoneLabel";
+            this.TimeZoneLabel.Size = new System.Drawing.Size(142, 20);
+            this.TimeZoneLabel.TabIndex = 0;
+            this.TimeZoneLabel.Text = "Временная зона";
+            // 
+            // OrganizationPanel
+            // 
+            this.OrganizationPanel.Controls.Add(this.OrganizationGetPanel);
+            this.OrganizationPanel.Controls.Add(this.OrganizationLabelPanel);
+            this.OrganizationPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.OrganizationPanel.Location = new System.Drawing.Point(0, 72);
+            this.OrganizationPanel.Name = "OrganizationPanel";
+            this.OrganizationPanel.Size = new System.Drawing.Size(779, 36);
+            this.OrganizationPanel.TabIndex = 5;
+            // 
+            // OrganizationGetPanel
+            // 
+            this.OrganizationGetPanel.Controls.Add(this.ORGANIZATION_GET);
+            this.OrganizationGetPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OrganizationGetPanel.Location = new System.Drawing.Point(126, 0);
+            this.OrganizationGetPanel.Name = "OrganizationGetPanel";
+            this.OrganizationGetPanel.Padding = new System.Windows.Forms.Padding(3);
+            this.OrganizationGetPanel.Size = new System.Drawing.Size(653, 36);
+            this.OrganizationGetPanel.TabIndex = 4;
+            // 
+            // ORGANIZATION_GET
+            // 
+            this.ORGANIZATION_GET.AutoSize = true;
+            this.ORGANIZATION_GET.Font = new System.Drawing.Font("Roboto", 12.25F);
+            this.ORGANIZATION_GET.ForeColor = System.Drawing.SystemColors.Control;
+            this.ORGANIZATION_GET.Location = new System.Drawing.Point(3, 3);
+            this.ORGANIZATION_GET.Name = "ORGANIZATION_GET";
+            this.ORGANIZATION_GET.Size = new System.Drawing.Size(170, 20);
+            this.ORGANIZATION_GET.TabIndex = 1;
+            this.ORGANIZATION_GET.Text = "ORGANIZATION_GET";
+            // 
+            // OrganizationLabelPanel
+            // 
+            this.OrganizationLabelPanel.Controls.Add(this.OrganizationLabel);
+            this.OrganizationLabelPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.OrganizationLabelPanel.Location = new System.Drawing.Point(0, 0);
+            this.OrganizationLabelPanel.Name = "OrganizationLabelPanel";
+            this.OrganizationLabelPanel.Padding = new System.Windows.Forms.Padding(3);
+            this.OrganizationLabelPanel.Size = new System.Drawing.Size(126, 36);
+            this.OrganizationLabelPanel.TabIndex = 3;
+            // 
+            // OrganizationLabel
+            // 
+            this.OrganizationLabel.AutoSize = true;
+            this.OrganizationLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OrganizationLabel.Font = new System.Drawing.Font("Roboto", 12.25F, System.Drawing.FontStyle.Bold);
+            this.OrganizationLabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.OrganizationLabel.Location = new System.Drawing.Point(3, 3);
+            this.OrganizationLabel.Name = "OrganizationLabel";
+            this.OrganizationLabel.Size = new System.Drawing.Size(115, 20);
+            this.OrganizationLabel.TabIndex = 0;
+            this.OrganizationLabel.Text = "Организация";
             // 
             // MainForm
             // 
@@ -336,16 +604,37 @@ namespace kanbanboard
             this.ControlsPanel.ResumeLayout(false);
             this.ExitButtonPanel.ResumeLayout(false);
             this.UserControlsPanel.ResumeLayout(false);
-            this.UserControlsPanel.PerformLayout();
+            this.UserNamePanel.ResumeLayout(false);
+            this.UserNamePanel.PerformLayout();
+            this.UserInfoPanel.ResumeLayout(false);
+            this.UserInfoPanel.PerformLayout();
             this.UserPhotoPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.UserPictureBox)).EndInit();
             this.BasicPanel.ResumeLayout(false);
             this.BasicContentPanel.ResumeLayout(false);
             this.BasicContentPanel.PerformLayout();
             this.UserPanel.ResumeLayout(false);
-            this.UserPanel.PerformLayout();
+            this.FullNamePanel.ResumeLayout(false);
+            this.FullNameGetLabelPanel.ResumeLayout(false);
+            this.FullNameGetLabelPanel.PerformLayout();
+            this.FullNameLabelPanel.ResumeLayout(false);
+            this.FullNameLabelPanel.PerformLayout();
             this.HeadPanel.ResumeLayout(false);
-            this.HeadPanel.PerformLayout();
+            this.NickNamePanel.ResumeLayout(false);
+            this.NickNameGetPanel.ResumeLayout(false);
+            this.NickNameGetPanel.PerformLayout();
+            this.NickNameLabelPanel.ResumeLayout(false);
+            this.NickNameLabelPanel.PerformLayout();
+            this.TimeZonePanel.ResumeLayout(false);
+            this.TimeZoneGetPanel.ResumeLayout(false);
+            this.TimeZoneGetPanel.PerformLayout();
+            this.TimeZoneLabelPanel.ResumeLayout(false);
+            this.TimeZoneLabelPanel.PerformLayout();
+            this.OrganizationPanel.ResumeLayout(false);
+            this.OrganizationGetPanel.ResumeLayout(false);
+            this.OrganizationGetPanel.PerformLayout();
+            this.OrganizationLabelPanel.ResumeLayout(false);
+            this.OrganizationLabelPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -371,7 +660,28 @@ namespace kanbanboard
         private System.Windows.Forms.TableLayoutPanel TableLayoutPanel;
         private System.Windows.Forms.Panel BasicContentPanel;
         private System.Windows.Forms.Panel UserPanel;
-        private System.Windows.Forms.Label UserLabel;
+        private System.Windows.Forms.Label FullName;
+        private System.Windows.Forms.Panel UserInfoPanel;
+        private System.Windows.Forms.Panel UserNamePanel;
+        private System.Windows.Forms.Label FULLNAME_GET;
+        private System.Windows.Forms.Panel FullNamePanel;
+        private System.Windows.Forms.Panel FullNameGetLabelPanel;
+        private System.Windows.Forms.Panel FullNameLabelPanel;
+        private System.Windows.Forms.Panel NickNamePanel;
+        private System.Windows.Forms.Panel NickNameGetPanel;
+        private System.Windows.Forms.Label NICKNAME_GET;
+        private System.Windows.Forms.Panel NickNameLabelPanel;
+        private System.Windows.Forms.Label NickName;
+        private System.Windows.Forms.Panel TimeZonePanel;
+        private System.Windows.Forms.Panel TimeZoneGetPanel;
+        private System.Windows.Forms.Label TIMEZONE_GET;
+        private System.Windows.Forms.Panel TimeZoneLabelPanel;
+        private System.Windows.Forms.Label TimeZoneLabel;
+        private System.Windows.Forms.Panel OrganizationPanel;
+        private System.Windows.Forms.Panel OrganizationGetPanel;
+        private System.Windows.Forms.Label ORGANIZATION_GET;
+        private System.Windows.Forms.Panel OrganizationLabelPanel;
+        private System.Windows.Forms.Label OrganizationLabel;
     }
 }
 

@@ -8,6 +8,11 @@ namespace kanbanboard
 {
     public partial class MainForm : Form
     {
+        private bool Form_Is_Maximized()
+        {
+            return (this.WindowState == FormWindowState.Maximized);
+        }
+        private bool Table_Is_Visible = false;
         public MainForm()
         {
             InitializeComponent();
@@ -169,6 +174,7 @@ namespace kanbanboard
         // Обработчик задач
         private void TasksButton_Click(object sender, EventArgs e)
         {
+            Table_Is_Visible = true;
             StripPanel.Visible = true;
             LabelHead.Text = "Задачи";
 
@@ -180,6 +186,7 @@ namespace kanbanboard
         // Обработчик мессенджера
         private void MessengerButton_Click(object sender, EventArgs e)
         {
+            Table_Is_Visible = false;
             StripPanel.Visible = true;
             LabelHead.Text = "Мессенджер";
             UserPanel.BringToFront();
@@ -189,6 +196,7 @@ namespace kanbanboard
         // Обработчик календаря
         private void CalendarButton_Click(object sender, EventArgs e)
         {
+            Table_Is_Visible = false;
             StripPanel.Visible = true;
             LabelHead.Text = "Календарь";
             UserPanel.BringToFront();
@@ -212,6 +220,7 @@ namespace kanbanboard
 
         private void ExitButton_Click(object sender, EventArgs e)
         {
+            Table_Is_Visible = false;
             Hide();
             var LoginForm = new Login();
             LoginForm.Show();
@@ -219,20 +228,22 @@ namespace kanbanboard
 
         private void UserPanel_Resize(object sender, EventArgs e)
         {
-            UserLabel.ToCenter(UserPanel);
+            FullName.ToCenter(UserPanel);
         }
 
         private void TableLayoutPanel_Resize(object sender, EventArgs e)
         {
-            ResizeTable();
+            if (Table_Is_Visible)
+            {
+                ResizeTable();
+            }
         }
 
         private void UserControlsPanel_Click(object sender, EventArgs e)
         {
+            Table_Is_Visible = false;
             LabelHead.Text = "Профиль";
-
             UserPanel.BringToFront();
-
             StripPanel.Visible = false;
         }
     }

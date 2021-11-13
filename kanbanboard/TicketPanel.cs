@@ -22,6 +22,7 @@ namespace kanbanboard
             BackColor = Color.FromArgb(109, 145, 180);
             AutoSize = true;
             DoubleBuffered = true;
+            Font = new Font("Roboto", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
 
             // Заголовок, текст, исполнители (может быть изменено). Из чего то мб сделать другой контрол
 
