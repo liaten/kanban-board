@@ -3,9 +3,9 @@
 ### Скриншоты программы:
 #### 1. Desktop
 
-![изображение](https://user-images.githubusercontent.com/35489460/140438565-7561f7db-1d8c-45ef-b1f6-a25ebff8de8a.png)
+![изображение](https://user-images.githubusercontent.com/35489460/141598476-668d484a-41c4-4414-9993-7edc7faf9017.png)
 
-![изображение](https://user-images.githubusercontent.com/35489460/140438616-07efca29-6408-461f-b103-323568d4947f.png)
+![изображение](https://user-images.githubusercontent.com/35489460/141598486-5961e9f0-86e6-4296-b958-75612eb39825.png)
 
 #### 2. Android
 
