@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">kanban-board</string>
+    <string name="login">Авторизация</string>
+    <string name="SingIn">Войти</string>
+    <string name="Register">Регистрация</string>
+    <string name="Forgot">Забыли пароль?</string>
+    <string name="title_activity_kanban">Kanban</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="s_profile">Профиль</string>
+    <string name="s_calendar">Календарь</string>
+    <string name="s_messages">Мессенджер</string>
+    <string name="s_tasks">Задачи</string>
+    <string name="log_out">Выйти</string>
+    <string name="remember_me">Запомнить меня</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
