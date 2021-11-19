@@ -20,11 +20,11 @@ namespace kanbanboard
             //string path = AppDomain.CurrentDomain.BaseDirectory + @"kanban-board.json";
             // Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
             // database = FirestoreDb.Create("kanban-board-fvdi");
-            LoginPanel.Width = Size.Width / 2;
+            panel8.Width = Size.Width / 2;
             MinimumSize = new Size(350, 360 - EmailLabelPanel.Height);
             Size = new Size(350, 360 - EmailLabelPanel.Height);
             int headerPadding = (Width - AuthorizationLabel.Width - AuthorizationPictureBox.Width) / 2;
-            HeaderLabelPanel.Padding = new Padding(headerPadding, 15, headerPadding, 15);
+            panel11.Padding = new Padding(headerPadding, 15, headerPadding, 15);
             EmailLabel.Visible = false;
             textBoxEmail.Visible = false;
             CheckBoxRegistration.ForeColor = Color.FromArgb(200, 200, 200);
@@ -94,9 +94,9 @@ namespace kanbanboard
         }
         private void Login_Resize(object sender, EventArgs e)
         {
-            LoginPanel.Width = Size.Width / 2;
+            panel8.Width = Size.Width / 2;
             int HeaderPadding = (Width - AuthorizationLabel.Width - AuthorizationPictureBox.Width) / 2;
-            HeaderLabelPanel.Padding = new Padding(HeaderPadding, 15, HeaderPadding, 15);
+            panel11.Padding = new Padding(HeaderPadding, 15, HeaderPadding, 15);
         }
 
         private void CheckBoxRegistration_CheckedChanged(object sender, EventArgs e)
