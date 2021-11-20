@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using ContentAlignment = System.Drawing.ContentAlignment;
@@ -61,17 +62,19 @@ namespace kanbanboard
                         };
                     });
 
-                // перемещение тикетов влево, вправо
+                // перемещение тикетов влево, вправо и удаление тикета
                 TableLayoutPanel.Controls.OfType<TicketPanel>().ToList().ForEach(x =>
                 {
-                    x.LeftButton.Click += (sender, b) =>
+                    x.LeftButton.Click += (sender, w) =>
                     {
                         var column = TableLayoutPanel.GetPositionFromControl(x).Column - 1;
                         if (column < 0) return;
 
-                        for (var i = 1; i < TableLayoutPanel.RowCount; i++)
+                        var check = true;
+                        for (var i = 1; i < TableLayoutPanel.RowCount || !check; i++)
                         {
                             if (TableLayoutPanel.GetControlFromPosition(column, i) != null) continue;
+                            check = true;
                             AddControlToPanel(x, column, i);
                             ResizeTable();
                             return;
@@ -83,10 +86,11 @@ namespace kanbanboard
                         var column = TableLayoutPanel.GetPositionFromControl(x).Column + 1;
                         if (column > TableLayoutPanel.ColumnCount) return;
 
-
-                        for (var i = 1; i < TableLayoutPanel.RowCount; i++)
+                        var check = true;
+                        for (var i = 1; i < TableLayoutPanel.RowCount || !check; i++)
                         {
                             if (TableLayoutPanel.GetControlFromPosition(column, i) != null) continue;
+                            check = true;
                             AddControlToPanel(x, column, i);
                             ResizeTable();
                             return;
@@ -95,10 +99,12 @@ namespace kanbanboard
                         // var controlPositionRow = (from Control control in TableLayoutPanel.Controls where TableLayoutPanel.GetPositionFromControl(control).Column == column select TableLayoutPanel.GetRow(control)).ToList();
                         // AddControlToPanel(x, column, controlPositionRow.Max() + 1);
                     };
+
+                    x.DelButton.Click += (sender, w) => TableLayoutPanel.Controls.Remove(x);
                 });
-                
-                // чтоб не было скролл полосок
-                Size = new Size(Width + 3, Height + 3);
+
+                //// чтоб не было скролл полосок
+                //Size = new Size(Width + 3, Height + 3);
             };
         }
 
@@ -148,7 +154,7 @@ namespace kanbanboard
             AddTitle("Что-то делают", 1);
             AddTitle("Что-то сделано", 2);
             AddTitle("Что-то нужно сдать", 3);
-            
+
             BasicContentPanel.Controls.Add(TableLayoutPanel);
         }
 
@@ -206,7 +212,7 @@ namespace kanbanboard
         {
             // Инициализация имени панели тикета
             control.Name = $"ticket{column}{row}";
-
+            
             // Нужно ли добавлять доп. строки и/или колонки
             if (TableLayoutPanel.RowStyles.Count <= row)
                 TableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent));
@@ -218,31 +224,31 @@ namespace kanbanboard
         // *Для дебага. Получить позицию при клике
         private void TableLayoutPanel_MouseClick(object sender, MouseEventArgs e)
         {
-            var row = 0;
-            var verticalOffset = 0;
-            foreach (var h in TableLayoutPanel.GetRowHeights())
-            {
-                var column = 0;
-                var horizontalOffset = 0;
-                foreach (var w in TableLayoutPanel.GetColumnWidths())
-                {
-                    var rectangle = new Rectangle(horizontalOffset, verticalOffset, w, h);
-                    if (rectangle.Contains(e.Location))
-                    {
-                        if (row == 0)
-                        {
+            //var row = 0;
+            //var verticalOffset = 0;
+            //foreach (var h in TableLayoutPanel.GetRowHeights())
+            //{
+            //    var column = 0;
+            //    var horizontalOffset = 0;
+            //    foreach (var w in TableLayoutPanel.GetColumnWidths())
+            //    {
+            //        var rectangle = new Rectangle(horizontalOffset, verticalOffset, w, h);
+            //        if (rectangle.Contains(e.Location))
+            //        {
+            //            if (row == 0)
+            //            {
 
-                        }
-                        MessageBox.Show($"row {row}, column {column} was clicked");
-                        return;
-                    }
+            //            }
+            //            MessageBox.Show($"row {row}, column {column} was clicked");
+            //            return;
+            //        }
 
-                    horizontalOffset += w;
-                    column++;
-                }
-                verticalOffset += h;
-                row++;
-            }
+            //        horizontalOffset += w;
+            //        column++;
+            //    }
+            //    verticalOffset += h;
+            //    row++;
+            //}
         }
 
         // Устранение мерцания при изменении размеров таблицы
@@ -256,15 +262,6 @@ namespace kanbanboard
             aProp?.SetValue(c, true, null);
         }
 
-        // Клик на профиль. Открытие панели с данными текущего профиля
-        private void UserControlsPanel_Click(object sender, EventArgs e)
-        {
-            LabelHead.Text = "Профиль";
-
-            UserPanel.BringToFront();
-        }
-
-
         // Обработчик задач
         private void TasksButton_Click(object sender, EventArgs e)
         {
@@ -273,6 +270,13 @@ namespace kanbanboard
             TableLayoutPanel.BringToFront();
 
             StripPanel.Location = TasksButton.Location;
+        }
+
+        // Клик на профиль. Открытие панели с данными текущего профиля
+        private void UserControlsPanel_Click_1(object sender, EventArgs e)
+        {
+            LabelHead.Text = "Профиль";
+            UserPanel.BringToFront();
         }
 
 
@@ -296,16 +300,6 @@ namespace kanbanboard
             StripPanel.Location = CalendarButton.Location;
         }
 
-        private void UserPanel_MouseEnter(object sender, EventArgs e)
-        {
-            UserControlsPanel.BackColor = Color.FromArgb(14, 20, 44);
-        }
-
-        private void UserPanel_MouseLeave(object sender, EventArgs e)
-        {
-            UserControlsPanel.BackColor = Color.FromArgb(24, 30, 54);
-        }
-
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
@@ -319,33 +313,27 @@ namespace kanbanboard
             LoginForm.Show();
         }
 
-        private void UserPanel_Resize(object sender, EventArgs e)
-        {
-            UserLabel.ToCenter(UserPanel);
-        }
-
         // масштабируемость канбан доски
         private void ResizeTable()
         {
-            TableLayoutPanel.RowStyles[0].SizeType = SizeType.AutoSize;
-
-            // Колонки
             foreach (ColumnStyle column in TableLayoutPanel.ColumnStyles)
             {
                 column.SizeType = SizeType.Percent;
-                column.Width = 100 / TableLayoutPanel.ColumnCount;
+                //column.Width = 100 / TableLayoutPanel.ColumnCount;
+                column.Width = 25;
             }
+            TableLayoutPanel.Controls.OfType<TicketPanel>().ToList().ForEach(x => x.Width = TableLayoutPanel.Width / TableLayoutPanel.ColumnCount);
+            TableLayoutPanel.RowStyles[0].SizeType = SizeType.AutoSize;
 
             // Строки
             foreach (var row in TableLayoutPanel.RowStyles.Cast<RowStyle>().ToList().Skip(1))
             {
-                row.SizeType = SizeType.Percent;
-                row.Height = 100 / TableLayoutPanel.RowCount - 1;
+                row.SizeType = SizeType.Absolute;
+                row.Height = 150;
             }
 
             TableLayoutPanel.Controls.OfType<TicketPanel>().ToList().ForEach(x =>
             {
-                x.Width = TableLayoutPanel.Width / TableLayoutPanel.ColumnCount;
                 if (TableLayoutPanel.GetCellPosition(x).Row != 0) x.Height = TableLayoutPanel.Height / TableLayoutPanel.RowCount;
             });
         }
