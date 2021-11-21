@@ -332,6 +332,7 @@ namespace kanbanboard
             // TableLayoutPanel
             // 
             this.TableLayoutPanel.AutoScroll = true;
+            this.TableLayoutPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
             this.TableLayoutPanel.ColumnCount = 1;
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -1376,6 +1377,7 @@ namespace kanbanboard
             // 
             // UserPanel
             // 
+            this.UserPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
             this.UserPanel.Controls.Add(this.TimeZonePanel);
             this.UserPanel.Controls.Add(this.OrganizationPanel);
             this.UserPanel.Controls.Add(this.NickNamePanel);
@@ -1604,6 +1606,7 @@ namespace kanbanboard
             // 
             // TicketsChangePanel
             // 
+            this.TicketsChangePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
             this.TicketsChangePanel.Controls.Add(this.ChangingPanel);
             this.TicketsChangePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TicketsChangePanel.Location = new System.Drawing.Point(0, 0);
@@ -1706,6 +1709,7 @@ namespace kanbanboard
             // 
             // CalendarPanel
             // 
+            this.CalendarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
             this.CalendarPanel.Controls.Add(this.CalendarLabel);
             this.CalendarPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CalendarPanel.Location = new System.Drawing.Point(0, 0);
@@ -1893,6 +1897,7 @@ namespace kanbanboard
             // 
             // HeadPanel
             // 
+            this.HeadPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
             this.HeadPanel.Controls.Add(this.LabelHead);
             this.HeadPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.HeadPanel.Location = new System.Drawing.Point(0, 0);

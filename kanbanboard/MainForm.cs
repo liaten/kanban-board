@@ -279,12 +279,14 @@ namespace kanbanboard
         // Обработчик задач
         private void TasksButton_Click(object sender, EventArgs e)
         {
-            LabelHead.Text = "Задачи";
-            TableLayoutPanel.BringToFront();
+
             // перемещение панельки выделения
             StripPanel.Location = TasksButton.Location;
             // изменение размера панельки выделения
             StripPanel.Size = new Size(StripPanel.Size.Width, TasksButton.Size.Height);
+            LabelHead.Text = "Задачи";
+            TableLayoutPanel.BringToFront();
+
         }
 
         // Клик на профиль. Открытие панели с данными текущего профиля
