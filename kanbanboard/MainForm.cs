@@ -17,18 +17,17 @@ namespace kanbanboard
 
             // Событие при изменении размера таблицы
             TableLayoutPanel.Resize += (s, a) => ResizeTable();
-
-            Size = new Size(Size.Width + 1, Size.Height);
-
+            
             // Установка двойной буферизации для устранения мерцания
             SetDoubleBuffered(TableLayoutPanel);
-
-            // Начальные данные
-            Table();
-
+            SetDoubleBuffered(BasicContentPanel);
+            
             Load += (s, a) =>
             {
-                TasksButton.PerformClick();
+                // Начальные данные *тестовые*
+                Table();
+
+                UserControlsPanel_Click(null, null);
                 UsernameLabel.Text = Login.Username;
 
                 // Событие по клику на каждый тикет. Открывает панель для выполнения изменений выбранного тикета
@@ -102,29 +101,26 @@ namespace kanbanboard
 
                     x.DelButton.Click += (sender, w) => TableLayoutPanel.Controls.Remove(x);
                 });
-
-                //// чтоб не было скролл полосок
-                //Size = new Size(Width + 3, Height + 3);
             };
         }
 
-        private void RemoveEmptyRows()
-        {
-            for (int row = 0; row < TableLayoutPanel.RowCount; row++)
-            {
-                var count = 0;
-                for (int column = 0; column < TableLayoutPanel.ColumnCount; column++)
-                {
-                    if (TableLayoutPanel.GetControlFromPosition(column, row) is null)
-                        count++;
-                }
+        //private void RemoveEmptyRows()
+        //{
+        //    for (int row = 0; row < TableLayoutPanel.RowCount; row++)
+        //    {
+        //        var count = 0;
+        //        for (int column = 0; column < TableLayoutPanel.ColumnCount; column++)
+        //        {
+        //            if (TableLayoutPanel.GetControlFromPosition(column, row) is null)
+        //                count++;
+        //        }
 
-                if (count == TableLayoutPanel.ColumnCount)
-                {
-                    TableLayoutPanel.RowCount--;
-                }
-            }
-        }
+        //        if (count == TableLayoutPanel.ColumnCount)
+        //        {
+        //            TableLayoutPanel.RowCount--;
+        //        }
+        //    }
+        //}
 
         // Таблица с тикетами
         private void Table()
@@ -137,6 +133,7 @@ namespace kanbanboard
             AddControlToPanel(new TicketPanel(), 1, 1);
             AddControlToPanel(new TicketPanel(), 2, 1);
             AddControlToPanel(new TicketPanel(), 3, 1);
+            AddControlToPanel(new TicketPanel(), 3, 2);
             AddControlToPanel(new TicketPanel(), 0, 2);
             AddControlToPanel(new TicketPanel(), 2, 2);
 
@@ -161,7 +158,13 @@ namespace kanbanboard
         // Добавление заголовков
         private void AddTitle(string text, int column)
         {
-            if (TableLayoutPanel.ColumnCount <= column) TableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+            if (TableLayoutPanel.ColumnCount <= column)
+            {
+                TableLayoutPanel.ColumnCount++;
+                TableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+            }
+
+            TableLayoutPanel.SuspendLayout();
             AddControlToPanel(new Label()
             {
                 Text = text,
@@ -171,6 +174,7 @@ namespace kanbanboard
                 Margin = new Padding(5),
                 AutoSize = true
             }, column, 0);
+            TableLayoutPanel.ResumeLayout();
         }
 
         private string GetTextFromTicket(string kanbanTicketPanelColumnRow, string whichLabel)
@@ -215,10 +219,20 @@ namespace kanbanboard
             
             // Нужно ли добавлять доп. строки и/или колонки
             if (TableLayoutPanel.RowStyles.Count <= row)
+            {
+                TableLayoutPanel.RowCount++;
                 TableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent));
+            }
+
             if (TableLayoutPanel.ColumnStyles.Count <= column)
+            {
+                TableLayoutPanel.ColumnCount++;
                 TableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent));
+            }
+
+            TableLayoutPanel.SuspendLayout();
             TableLayoutPanel.Controls.Add(control, column, row);
+            TableLayoutPanel.ResumeLayout();
         }
 
         // *Для дебага. Получить позицию при клике
@@ -262,6 +276,17 @@ namespace kanbanboard
             aProp?.SetValue(c, true, null);
         }
 
+        // устранение мерцания
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
+        }
+
         // Обработчик задач
         private void TasksButton_Click(object sender, EventArgs e)
         {
@@ -273,7 +298,7 @@ namespace kanbanboard
         }
 
         // Клик на профиль. Открытие панели с данными текущего профиля
-        private void UserControlsPanel_Click_1(object sender, EventArgs e)
+        private void UserControlsPanel_Click(object sender, EventArgs e)
         {
             LabelHead.Text = "Профиль";
             UserPanel.BringToFront();
@@ -295,9 +320,16 @@ namespace kanbanboard
         {
             LabelHead.Text = "Календарь";
 
+            CalendarPanel_Resize(null, null);
+
             CalendarPanel.BringToFront();
 
             StripPanel.Location = CalendarButton.Location;
+        }
+        private void CalendarPanel_Resize(object sender, EventArgs e)
+        {
+            CalendarLabel.ToCenter(CalendarPanel);
+            CalendarLabel.MaximumSize = CalendarPanel.Size;
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -336,12 +368,6 @@ namespace kanbanboard
             {
                 if (TableLayoutPanel.GetCellPosition(x).Row != 0) x.Height = TableLayoutPanel.Height / TableLayoutPanel.RowCount;
             });
-        }
-
-        private void CalendarPanel_Resize(object sender, EventArgs e)
-        {
-            CalendarLabel.ToCenter(CalendarPanel);
-            CalendarLabel.MaximumSize = CalendarPanel.Size;
         }
 
         // Дальше идут три события, связанные с DRAG AND DROP
