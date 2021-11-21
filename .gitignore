@@ -1,16 +1,5 @@
 # Executive files
-*.exe
+# Гитигнор проекта не редактировать по возможности, лучше редактировать отдельные
+# Гитигноры каждой папки
 /.vs
-*.cache
-*.dll
-*.exe
-*.pdb
-/build/
-*.suo
-*.user
-_ReSharper.*/
-*.sdf
-*.opensdf
-*.tlog
-*.log
 packages/

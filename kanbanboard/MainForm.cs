@@ -291,10 +291,11 @@ namespace kanbanboard
         private void TasksButton_Click(object sender, EventArgs e)
         {
             LabelHead.Text = "Задачи";
-
             TableLayoutPanel.BringToFront();
-
+            // перемещение панельки выделения
             StripPanel.Location = TasksButton.Location;
+            // изменение размера панельки выделения
+            StripPanel.Size = new Size(StripPanel.Size.Width, TasksButton.Size.Height);
         }
 
         // Клик на профиль. Открытие панели с данными текущего профиля
@@ -302,6 +303,10 @@ namespace kanbanboard
         {
             LabelHead.Text = "Профиль";
             UserPanel.BringToFront();
+            // перемещение панельки выделения
+            StripPanel.Location = UserControlsPanel.Location;
+            // изменение размера панельки выделения
+            StripPanel.Size = new Size(StripPanel.Size.Width, UserControlsPanel.Size.Height);
         }
 
 
@@ -309,10 +314,11 @@ namespace kanbanboard
         private void MessengerButton_Click(object sender, EventArgs e)
         {
             LabelHead.Text = "Мессенджер";
-
             DialogPanel.BringToFront();
-
+            // перемещение панельки выделения
             StripPanel.Location = MessengerButton.Location;
+            // изменение размера панельки выделения
+            StripPanel.Size = new Size(StripPanel.Size.Width, MessengerButton.Size.Height);
         }
 
         // Обработчик календаря
@@ -323,8 +329,10 @@ namespace kanbanboard
             CalendarPanel_Resize(null, null);
 
             CalendarPanel.BringToFront();
-
+            // перемещение панельки выделения
             StripPanel.Location = CalendarButton.Location;
+            // изменение размера панельки выделения
+            StripPanel.Size = new Size(StripPanel.Size.Width, CalendarButton.Size.Height);
         }
         private void CalendarPanel_Resize(object sender, EventArgs e)
         {
