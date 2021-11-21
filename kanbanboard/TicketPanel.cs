@@ -101,8 +101,7 @@ namespace kanbanboard
             base.OnPaint(e);
 
             // Сглаживание углов
-            const int ellipse = 15;
-            Region = Region.FromHrgn(Round(0, 0, Width, Height, ellipse, ellipse));
+            Region = Region.FromHrgn(Round(0, 0, Width, Height, 15, 15));
 
             BeginInvoke((MethodInvoker)(() =>
             {
