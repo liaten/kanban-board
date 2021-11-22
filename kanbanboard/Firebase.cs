@@ -12,7 +12,7 @@ namespace kanbanboard
         public static string Secret { get; private set; }
         public static string Path { get; private set; }
         public static IFirebaseClient Client { get; private set; }
-       
+
         static Firebase()
         {
             Secret = "hebNTLDeI3UdiZnzjsM8qRxJufACuQJIgRsCfroW";
@@ -25,7 +25,7 @@ namespace kanbanboard
         // [ключ — НАЗВАНИЕ ПРОЕКТА | значение — ДАННЫЕ КАНБАН-ДОСКИ (тоже в виде словаря)]
         public static Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>> GetProjectsData(this User user)
         {
-            var dataOfProjects  = new Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>>();
+            var dataOfProjects = new Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>>();
 
             // Получаем имена проектов пользователя. Очищаем значения с null
             var projects = Client.Get($"Users/{user.Username}/Projects").ResultAs<List<string>>() ?? new List<string>();
@@ -60,12 +60,13 @@ namespace kanbanboard
             try { return Client.Get($"Users/{user.Username}/password").Body; }
             catch { return null; }
         }
-        
+
         // Создает проект в базе пользователя.
         public static void CreateProject(this User user, string projectName)
         {
             // Вытаскиваем данные о проектах, либо заносим, если их нет
-            if (Client.Get($"Users/{user.Username}/Projects").ResultAs<List<string>>() is null) {
+            if (Client.Get($"Users/{user.Username}/Projects").ResultAs<List<string>>() is null)
+            {
                 Client.Set($"Users/{user.Username}/Projects", new List<string> { projectName });
                 return;
             }
@@ -76,15 +77,15 @@ namespace kanbanboard
                 data.Add(projectName);
 
             // добавляем в базу
-                Client.Set($"Users/{user.Username}/Projects", data);
+            Client.Set($"Users/{user.Username}/Projects", data);
         }
-        
+
         // Удаляет проект из базы пользователя.
         public static void DeleteProject(this User user, string projectName)
         {
             // Вытаскиваем данные
             var data = Client.Get($"Users/{user.Username}/projects").ResultAs<List<string>>();
-            
+
             data.RemoveAll(x => x == projectName);
 
             // удаляем из базы

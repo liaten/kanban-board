@@ -10,7 +10,7 @@ namespace kanbanboard
         public List<string> ProjectNames { get; set; }
 
         public User() : this("kosdr77") { }
-        
+
         public User(string username)
         {
             Username = username;

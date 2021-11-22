@@ -95,6 +95,9 @@ namespace kanbanboard
             this.SendMessageButtonPanel = new System.Windows.Forms.Panel();
             this.SendMessageButton = new System.Windows.Forms.Button();
             this.HeadPanel = new System.Windows.Forms.Panel();
+            this.AddingPanel = new System.Windows.Forms.Panel();
+            this.AddTitleButton = new System.Windows.Forms.Button();
+            this.PanelWithTable = new System.Windows.Forms.Panel();
             this.ControlsPanel.SuspendLayout();
             this.ExitButtonPanel.SuspendLayout();
             this.UserControlsPanel.SuspendLayout();
@@ -130,6 +133,8 @@ namespace kanbanboard
             this.MessagePanel.SuspendLayout();
             this.SendMessageButtonPanel.SuspendLayout();
             this.HeadPanel.SuspendLayout();
+            this.AddingPanel.SuspendLayout();
+            this.PanelWithTable.SuspendLayout();
             this.SuspendLayout();
             // 
             // ControlsPanel
@@ -1344,7 +1349,7 @@ namespace kanbanboard
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 475F));
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 475F));
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 475F));
-            this.TableLayoutPanel.Size = new System.Drawing.Size(979, 495);
+            this.TableLayoutPanel.Size = new System.Drawing.Size(937, 495);
             this.TableLayoutPanel.TabIndex = 1;
             this.TableLayoutPanel.DragDrop += new System.Windows.Forms.DragEventHandler(this.TableLayoutPanel_DragDrop);
             this.TableLayoutPanel.DragEnter += new System.Windows.Forms.DragEventHandler(this.TableLayoutPanel_DragEnter);
@@ -1363,7 +1368,7 @@ namespace kanbanboard
             // 
             // BasicContentPanel
             // 
-            this.BasicContentPanel.Controls.Add(this.TableLayoutPanel);
+            this.BasicContentPanel.Controls.Add(this.PanelWithTable);
             this.BasicContentPanel.Controls.Add(this.UserPanel);
             this.BasicContentPanel.Controls.Add(this.TicketsChangePanel);
             this.BasicContentPanel.Controls.Add(this.CalendarPanel);
@@ -1904,6 +1909,41 @@ namespace kanbanboard
             this.HeadPanel.Size = new System.Drawing.Size(979, 70);
             this.HeadPanel.TabIndex = 3;
             // 
+            // AddingPanel
+            // 
+            this.AddingPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.AddingPanel.Controls.Add(this.AddTitleButton);
+            this.AddingPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.AddingPanel.Location = new System.Drawing.Point(937, 0);
+            this.AddingPanel.Name = "AddingPanel";
+            this.AddingPanel.Size = new System.Drawing.Size(42, 495);
+            this.AddingPanel.TabIndex = 0;
+            // 
+            // AddTitleButton
+            // 
+            this.AddTitleButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.AddTitleButton.FlatAppearance.BorderSize = 0;
+            this.AddTitleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddTitleButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AddTitleButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.AddTitleButton.Location = new System.Drawing.Point(0, 0);
+            this.AddTitleButton.Name = "AddTitleButton";
+            this.AddTitleButton.Size = new System.Drawing.Size(42, 36);
+            this.AddTitleButton.TabIndex = 3;
+            this.AddTitleButton.Text = "+";
+            this.AddTitleButton.UseVisualStyleBackColor = true;
+            // 
+            // PanelWithTable
+            // 
+            this.PanelWithTable.AutoSize = true;
+            this.PanelWithTable.Controls.Add(this.TableLayoutPanel);
+            this.PanelWithTable.Controls.Add(this.AddingPanel);
+            this.PanelWithTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelWithTable.Location = new System.Drawing.Point(0, 0);
+            this.PanelWithTable.Name = "PanelWithTable";
+            this.PanelWithTable.Size = new System.Drawing.Size(979, 495);
+            this.PanelWithTable.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1932,6 +1972,7 @@ namespace kanbanboard
             ((System.ComponentModel.ISupportInitialize)(this.UserPictureBox)).EndInit();
             this.BasicPanel.ResumeLayout(false);
             this.BasicContentPanel.ResumeLayout(false);
+            this.BasicContentPanel.PerformLayout();
             this.UserPanel.ResumeLayout(false);
             this.TimeZonePanel.ResumeLayout(false);
             this.TimeZonePanel.PerformLayout();
@@ -1979,6 +2020,8 @@ namespace kanbanboard
             this.SendMessageButtonPanel.PerformLayout();
             this.HeadPanel.ResumeLayout(false);
             this.HeadPanel.PerformLayout();
+            this.AddingPanel.ResumeLayout(false);
+            this.PanelWithTable.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2051,6 +2094,9 @@ namespace kanbanboard
         private System.Windows.Forms.Label UserInfoLabel;
         private System.Windows.Forms.Panel UserPhotoPanel;
         private System.Windows.Forms.PictureBox UserPictureBox;
+        private System.Windows.Forms.Panel AddingPanel;
+        private System.Windows.Forms.Button AddTitleButton;
+        private System.Windows.Forms.Panel PanelWithTable;
     }
 }
 

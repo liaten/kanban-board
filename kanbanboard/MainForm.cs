@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using ContentAlignment = System.Drawing.ContentAlignment;
 
 namespace kanbanboard
@@ -16,11 +17,11 @@ namespace kanbanboard
 
             // Событие при изменении размера таблицы
             TableLayoutPanel.Resize += (s, a) => ResizeTable();
-            
+
             // Установка двойной буферизации для устранения мерцания
             SetDoubleBuffered(TableLayoutPanel);
             SetDoubleBuffered(BasicContentPanel);
-            
+
             Load += (s, a) =>
             {
                 _user = new User();
@@ -32,77 +33,14 @@ namespace kanbanboard
                 UserControlsPanel_Click(null, null);
                 UsernameLabel.Text = Login.Username;
 
-                // Событие по клику на каждый тикет. Открывает панель для выполнения изменений выбранного тикета
-                TableLayoutPanel.Controls.OfType<TicketPanel>().ToList().ForEach(
-                    x => x.Click += (sender, args) =>
-                    {
-                        // Показ панели. Возврат к тикетам. Масштабируемость
-                        TicketsChangePanel.BringToFront();
-                        ChangingPanel.ToCenter(TicketsChangePanel);
-
-                        TicketsChangePanel.Click += (o, eventArgs) =>
-                        {
-                            TableLayoutPanel.BringToFront();
-                            ChangingPanel.Controls.OfType<TextBox>().ToList().ForEach(y => y.Clear());
-                        };
-
-                        TicketsChangePanel.Resize += (o, eventArgs) => ChangingPanel.ToCenter(TicketsChangePanel);
-
-                        // Показываем значения лейблов тикета
-                        ChangingTitleTextBox.Text = GetTextFromTicket(x.Name, "Title");
-                        ChangingTicketTextBox.Text = GetTextFromTicket(x.Name, "Ticket");
-                        ChangingPeopleTextBox.Text = GetTextFromTicket(x.Name, "People");
-
-                        // Изменяем при нажатии на кнопку сохранения
-                        SaveChangesButton.Click += (o, eventArgs) =>
-                        {
-                            ChangeTextInTicket(x.Name, "Title", ChangingTitleTextBox.Text);
-                            ChangeTextInTicket(x.Name, "Ticket", ChangingTicketTextBox.Text);
-                            ChangeTextInTicket(x.Name, "People", ChangingPeopleTextBox.Text);
-                            MessageBox.Show("Успешно сохранено", "Изменения", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        };
-                    });
-
-                // перемещение тикетов влево, вправо и удаление тикета
-                TableLayoutPanel.Controls.OfType<TicketPanel>().ToList().ForEach(x =>
+                // Подсказка на кнопку с плюсом
+                new ToolTip().SetToolTip(AddTitleButton, "Добавить столбец");
+                
+                AddTitleButton.Click += (u, p) =>
                 {
-                    x.LeftButton.Click += (sender, w) =>
-                    {
-                        var column = TableLayoutPanel.GetPositionFromControl(x).Column - 1;
-                        if (column < 0) return;
-
-                        var check = true;
-                        for (var i = 1; i < TableLayoutPanel.RowCount || !check; i++)
-                        {
-                            if (TableLayoutPanel.GetControlFromPosition(column, i) != null) continue;
-                            check = true;
-                            AddControlToPanel(x, column, i);
-                            ResizeTable();
-                            return;
-                        }
-                    };
-
-                    x.RightButton.Click += (sender, w) =>
-                    {
-                        var column = TableLayoutPanel.GetPositionFromControl(x).Column + 1;
-                        if (column > TableLayoutPanel.ColumnCount) return;
-
-                        var check = true;
-                        for (var i = 1; i < TableLayoutPanel.RowCount || !check; i++)
-                        {
-                            if (TableLayoutPanel.GetControlFromPosition(column, i) != null) continue;
-                            check = true;
-                            AddControlToPanel(x, column, i);
-                            ResizeTable();
-                            return;
-                        }
-
-                        // var controlPositionRow = (from Control control in TableLayoutPanel.Controls where TableLayoutPanel.GetPositionFromControl(control).Column == column select TableLayoutPanel.GetRow(control)).ToList();
-                        // AddControlToPanel(x, column, controlPositionRow.Max() + 1);
-                    };
-
-                    x.DelButton.Click += (sender, w) => TableLayoutPanel.Controls.Remove(x);
-                });
+                    AddTitleToPanel("Это тест", TableLayoutPanel.ColumnStyles.Count);
+                    AddControlToPanel("Заголовок", "Описаг", "test", TableLayoutPanel.ColumnStyles.Count, 1);
+                };
             };
         }
 
@@ -121,15 +59,81 @@ namespace kanbanboard
                     foreach (var tasks in titles.Value)
                     {
                         var ticket = new TicketPanel();
-                        ticket.Title.Text = tasks["Title"];
-                        ticket.Ticket.Text = tasks["Ticket"];
-                        ticket.People.Text = tasks["People"];
-                        AddControlToPanel(ticket, column, row++);
+                        try { ticket.Title.Text = tasks["Title"] ?? ""; } catch { ticket.Title.Text = "";}
+                        try { ticket.Ticket.Text = tasks["Ticket"] ?? ""; } catch { ticket.Ticket.Text = ""; }
+                        try { ticket.People.Text = tasks["People"] ?? ""; } catch { ticket.People.Text = ""; }
+                        AddControlToPanel(ticket.Title.Text, ticket.Ticket.Text, ticket.People.Text, column, row++);
                     }
                     column++;
                     row = 1;
                 }
             }
+        }
+
+        // События на кнопки
+        private void SetEvents(TicketPanel x)
+        {
+            // Событие по клику на каждый тикет. Открывает панель для выполнения изменений выбранного тикета
+            x.Click += (sender, args) =>
+            {
+                // Показ панели. Возврат к тикетам. Масштабируемость
+                TicketsChangePanel.BringToFront();
+                ChangingPanel.ToCenter(TicketsChangePanel);
+
+                TicketsChangePanel.Click += (o, eventArgs) =>
+                {
+                    PanelWithTable.BringToFront();
+                    ChangingPanel.Controls.OfType<TextBox>().ToList().ForEach(y => y.Clear());
+                };
+
+                TicketsChangePanel.Resize += (o, eventArgs) => ChangingPanel.ToCenter(TicketsChangePanel);
+
+                // Показываем значения лейблов тикета
+                ChangingTitleTextBox.Text = GetTextFromTicket(x.Name, "Title");
+                ChangingTicketTextBox.Text = GetTextFromTicket(x.Name, "Ticket");
+                ChangingPeopleTextBox.Text = GetTextFromTicket(x.Name, "People");
+
+                // Изменяем при нажатии на кнопку сохранения
+                SaveChangesButton.Click += (o, eventArgs) =>
+                {
+                    ChangeTextInTicket(x.Name, "Title", ChangingTitleTextBox.Text);
+                    ChangeTextInTicket(x.Name, "Ticket", ChangingTicketTextBox.Text);
+                    ChangeTextInTicket(x.Name, "People", ChangingPeopleTextBox.Text);
+                    MessageBox.Show("Успешно сохранено", "Изменения", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                };
+            };
+
+            // перемещение тикетов влево, вправо и удаление тикета
+            x.LeftButton.Click += (sender, w) =>
+            {
+                var column = TableLayoutPanel.GetPositionFromControl(x).Column - 1;
+                if (column < 0) return;
+
+                for (var i = 1; i < TableLayoutPanel.RowCount; i++)
+                {
+                    if (TableLayoutPanel.GetControlFromPosition(column, i) != null) continue;
+                    AddControlToPanel(x, column, i);
+                    ResizeTable();
+                    return;
+                }
+            };
+
+            x.RightButton.Click += (sender, w) =>
+            {
+                var column = TableLayoutPanel.GetPositionFromControl(x).Column + 1;
+                if (column > TableLayoutPanel.ColumnCount) return;
+
+                for (var i = 1; i < TableLayoutPanel.RowCount; i++)
+                {
+                    if (TableLayoutPanel.GetControlFromPosition(column, i) != null) continue;
+                    AddControlToPanel(x, column, i);
+                    ResizeTable();
+                    return;
+                }
+            };
+
+            x.DelButton.Click += (sender, w) => TableLayoutPanel.Controls.Remove(x);
         }
 
         // Добавление заголовков
@@ -140,34 +144,67 @@ namespace kanbanboard
                 TableLayoutPanel.ColumnCount++;
                 TableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
             }
-            
-            AddTitleToPanel(new Label()
+
+            AddTitleToPanel(text, column);
+        }
+
+        private void AddTitleToPanel(string textOfLabel, int column)
+        {
+            var label = new Label()
             {
-                Text = text,
+                Text = textOfLabel,
                 TextAlign = ContentAlignment.MiddleCenter,
                 Font = new Font("Tahoma", 9.75F, FontStyle.Regular),
                 ForeColor = Color.FromArgb(160, 160, 160),
                 Margin = new Padding(5),
                 AutoSize = true
-            }, column, 0);
-        }
+            };
 
-        private void AddTitleToPanel(Label label, int column, int row)
-        {
-            label.Name = $"title{column}{row}";
+            label.Name = $"title{column}{0}";
 
             TableLayoutPanel.SuspendLayout();
-            TableLayoutPanel.Controls.Add(label, column, row);
+            TableLayoutPanel.Controls.Add(label, column, 0);
             TableLayoutPanel.ResumeLayout();
         }
-
 
         // Добавить контрол (в основном тикет) в таблицу
         private void AddControlToPanel(Control control, int column, int row)
         {
             // Инициализация имени панели тикета
             control.Name = $"ticket{column}{row}";
-            
+
+            // Нужно ли добавлять доп. строки и/или колонки
+            if (TableLayoutPanel.RowStyles.Count <= row)
+            {
+                TableLayoutPanel.RowCount++;
+                TableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent));
+            }
+
+            if (TableLayoutPanel.ColumnStyles.Count <= column)
+            {
+                TableLayoutPanel.ColumnCount++;
+                TableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent));
+            }
+
+            TableLayoutPanel.SuspendLayout();
+            TableLayoutPanel.Controls.Add(control, column, row);
+            TableLayoutPanel.ResumeLayout();
+        }
+
+        // Добавить тикет в таблицу
+        private void AddControlToPanel(string title, string ticket, string people, int column, int row)
+        {
+            var control = new TicketPanel();
+            control.Title.Text = title;
+            control.Ticket.Text = ticket;
+            control.People.Text = people;
+
+            // Добавляем события на кнопки
+            SetEvents(control);
+
+            // Инициализация имени панели тикета
+            control.Name = $"ticket{column}{row}";
+
             // Нужно ли добавлять доп. строки и/или колонки
             if (TableLayoutPanel.RowStyles.Count <= row)
             {
@@ -235,14 +272,14 @@ namespace kanbanboard
         // Обработчик задач
         private void TasksButton_Click(object sender, EventArgs e)
         {
+            LabelHead.Text = "Задачи";
 
             // перемещение панельки выделения
             StripPanel.Location = TasksButton.Location;
             // изменение размера панельки выделения
             StripPanel.Size = new Size(StripPanel.Size.Width, TasksButton.Size.Height);
-            LabelHead.Text = "Задачи";
-            TableLayoutPanel.BringToFront();
 
+            PanelWithTable.BringToFront();
         }
 
         // Клик на профиль. Открытие панели с данными текущего профиля
