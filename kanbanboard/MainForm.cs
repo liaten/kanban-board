@@ -24,10 +24,6 @@ namespace kanbanboard
             Load += (s, a) =>
             {
                 _user = new User();
-                //_user.CreateProject("info");
-                //_user.CreateProject("simplex");
-                //_user.CreateProject("kanban");
-
                 TableFromFirebase();
 
                 //// Начальные данные *тестовые*
@@ -134,39 +130,6 @@ namespace kanbanboard
                     row = 1;
                 }
             }
-        }
-
-        // Таблица с тикетами
-        private void Table()
-        {
-            TableLayoutPanel.RowStyles.Clear();
-            TableLayoutPanel.ColumnStyles.Clear();
-            TableLayoutPanel.Controls.Clear();
-
-            AddControlToPanel(new TicketPanel(), 0, 1);
-            AddControlToPanel(new TicketPanel(), 1, 1);
-            AddControlToPanel(new TicketPanel(), 2, 1);
-            AddControlToPanel(new TicketPanel(), 3, 1);
-            AddControlToPanel(new TicketPanel(), 3, 2);
-            AddControlToPanel(new TicketPanel(), 0, 2);
-            AddControlToPanel(new TicketPanel(), 2, 2);
-
-            // Тикеты
-            ChangeTextInTicket("ticket21", "People", "Работяги");
-            ChangeTextInTicket("ticket21", "Title", "Тайтл");
-            ChangeTextInTicket("ticket21", "Ticket", "Текстовый текст");
-            ChangeTextInTicket("ticket21", "Title", "Текстовый текст номер два точка ноль точка");
-
-            // Для заголовков
-            // TableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-
-            // Заголовки
-            SetTitle("Что-то начать делать", 0);
-            SetTitle("Что-то делают", 1);
-            SetTitle("Что-то сделано", 2);
-            SetTitle("Что-то нужно сдать", 3);
-
-            BasicContentPanel.Controls.Add(TableLayoutPanel);
         }
 
         // Добавление заголовков
