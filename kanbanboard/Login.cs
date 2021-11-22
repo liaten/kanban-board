@@ -52,11 +52,10 @@ namespace kanbanboard
 
         private void Button1_Click(object sender, EventArgs e) // логин в приложение
         {
-
-            LoginButton.Text = "";
+            Username = textBoxLogin.Text;
             LoginButton.Image = Properties.Resources.check;
             Hide();
-            MainForm main = new MainForm();
+            var main = new MainForm();
             main.Show();
         }
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)

@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Drawing;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 using ContentAlignment = System.Drawing.ContentAlignment;
 
 namespace kanbanboard
 {
     public partial class MainForm : Form
     {
+        private User _user;
+
         public MainForm()
         {
             InitializeComponent();
@@ -24,8 +23,15 @@ namespace kanbanboard
             
             Load += (s, a) =>
             {
-                // Начальные данные *тестовые*
-                Table();
+                _user = new User();
+                //_user.CreateProject("info");
+                //_user.CreateProject("simplex");
+                //_user.CreateProject("kanban");
+
+                TableFromFirebase();
+
+                //// Начальные данные *тестовые*
+                //Table();
 
                 UserControlsPanel_Click(null, null);
                 UsernameLabel.Text = Login.Username;
@@ -104,23 +110,31 @@ namespace kanbanboard
             };
         }
 
-        //private void RemoveEmptyRows()
-        //{
-        //    for (int row = 0; row < TableLayoutPanel.RowCount; row++)
-        //    {
-        //        var count = 0;
-        //        for (int column = 0; column < TableLayoutPanel.ColumnCount; column++)
-        //        {
-        //            if (TableLayoutPanel.GetControlFromPosition(column, row) is null)
-        //                count++;
-        //        }
+        private void TableFromFirebase()
+        {
+            TableLayoutPanel.RowStyles.Clear();
+            TableLayoutPanel.ColumnStyles.Clear();
+            TableLayoutPanel.Controls.Clear();
 
-        //        if (count == TableLayoutPanel.ColumnCount)
-        //        {
-        //            TableLayoutPanel.RowCount--;
-        //        }
-        //    }
-        //}
+            foreach (var projects in _user.ProjectsData.Where(item => item.Key == "simplex"))
+            {
+                int column = 0, row = 1;
+                foreach (var titles in projects.Value)
+                {
+                    SetTitle(titles.Key.Substring(2).FirstCharToUpper(), column);
+                    foreach (var tasks in titles.Value)
+                    {
+                        var ticket = new TicketPanel();
+                        ticket.Title.Text = tasks["Title"];
+                        ticket.Ticket.Text = tasks["Ticket"];
+                        ticket.People.Text = tasks["People"];
+                        AddControlToPanel(ticket, column, row++);
+                    }
+                    column++;
+                    row = 1;
+                }
+            }
+        }
 
         // Таблица с тикетами
         private void Table()
@@ -147,25 +161,24 @@ namespace kanbanboard
             // TableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
 
             // Заголовки
-            AddTitle("Что-то начать делать", 0);
-            AddTitle("Что-то делают", 1);
-            AddTitle("Что-то сделано", 2);
-            AddTitle("Что-то нужно сдать", 3);
+            SetTitle("Что-то начать делать", 0);
+            SetTitle("Что-то делают", 1);
+            SetTitle("Что-то сделано", 2);
+            SetTitle("Что-то нужно сдать", 3);
 
             BasicContentPanel.Controls.Add(TableLayoutPanel);
         }
 
         // Добавление заголовков
-        private void AddTitle(string text, int column)
+        private void SetTitle(string text, int column)
         {
             if (TableLayoutPanel.ColumnCount <= column)
             {
                 TableLayoutPanel.ColumnCount++;
                 TableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
             }
-
-            TableLayoutPanel.SuspendLayout();
-            AddControlToPanel(new Label()
+            
+            AddTitleToPanel(new Label()
             {
                 Text = text,
                 TextAlign = ContentAlignment.MiddleCenter,
@@ -174,9 +187,43 @@ namespace kanbanboard
                 Margin = new Padding(5),
                 AutoSize = true
             }, column, 0);
+        }
+
+        private void AddTitleToPanel(Label label, int column, int row)
+        {
+            label.Name = $"title{column}{row}";
+
+            TableLayoutPanel.SuspendLayout();
+            TableLayoutPanel.Controls.Add(label, column, row);
             TableLayoutPanel.ResumeLayout();
         }
 
+
+        // Добавить контрол (в основном тикет) в таблицу
+        private void AddControlToPanel(Control control, int column, int row)
+        {
+            // Инициализация имени панели тикета
+            control.Name = $"ticket{column}{row}";
+            
+            // Нужно ли добавлять доп. строки и/или колонки
+            if (TableLayoutPanel.RowStyles.Count <= row)
+            {
+                TableLayoutPanel.RowCount++;
+                TableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent));
+            }
+
+            if (TableLayoutPanel.ColumnStyles.Count <= column)
+            {
+                TableLayoutPanel.ColumnCount++;
+                TableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent));
+            }
+
+            TableLayoutPanel.SuspendLayout();
+            TableLayoutPanel.Controls.Add(control, column, row);
+            TableLayoutPanel.ResumeLayout();
+        }
+
+        // Получить текст из тикета
         private string GetTextFromTicket(string kanbanTicketPanelColumnRow, string whichLabel)
         {
             // kanbanTicketPanelColumnRow — ticket{column}{row}
@@ -209,60 +256,6 @@ namespace kanbanboard
                     .Text = inputText;
             }
             catch { }
-        }
-
-        // Добавить контрол (в основном тикет) в таблицу
-        private void AddControlToPanel(Control control, int column, int row)
-        {
-            // Инициализация имени панели тикета
-            control.Name = $"ticket{column}{row}";
-            
-            // Нужно ли добавлять доп. строки и/или колонки
-            if (TableLayoutPanel.RowStyles.Count <= row)
-            {
-                TableLayoutPanel.RowCount++;
-                TableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent));
-            }
-
-            if (TableLayoutPanel.ColumnStyles.Count <= column)
-            {
-                TableLayoutPanel.ColumnCount++;
-                TableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent));
-            }
-
-            TableLayoutPanel.SuspendLayout();
-            TableLayoutPanel.Controls.Add(control, column, row);
-            TableLayoutPanel.ResumeLayout();
-        }
-
-        // *Для дебага. Получить позицию при клике
-        private void TableLayoutPanel_MouseClick(object sender, MouseEventArgs e)
-        {
-            //var row = 0;
-            //var verticalOffset = 0;
-            //foreach (var h in TableLayoutPanel.GetRowHeights())
-            //{
-            //    var column = 0;
-            //    var horizontalOffset = 0;
-            //    foreach (var w in TableLayoutPanel.GetColumnWidths())
-            //    {
-            //        var rectangle = new Rectangle(horizontalOffset, verticalOffset, w, h);
-            //        if (rectangle.Contains(e.Location))
-            //        {
-            //            if (row == 0)
-            //            {
-
-            //            }
-            //            MessageBox.Show($"row {row}, column {column} was clicked");
-            //            return;
-            //        }
-
-            //        horizontalOffset += w;
-            //        column++;
-            //    }
-            //    verticalOffset += h;
-            //    row++;
-            //}
         }
 
         // Устранение мерцания при изменении размеров таблицы
