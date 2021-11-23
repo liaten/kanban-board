@@ -104,6 +104,7 @@ namespace kanbanboard
             this.RegistrationButton.TabIndex = 2;
             this.RegistrationButton.Text = "Регистрация";
             this.RegistrationButton.UseVisualStyleBackColor = false;
+            this.RegistrationButton.Click += new System.EventHandler(this.RegistrationButton_Click);
             // 
             // textBoxLogin
             // 

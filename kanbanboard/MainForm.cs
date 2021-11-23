@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 using ContentAlignment = System.Drawing.ContentAlignment;
 
 namespace kanbanboard
@@ -27,9 +26,6 @@ namespace kanbanboard
                 _user = new User();
                 TableFromFirebase();
 
-                //// Начальные данные *тестовые*
-                //Table();
-
                 UserControlsPanel_Click(null, null);
                 UsernameLabel.Text = Login.Username;
 
@@ -39,7 +35,7 @@ namespace kanbanboard
                 AddTitleButton.Click += (u, p) =>
                 {
                     AddTitleToPanel("Это тест", TableLayoutPanel.ColumnStyles.Count);
-                    AddControlToPanel("Заголовок", "Описаг", "test", TableLayoutPanel.ColumnStyles.Count, 1);
+                    AddControlToPanel("test", "test", "test", TableLayoutPanel.ColumnStyles.Count, 1);
                 };
             };
         }
