@@ -91,6 +91,7 @@
     <Compile Include="TicketPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="User.cs" />
     <None Include="packages.config" />
     <None Include="Resources\send-message %281%29.png" />
     <None Include="Resources\send-message.png" />

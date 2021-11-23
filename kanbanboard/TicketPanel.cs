@@ -56,7 +56,7 @@ namespace kanbanboard
                 x.AutoSize = true;
             });
 
-            // Добавляем панель с кнопками перемещий и удаления тикета
+            // Добавляем панель с кнопками перемещений и удаления тикета
 
             // кнопка удаления тикета, перемещения ВПРАВО, перемещения ВЛЕВО
             DelButton = new Button()
@@ -101,8 +101,7 @@ namespace kanbanboard
             base.OnPaint(e);
 
             // Сглаживание углов
-            const int ellipse = 15;
-            Region = Region.FromHrgn(Round(0, 0, Width, Height, ellipse, ellipse));
+            Region = Region.FromHrgn(Round(0, 0, Width, Height, 15, 15));
 
             BeginInvoke((MethodInvoker)(() =>
             {
