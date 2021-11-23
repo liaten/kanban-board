@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Drawing;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace kanbanboard
@@ -25,10 +27,10 @@ namespace kanbanboard
             Size = new Size(350, 360 - EmailLabelPanel.Height);
             int headerPadding = (Width - AuthorizationLabel.Width - AuthorizationPictureBox.Width) / 2;
             HeaderLabelPanel.Padding = new Padding(headerPadding, 15, headerPadding, 15);
-            EmailLabel.Visible = false;
-            textBoxEmail.Visible = false;
             CheckBoxRegistration.ForeColor = Color.FromArgb(200, 200, 200);
         }
+
+        private bool ValidEmail(string email) => new Regex(@"^(\w|\d|\.|_|-)+@(\w|\d){1,10}\.([a-z]|.){2,10}$", RegexOptions.IgnoreCase).IsMatch(email);
 
         private void TextBox1_MouseEnter(object sender, EventArgs e)
         {
@@ -98,22 +100,37 @@ namespace kanbanboard
             HeaderLabelPanel.Padding = new Padding(HeaderPadding, 15, HeaderPadding, 15);
         }
 
-        private void CheckBoxRegistration_CheckedChanged(object sender, EventArgs e)
+        private async void CheckBoxRegistration_CheckedChanged(object sender, EventArgs e)
         {
             if (CheckBoxRegistration.Checked)
             {
-                EmailLabel.Visible = true;
-                textBoxEmail.Visible = true;
-                MinimumSize = new Size(350, 360);
+                EmailLabelPanel.Show();
+                EmailTextBoxPanel.Show();
+
+                for (var i = 0; i <= EmailTextBoxPanel.Size.Height; i++)
+                {
+                    Size = new Size(350, 360 - EmailTextBoxPanel.Size.Height + i);
+                    await Task.Delay(1);
+                }
                 CheckBoxRegistration.ForeColor = Color.FromArgb(200, 250, 200);
             }
-            else
-            {
-                EmailLabel.Visible = false;
-                textBoxEmail.Visible = false;
-                MinimumSize = new Size(350, 360 - EmailLabelPanel.Height);
+            else {
+                for (var i = 0; i <= EmailTextBoxPanel.Size.Height; i++)
+                {
+                    Size = new Size(350, 360 - i);
+                    await Task.Delay(1);
+                }
+
+                EmailLabelPanel.Hide();
+                EmailTextBoxPanel.Hide();
+
                 CheckBoxRegistration.ForeColor = Color.FromArgb(200, 200, 200);
             }
+        }
+
+        private void RegistrationButton_Click(object sender, EventArgs e)
+        {
+            ValidEmail(textBoxEmail.Text);
         }
     }
 }
