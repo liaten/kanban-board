@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -24,7 +25,11 @@ namespace kanbanboard
             Load += (s, a) =>
             {
                 _user = new User();
-                TableFromFirebase();
+
+                // Проекты пользователя
+                ListBoxOfProjectNames.Items.Clear();
+                ListBoxOfProjectNames.Items.AddRange(_user.ProjectNames.Cast<object>().ToArray());
+                ListBoxOfProjectNames.SelectedValueChanged += (ss, aa) => TableFromFirebase(ListBoxOfProjectNames.SelectedItem.ToString());
 
                 UserControlsPanel_Click(null, null);
                 UsernameLabel.Text = Login.Username;
@@ -32,21 +37,54 @@ namespace kanbanboard
                 // Подсказка на кнопку с плюсом
                 new ToolTip().SetToolTip(AddTitleButton, "Добавить столбец");
                 
+                // Добавить колонку
                 AddTitleButton.Click += (u, p) =>
                 {
                     AddTitleToPanel("Это тест", TableLayoutPanel.ColumnStyles.Count);
                     AddControlToPanel("test", "test", "test", TableLayoutPanel.ColumnStyles.Count, 1);
                 };
+
+                // Сохранение данных в базу
+                // Сохраняется только активная таблица (выбранная в listbox)
+                FormClosing += (b, q) =>
+                {
+                    if (TableLayoutPanel.Controls.Count == 0) return;
+                    var allData = new Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>>();
+                    var projectName = ListBoxOfProjectNames.SelectedItem.ToString();
+                    var columnDate = new Dictionary<string, List<Dictionary<string, string>>>();
+                    for (var column = 0; column < TableLayoutPanel.ColumnStyles.Count; column++)
+                    {
+                        var ticket = new List<Dictionary<string, string>>();
+
+                        for (var row = 1; row < TableLayoutPanel.RowStyles.Count; row++)
+                        {
+                            if (TableLayoutPanel.GetControlFromPosition(column, row) != null)
+                                ticket.Add(new Dictionary<string, string>()
+                                {
+                                    {"Title", ((TicketPanel)TableLayoutPanel.GetControlFromPosition(column, row)).Title.Text},
+                                    {"Ticket", ((TicketPanel)TableLayoutPanel.GetControlFromPosition(column, row)).Ticket.Text},
+                                    {"People", ((TicketPanel)TableLayoutPanel.GetControlFromPosition(column, row)).People.Text}
+                                });
+                        }
+                            
+                        columnDate.Add($"{column + 1}-" + ((Label)TableLayoutPanel.GetControlFromPosition(column, 0)).Text, ticket);
+                    }
+                    allData.Add(projectName, columnDate);
+                    
+                    // Вызов процедуры загрузки данных в базу
+                    _user.UploadData(allData);
+                };
             };
         }
 
-        private void TableFromFirebase()
+        // Загрузить данные в tablelayoutpanel
+        private void TableFromFirebase(string selectedProject)
         {
             TableLayoutPanel.RowStyles.Clear();
             TableLayoutPanel.ColumnStyles.Clear();
             TableLayoutPanel.Controls.Clear();
 
-            foreach (var projects in _user.ProjectsData.Where(item => item.Key == "simplex"))
+            foreach (var projects in _user.ProjectsData.Where(item => item.Key == selectedProject))
             {
                 int column = 0, row = 1;
                 foreach (var titles in projects.Value)
@@ -85,16 +123,16 @@ namespace kanbanboard
                 TicketsChangePanel.Resize += (o, eventArgs) => ChangingPanel.ToCenter(TicketsChangePanel);
 
                 // Показываем значения лейблов тикета
-                ChangingTitleTextBox.Text = GetTextFromTicket(x.Name, "Title");
-                ChangingTicketTextBox.Text = GetTextFromTicket(x.Name, "Ticket");
-                ChangingPeopleTextBox.Text = GetTextFromTicket(x.Name, "People");
+                ChangingTitleTextBox.Text = x.Title.Text;
+                ChangingTicketTextBox.Text = x.Ticket.Text;
+                ChangingPeopleTextBox.Text = x.People.Text;
 
                 // Изменяем при нажатии на кнопку сохранения
                 SaveChangesButton.Click += (o, eventArgs) =>
                 {
-                    ChangeTextInTicket(x.Name, "Title", ChangingTitleTextBox.Text);
-                    ChangeTextInTicket(x.Name, "Ticket", ChangingTicketTextBox.Text);
-                    ChangeTextInTicket(x.Name, "People", ChangingPeopleTextBox.Text);
+                    x.Title.Text = ChangingTitleTextBox.Text;
+                    x.Ticket.Text = ChangingTicketTextBox.Text;
+                    x.People.Text = ChangingPeopleTextBox.Text;
                     MessageBox.Show("Успешно сохранено", "Изменения", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                 };
@@ -218,42 +256,7 @@ namespace kanbanboard
             TableLayoutPanel.Controls.Add(control, column, row);
             TableLayoutPanel.ResumeLayout();
         }
-
-        // Получить текст из тикета
-        private string GetTextFromTicket(string kanbanTicketPanelColumnRow, string whichLabel)
-        {
-            // kanbanTicketPanelColumnRow — ticket{column}{row}
-            // whichLabel — Title/Ticket/People
-            // inputText — любой текст
-
-            try
-            {
-                return TableLayoutPanel.Controls.OfType<TicketPanel>().First(x => x.Name == kanbanTicketPanelColumnRow)
-                    .Controls.OfType<Label>().First(x => x.Name == whichLabel)
-                    .Text;
-            }
-            catch
-            {
-                return "";
-            }
-        }
-
-        // Изменение текста в тикетах
-        private void ChangeTextInTicket(string kanbanTicketPanelColumnRow, string whichLabel, string inputText)
-        {
-            // kanbanTicketPanelColumnRow — ticket{column}{row}
-            // whichLabel — Title/Ticket/People
-            // inputText — любой текст
-
-            try
-            {
-                TableLayoutPanel.Controls.OfType<TicketPanel>().First(x => x.Name == kanbanTicketPanelColumnRow)
-                    .Controls.OfType<Label>().First(x => x.Name == whichLabel)
-                    .Text = inputText;
-            }
-            catch { }
-        }
-
+        
         // Устранение мерцания при изменении размеров таблицы
         public static void SetDoubleBuffered(Control c)
         {
@@ -288,8 +291,7 @@ namespace kanbanboard
             // изменение размера панельки выделения
             StripPanel.Size = new Size(StripPanel.Size.Width, UserControlsPanel.Size.Height);
         }
-
-
+        
         // Обработчик мессенджера
         private void MessengerButton_Click(object sender, EventArgs e)
         {
@@ -318,11 +320,6 @@ namespace kanbanboard
         {
             CalendarLabel.ToCenter(CalendarPanel);
             CalendarLabel.MaximumSize = CalendarPanel.Size;
-        }
-
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
         }
 
         // Выход из мейнформы
