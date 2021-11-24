@@ -303,9 +303,9 @@ namespace kanbanboard
             // 
             // AuthorizationPictureBox
             // 
+            this.AuthorizationPictureBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.AuthorizationPictureBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.AuthorizationPictureBox.Image = global::kanbanboard.Properties.Resources.user;
-            this.AuthorizationPictureBox.InitialImage = global::kanbanboard.Properties.Resources.user;
+            this.AuthorizationPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("AuthorizationPictureBox.Image")));
             this.AuthorizationPictureBox.Location = new System.Drawing.Point(0, 0);
             this.AuthorizationPictureBox.Name = "AuthorizationPictureBox";
             this.AuthorizationPictureBox.Padding = new System.Windows.Forms.Padding(15);

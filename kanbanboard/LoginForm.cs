@@ -33,6 +33,8 @@ namespace kanbanboard
             int headerPadding = (Width - AuthorizationLabel.Width - AuthorizationPictureBox.Width) / 2;
             HeaderLabelPanel.Padding = new Padding(headerPadding, 15, headerPadding, 15);
             CheckBoxRegistration.ForeColor = Color.FromArgb(200, 200, 200);
+            EmailLabelPanel.Hide();
+            EmailTextBoxPanel.Hide();
         }
 
         private bool ValidEmail(string email) => new Regex(@"^(\w|\d|\.|_|-)+@(\w|\d){1,10}\.([a-z]|.){2,10}$", RegexOptions.IgnoreCase).IsMatch(email);

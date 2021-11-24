@@ -1879,7 +1879,6 @@ namespace kanbanboard
             this.SendMessageButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SendMessageButton.FlatAppearance.BorderSize = 0;
             this.SendMessageButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SendMessageButton.Image = global::kanbanboard.Properties.Resources.send_message__1_;
             this.SendMessageButton.Location = new System.Drawing.Point(0, 0);
             this.SendMessageButton.Margin = new System.Windows.Forms.Padding(10);
             this.SendMessageButton.Name = "SendMessageButton";
