@@ -74,6 +74,10 @@ namespace kanbanboard
                     if (ListBoxOfProjectNames.SelectedItem != null)
                         Upload(ListBoxOfProjectNames.SelectedItem.ToString());
                 };
+
+                // Загрузка первого элемента из списка
+
+                ListBoxOfProjectNames.SelectedIndex = 0;
             };
         }
 
