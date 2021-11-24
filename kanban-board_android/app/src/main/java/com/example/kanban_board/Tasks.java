@@ -3,10 +3,24 @@ package com.example.kanban_board;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.example.kanban_board.Models.MyItemTouchHelperCallback;
+import com.example.kanban_board.Models.MyRecyclerAdapter;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +37,18 @@ public class Tasks extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+
+    //@BindView(R.id.addTicket)
+    Button addTicket;
+
+    //@BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
+
+    public List<String> data = new ArrayList<>();
+
+    ItemTouchHelper itemTouchHelper;
+
 
     public Tasks() {
         // Required empty public constructor
@@ -53,12 +79,109 @@ public class Tasks extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+     /*   addTicket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                addItem();
+            }
+        }); */
+
+        //init();
+        //generateItem();
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tasks, container, false);
+
+        ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_tasks, container, false);
+
+
+        recyclerView = (RecyclerView) viewGroup.findViewById(R.id.recycler_view);
+        //recyclerView = recyclerView.findViewById(R.id.recycler_view);
+
+        addTicket = (Button) viewGroup.findViewById(R.id.addTicket);
+
+        addTicket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                addItem();
+            }
+        });
+
+
+        init();
+        generateItem();
+
+        //viewGroup.addView(recyclerView);
+        return viewGroup;
+        //return inflater.inflate(R.layout.fragment_tasks, container, false);
+
+
     }
+
+    private void addItem() {
+
+        data.addAll(Arrays.asList(
+                "Заголовок \nТекст тикета \nРазработчики"
+
+        ));
+
+        MyRecyclerAdapter adapter = new MyRecyclerAdapter(getActivity(), data, viewHolder -> {
+            itemTouchHelper.startDrag(viewHolder);
+
+        });
+        recyclerView.setAdapter(adapter);
+        ItemTouchHelper.Callback callback = new MyItemTouchHelperCallback(adapter);
+        itemTouchHelper = new ItemTouchHelper(callback);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
+
+    }
+
+    private void init(){
+
+        ButterKnife.bind(getActivity());
+        recyclerView.setHasFixedSize(true);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 4);
+        recyclerView.setLayoutManager(gridLayoutManager);
+
+
+    }
+
+    private void generateItem() {
+
+        //List<String> data = new ArrayList<>();
+        data.addAll(Arrays.asList(
+                "Заголовок \nТекст тикета \nРазработчики",
+                "Заголовок \nТекст тикета \nРазработчики",
+                "Заголовок \nТекст тикета \nРазработчики",
+                "Заголовок \nТекст тикета \nРазработчики",
+                "Заголовок \nТекст тикета \nРазработчики",
+                "Заголовок \nТекст тикета \nРазработчики",
+                "Заголовок \nТекст тикета \nРазработчики",
+                "Заголовок \nТекст тикета \nРазработчики",
+                "Заголовок \nТекст тикета \nРазработчики"
+
+
+        ));
+
+        MyRecyclerAdapter adapter = new MyRecyclerAdapter(getActivity(), data, viewHolder -> {
+            itemTouchHelper.startDrag(viewHolder);
+
+        });
+        recyclerView.setAdapter(adapter);
+        ItemTouchHelper.Callback callback = new MyItemTouchHelperCallback(adapter);
+        itemTouchHelper = new ItemTouchHelper(callback);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
+
+    }
+
+
+
+
 }

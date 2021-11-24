@@ -15,6 +15,14 @@
     <string name="log_out">Выйти</string>
     <string name="remember_me">Запомнить меня</string>
 
+    <string name="todo">Сделать</string>
+    <string name="exec">В процессе</string>
+    <string name="view">На рассмотрении</string>
+    <string name="done">Готово</string>
+
+    <string name="addticket">Добавить задачу</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
