@@ -31,6 +31,7 @@ namespace kanbanboard
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ControlsPanel = new System.Windows.Forms.Panel();
+            this.ListBoxOfProjectNames = new System.Windows.Forms.ListBox();
             this.ExitButtonPanel = new System.Windows.Forms.Panel();
             this.ExitButton = new System.Windows.Forms.Button();
             this.StripPanel = new System.Windows.Forms.Panel();
@@ -51,6 +52,15 @@ namespace kanbanboard
             this.PanelWithTable = new System.Windows.Forms.Panel();
             this.AddingPanel = new System.Windows.Forms.Panel();
             this.AddTitleButton = new System.Windows.Forms.Button();
+            this.TicketsChangePanel = new System.Windows.Forms.Panel();
+            this.ChangingPanel = new System.Windows.Forms.Panel();
+            this.ChangingTicketTextBox = new System.Windows.Forms.TextBox();
+            this.SaveChangesButton = new System.Windows.Forms.Button();
+            this.ChangingPeopleLabel = new System.Windows.Forms.Label();
+            this.ChangingTicketLabel = new System.Windows.Forms.Label();
+            this.ChangingTitleLabel = new System.Windows.Forms.Label();
+            this.ChangingPeopleTextBox = new System.Windows.Forms.TextBox();
+            this.ChangingTitleTextBox = new System.Windows.Forms.TextBox();
             this.UserPanel = new System.Windows.Forms.Panel();
             this.TimeZonePanel = new System.Windows.Forms.Panel();
             this.TimeZoneGetPanel = new System.Windows.Forms.Panel();
@@ -72,15 +82,6 @@ namespace kanbanboard
             this.FULLNAME_GET = new System.Windows.Forms.Label();
             this.FullNameLabelPanel = new System.Windows.Forms.Panel();
             this.FullName = new System.Windows.Forms.Label();
-            this.TicketsChangePanel = new System.Windows.Forms.Panel();
-            this.ChangingPanel = new System.Windows.Forms.Panel();
-            this.ChangingTicketTextBox = new System.Windows.Forms.TextBox();
-            this.SaveChangesButton = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.ChangingPeopleTextBox = new System.Windows.Forms.TextBox();
-            this.ChangingTitleTextBox = new System.Windows.Forms.TextBox();
             this.CalendarPanel = new System.Windows.Forms.Panel();
             this.CalendarLabel = new System.Windows.Forms.Label();
             this.DialogPanel = new System.Windows.Forms.Panel();
@@ -98,6 +99,9 @@ namespace kanbanboard
             this.SendMessageButtonPanel = new System.Windows.Forms.Panel();
             this.SendMessageButton = new System.Windows.Forms.Button();
             this.HeadPanel = new System.Windows.Forms.Panel();
+            this.ProjectsPanel = new System.Windows.Forms.Panel();
+            this.SaveProjectPanel = new System.Windows.Forms.Panel();
+            this.SaveProjectButton = new System.Windows.Forms.Button();
             this.ControlsPanel.SuspendLayout();
             this.ExitButtonPanel.SuspendLayout();
             this.UserControlsPanel.SuspendLayout();
@@ -109,6 +113,8 @@ namespace kanbanboard
             this.BasicContentPanel.SuspendLayout();
             this.PanelWithTable.SuspendLayout();
             this.AddingPanel.SuspendLayout();
+            this.TicketsChangePanel.SuspendLayout();
+            this.ChangingPanel.SuspendLayout();
             this.UserPanel.SuspendLayout();
             this.TimeZonePanel.SuspendLayout();
             this.TimeZoneGetPanel.SuspendLayout();
@@ -122,8 +128,6 @@ namespace kanbanboard
             this.FullNamePanel.SuspendLayout();
             this.FullNameGetLabelPanel.SuspendLayout();
             this.FullNameLabelPanel.SuspendLayout();
-            this.TicketsChangePanel.SuspendLayout();
-            this.ChangingPanel.SuspendLayout();
             this.CalendarPanel.SuspendLayout();
             this.DialogPanel.SuspendLayout();
             this.DialogNamesPanel.SuspendLayout();
@@ -135,11 +139,14 @@ namespace kanbanboard
             this.MessagePanel.SuspendLayout();
             this.SendMessageButtonPanel.SuspendLayout();
             this.HeadPanel.SuspendLayout();
+            this.ProjectsPanel.SuspendLayout();
+            this.SaveProjectPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // ControlsPanel
             // 
             this.ControlsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.ControlsPanel.Controls.Add(this.ProjectsPanel);
             this.ControlsPanel.Controls.Add(this.ExitButtonPanel);
             this.ControlsPanel.Controls.Add(this.StripPanel);
             this.ControlsPanel.Controls.Add(this.CalendarButton);
@@ -152,6 +159,29 @@ namespace kanbanboard
             this.ControlsPanel.Name = "ControlsPanel";
             this.ControlsPanel.Size = new System.Drawing.Size(205, 565);
             this.ControlsPanel.TabIndex = 0;
+            // 
+            // ListBoxOfProjectNames
+            // 
+            this.ListBoxOfProjectNames.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.ListBoxOfProjectNames.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ListBoxOfProjectNames.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ListBoxOfProjectNames.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.ListBoxOfProjectNames.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.ListBoxOfProjectNames.FormattingEnabled = true;
+            this.ListBoxOfProjectNames.IntegralHeight = false;
+            this.ListBoxOfProjectNames.ItemHeight = 18;
+            this.ListBoxOfProjectNames.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"});
+            this.ListBoxOfProjectNames.Location = new System.Drawing.Point(0, 0);
+            this.ListBoxOfProjectNames.Name = "ListBoxOfProjectNames";
+            this.ListBoxOfProjectNames.Size = new System.Drawing.Size(205, 176);
+            this.ListBoxOfProjectNames.Sorted = true;
+            this.ListBoxOfProjectNames.TabIndex = 6;
             // 
             // ExitButtonPanel
             // 
@@ -337,6 +367,7 @@ namespace kanbanboard
             // TableLayoutPanel
             // 
             this.TableLayoutPanel.AutoScroll = true;
+            this.TableLayoutPanel.AutoSize = true;
             this.TableLayoutPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
             this.TableLayoutPanel.ColumnCount = 1;
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -1369,8 +1400,8 @@ namespace kanbanboard
             // BasicContentPanel
             // 
             this.BasicContentPanel.Controls.Add(this.PanelWithTable);
-            this.BasicContentPanel.Controls.Add(this.UserPanel);
             this.BasicContentPanel.Controls.Add(this.TicketsChangePanel);
+            this.BasicContentPanel.Controls.Add(this.UserPanel);
             this.BasicContentPanel.Controls.Add(this.CalendarPanel);
             this.BasicContentPanel.Controls.Add(this.DialogPanel);
             this.BasicContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1413,6 +1444,109 @@ namespace kanbanboard
             this.AddTitleButton.TabIndex = 3;
             this.AddTitleButton.Text = "+";
             this.AddTitleButton.UseVisualStyleBackColor = true;
+            // 
+            // TicketsChangePanel
+            // 
+            this.TicketsChangePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
+            this.TicketsChangePanel.Controls.Add(this.ChangingPanel);
+            this.TicketsChangePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TicketsChangePanel.Location = new System.Drawing.Point(0, 0);
+            this.TicketsChangePanel.Name = "TicketsChangePanel";
+            this.TicketsChangePanel.Size = new System.Drawing.Size(979, 495);
+            this.TicketsChangePanel.TabIndex = 1;
+            // 
+            // ChangingPanel
+            // 
+            this.ChangingPanel.Controls.Add(this.ChangingTicketTextBox);
+            this.ChangingPanel.Controls.Add(this.SaveChangesButton);
+            this.ChangingPanel.Controls.Add(this.ChangingPeopleLabel);
+            this.ChangingPanel.Controls.Add(this.ChangingTicketLabel);
+            this.ChangingPanel.Controls.Add(this.ChangingTitleLabel);
+            this.ChangingPanel.Controls.Add(this.ChangingPeopleTextBox);
+            this.ChangingPanel.Controls.Add(this.ChangingTitleTextBox);
+            this.ChangingPanel.Location = new System.Drawing.Point(216, 23);
+            this.ChangingPanel.Name = "ChangingPanel";
+            this.ChangingPanel.Size = new System.Drawing.Size(351, 345);
+            this.ChangingPanel.TabIndex = 0;
+            // 
+            // ChangingTicketTextBox
+            // 
+            this.ChangingTicketTextBox.Location = new System.Drawing.Point(57, 102);
+            this.ChangingTicketTextBox.Multiline = true;
+            this.ChangingTicketTextBox.Name = "ChangingTicketTextBox";
+            this.ChangingTicketTextBox.Size = new System.Drawing.Size(236, 135);
+            this.ChangingTicketTextBox.TabIndex = 7;
+            // 
+            // SaveChangesButton
+            // 
+            this.SaveChangesButton.FlatAppearance.BorderSize = 0;
+            this.SaveChangesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveChangesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SaveChangesButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.SaveChangesButton.Location = new System.Drawing.Point(0, 309);
+            this.SaveChangesButton.Name = "SaveChangesButton";
+            this.SaveChangesButton.Size = new System.Drawing.Size(348, 38);
+            this.SaveChangesButton.TabIndex = 6;
+            this.SaveChangesButton.Text = "Сохранить";
+            this.SaveChangesButton.UseVisualStyleBackColor = true;
+            // 
+            // ChangingPeopleLabel
+            // 
+            this.ChangingPeopleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ChangingPeopleLabel.AutoSize = true;
+            this.ChangingPeopleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ChangingPeopleLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.ChangingPeopleLabel.Location = new System.Drawing.Point(70, 240);
+            this.ChangingPeopleLabel.Name = "ChangingPeopleLabel";
+            this.ChangingPeopleLabel.Size = new System.Drawing.Size(197, 29);
+            this.ChangingPeopleLabel.TabIndex = 5;
+            this.ChangingPeopleLabel.Text = "Выполняющие";
+            this.ChangingPeopleLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // ChangingTicketLabel
+            // 
+            this.ChangingTicketLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ChangingTicketLabel.AutoSize = true;
+            this.ChangingTicketLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ChangingTicketLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.ChangingTicketLabel.Location = new System.Drawing.Point(99, 70);
+            this.ChangingTicketLabel.Name = "ChangingTicketLabel";
+            this.ChangingTicketLabel.Size = new System.Drawing.Size(139, 29);
+            this.ChangingTicketLabel.TabIndex = 4;
+            this.ChangingTicketLabel.Text = "Описание";
+            // 
+            // ChangingTitleLabel
+            // 
+            this.ChangingTitleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ChangingTitleLabel.AutoSize = true;
+            this.ChangingTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ChangingTitleLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.ChangingTitleLabel.Location = new System.Drawing.Point(97, 1);
+            this.ChangingTitleLabel.Name = "ChangingTitleLabel";
+            this.ChangingTitleLabel.Size = new System.Drawing.Size(143, 29);
+            this.ChangingTitleLabel.TabIndex = 3;
+            this.ChangingTitleLabel.Text = "Заголовок";
+            // 
+            // ChangingPeopleTextBox
+            // 
+            this.ChangingPeopleTextBox.Location = new System.Drawing.Point(57, 279);
+            this.ChangingPeopleTextBox.Name = "ChangingPeopleTextBox";
+            this.ChangingPeopleTextBox.Size = new System.Drawing.Size(236, 20);
+            this.ChangingPeopleTextBox.TabIndex = 2;
+            // 
+            // ChangingTitleTextBox
+            // 
+            this.ChangingTitleTextBox.Location = new System.Drawing.Point(57, 33);
+            this.ChangingTitleTextBox.Multiline = true;
+            this.ChangingTitleTextBox.Name = "ChangingTitleTextBox";
+            this.ChangingTitleTextBox.Size = new System.Drawing.Size(236, 34);
+            this.ChangingTitleTextBox.TabIndex = 0;
             // 
             // UserPanel
             // 
@@ -1643,109 +1777,6 @@ namespace kanbanboard
             this.FullName.TabIndex = 0;
             this.FullName.Text = "ФИО";
             // 
-            // TicketsChangePanel
-            // 
-            this.TicketsChangePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
-            this.TicketsChangePanel.Controls.Add(this.ChangingPanel);
-            this.TicketsChangePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TicketsChangePanel.Location = new System.Drawing.Point(0, 0);
-            this.TicketsChangePanel.Name = "TicketsChangePanel";
-            this.TicketsChangePanel.Size = new System.Drawing.Size(979, 495);
-            this.TicketsChangePanel.TabIndex = 1;
-            // 
-            // ChangingPanel
-            // 
-            this.ChangingPanel.Controls.Add(this.ChangingTicketTextBox);
-            this.ChangingPanel.Controls.Add(this.SaveChangesButton);
-            this.ChangingPanel.Controls.Add(this.label3);
-            this.ChangingPanel.Controls.Add(this.label2);
-            this.ChangingPanel.Controls.Add(this.label1);
-            this.ChangingPanel.Controls.Add(this.ChangingPeopleTextBox);
-            this.ChangingPanel.Controls.Add(this.ChangingTitleTextBox);
-            this.ChangingPanel.Location = new System.Drawing.Point(216, 23);
-            this.ChangingPanel.Name = "ChangingPanel";
-            this.ChangingPanel.Size = new System.Drawing.Size(351, 345);
-            this.ChangingPanel.TabIndex = 0;
-            // 
-            // ChangingTicketTextBox
-            // 
-            this.ChangingTicketTextBox.Location = new System.Drawing.Point(57, 102);
-            this.ChangingTicketTextBox.Multiline = true;
-            this.ChangingTicketTextBox.Name = "ChangingTicketTextBox";
-            this.ChangingTicketTextBox.Size = new System.Drawing.Size(236, 135);
-            this.ChangingTicketTextBox.TabIndex = 7;
-            // 
-            // SaveChangesButton
-            // 
-            this.SaveChangesButton.FlatAppearance.BorderSize = 0;
-            this.SaveChangesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SaveChangesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SaveChangesButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.SaveChangesButton.Location = new System.Drawing.Point(0, 309);
-            this.SaveChangesButton.Name = "SaveChangesButton";
-            this.SaveChangesButton.Size = new System.Drawing.Size(348, 38);
-            this.SaveChangesButton.TabIndex = 6;
-            this.SaveChangesButton.Text = "Сохранить";
-            this.SaveChangesButton.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label3.Location = new System.Drawing.Point(70, 240);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(197, 29);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Выполняющие";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label2.Location = new System.Drawing.Point(99, 70);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(139, 29);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Описание";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label1.Location = new System.Drawing.Point(97, 1);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 29);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Заголовок";
-            // 
-            // ChangingPeopleTextBox
-            // 
-            this.ChangingPeopleTextBox.Location = new System.Drawing.Point(57, 279);
-            this.ChangingPeopleTextBox.Name = "ChangingPeopleTextBox";
-            this.ChangingPeopleTextBox.Size = new System.Drawing.Size(236, 20);
-            this.ChangingPeopleTextBox.TabIndex = 2;
-            // 
-            // ChangingTitleTextBox
-            // 
-            this.ChangingTitleTextBox.Location = new System.Drawing.Point(57, 33);
-            this.ChangingTitleTextBox.Multiline = true;
-            this.ChangingTitleTextBox.Name = "ChangingTitleTextBox";
-            this.ChangingTitleTextBox.Size = new System.Drawing.Size(236, 34);
-            this.ChangingTitleTextBox.TabIndex = 0;
-            // 
             // CalendarPanel
             // 
             this.CalendarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
@@ -1944,6 +1975,42 @@ namespace kanbanboard
             this.HeadPanel.Size = new System.Drawing.Size(979, 70);
             this.HeadPanel.TabIndex = 3;
             // 
+            // ProjectsPanel
+            // 
+            this.ProjectsPanel.AutoSize = true;
+            this.ProjectsPanel.Controls.Add(this.SaveProjectPanel);
+            this.ProjectsPanel.Controls.Add(this.ListBoxOfProjectNames);
+            this.ProjectsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ProjectsPanel.Location = new System.Drawing.Point(0, 277);
+            this.ProjectsPanel.Name = "ProjectsPanel";
+            this.ProjectsPanel.Size = new System.Drawing.Size(205, 232);
+            this.ProjectsPanel.TabIndex = 7;
+            // 
+            // SaveProjectPanel
+            // 
+            this.SaveProjectPanel.Controls.Add(this.SaveProjectButton);
+            this.SaveProjectPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.SaveProjectPanel.Location = new System.Drawing.Point(0, 176);
+            this.SaveProjectPanel.Name = "SaveProjectPanel";
+            this.SaveProjectPanel.Padding = new System.Windows.Forms.Padding(10);
+            this.SaveProjectPanel.Size = new System.Drawing.Size(205, 56);
+            this.SaveProjectPanel.TabIndex = 7;
+            // 
+            // SaveProjectButton
+            // 
+            this.SaveProjectButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SaveProjectButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(77)))), ((int)(((byte)(109)))));
+            this.SaveProjectButton.FlatAppearance.BorderSize = 2;
+            this.SaveProjectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveProjectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SaveProjectButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.SaveProjectButton.Location = new System.Drawing.Point(10, 10);
+            this.SaveProjectButton.Name = "SaveProjectButton";
+            this.SaveProjectButton.Size = new System.Drawing.Size(185, 36);
+            this.SaveProjectButton.TabIndex = 5;
+            this.SaveProjectButton.Text = "Сохранить проект";
+            this.SaveProjectButton.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1960,8 +2027,8 @@ namespace kanbanboard
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Канбан-доска";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.ControlsPanel.ResumeLayout(false);
+            this.ControlsPanel.PerformLayout();
             this.ExitButtonPanel.ResumeLayout(false);
             this.UserControlsPanel.ResumeLayout(false);
             this.UserNamePanel.ResumeLayout(false);
@@ -1974,7 +2041,11 @@ namespace kanbanboard
             this.BasicContentPanel.ResumeLayout(false);
             this.BasicContentPanel.PerformLayout();
             this.PanelWithTable.ResumeLayout(false);
+            this.PanelWithTable.PerformLayout();
             this.AddingPanel.ResumeLayout(false);
+            this.TicketsChangePanel.ResumeLayout(false);
+            this.ChangingPanel.ResumeLayout(false);
+            this.ChangingPanel.PerformLayout();
             this.UserPanel.ResumeLayout(false);
             this.TimeZonePanel.ResumeLayout(false);
             this.TimeZonePanel.PerformLayout();
@@ -2000,9 +2071,6 @@ namespace kanbanboard
             this.FullNameGetLabelPanel.PerformLayout();
             this.FullNameLabelPanel.ResumeLayout(false);
             this.FullNameLabelPanel.PerformLayout();
-            this.TicketsChangePanel.ResumeLayout(false);
-            this.ChangingPanel.ResumeLayout(false);
-            this.ChangingPanel.PerformLayout();
             this.CalendarPanel.ResumeLayout(false);
             this.CalendarPanel.PerformLayout();
             this.DialogPanel.ResumeLayout(false);
@@ -2022,6 +2090,8 @@ namespace kanbanboard
             this.SendMessageButtonPanel.PerformLayout();
             this.HeadPanel.ResumeLayout(false);
             this.HeadPanel.PerformLayout();
+            this.ProjectsPanel.ResumeLayout(false);
+            this.SaveProjectPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2060,9 +2130,9 @@ namespace kanbanboard
         private System.Windows.Forms.Panel TicketsChangePanel;
         private System.Windows.Forms.Panel ChangingPanel;
         private System.Windows.Forms.Button SaveChangesButton;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label ChangingPeopleLabel;
+        private System.Windows.Forms.Label ChangingTicketLabel;
+        private System.Windows.Forms.Label ChangingTitleLabel;
         private System.Windows.Forms.TextBox ChangingPeopleTextBox;
         private System.Windows.Forms.TextBox ChangingTitleTextBox;
         private System.Windows.Forms.TextBox ChangingTicketTextBox;
@@ -2097,6 +2167,10 @@ namespace kanbanboard
         private System.Windows.Forms.Panel AddingPanel;
         private System.Windows.Forms.Button AddTitleButton;
         private System.Windows.Forms.Panel PanelWithTable;
+        private System.Windows.Forms.ListBox ListBoxOfProjectNames;
+        private System.Windows.Forms.Panel ProjectsPanel;
+        private System.Windows.Forms.Panel SaveProjectPanel;
+        private System.Windows.Forms.Button SaveProjectButton;
     }
 }
 
