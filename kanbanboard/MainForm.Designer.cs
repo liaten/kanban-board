@@ -99,6 +99,9 @@ namespace kanbanboard
             this.SendMessageButtonPanel = new System.Windows.Forms.Panel();
             this.SendMessageButton = new System.Windows.Forms.Button();
             this.HeadPanel = new System.Windows.Forms.Panel();
+            this.ProjectsPanel = new System.Windows.Forms.Panel();
+            this.SaveProjectPanel = new System.Windows.Forms.Panel();
+            this.SaveProjectButton = new System.Windows.Forms.Button();
             this.ControlsPanel.SuspendLayout();
             this.ExitButtonPanel.SuspendLayout();
             this.UserControlsPanel.SuspendLayout();
@@ -136,12 +139,14 @@ namespace kanbanboard
             this.MessagePanel.SuspendLayout();
             this.SendMessageButtonPanel.SuspendLayout();
             this.HeadPanel.SuspendLayout();
+            this.ProjectsPanel.SuspendLayout();
+            this.SaveProjectPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // ControlsPanel
             // 
             this.ControlsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.ControlsPanel.Controls.Add(this.ListBoxOfProjectNames);
+            this.ControlsPanel.Controls.Add(this.ProjectsPanel);
             this.ControlsPanel.Controls.Add(this.ExitButtonPanel);
             this.ControlsPanel.Controls.Add(this.StripPanel);
             this.ControlsPanel.Controls.Add(this.CalendarButton);
@@ -159,7 +164,7 @@ namespace kanbanboard
             // 
             this.ListBoxOfProjectNames.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.ListBoxOfProjectNames.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ListBoxOfProjectNames.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ListBoxOfProjectNames.Dock = System.Windows.Forms.DockStyle.Top;
             this.ListBoxOfProjectNames.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.ListBoxOfProjectNames.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.ListBoxOfProjectNames.FormattingEnabled = true;
@@ -172,7 +177,7 @@ namespace kanbanboard
             "4",
             "5",
             "6"});
-            this.ListBoxOfProjectNames.Location = new System.Drawing.Point(0, 333);
+            this.ListBoxOfProjectNames.Location = new System.Drawing.Point(0, 0);
             this.ListBoxOfProjectNames.Name = "ListBoxOfProjectNames";
             this.ListBoxOfProjectNames.Size = new System.Drawing.Size(205, 176);
             this.ListBoxOfProjectNames.Sorted = true;
@@ -362,6 +367,7 @@ namespace kanbanboard
             // TableLayoutPanel
             // 
             this.TableLayoutPanel.AutoScroll = true;
+            this.TableLayoutPanel.AutoSize = true;
             this.TableLayoutPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
             this.TableLayoutPanel.ColumnCount = 1;
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -1969,6 +1975,42 @@ namespace kanbanboard
             this.HeadPanel.Size = new System.Drawing.Size(979, 70);
             this.HeadPanel.TabIndex = 3;
             // 
+            // ProjectsPanel
+            // 
+            this.ProjectsPanel.AutoSize = true;
+            this.ProjectsPanel.Controls.Add(this.SaveProjectPanel);
+            this.ProjectsPanel.Controls.Add(this.ListBoxOfProjectNames);
+            this.ProjectsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ProjectsPanel.Location = new System.Drawing.Point(0, 277);
+            this.ProjectsPanel.Name = "ProjectsPanel";
+            this.ProjectsPanel.Size = new System.Drawing.Size(205, 232);
+            this.ProjectsPanel.TabIndex = 7;
+            // 
+            // SaveProjectPanel
+            // 
+            this.SaveProjectPanel.Controls.Add(this.SaveProjectButton);
+            this.SaveProjectPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.SaveProjectPanel.Location = new System.Drawing.Point(0, 176);
+            this.SaveProjectPanel.Name = "SaveProjectPanel";
+            this.SaveProjectPanel.Padding = new System.Windows.Forms.Padding(10);
+            this.SaveProjectPanel.Size = new System.Drawing.Size(205, 56);
+            this.SaveProjectPanel.TabIndex = 7;
+            // 
+            // SaveProjectButton
+            // 
+            this.SaveProjectButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SaveProjectButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(77)))), ((int)(((byte)(109)))));
+            this.SaveProjectButton.FlatAppearance.BorderSize = 2;
+            this.SaveProjectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveProjectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SaveProjectButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.SaveProjectButton.Location = new System.Drawing.Point(10, 10);
+            this.SaveProjectButton.Name = "SaveProjectButton";
+            this.SaveProjectButton.Size = new System.Drawing.Size(185, 36);
+            this.SaveProjectButton.TabIndex = 5;
+            this.SaveProjectButton.Text = "Сохранить проект";
+            this.SaveProjectButton.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1986,6 +2028,7 @@ namespace kanbanboard
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Канбан-доска";
             this.ControlsPanel.ResumeLayout(false);
+            this.ControlsPanel.PerformLayout();
             this.ExitButtonPanel.ResumeLayout(false);
             this.UserControlsPanel.ResumeLayout(false);
             this.UserNamePanel.ResumeLayout(false);
@@ -1998,6 +2041,7 @@ namespace kanbanboard
             this.BasicContentPanel.ResumeLayout(false);
             this.BasicContentPanel.PerformLayout();
             this.PanelWithTable.ResumeLayout(false);
+            this.PanelWithTable.PerformLayout();
             this.AddingPanel.ResumeLayout(false);
             this.TicketsChangePanel.ResumeLayout(false);
             this.ChangingPanel.ResumeLayout(false);
@@ -2046,6 +2090,8 @@ namespace kanbanboard
             this.SendMessageButtonPanel.PerformLayout();
             this.HeadPanel.ResumeLayout(false);
             this.HeadPanel.PerformLayout();
+            this.ProjectsPanel.ResumeLayout(false);
+            this.SaveProjectPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2122,6 +2168,9 @@ namespace kanbanboard
         private System.Windows.Forms.Button AddTitleButton;
         private System.Windows.Forms.Panel PanelWithTable;
         private System.Windows.Forms.ListBox ListBoxOfProjectNames;
+        private System.Windows.Forms.Panel ProjectsPanel;
+        private System.Windows.Forms.Panel SaveProjectPanel;
+        private System.Windows.Forms.Button SaveProjectButton;
     }
 }
 

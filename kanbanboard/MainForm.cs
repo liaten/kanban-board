@@ -46,35 +46,41 @@ namespace kanbanboard
 
                 // Сохранение данных в базу
                 // Сохраняется только активная таблица (выбранная в listbox)
-                FormClosing += (b, q) =>
-                {
-                    if (TableLayoutPanel.Controls.Count == 0) return;
-                    var allData = new Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>>();
-                    var projectName = ListBoxOfProjectNames.SelectedItem.ToString();
-                    var columnDate = new Dictionary<string, List<Dictionary<string, string>>>();
-                    for (var column = 0; column < TableLayoutPanel.ColumnStyles.Count; column++)
-                    {
-                        var ticket = new List<Dictionary<string, string>>();
+                FormClosing += (b, q) => { if (ListBoxOfProjectNames.SelectedItem != null) Upload(ListBoxOfProjectNames.SelectedItem.ToString()); };
 
-                        for (var row = 1; row < TableLayoutPanel.RowStyles.Count; row++)
-                        {
-                            if (TableLayoutPanel.GetControlFromPosition(column, row) != null)
-                                ticket.Add(new Dictionary<string, string>()
-                                {
-                                    {"Title", ((TicketPanel)TableLayoutPanel.GetControlFromPosition(column, row)).Title.Text},
-                                    {"Ticket", ((TicketPanel)TableLayoutPanel.GetControlFromPosition(column, row)).Ticket.Text},
-                                    {"People", ((TicketPanel)TableLayoutPanel.GetControlFromPosition(column, row)).People.Text}
-                                });
-                        }
-                            
-                        columnDate.Add($"{column + 1}-" + ((Label)TableLayoutPanel.GetControlFromPosition(column, 0)).Text, ticket);
-                    }
-                    allData.Add(projectName, columnDate);
-                    
-                    // Вызов процедуры загрузки данных в базу
-                    _user.UploadData(allData);
-                };
+                // Сохранение по кнопке
+                SaveProjectButton.Click += (b, q) => { if (ListBoxOfProjectNames.SelectedItem != null) Upload(ListBoxOfProjectNames.SelectedItem.ToString()); };
             };
+        }
+
+        // Процедура загрузки в базу
+        private void Upload(string project)
+        {
+            if (TableLayoutPanel.Controls.Count == 0) return;
+            var allData = new Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>>();
+            var projectName = project;
+            var columnDate = new Dictionary<string, List<Dictionary<string, string>>>();
+            for (var column = 0; column < TableLayoutPanel.ColumnStyles.Count; column++)
+            {
+                var ticket = new List<Dictionary<string, string>>();
+
+                for (var row = 1; row < TableLayoutPanel.RowStyles.Count; row++)
+                {
+                    if (TableLayoutPanel.GetControlFromPosition(column, row) != null)
+                        ticket.Add(new Dictionary<string, string>()
+                        {
+                            {"Title", ((TicketPanel)TableLayoutPanel.GetControlFromPosition(column, row)).Title.Text},
+                            {"Ticket", ((TicketPanel)TableLayoutPanel.GetControlFromPosition(column, row)).Ticket.Text},
+                            {"People", ((TicketPanel)TableLayoutPanel.GetControlFromPosition(column, row)).People.Text}
+                        });
+                }
+
+                columnDate.Add($"{column + 1}-" + ((Label)TableLayoutPanel.GetControlFromPosition(column, 0)).Text, ticket);
+            }
+            allData.Add(projectName, columnDate);
+
+            // Вызов процедуры загрузки данных в базу
+            _user.UploadData(allData);
         }
 
         // Загрузить данные в tablelayoutpanel
