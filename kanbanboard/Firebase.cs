@@ -20,6 +20,15 @@ namespace kanbanboard
             Client = new FirebaseClient(new FirebaseConfig() { AuthSecret = Secret, BasePath = Path });
         }
 
+        public static string GetRole(this User user)
+        {
+            if (!(Client.Get($"Users/{user.Username}/Role").ResultAs<string>() is null))
+                return Client.Get($"Users/{user.Username}/Role").ResultAs<string>();
+
+            Client.Set($"Users/{user.Username}/Role", "User");
+            return Client.Get($"Users/{user.Username}/Role").ResultAs<string>();
+        }
+
         // Получаем имена проектов и их данные канбан доски
         // Словарь с данными.
         // [ключ — НАЗВАНИЕ ПРОЕКТА | значение — ДАННЫЕ КАНБАН-ДОСКИ (тоже в виде словаря)]
@@ -61,7 +70,7 @@ namespace kanbanboard
         }
 
         // Загрузить данные
-        public static void UploadData(this User user, Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>> dataDictionary)
+        public static void UploadData(Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>> dataDictionary)
         {
             foreach (var project in dataDictionary)
             {

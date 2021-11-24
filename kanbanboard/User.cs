@@ -7,6 +7,7 @@ namespace kanbanboard
     internal class User
     {
         public string Username { get; set; }
+        public string Role { get; set; }
         public string Password { get; set; }
 
         public Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>> ProjectsData
@@ -21,11 +22,12 @@ namespace kanbanboard
 
         public List<string> ProjectNames { get; set; }
 
-        public User() : this(Login.Username) { }
+        public User() : this(LoginForm.Username) { }
 
         public User(string username)
         {
             Username = username;
+            Role = this.GetRole();
             Password = this.GetPassword();
             ProjectNames = this.GetProjectNames();
         }
