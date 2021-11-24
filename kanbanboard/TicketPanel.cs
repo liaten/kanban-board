@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace kanbanboard
 {
-    internal sealed class TicketPanel : Panel
+    public sealed class TicketPanel : Panel
     {
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         public static extern IntPtr Round(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
