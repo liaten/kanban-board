@@ -319,6 +319,7 @@ namespace kanbanboard
             StripPanel.Size = new Size(StripPanel.Size.Width, TasksButton.Size.Height);
 
             PanelWithTable.BringToFront();
+            ListBoxOfProjectNames.Visible = true;
         }
 
         // Клик на профиль. Открытие панели с данными текущего профиля
@@ -330,6 +331,7 @@ namespace kanbanboard
             StripPanel.Location = UserControlsPanel.Location;
             // изменение размера панельки выделения
             StripPanel.Size = new Size(StripPanel.Size.Width, UserControlsPanel.Size.Height);
+            ListBoxOfProjectNames.Visible = false;
         }
 
         // Обработчик мессенджера
@@ -341,6 +343,7 @@ namespace kanbanboard
             StripPanel.Location = MessengerButton.Location;
             // изменение размера панельки выделения
             StripPanel.Size = new Size(StripPanel.Size.Width, MessengerButton.Size.Height);
+            ListBoxOfProjectNames.Visible = false;
         }
 
         // Обработчик календаря
@@ -355,6 +358,7 @@ namespace kanbanboard
             StripPanel.Location = CalendarButton.Location;
             // изменение размера панельки выделения
             StripPanel.Size = new Size(StripPanel.Size.Width, CalendarButton.Size.Height);
+            ListBoxOfProjectNames.Visible = false;
         }
         private void CalendarPanel_Resize(object sender, EventArgs e)
         {
@@ -415,6 +419,11 @@ namespace kanbanboard
         private void TableLayoutPanel_DragLeave(object sender, EventArgs e)
         {
 
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

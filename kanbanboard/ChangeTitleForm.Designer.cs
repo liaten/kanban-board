@@ -29,6 +29,7 @@ namespace kanbanboard
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangeTitleForm));
             this.TitleTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -48,6 +49,7 @@ namespace kanbanboard
             this.ClientSize = new System.Drawing.Size(283, 40);
             this.Controls.Add(this.TitleTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "ChangeTitleForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
