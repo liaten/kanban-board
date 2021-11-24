@@ -29,5 +29,13 @@
         <item name="android:textAllCaps">true</item>
     </style>
 
+    <style name="textview" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:textSize">15dp</item>
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textColor">@color/btn_sing_in_stroke</item>
+    </style>
+
+
+
 
 </resources>
