@@ -81,12 +81,12 @@ namespace kanbanboard
             // 
             this.AuthorizationLabel.AutoSize = true;
             this.AuthorizationLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AuthorizationLabel.Font = new System.Drawing.Font("Roboto", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AuthorizationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.AuthorizationLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.AuthorizationLabel.Location = new System.Drawing.Point(40, 15);
             this.AuthorizationLabel.Name = "AuthorizationLabel";
             this.AuthorizationLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.AuthorizationLabel.Size = new System.Drawing.Size(181, 33);
+            this.AuthorizationLabel.Size = new System.Drawing.Size(189, 31);
             this.AuthorizationLabel.TabIndex = 1;
             this.AuthorizationLabel.Text = "Авторизация";
             this.AuthorizationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -96,7 +96,7 @@ namespace kanbanboard
             this.RegistrationButton.BackColor = System.Drawing.Color.Transparent;
             this.RegistrationButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RegistrationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RegistrationButton.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RegistrationButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.RegistrationButton.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.RegistrationButton.Location = new System.Drawing.Point(15, 15);
             this.RegistrationButton.Name = "RegistrationButton";
@@ -104,17 +104,18 @@ namespace kanbanboard
             this.RegistrationButton.TabIndex = 2;
             this.RegistrationButton.Text = "Регистрация";
             this.RegistrationButton.UseVisualStyleBackColor = false;
+            this.RegistrationButton.Click += new System.EventHandler(this.RegistrationButton_Click);
             // 
             // textBoxLogin
             // 
             this.textBoxLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.textBoxLogin.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxLogin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxLogin.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.textBoxLogin.Location = new System.Drawing.Point(15, 15);
             this.textBoxLogin.Name = "textBoxLogin";
-            this.textBoxLogin.Size = new System.Drawing.Size(194, 19);
+            this.textBoxLogin.Size = new System.Drawing.Size(194, 17);
             this.textBoxLogin.TabIndex = 3;
             this.textBoxLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxLogin.MouseEnter += new System.EventHandler(this.TextBox1_MouseEnter);
@@ -125,11 +126,11 @@ namespace kanbanboard
             this.textBoxPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.textBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxPassword.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxPassword.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.textBoxPassword.Location = new System.Drawing.Point(15, 15);
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(194, 19);
+            this.textBoxPassword.Size = new System.Drawing.Size(194, 17);
             this.textBoxPassword.TabIndex = 4;
             this.textBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxPassword.UseSystemPasswordChar = true;
@@ -140,11 +141,11 @@ namespace kanbanboard
             // 
             this.loginLabel.AutoSize = true;
             this.loginLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.loginLabel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.loginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.loginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.loginLabel.Location = new System.Drawing.Point(15, 15);
             this.loginLabel.Name = "loginLabel";
-            this.loginLabel.Size = new System.Drawing.Size(44, 15);
+            this.loginLabel.Size = new System.Drawing.Size(47, 16);
             this.loginLabel.TabIndex = 6;
             this.loginLabel.Text = "Логин";
             // 
@@ -152,11 +153,11 @@ namespace kanbanboard
             // 
             this.passLabel.AutoSize = true;
             this.passLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.passLabel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.passLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.passLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.passLabel.Location = new System.Drawing.Point(15, 15);
             this.passLabel.Name = "passLabel";
-            this.passLabel.Size = new System.Drawing.Size(52, 15);
+            this.passLabel.Size = new System.Drawing.Size(57, 16);
             this.passLabel.TabIndex = 7;
             this.passLabel.Text = "Пароль";
             // 
@@ -199,11 +200,11 @@ namespace kanbanboard
             this.textBoxEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.textBoxEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxEmail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxEmail.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.textBoxEmail.Location = new System.Drawing.Point(15, 15);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(194, 19);
+            this.textBoxEmail.Size = new System.Drawing.Size(194, 17);
             this.textBoxEmail.TabIndex = 8;
             this.textBoxEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxEmail.Click += new System.EventHandler(this.TextBoxEmail_Click);
@@ -255,11 +256,11 @@ namespace kanbanboard
             // 
             this.EmailLabel.AutoSize = true;
             this.EmailLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EmailLabel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.EmailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.EmailLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.EmailLabel.Location = new System.Drawing.Point(10, 10);
             this.EmailLabel.Name = "EmailLabel";
-            this.EmailLabel.Size = new System.Drawing.Size(91, 30);
+            this.EmailLabel.Size = new System.Drawing.Size(98, 32);
             this.EmailLabel.TabIndex = 9;
             this.EmailLabel.Text = "Электронная \n почта";
             // 
@@ -290,7 +291,7 @@ namespace kanbanboard
             this.StayLoggedCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.StayLoggedCheckBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.StayLoggedCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.StayLoggedCheckBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.StayLoggedCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.StayLoggedCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
             this.StayLoggedCheckBox.Location = new System.Drawing.Point(15, 0);
             this.StayLoggedCheckBox.Name = "StayLoggedCheckBox";
@@ -318,7 +319,7 @@ namespace kanbanboard
             this.LoginButton.BackColor = System.Drawing.Color.Transparent;
             this.LoginButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LoginButton.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LoginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LoginButton.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.LoginButton.Location = new System.Drawing.Point(15, 15);
             this.LoginButton.Margin = new System.Windows.Forms.Padding(50);
@@ -376,7 +377,7 @@ namespace kanbanboard
             this.CheckBoxRegistration.AutoSize = true;
             this.CheckBoxRegistration.Dock = System.Windows.Forms.DockStyle.Top;
             this.CheckBoxRegistration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CheckBoxRegistration.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CheckBoxRegistration.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CheckBoxRegistration.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
             this.CheckBoxRegistration.Location = new System.Drawing.Point(15, 17);
             this.CheckBoxRegistration.Name = "CheckBoxRegistration";
@@ -425,7 +426,7 @@ namespace kanbanboard
             this.Controls.Add(this.BottomPanel);
             this.Controls.Add(this.HeaderPanel);
             this.Controls.Add(this.LoginPasswordMailPanel);
-            this.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(350, 360);
             this.Name = "Login";
