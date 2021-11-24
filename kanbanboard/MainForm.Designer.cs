@@ -230,7 +230,7 @@ namespace kanbanboard
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(185, 36);
             this.ExitButton.TabIndex = 5;
-            this.ExitButton.Text = "Выход из аккаунта";
+            this.ExitButton.Text = "Выйти из аккаунта";
             this.ExitButton.UseVisualStyleBackColor = true;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
