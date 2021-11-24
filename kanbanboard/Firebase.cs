@@ -65,7 +65,7 @@ namespace kanbanboard
         {
             foreach (var project in dataDictionary)
             {
-                Client.Update($"{project.Key}", project.Value);
+                Client.Set($"{project.Key}", project.Value);
             }
         }
 
