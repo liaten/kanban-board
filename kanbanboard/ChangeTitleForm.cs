@@ -21,6 +21,10 @@ namespace kanbanboard
         // Сохранение
         private void ChangeTitleForm_FormClosing(object sender, FormClosingEventArgs e) => _titlePanel.TitleColumnLabel.Text = TitleTextBox.Text;
 
-        private void ChangeTitleForm_Load(object sender, EventArgs e) => TitleTextBox.Focus();
+        private void ChangeTitleForm_Load(object sender, EventArgs e)
+        {
+            TitleTextBox.Text = _titlePanel.TitleColumnLabel.Text;
+            TitleTextBox.Focus();
+        }
     }
 }
