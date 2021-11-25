@@ -58,8 +58,8 @@ namespace kanbanboard
                 // Добавить колонку
                 AddTitleButton.Click += (u, p) =>
                 {
-                    AddTitleToPanel("Это тест", TableLayoutPanel.ColumnStyles.Count);
-                    AddControlToPanel("test", "test", "test", TableLayoutPanel.ColumnStyles.Count, 1);
+                    AddTitleToPanel("Это тайтл", TableLayoutPanel.ColumnStyles.Count);
+                    AddControlToPanel("Заголовок", "Описание", "Разработчики", TableLayoutPanel.ColumnStyles.Count, 1);
                 };
 
                 // Сохранение данных в базу
@@ -76,7 +76,6 @@ namespace kanbanboard
                 };
 
                 // Загрузка первого элемента из списка
-
                 ListBoxOfProjectNames.SelectedIndex = 0;
             };
         }
@@ -237,6 +236,12 @@ namespace kanbanboard
 
                 TableLayoutPanel.ColumnCount--;
                 ResizeTable();
+            };
+
+            titlePanel.Click += (s, a) =>
+            {
+                if (!Application.OpenForms.OfType<ChangeTitleForm>().Any())
+                    new ChangeTitleForm(this, titlePanel).Show();
             };
         }
 
