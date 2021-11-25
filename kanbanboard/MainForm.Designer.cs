@@ -176,7 +176,7 @@ namespace kanbanboard
             this.SaveProjectButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(77)))), ((int)(((byte)(109)))));
             this.SaveProjectButton.FlatAppearance.BorderSize = 2;
             this.SaveProjectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SaveProjectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SaveProjectButton.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.SaveProjectButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.SaveProjectButton.Location = new System.Drawing.Point(10, 10);
             this.SaveProjectButton.Name = "SaveProjectButton";
@@ -190,7 +190,7 @@ namespace kanbanboard
             this.ListBoxOfProjectNames.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.ListBoxOfProjectNames.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ListBoxOfProjectNames.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ListBoxOfProjectNames.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.ListBoxOfProjectNames.Font = new System.Drawing.Font("Roboto", 11.25F);
             this.ListBoxOfProjectNames.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.ListBoxOfProjectNames.FormattingEnabled = true;
             this.ListBoxOfProjectNames.IntegralHeight = false;
@@ -224,7 +224,7 @@ namespace kanbanboard
             this.ExitButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.ExitButton.FlatAppearance.BorderSize = 2;
             this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ExitButton.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ExitButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.ExitButton.Location = new System.Drawing.Point(10, 10);
             this.ExitButton.Name = "ExitButton";
@@ -248,7 +248,7 @@ namespace kanbanboard
             this.CalendarButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.CalendarButton.FlatAppearance.BorderSize = 0;
             this.CalendarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CalendarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CalendarButton.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CalendarButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.CalendarButton.Location = new System.Drawing.Point(0, 170);
             this.CalendarButton.Name = "CalendarButton";
@@ -263,7 +263,7 @@ namespace kanbanboard
             this.MessengerButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.MessengerButton.FlatAppearance.BorderSize = 0;
             this.MessengerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MessengerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MessengerButton.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.MessengerButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.MessengerButton.Location = new System.Drawing.Point(0, 120);
             this.MessengerButton.Name = "MessengerButton";
@@ -278,7 +278,7 @@ namespace kanbanboard
             this.TasksButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.TasksButton.FlatAppearance.BorderSize = 0;
             this.TasksButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.TasksButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TasksButton.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TasksButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.TasksButton.Location = new System.Drawing.Point(0, 70);
             this.TasksButton.Name = "TasksButton";
@@ -317,7 +317,7 @@ namespace kanbanboard
             this.UsernameLabel.AutoSize = true;
             this.UsernameLabel.BackColor = System.Drawing.Color.Transparent;
             this.UsernameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UsernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.UsernameLabel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.UsernameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.UsernameLabel.Location = new System.Drawing.Point(3, 3);
             this.UsernameLabel.Name = "UsernameLabel";
@@ -342,7 +342,7 @@ namespace kanbanboard
             // 
             this.UserInfoLabel.AutoSize = true;
             this.UserInfoLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UserInfoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.UserInfoLabel.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.UserInfoLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.UserInfoLabel.Location = new System.Drawing.Point(3, 3);
             this.UserInfoLabel.Name = "UserInfoLabel";
@@ -381,7 +381,7 @@ namespace kanbanboard
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LabelHead.AutoSize = true;
-            this.LabelHead.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelHead.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelHead.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.LabelHead.Location = new System.Drawing.Point(28, 17);
             this.LabelHead.Name = "LabelHead";
@@ -400,7 +400,7 @@ namespace kanbanboard
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 681F));
             this.TableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TableLayoutPanel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TableLayoutPanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
             this.TableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.TableLayoutPanel.Name = "TableLayoutPanel";
@@ -1461,7 +1461,7 @@ namespace kanbanboard
             this.AddTitleButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.AddTitleButton.FlatAppearance.BorderSize = 0;
             this.AddTitleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddTitleButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AddTitleButton.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.AddTitleButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.AddTitleButton.Location = new System.Drawing.Point(0, 0);
             this.AddTitleButton.Name = "AddTitleButton";
@@ -1506,7 +1506,7 @@ namespace kanbanboard
             // TIMEZONE_GET
             // 
             this.TIMEZONE_GET.AutoSize = true;
-            this.TIMEZONE_GET.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.TIMEZONE_GET.Font = new System.Drawing.Font("Roboto", 12.25F);
             this.TIMEZONE_GET.ForeColor = System.Drawing.SystemColors.Control;
             this.TIMEZONE_GET.Location = new System.Drawing.Point(3, 3);
             this.TIMEZONE_GET.Name = "TIMEZONE_GET";
@@ -1529,7 +1529,7 @@ namespace kanbanboard
             // 
             this.TimeZoneLabel.AutoSize = true;
             this.TimeZoneLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TimeZoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
+            this.TimeZoneLabel.Font = new System.Drawing.Font("Roboto", 12.25F, System.Drawing.FontStyle.Bold);
             this.TimeZoneLabel.ForeColor = System.Drawing.SystemColors.Control;
             this.TimeZoneLabel.Location = new System.Drawing.Point(3, 3);
             this.TimeZoneLabel.Name = "TimeZoneLabel";
@@ -1560,7 +1560,7 @@ namespace kanbanboard
             // ORGANIZATION_GET
             // 
             this.ORGANIZATION_GET.AutoSize = true;
-            this.ORGANIZATION_GET.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.ORGANIZATION_GET.Font = new System.Drawing.Font("Roboto", 12.25F);
             this.ORGANIZATION_GET.ForeColor = System.Drawing.SystemColors.Control;
             this.ORGANIZATION_GET.Location = new System.Drawing.Point(3, 3);
             this.ORGANIZATION_GET.Name = "ORGANIZATION_GET";
@@ -1583,7 +1583,7 @@ namespace kanbanboard
             // 
             this.OrganizationLabel.AutoSize = true;
             this.OrganizationLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OrganizationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
+            this.OrganizationLabel.Font = new System.Drawing.Font("Roboto", 12.25F, System.Drawing.FontStyle.Bold);
             this.OrganizationLabel.ForeColor = System.Drawing.SystemColors.Control;
             this.OrganizationLabel.Location = new System.Drawing.Point(3, 3);
             this.OrganizationLabel.Name = "OrganizationLabel";
@@ -1614,7 +1614,7 @@ namespace kanbanboard
             // NICKNAME_GET
             // 
             this.NICKNAME_GET.AutoSize = true;
-            this.NICKNAME_GET.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.NICKNAME_GET.Font = new System.Drawing.Font("Roboto", 12.25F);
             this.NICKNAME_GET.ForeColor = System.Drawing.SystemColors.Control;
             this.NICKNAME_GET.Location = new System.Drawing.Point(3, 3);
             this.NICKNAME_GET.Name = "NICKNAME_GET";
@@ -1637,7 +1637,7 @@ namespace kanbanboard
             // 
             this.NickName.AutoSize = true;
             this.NickName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NickName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
+            this.NickName.Font = new System.Drawing.Font("Roboto", 12.25F, System.Drawing.FontStyle.Bold);
             this.NickName.ForeColor = System.Drawing.SystemColors.Control;
             this.NickName.Location = new System.Drawing.Point(3, 3);
             this.NickName.Name = "NickName";
@@ -1668,7 +1668,7 @@ namespace kanbanboard
             // FULLNAME_GET
             // 
             this.FULLNAME_GET.AutoSize = true;
-            this.FULLNAME_GET.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.FULLNAME_GET.Font = new System.Drawing.Font("Roboto", 12.25F);
             this.FULLNAME_GET.ForeColor = System.Drawing.SystemColors.Control;
             this.FULLNAME_GET.Location = new System.Drawing.Point(5, 5);
             this.FULLNAME_GET.Name = "FULLNAME_GET";
@@ -1691,7 +1691,7 @@ namespace kanbanboard
             // 
             this.FullName.AutoSize = true;
             this.FullName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
+            this.FullName.Font = new System.Drawing.Font("Roboto", 12.25F, System.Drawing.FontStyle.Bold);
             this.FullName.ForeColor = System.Drawing.SystemColors.Control;
             this.FullName.Location = new System.Drawing.Point(5, 5);
             this.FullName.Name = "FullName";
@@ -1713,7 +1713,7 @@ namespace kanbanboard
             // CalendarLabel
             // 
             this.CalendarLabel.AutoSize = true;
-            this.CalendarLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CalendarLabel.Font = new System.Drawing.Font("Roboto", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CalendarLabel.ForeColor = System.Drawing.SystemColors.Control;
             this.CalendarLabel.Location = new System.Drawing.Point(28, 148);
             this.CalendarLabel.MaximumSize = new System.Drawing.Size(800, 480);
@@ -1760,7 +1760,7 @@ namespace kanbanboard
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DialogSearchTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.DialogSearchTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.DialogSearchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DialogSearchTextBox.Font = new System.Drawing.Font("Roboto", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DialogSearchTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.DialogSearchTextBox.Location = new System.Drawing.Point(15, 18);
             this.DialogSearchTextBox.Name = "DialogSearchTextBox";
@@ -1782,7 +1782,7 @@ namespace kanbanboard
             this.DialogSearchTitleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DialogSearchTitleLabel.AutoSize = true;
-            this.DialogSearchTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DialogSearchTitleLabel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DialogSearchTitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.DialogSearchTitleLabel.Location = new System.Drawing.Point(43, 18);
             this.DialogSearchTitleLabel.Name = "DialogSearchTitleLabel";
@@ -1799,7 +1799,7 @@ namespace kanbanboard
             this.DialogMainPanel.Controls.Add(this.DialogTitlePanel);
             this.DialogMainPanel.Controls.Add(this.MessageMainPanel);
             this.DialogMainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DialogMainPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DialogMainPanel.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DialogMainPanel.Location = new System.Drawing.Point(0, 0);
             this.DialogMainPanel.Name = "DialogMainPanel";
             this.DialogMainPanel.Size = new System.Drawing.Size(979, 495);
@@ -1821,7 +1821,7 @@ namespace kanbanboard
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DialogTitleLabel.AutoSize = true;
-            this.DialogTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DialogTitleLabel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DialogTitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.DialogTitleLabel.Location = new System.Drawing.Point(15, 18);
             this.DialogTitleLabel.Name = "DialogTitleLabel";
@@ -1855,7 +1855,7 @@ namespace kanbanboard
             this.MessageTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.MessageTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.MessageTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MessageTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MessageTextBox.Font = new System.Drawing.Font("Roboto", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.MessageTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.MessageTextBox.Location = new System.Drawing.Point(15, 15);
             this.MessageTextBox.Margin = new System.Windows.Forms.Padding(10);
@@ -1906,7 +1906,7 @@ namespace kanbanboard
             this.Controls.Add(this.BasicPanel);
             this.Controls.Add(this.ControlsPanel);
             this.DoubleBuffered = true;
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(1200, 600);
