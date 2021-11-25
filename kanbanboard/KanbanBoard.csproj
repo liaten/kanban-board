@@ -50,7 +50,9 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -72,6 +74,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChangeTitleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeTitleForm.Designer.cs">
+      <DependentUpon>ChangeTitleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions.cs" />
     <Compile Include="Firebase.cs" />
     <Compile Include="MainForm.cs">
@@ -80,18 +88,33 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
+    <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TicketPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="TicketsChangeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TicketsChangeForm.Designer.cs">
+      <DependentUpon>TicketsChangeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TitlePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="User.cs" />
+    <EmbeddedResource Include="ChangeTitleForm.resx">
+      <DependentUpon>ChangeTitleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TicketsChangeForm.resx">
+      <DependentUpon>TicketsChangeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Resources\send-message %281%29.png" />
     <None Include="Resources\send-message.png" />
@@ -100,8 +123,8 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

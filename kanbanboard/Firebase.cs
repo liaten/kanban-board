@@ -20,10 +20,19 @@ namespace kanbanboard
             Client = new FirebaseClient(new FirebaseConfig() { AuthSecret = Secret, BasePath = Path });
         }
 
+        public static string GetRole(this User user)
+        {
+            if (!(Client.Get($"Users/{user.Username}/Role").ResultAs<string>() is null))
+                return Client.Get($"Users/{user.Username}/Role").ResultAs<string>();
+
+            Client.Set($"Users/{user.Username}/Role", "User");
+            return Client.Get($"Users/{user.Username}/Role").ResultAs<string>();
+        }
+
         // Получаем имена проектов и их данные канбан доски
         // Словарь с данными.
         // [ключ — НАЗВАНИЕ ПРОЕКТА | значение — ДАННЫЕ КАНБАН-ДОСКИ (тоже в виде словаря)]
-        public static Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>> GetProjectsData(this User user)
+        public static Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>> GetDataForAllProjects(this User user)
         {
             var dataOfProjects = new Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>>();
 
@@ -45,6 +54,28 @@ namespace kanbanboard
             }
 
             return dataOfProjects;
+        }
+
+        // Получить данные одного проекта
+        public static Dictionary<string, List<Dictionary<string, string>>> GetProjectData(string projectName)
+        {
+            // Получаем канбан-доску проекта, если он есть в базе
+            var data = Client.Get($"{projectName}").ResultAs<Dictionary<string, List<Dictionary<string, string>>>>();
+            if (data == null) return null;
+
+            // clear nulls
+            data.Values.ToList().ForEach(x => x.RemoveAll(y => y is null));
+
+            return data;
+        }
+
+        // Загрузить данные
+        public static void UploadData(Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>> dataDictionary)
+        {
+            foreach (var project in dataDictionary)
+            {
+                Client.Set($"{project.Key}", project.Value);
+            }
         }
 
         // Получить имена всех проектов пользователя

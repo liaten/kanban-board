@@ -71,7 +71,6 @@
             app:met_singleLineEllipsis="true" />
 
 
-
     </LinearLayout>
 
     <LinearLayout
@@ -116,24 +115,22 @@
 
 
         <Button
-            style="@style/Buttons_def"
             android:id="@+id/SingIn"
+            style="@style/Buttons_def"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="6dp"
             android:layout_weight="1"
-            android:text="@string/SingIn"
- />
+            android:text="@string/SingIn" />
 
         <Button
-            style="@style/Buttons_def"
             android:id="@+id/Register"
+            style="@style/Buttons_def"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="6dp"
             android:layout_weight="1"
-            android:text="@string/Register"
- />
+            android:text="@string/Register" />
     </LinearLayout>
 
     <LinearLayout

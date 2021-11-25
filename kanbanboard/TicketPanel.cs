@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace kanbanboard
 {
-    internal sealed class TicketPanel : Panel
+    public sealed class TicketPanel : Panel
     {
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         public static extern IntPtr Round(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
@@ -61,10 +61,9 @@ namespace kanbanboard
             // кнопка удаления тикета, перемещения ВПРАВО, перемещения ВЛЕВО
             DelButton = new Button()
             {
-                Size = new Size(30, 30),
                 Name = "delButton",
                 Text = "✖",
-                Font = new Font("Tahoma", 8.5f),
+                Font = new Font("Tahoma", 7.5f),
             };
             LeftButton = new Button()
             {
@@ -84,7 +83,7 @@ namespace kanbanboard
                  x.FlatAppearance.MouseDownBackColor = Color.Transparent;
                  x.FlatAppearance.MouseOverBackColor = Color.Transparent;
                  x.AutoSize = true;
-                 x.Size = new Size(35, 35);
+                 x.Size = new Size(15, 15);
                  x.FlatStyle = FlatStyle.Flat;
                  x.FlatAppearance.BorderSize = 0;
                  x.ForeColor = Color.WhiteSmoke;

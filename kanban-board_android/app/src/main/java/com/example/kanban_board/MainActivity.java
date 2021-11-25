@@ -42,11 +42,18 @@ public class MainActivity extends AppCompatActivity {
 
     RelativeLayout root;
 
+    MaterialEditText log_f;
+    MaterialEditText pas_f;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        log_f = findViewById(R.id.login_field_e);
+        pas_f = findViewById(R.id.password_field_e);
 
         btnSingIn = findViewById(R.id.SingIn);
         btnRegister = findViewById(R.id.Register);
@@ -58,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
 
         root = findViewById(R.id.main_layout);
 
+        log_f.setText("test@mail.ru");
+        pas_f.setText("123456");
 
         //Кнопки
 
