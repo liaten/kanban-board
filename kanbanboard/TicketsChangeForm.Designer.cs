@@ -57,17 +57,19 @@ namespace kanbanboard
             // 
             // ChangingTicketTextBox
             // 
+            this.ChangingTicketTextBox.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ChangingTicketTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.ChangingTicketTextBox.Location = new System.Drawing.Point(84, 122);
+            this.ChangingTicketTextBox.Location = new System.Drawing.Point(12, 193);
             this.ChangingTicketTextBox.Multiline = true;
             this.ChangingTicketTextBox.Name = "ChangingTicketTextBox";
-            this.ChangingTicketTextBox.Size = new System.Drawing.Size(236, 135);
+            this.ChangingTicketTextBox.Size = new System.Drawing.Size(381, 135);
             this.ChangingTicketTextBox.TabIndex = 2;
+            this.ChangingTicketTextBox.MouseEnter += new System.EventHandler(this.ChangingTicketTextBox_MouseEnter);
+            this.ChangingTicketTextBox.MouseLeave += new System.EventHandler(this.ChangingTicketTextBox_MouseLeave);
             // 
             // SaveChangesButton
             // 
             this.SaveChangesButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SaveChangesButton.FlatAppearance.BorderSize = 0;
             this.SaveChangesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveChangesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.SaveChangesButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
@@ -83,8 +85,8 @@ namespace kanbanboard
             // 
             this.ChangingPeopleLabel.AutoSize = true;
             this.ChangingPeopleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ChangingPeopleLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.ChangingPeopleLabel.Location = new System.Drawing.Point(97, 260);
+            this.ChangingPeopleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.ChangingPeopleLabel.Location = new System.Drawing.Point(12, 92);
             this.ChangingPeopleLabel.Name = "ChangingPeopleLabel";
             this.ChangingPeopleLabel.Size = new System.Drawing.Size(197, 29);
             this.ChangingPeopleLabel.TabIndex = 5;
@@ -95,8 +97,8 @@ namespace kanbanboard
             // 
             this.ChangingTicketLabel.AutoSize = true;
             this.ChangingTicketLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ChangingTicketLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.ChangingTicketLabel.Location = new System.Drawing.Point(126, 90);
+            this.ChangingTicketLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.ChangingTicketLabel.Location = new System.Drawing.Point(12, 161);
             this.ChangingTicketLabel.Name = "ChangingTicketLabel";
             this.ChangingTicketLabel.Size = new System.Drawing.Size(139, 29);
             this.ChangingTicketLabel.TabIndex = 4;
@@ -106,8 +108,8 @@ namespace kanbanboard
             // 
             this.ChangingTitleLabel.AutoSize = true;
             this.ChangingTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ChangingTitleLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.ChangingTitleLabel.Location = new System.Drawing.Point(124, 21);
+            this.ChangingTitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.ChangingTitleLabel.Location = new System.Drawing.Point(12, 21);
             this.ChangingTitleLabel.Name = "ChangingTitleLabel";
             this.ChangingTitleLabel.Size = new System.Drawing.Size(143, 29);
             this.ChangingTitleLabel.TabIndex = 3;
@@ -115,20 +117,26 @@ namespace kanbanboard
             // 
             // ChangingPeopleTextBox
             // 
+            this.ChangingPeopleTextBox.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ChangingPeopleTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.ChangingPeopleTextBox.Location = new System.Drawing.Point(84, 299);
+            this.ChangingPeopleTextBox.Location = new System.Drawing.Point(12, 124);
             this.ChangingPeopleTextBox.Name = "ChangingPeopleTextBox";
-            this.ChangingPeopleTextBox.Size = new System.Drawing.Size(236, 26);
+            this.ChangingPeopleTextBox.Size = new System.Drawing.Size(381, 26);
             this.ChangingPeopleTextBox.TabIndex = 3;
+            this.ChangingPeopleTextBox.MouseEnter += new System.EventHandler(this.ChangingPeopleTextBox_MouseEnter);
+            this.ChangingPeopleTextBox.MouseLeave += new System.EventHandler(this.ChangingPeopleTextBox_MouseLeave);
             // 
             // ChangingTitleTextBox
             // 
+            this.ChangingTitleTextBox.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ChangingTitleTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.ChangingTitleTextBox.Location = new System.Drawing.Point(84, 53);
+            this.ChangingTitleTextBox.Location = new System.Drawing.Point(12, 53);
             this.ChangingTitleTextBox.Multiline = true;
             this.ChangingTitleTextBox.Name = "ChangingTitleTextBox";
-            this.ChangingTitleTextBox.Size = new System.Drawing.Size(236, 34);
+            this.ChangingTitleTextBox.Size = new System.Drawing.Size(381, 26);
             this.ChangingTitleTextBox.TabIndex = 1;
+            this.ChangingTitleTextBox.MouseEnter += new System.EventHandler(this.ChangingTitleTextBox_MouseEnter);
+            this.ChangingTitleTextBox.MouseLeave += new System.EventHandler(this.ChangingTitleTextBox_MouseLeave);
             // 
             // TicketsChangeForm
             // 

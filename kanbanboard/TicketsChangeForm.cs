@@ -40,5 +40,35 @@ namespace kanbanboard
             _ticket.Ticket.Text = ChangingTicketTextBox.Text;
             _ticket.People.Text = ChangingPeopleTextBox.Text;
         }
+
+        private void ChangingTitleTextBox_MouseEnter(object sender, EventArgs e)
+        {
+            ChangingTitleLabel.ForeColor = Color.FromArgb(114, 119, 139);
+        }
+
+        private void ChangingTitleTextBox_MouseLeave(object sender, EventArgs e)
+        {
+            ChangingTitleLabel.ForeColor = Color.FromArgb(74, 79, 99);
+        }
+
+        private void ChangingPeopleTextBox_MouseEnter(object sender, EventArgs e)
+        {
+            ChangingPeopleLabel.ForeColor = Color.FromArgb(114, 119, 139);
+        }
+
+        private void ChangingPeopleTextBox_MouseLeave(object sender, EventArgs e)
+        {
+            ChangingPeopleLabel.ForeColor = Color.FromArgb(74, 79, 99);
+        }
+
+        private void ChangingTicketTextBox_MouseEnter(object sender, EventArgs e)
+        {
+            ChangingTicketLabel.ForeColor = Color.FromArgb(114, 119, 139); 
+        }
+
+        private void ChangingTicketTextBox_MouseLeave(object sender, EventArgs e)
+        {
+            ChangingTicketLabel.ForeColor = Color.FromArgb(74, 79, 99);
+        }
     }
 }

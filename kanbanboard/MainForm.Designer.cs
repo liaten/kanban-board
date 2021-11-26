@@ -194,7 +194,7 @@ namespace kanbanboard
             this.ListBoxOfProjectNames.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.ListBoxOfProjectNames.FormattingEnabled = true;
             this.ListBoxOfProjectNames.IntegralHeight = false;
-            this.ListBoxOfProjectNames.ItemHeight = 18;
+            this.ListBoxOfProjectNames.ItemHeight = 23;
             this.ListBoxOfProjectNames.Items.AddRange(new object[] {
             "1",
             "2",
@@ -321,7 +321,7 @@ namespace kanbanboard
             this.UsernameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.UsernameLabel.Location = new System.Drawing.Point(3, 3);
             this.UsernameLabel.Name = "UsernameLabel";
-            this.UsernameLabel.Size = new System.Drawing.Size(132, 16);
+            this.UsernameLabel.Size = new System.Drawing.Size(137, 20);
             this.UsernameLabel.TabIndex = 1;
             this.UsernameLabel.Text = "USERNAME_GET";
             this.UsernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -346,7 +346,7 @@ namespace kanbanboard
             this.UserInfoLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.UserInfoLabel.Location = new System.Drawing.Point(3, 3);
             this.UserInfoLabel.Name = "UserInfoLabel";
-            this.UserInfoLabel.Size = new System.Drawing.Size(90, 13);
+            this.UserInfoLabel.Size = new System.Drawing.Size(106, 17);
             this.UserInfoLabel.TabIndex = 2;
             this.UserInfoLabel.Text = "USERINFO_GET";
             this.UserInfoLabel.Click += new System.EventHandler(this.UserControlsPanel_Click);
@@ -385,7 +385,7 @@ namespace kanbanboard
             this.LabelHead.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.LabelHead.Location = new System.Drawing.Point(28, 17);
             this.LabelHead.Name = "LabelHead";
-            this.LabelHead.Size = new System.Drawing.Size(150, 37);
+            this.LabelHead.Size = new System.Drawing.Size(196, 48);
             this.LabelHead.TabIndex = 1;
             this.LabelHead.Text = "Профиль";
             // 
@@ -1497,10 +1497,10 @@ namespace kanbanboard
             // 
             this.TimeZoneGetPanel.Controls.Add(this.TIMEZONE_GET);
             this.TimeZoneGetPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TimeZoneGetPanel.Location = new System.Drawing.Point(167, 0);
+            this.TimeZoneGetPanel.Location = new System.Drawing.Point(180, 0);
             this.TimeZoneGetPanel.Name = "TimeZoneGetPanel";
             this.TimeZoneGetPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.TimeZoneGetPanel.Size = new System.Drawing.Size(812, 36);
+            this.TimeZoneGetPanel.Size = new System.Drawing.Size(799, 36);
             this.TimeZoneGetPanel.TabIndex = 4;
             // 
             // TIMEZONE_GET
@@ -1510,7 +1510,7 @@ namespace kanbanboard
             this.TIMEZONE_GET.ForeColor = System.Drawing.SystemColors.Control;
             this.TIMEZONE_GET.Location = new System.Drawing.Point(3, 3);
             this.TIMEZONE_GET.Name = "TIMEZONE_GET";
-            this.TIMEZONE_GET.Size = new System.Drawing.Size(136, 20);
+            this.TIMEZONE_GET.Size = new System.Drawing.Size(164, 25);
             this.TIMEZONE_GET.TabIndex = 1;
             this.TIMEZONE_GET.Text = "TIMEZONE_GET";
             // 
@@ -1522,7 +1522,7 @@ namespace kanbanboard
             this.TimeZoneLabelPanel.Location = new System.Drawing.Point(0, 0);
             this.TimeZoneLabelPanel.Name = "TimeZoneLabelPanel";
             this.TimeZoneLabelPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.TimeZoneLabelPanel.Size = new System.Drawing.Size(167, 36);
+            this.TimeZoneLabelPanel.Size = new System.Drawing.Size(180, 36);
             this.TimeZoneLabelPanel.TabIndex = 3;
             // 
             // TimeZoneLabel
@@ -1533,7 +1533,7 @@ namespace kanbanboard
             this.TimeZoneLabel.ForeColor = System.Drawing.SystemColors.Control;
             this.TimeZoneLabel.Location = new System.Drawing.Point(3, 3);
             this.TimeZoneLabel.Name = "TimeZoneLabel";
-            this.TimeZoneLabel.Size = new System.Drawing.Size(161, 20);
+            this.TimeZoneLabel.Size = new System.Drawing.Size(174, 25);
             this.TimeZoneLabel.TabIndex = 0;
             this.TimeZoneLabel.Text = "Временная зона";
             // 
@@ -1551,10 +1551,10 @@ namespace kanbanboard
             // 
             this.OrganizationGetPanel.Controls.Add(this.ORGANIZATION_GET);
             this.OrganizationGetPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OrganizationGetPanel.Location = new System.Drawing.Point(136, 0);
+            this.OrganizationGetPanel.Location = new System.Drawing.Point(148, 0);
             this.OrganizationGetPanel.Name = "OrganizationGetPanel";
             this.OrganizationGetPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.OrganizationGetPanel.Size = new System.Drawing.Size(843, 36);
+            this.OrganizationGetPanel.Size = new System.Drawing.Size(831, 36);
             this.OrganizationGetPanel.TabIndex = 4;
             // 
             // ORGANIZATION_GET
@@ -1564,7 +1564,7 @@ namespace kanbanboard
             this.ORGANIZATION_GET.ForeColor = System.Drawing.SystemColors.Control;
             this.ORGANIZATION_GET.Location = new System.Drawing.Point(3, 3);
             this.ORGANIZATION_GET.Name = "ORGANIZATION_GET";
-            this.ORGANIZATION_GET.Size = new System.Drawing.Size(176, 20);
+            this.ORGANIZATION_GET.Size = new System.Drawing.Size(210, 25);
             this.ORGANIZATION_GET.TabIndex = 1;
             this.ORGANIZATION_GET.Text = "ORGANIZATION_GET";
             // 
@@ -1576,7 +1576,7 @@ namespace kanbanboard
             this.OrganizationLabelPanel.Location = new System.Drawing.Point(0, 0);
             this.OrganizationLabelPanel.Name = "OrganizationLabelPanel";
             this.OrganizationLabelPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.OrganizationLabelPanel.Size = new System.Drawing.Size(136, 36);
+            this.OrganizationLabelPanel.Size = new System.Drawing.Size(148, 36);
             this.OrganizationLabelPanel.TabIndex = 3;
             // 
             // OrganizationLabel
@@ -1587,7 +1587,7 @@ namespace kanbanboard
             this.OrganizationLabel.ForeColor = System.Drawing.SystemColors.Control;
             this.OrganizationLabel.Location = new System.Drawing.Point(3, 3);
             this.OrganizationLabel.Name = "OrganizationLabel";
-            this.OrganizationLabel.Size = new System.Drawing.Size(130, 20);
+            this.OrganizationLabel.Size = new System.Drawing.Size(142, 25);
             this.OrganizationLabel.TabIndex = 0;
             this.OrganizationLabel.Text = "Организация";
             // 
@@ -1605,10 +1605,10 @@ namespace kanbanboard
             // 
             this.NickNameGetPanel.Controls.Add(this.NICKNAME_GET);
             this.NickNameGetPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NickNameGetPanel.Location = new System.Drawing.Point(167, 0);
+            this.NickNameGetPanel.Location = new System.Drawing.Point(183, 0);
             this.NickNameGetPanel.Name = "NickNameGetPanel";
             this.NickNameGetPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.NickNameGetPanel.Size = new System.Drawing.Size(812, 36);
+            this.NickNameGetPanel.Size = new System.Drawing.Size(796, 36);
             this.NickNameGetPanel.TabIndex = 4;
             // 
             // NICKNAME_GET
@@ -1618,7 +1618,7 @@ namespace kanbanboard
             this.NICKNAME_GET.ForeColor = System.Drawing.SystemColors.Control;
             this.NICKNAME_GET.Location = new System.Drawing.Point(3, 3);
             this.NICKNAME_GET.Name = "NICKNAME_GET";
-            this.NICKNAME_GET.Size = new System.Drawing.Size(139, 20);
+            this.NICKNAME_GET.Size = new System.Drawing.Size(166, 25);
             this.NICKNAME_GET.TabIndex = 1;
             this.NICKNAME_GET.Text = "NICKNAME_GET";
             // 
@@ -1630,7 +1630,7 @@ namespace kanbanboard
             this.NickNameLabelPanel.Location = new System.Drawing.Point(0, 0);
             this.NickNameLabelPanel.Name = "NickNameLabelPanel";
             this.NickNameLabelPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.NickNameLabelPanel.Size = new System.Drawing.Size(167, 36);
+            this.NickNameLabelPanel.Size = new System.Drawing.Size(183, 36);
             this.NickNameLabelPanel.TabIndex = 3;
             // 
             // NickName
@@ -1641,7 +1641,7 @@ namespace kanbanboard
             this.NickName.ForeColor = System.Drawing.SystemColors.Control;
             this.NickName.Location = new System.Drawing.Point(3, 3);
             this.NickName.Name = "NickName";
-            this.NickName.Size = new System.Drawing.Size(161, 20);
+            this.NickName.Size = new System.Drawing.Size(177, 25);
             this.NickName.TabIndex = 0;
             this.NickName.Text = "Никнейм / логин";
             // 
@@ -1659,10 +1659,10 @@ namespace kanbanboard
             // 
             this.FullNameGetLabelPanel.Controls.Add(this.FULLNAME_GET);
             this.FullNameGetLabelPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FullNameGetLabelPanel.Location = new System.Drawing.Point(62, 0);
+            this.FullNameGetLabelPanel.Location = new System.Drawing.Point(66, 0);
             this.FullNameGetLabelPanel.Name = "FullNameGetLabelPanel";
             this.FullNameGetLabelPanel.Padding = new System.Windows.Forms.Padding(5);
-            this.FullNameGetLabelPanel.Size = new System.Drawing.Size(917, 36);
+            this.FullNameGetLabelPanel.Size = new System.Drawing.Size(913, 36);
             this.FullNameGetLabelPanel.TabIndex = 4;
             // 
             // FULLNAME_GET
@@ -1672,7 +1672,7 @@ namespace kanbanboard
             this.FULLNAME_GET.ForeColor = System.Drawing.SystemColors.Control;
             this.FULLNAME_GET.Location = new System.Drawing.Point(5, 5);
             this.FULLNAME_GET.Name = "FULLNAME_GET";
-            this.FULLNAME_GET.Size = new System.Drawing.Size(142, 20);
+            this.FULLNAME_GET.Size = new System.Drawing.Size(169, 25);
             this.FULLNAME_GET.TabIndex = 1;
             this.FULLNAME_GET.Text = "FULLNAME_GET";
             // 
@@ -1684,7 +1684,7 @@ namespace kanbanboard
             this.FullNameLabelPanel.Location = new System.Drawing.Point(0, 0);
             this.FullNameLabelPanel.Name = "FullNameLabelPanel";
             this.FullNameLabelPanel.Padding = new System.Windows.Forms.Padding(5);
-            this.FullNameLabelPanel.Size = new System.Drawing.Size(62, 36);
+            this.FullNameLabelPanel.Size = new System.Drawing.Size(66, 36);
             this.FullNameLabelPanel.TabIndex = 3;
             // 
             // FullName
@@ -1695,7 +1695,7 @@ namespace kanbanboard
             this.FullName.ForeColor = System.Drawing.SystemColors.Control;
             this.FullName.Location = new System.Drawing.Point(5, 5);
             this.FullName.Name = "FullName";
-            this.FullName.Size = new System.Drawing.Size(52, 20);
+            this.FullName.Size = new System.Drawing.Size(56, 25);
             this.FullName.TabIndex = 0;
             this.FullName.Text = "ФИО";
             // 
@@ -1718,7 +1718,7 @@ namespace kanbanboard
             this.CalendarLabel.Location = new System.Drawing.Point(28, 148);
             this.CalendarLabel.MaximumSize = new System.Drawing.Size(800, 480);
             this.CalendarLabel.Name = "CalendarLabel";
-            this.CalendarLabel.Size = new System.Drawing.Size(764, 78);
+            this.CalendarLabel.Size = new System.Drawing.Size(766, 106);
             this.CalendarLabel.TabIndex = 1;
             this.CalendarLabel.Text = "Здесь должен быть календарь, но его пока что нет.";
             // 
@@ -1764,7 +1764,7 @@ namespace kanbanboard
             this.DialogSearchTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.DialogSearchTextBox.Location = new System.Drawing.Point(15, 18);
             this.DialogSearchTextBox.Name = "DialogSearchTextBox";
-            this.DialogSearchTextBox.Size = new System.Drawing.Size(191, 20);
+            this.DialogSearchTextBox.Size = new System.Drawing.Size(191, 26);
             this.DialogSearchTextBox.TabIndex = 0;
             // 
             // DialogSearchTitlePanel
@@ -1786,7 +1786,7 @@ namespace kanbanboard
             this.DialogSearchTitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.DialogSearchTitleLabel.Location = new System.Drawing.Point(43, 18);
             this.DialogSearchTitleLabel.Name = "DialogSearchTitleLabel";
-            this.DialogSearchTitleLabel.Size = new System.Drawing.Size(135, 16);
+            this.DialogSearchTitleLabel.Size = new System.Drawing.Size(152, 20);
             this.DialogSearchTitleLabel.TabIndex = 1;
             this.DialogSearchTitleLabel.Text = "Поиск по именам";
             this.DialogSearchTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1825,7 +1825,7 @@ namespace kanbanboard
             this.DialogTitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.DialogTitleLabel.Location = new System.Drawing.Point(15, 18);
             this.DialogTitleLabel.Name = "DialogTitleLabel";
-            this.DialogTitleLabel.Size = new System.Drawing.Size(129, 16);
+            this.DialogTitleLabel.Size = new System.Drawing.Size(142, 20);
             this.DialogTitleLabel.TabIndex = 2;
             this.DialogTitleLabel.Text = "Dialog Username";
             // 
@@ -1898,7 +1898,7 @@ namespace kanbanboard
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));

@@ -76,7 +76,7 @@ namespace kanbanboard
                 };
 
                 // Загрузка первого элемента из списка
-                ListBoxOfProjectNames.SelectedIndex = 0;
+                //ListBoxOfProjectNames.SelectedIndex = 0;
             };
         }
 
