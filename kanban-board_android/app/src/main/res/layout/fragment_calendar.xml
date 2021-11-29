@@ -1,33 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Kanban_menu"
-    android:background="@color/back">
+    android:background="@color/back"
+    android:orientation="vertical">
 
-<!-- TODO: Update blank fragment layout -->
 
     <LinearLayout
-        android:id="@+id/view_auth"
-        android:layout_width="wrap_content"
+        android:id="@+id/calendar_title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:orientation="vertical"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="10dp"
         >
 
         <TextView
             style="@style/View_top"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Calendar"
-            android:textAlignment="center"
-/>
+            android:text="Тикеты"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/calendar_title"
+        android:id="@+id/beloutitle"
+        >
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tickekrecyclerlay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/beloutitle"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ticketList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+
     </LinearLayout>
 
 
 
-</RelativeLayout>
+
+
+</LinearLayout>

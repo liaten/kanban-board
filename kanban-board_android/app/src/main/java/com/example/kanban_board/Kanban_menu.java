@@ -21,6 +21,7 @@ import com.example.kanban_board.Models.MyItemTouchHelperCallback;
 import com.example.kanban_board.Models.MyRecyclerAdapter;
 import com.example.kanban_board.Models.OnStartDragListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,18 +32,10 @@ import butterknife.ButterKnife;
 import butterknife.Optional;
 
 public class Kanban_menu extends AppCompatActivity {
+    Button logout;
 
- /*   Button logout;
+    FirebaseAuth auth;
 
-    @BindView(R.id.recycler_view)
-    RecyclerView recyclerView;
-
-    @BindView(R.id.addTicket)
-    Button addTicket;
-
-    ItemTouchHelper itemTouchHelper;
-
- */  // public List<String> data = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +43,7 @@ public class Kanban_menu extends AppCompatActivity {
         setContentView(R.layout.activity_kanban_menu);
 
 
-       // logout = findViewById(R.id.LogOut);
+       logout = findViewById(R.id.LogOut);
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -60,73 +53,10 @@ public class Kanban_menu extends AppCompatActivity {
         NavController navController = navHostFragment.getNavController();
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
-        /*поменять
-        addTicket.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addItem();
-            }
-        });
-*/
 
-       // init();
-       // generateItem();
 
     }
 
-   /* private void addItem() {
-        data.addAll(Arrays.asList(
-                "Заголовок \nТекст тикета \nРазработчики"
-
-        ));
-
-        MyRecyclerAdapter adapter = new MyRecyclerAdapter(this, data, viewHolder -> {
-            itemTouchHelper.startDrag(viewHolder);
-
-        });
-        recyclerView.setAdapter(adapter);
-        ItemTouchHelper.Callback callback = new MyItemTouchHelperCallback(adapter);
-        itemTouchHelper = new ItemTouchHelper(callback);
-        itemTouchHelper.attachToRecyclerView(recyclerView);
-    } */
-
-
- /*   private void generateItem() {
-
-        //List<String> data = new ArrayList<>();
-        data.addAll(Arrays.asList(
-                "Заголовок \nТекст тикета \nРазработчики",
-                "Заголовок \nТекст тикета \nРазработчики",
-                "Заголовок \nТекст тикета \nРазработчики",
-                "Заголовок \nТекст тикета \nРазработчики",
-                "Заголовок \nТекст тикета \nРазработчики",
-                "Заголовок \nТекст тикета \nРазработчики",
-                "Заголовок \nТекст тикета \nРазработчики",
-                "Заголовок \nТекст тикета \nРазработчики",
-                "Заголовок \nТекст тикета \nРазработчики"
-
-
-        ));
-
-        MyRecyclerAdapter adapter = new MyRecyclerAdapter(this, data, viewHolder -> {
-                itemTouchHelper.startDrag(viewHolder);
-
-        });
-        recyclerView.setAdapter(adapter);
-        ItemTouchHelper.Callback callback = new MyItemTouchHelperCallback(adapter);
-        itemTouchHelper = new ItemTouchHelper(callback);
-        itemTouchHelper.attachToRecyclerView(recyclerView);
-
-    }
-
-    private void init(){
-        setContentView(R.layout.fragment_tasks);
-        ButterKnife.bind(this);
-        recyclerView.setHasFixedSize(true);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 4);
-        recyclerView.setLayoutManager(gridLayoutManager);
-
- }*/
 
 
 }
