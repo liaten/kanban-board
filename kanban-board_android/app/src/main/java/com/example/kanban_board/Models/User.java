@@ -1,7 +1,7 @@
 package com.example.kanban_board.Models;
 
 public class User {
-    private String email, login, password;
+    public String email, login, password;
 
     public User() {}
 
