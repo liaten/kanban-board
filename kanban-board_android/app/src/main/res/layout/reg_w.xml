@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/email_field"
-            android:hint="Email"
+            android:hint="Email (необязательно)"
             android:inputType="textEmailAddress"
             android:text=""
             android:textSize="20sp"

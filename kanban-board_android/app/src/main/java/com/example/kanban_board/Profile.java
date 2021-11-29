@@ -1,5 +1,8 @@
 package com.example.kanban_board;
 
+import static android.content.Intent.getIntent;
+
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,9 +14,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.kanban_board.Models.MyItemTouchHelperCallback;
 import com.example.kanban_board.Models.MyRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,6 +40,10 @@ public class Profile extends Fragment {
 
     private String mParam1;
     private String mParam2;
+    private FirebaseAuth auth;
+    private TextView profileName;
+    private FirebaseDatabase db;
+    private DatabaseReference users;
 
 
     public Profile() {
@@ -57,6 +69,7 @@ public class Profile extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+
     }
 
 
@@ -64,7 +77,28 @@ public class Profile extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_profile, container, false);
+
+
+        auth = FirebaseAuth.getInstance();
+        db = FirebaseDatabase.getInstance();
+        users = db.getReference("Users");
+
+        FirebaseUser cUser = auth.getCurrentUser();
+
+
+
+        profileName = (TextView) viewGroup.findViewById(R.id.profile_name);
+
+
+        Intent intent = getActivity().getIntent();
+        String usernamei = intent.getStringExtra("login");
+        String userName = "Вы вошли как " + usernamei;
+        profileName.setText(userName);
+
+
+
+        return viewGroup;
+       // return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 }
