@@ -71,6 +71,9 @@ public class Calendar extends Fragment {
 
     TextView Header;
 
+    Integer myNum = 0;
+    DatabaseReference itemsRef;
+
 
     public Calendar() {
         // Required empty public constructor
@@ -106,6 +109,7 @@ public class Calendar extends Fragment {
         root = (LinearLayout) viewGroup.findViewById(R.id.calendar_root_layout);
         Header = (TextView) viewGroup.findViewById(R.id.headerCalender);
 
+        TestGet();
         GetBoards();
         GetTicketsFromSpinner();
         AddBoard();
@@ -121,7 +125,7 @@ public class Calendar extends Fragment {
     }
 
 
-
+    //добавить тикет
     private void AddTicket() {
 
         addTicketBtn.setOnClickListener(new View.OnClickListener() {
@@ -196,6 +200,7 @@ public class Calendar extends Fragment {
 
     }
 
+    //тикеты получить из спинера
     private void GetTicketsFromSpinner() {
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -210,9 +215,13 @@ public class Calendar extends Fragment {
         });
     }
 
+    //получить доски
     private void GetBoards() {
 
-        dbBoards = FirebaseDatabase.getInstance().getReference("boards");
+        Intent intent = getActivity().getIntent();
+        String userNameTestGet = intent.getStringExtra("login");
+
+        dbBoards = FirebaseDatabase.getInstance().getReference("Users").child(userNameTestGet).child("Projects");
         dbBoards.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -238,7 +247,7 @@ public class Calendar extends Fragment {
 
     }
 
-    //Тикеты в спинер
+    //получить тикеты
     private void GetTickets() {
 
         boardName = spinner.getSelectedItem().toString();
@@ -270,6 +279,34 @@ public class Calendar extends Fragment {
 
     }
 
+    //вспомогательная для добавления тикетов
+    private void TestGet(){
+
+        Intent intent = getActivity().getIntent();
+        String userNameTestGet = intent.getStringExtra("login");
+
+        itemsRef = FirebaseDatabase.getInstance().getReference("Users").child(userNameTestGet).child("Projects");
+
+        itemsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds : snapshot.getChildren()) {
+                    String increment = ds.getKey();
+
+                    myNum = Integer.parseInt(increment);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
+    //добавление тикетов
     private void AddBoard(){
 
         addBoardBtn.setOnClickListener(new View.OnClickListener() {
@@ -302,40 +339,19 @@ public class Calendar extends Fragment {
 
                         String boardName = name.getText().toString();
 
+                        TestGet();
 
-                        DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference().child("boards");
-                        ValueEventListener eventListener = new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                                    String increment = ds.getKey();
-
-                                    Integer myNum = Integer.parseInt(increment) + 1;
-
-                                    FirebaseDatabase db = FirebaseDatabase.getInstance();
-                                    boards = db.getReference("boards").child(String.valueOf(myNum));
-                                    boards.setValue(boardName);
-                                }
-                            }
-
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-
-                            }
-                        };
-                        itemsRef.addListenerForSingleValueEvent(eventListener);
-
+                        //FirebaseDatabase db = FirebaseDatabase.getInstance();
+                        DatabaseReference boardsNew = itemsRef.child(String.valueOf(myNum+1));
+                        boardsNew.setValue(boardName);
 
                     }
                 });
 
                 addB.show();
 
-
             }
         });
-
-
 
     }
 
