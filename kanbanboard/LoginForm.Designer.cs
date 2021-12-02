@@ -34,8 +34,8 @@ namespace kanbanboard
             this.RegistrationButton = new System.Windows.Forms.Button();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.loginLabel = new System.Windows.Forms.Label();
-            this.passLabel = new System.Windows.Forms.Label();
+            this.LoginLabel = new System.Windows.Forms.Label();
+            this.PassLabel = new System.Windows.Forms.Label();
             this.LoginPasswordMailPanel = new System.Windows.Forms.Panel();
             this.PanelOfTextBoxes = new System.Windows.Forms.Panel();
             this.EmailTextBoxPanel = new System.Windows.Forms.Panel();
@@ -104,7 +104,6 @@ namespace kanbanboard
             this.RegistrationButton.TabIndex = 2;
             this.RegistrationButton.Text = "Регистрация";
             this.RegistrationButton.UseVisualStyleBackColor = false;
-            this.RegistrationButton.Click += new System.EventHandler(this.RegistrationButton_Click);
             // 
             // textBoxLogin
             // 
@@ -118,8 +117,8 @@ namespace kanbanboard
             this.textBoxLogin.Size = new System.Drawing.Size(194, 17);
             this.textBoxLogin.TabIndex = 3;
             this.textBoxLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxLogin.MouseEnter += new System.EventHandler(this.TextBox1_MouseEnter);
-            this.textBoxLogin.MouseLeave += new System.EventHandler(this.TextBox1_MouseLeave);
+            this.textBoxLogin.MouseEnter += new System.EventHandler(this.TextBoxLogin_MouseEnter);
+            this.textBoxLogin.MouseLeave += new System.EventHandler(this.TextBoxLogin_MouseLeave);
             // 
             // textBoxPassword
             // 
@@ -134,32 +133,32 @@ namespace kanbanboard
             this.textBoxPassword.TabIndex = 4;
             this.textBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxPassword.UseSystemPasswordChar = true;
-            this.textBoxPassword.MouseEnter += new System.EventHandler(this.TextBox2_MouseEnter);
-            this.textBoxPassword.MouseLeave += new System.EventHandler(this.TextBox2_MouseLeave);
+            this.textBoxPassword.MouseEnter += new System.EventHandler(this.TextBoxPass_MouseEnter);
+            this.textBoxPassword.MouseLeave += new System.EventHandler(this.TextBoxPass_MouseLeave);
             // 
-            // loginLabel
+            // LoginLabel
             // 
-            this.loginLabel.AutoSize = true;
-            this.loginLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.loginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.loginLabel.Location = new System.Drawing.Point(15, 15);
-            this.loginLabel.Name = "loginLabel";
-            this.loginLabel.Size = new System.Drawing.Size(47, 16);
-            this.loginLabel.TabIndex = 6;
-            this.loginLabel.Text = "Логин";
+            this.LoginLabel.AutoSize = true;
+            this.LoginLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LoginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LoginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.LoginLabel.Location = new System.Drawing.Point(15, 15);
+            this.LoginLabel.Name = "LoginLabel";
+            this.LoginLabel.Size = new System.Drawing.Size(47, 16);
+            this.LoginLabel.TabIndex = 6;
+            this.LoginLabel.Text = "Логин";
             // 
-            // passLabel
+            // PassLabel
             // 
-            this.passLabel.AutoSize = true;
-            this.passLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.passLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.passLabel.Location = new System.Drawing.Point(15, 15);
-            this.passLabel.Name = "passLabel";
-            this.passLabel.Size = new System.Drawing.Size(57, 16);
-            this.passLabel.TabIndex = 7;
-            this.passLabel.Text = "Пароль";
+            this.PassLabel.AutoSize = true;
+            this.PassLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PassLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PassLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.PassLabel.Location = new System.Drawing.Point(15, 15);
+            this.PassLabel.Name = "PassLabel";
+            this.PassLabel.Size = new System.Drawing.Size(57, 16);
+            this.PassLabel.TabIndex = 7;
+            this.PassLabel.Text = "Пароль";
             // 
             // LoginPasswordMailPanel
             // 
@@ -266,7 +265,7 @@ namespace kanbanboard
             // 
             // PasswordLabelPanel
             // 
-            this.PasswordLabelPanel.Controls.Add(this.passLabel);
+            this.PasswordLabelPanel.Controls.Add(this.PassLabel);
             this.PasswordLabelPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.PasswordLabelPanel.Location = new System.Drawing.Point(0, 45);
             this.PasswordLabelPanel.Name = "PasswordLabelPanel";
@@ -276,7 +275,7 @@ namespace kanbanboard
             // 
             // loginLabelPanel
             // 
-            this.loginLabelPanel.Controls.Add(this.loginLabel);
+            this.loginLabelPanel.Controls.Add(this.LoginLabel);
             this.loginLabelPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.loginLabelPanel.Location = new System.Drawing.Point(0, 0);
             this.loginLabelPanel.Name = "loginLabelPanel";
@@ -329,7 +328,7 @@ namespace kanbanboard
             this.LoginButton.TabIndex = 1;
             this.LoginButton.Text = "Войти";
             this.LoginButton.UseVisualStyleBackColor = false;
-            this.LoginButton.Click += new System.EventHandler(this.Button1_Click);
+            this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
             // HeaderPanel
             // 
@@ -421,6 +420,7 @@ namespace kanbanboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(334, 325);
             this.Controls.Add(this.BottomPanel);
@@ -472,8 +472,8 @@ namespace kanbanboard
         private System.Windows.Forms.Button RegistrationButton;
         private System.Windows.Forms.TextBox textBoxLogin;
         private System.Windows.Forms.TextBox textBoxPassword;
-        private System.Windows.Forms.Label loginLabel;
-        private System.Windows.Forms.Label passLabel;
+        private System.Windows.Forms.Label LoginLabel;
+        private System.Windows.Forms.Label PassLabel;
         private System.Windows.Forms.Panel LoginPasswordMailPanel;
         private System.Windows.Forms.CheckBox StayLoggedCheckBox;
         private System.Windows.Forms.PictureBox AuthorizationPictureBox;

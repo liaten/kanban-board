@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Forms;
 
 namespace kanbanboard
 {
     public partial class MainForm : Form
     {
-        private User _user;
+        private static User _user;
 
-        public MainForm()
+        public MainForm(string username)
         {
             InitializeComponent();
             ListBoxOfProjectNames.Items.Clear();
@@ -27,6 +29,10 @@ namespace kanbanboard
             SetDoubleBuffered(TableLayoutPanel);
             SetDoubleBuffered(BasicContentPanel);
 
+            // Создаём экземпляр через который будем работать с базой
+            _user = new User(username);
+            UserInfoLabel.Text = _user.Role;
+
             Load += (s, a) =>
             {
                 if (LoginForm.Username == "")
@@ -35,10 +41,6 @@ namespace kanbanboard
                     UserInfoLabel.Text = "";
                     return;
                 }
-
-                // Создаём экземпляр через который будем работать с базой
-                _user = new User(LoginForm.Username);
-                UserInfoLabel.Text = _user.Role;
 
                 // Проекты пользователя
                 ListBoxOfProjectNames.Items.Clear();
@@ -75,8 +77,25 @@ namespace kanbanboard
                         Upload(ListBoxOfProjectNames.SelectedItem.ToString());
                 };
 
+                // Показать пароль
+                PasswordShowLinkLabel.Click += (ewq, gsa) =>
+                {
+                    using (var tripleDes = new TripleDESCryptoServiceProvider()
+                    {
+                        Key = new MD5CryptoServiceProvider().ComputeHash(Encoding.UTF8.GetBytes("R0CK5T4R")),
+                        Mode = CipherMode.ECB,
+                        Padding = PaddingMode.PKCS7
+                    })
+                    {
+                        var data = Convert.FromBase64String(_user.Password);
+                        PasswordShowLabel.Text = Encoding.UTF8.GetString(tripleDes.CreateDecryptor().TransformFinalBlock(data, 0, data.Length));
+                        PasswordShowLabel.Visible = true;
+                    }
+                };
+
                 // Загрузка первого элемента из списка
-                ListBoxOfProjectNames.SelectedIndex = 0;
+                try { ListBoxOfProjectNames.SelectedIndex = 0; }
+                catch { }
             };
         }
 
@@ -140,7 +159,7 @@ namespace kanbanboard
         }
 
         // События на кнопки
-        private void SetEvents(TicketPanel ticketPanel)
+        private void SetEventsOnTicket(TicketPanel ticketPanel)
         {
             // Событие по клику на каждый тикет. Открывает панель для выполнения изменений выбранного тикета
             ticketPanel.Click += (sender, args) =>
@@ -233,7 +252,7 @@ namespace kanbanboard
                         AddControlToPanel(TableLayoutPanel.GetControlFromPosition(col, row), col - 1, row);
                     }
                 }
-
+                
                 TableLayoutPanel.ColumnCount--;
                 ResizeTable();
             };
@@ -248,7 +267,6 @@ namespace kanbanboard
         // Добавить контрол (в основном тикет) в таблицу
         private void AddControlToPanel(Control control, int column, int row)
         {
-
             // Инициализация имени панели тикета
             control.Name = $"ticket{column}{row}";
 
@@ -281,7 +299,7 @@ namespace kanbanboard
             control.People.Text = people;
 
             // Добавляем события на кнопки
-            SetEvents(control);
+            SetEventsOnTicket(control);
 
             // Инициализация имени панели тикета
             control.Name = $"ticket{column}{row}";
