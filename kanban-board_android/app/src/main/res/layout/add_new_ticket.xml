@@ -13,27 +13,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <com.rengwuxian.materialedittext.MaterialEditText
+            style="@style/textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/email_field"
-            android:hint="Email (необязательно)"
-            android:inputType="textEmailAddress"
-            android:text=""
-            android:textSize="20sp"
-            app:met_baseColor="@color/btn_sing_in_stroke"
-            app:met_floatingLabel="highlight"
-            app:met_primaryColor="@color/btn_sing_in_stroke"
-            app:met_singleLineEllipsis="true"/>
-
-
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/login_field"
-            android:hint="Login"
+            android:id="@+id/addTicketName"
+            android:hint="Название тикета"
             android:inputType="text"
             android:text=""
             android:textSize="20sp"
@@ -44,11 +32,12 @@
 
 
         <com.rengwuxian.materialedittext.MaterialEditText
+            style="@style/textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/password_field"
-            android:hint="Password"
-            android:inputType="textPassword"
+            android:id="@+id/addTicketText"
+            android:hint="Текст"
+            android:inputType="text"
             android:text=""
             android:textSize="20sp"
             app:met_baseColor="@color/btn_sing_in_stroke"
@@ -56,6 +45,34 @@
             app:met_primaryColor="@color/btn_sing_in_stroke"
             app:met_singleLineEllipsis="true"/>
 
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            style="@style/textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/addTicketPeople"
+            android:hint="Разработчики"
+            android:inputType="text"
+            android:text=""
+            android:textSize="20sp"
+            app:met_baseColor="@color/btn_sing_in_stroke"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@color/btn_sing_in_stroke"
+            app:met_singleLineEllipsis="true"/>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            style="@style/textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/addTicketStatus"
+            android:hint="Статус"
+            android:inputType="text"
+            android:text=""
+            android:textSize="20sp"
+            app:met_baseColor="@color/btn_sing_in_stroke"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@color/btn_sing_in_stroke"
+            app:met_singleLineEllipsis="true"/>
 
 
     </LinearLayout>
