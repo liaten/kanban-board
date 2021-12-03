@@ -36,7 +36,7 @@ namespace kanbanboard
             EmailTextBoxPanel.Hide();
         }
 
-        private static bool ValidEmail(string email) => new Regex(@"^(\w|\d|\.|_|-)+@(\w|\d){1,}\.[\w]{1,}\.?[\w]*$", RegexOptions.IgnoreCase).IsMatch(email);
+        // private static bool ValidEmail(string email) => new Regex(@"^(\w|\d|\.|_|-)+@(\w|\d){1,}\.[\w]{1,}\.?[\w]*$", RegexOptions.IgnoreCase).IsMatch(email);
 
         private void TextBoxLogin_MouseEnter(object sender, EventArgs e) => LoginLabel.ForeColor = Color.FromArgb(114, 119, 139);
         private void TextBoxLogin_MouseLeave(object sender, EventArgs e) => LoginLabel.ForeColor = Color.FromArgb(74, 79, 99);
@@ -129,6 +129,21 @@ namespace kanbanboard
                 EmailTextBoxPanel.Hide();
 
                 CheckBoxRegistration.ForeColor = Color.FromArgb(200, 200, 200);
+            }
+        }
+
+        private void RegistrationButton_Click(object sender, EventArgs e)
+        {
+            Username = textBoxLogin.Text;
+
+            if (Username.CheckUser())
+                MessageBox.Show("Пользователь уже существует");
+            else
+            {
+                if (textBoxPassword.Text == "")
+                {
+                    MessageBox.Show("Укажите пароль");
+                }
             }
         }
     }

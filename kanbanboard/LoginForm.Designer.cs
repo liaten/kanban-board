@@ -104,6 +104,7 @@ namespace kanbanboard
             this.RegistrationButton.TabIndex = 2;
             this.RegistrationButton.Text = "Регистрация";
             this.RegistrationButton.UseVisualStyleBackColor = false;
+            this.RegistrationButton.Click += new System.EventHandler(this.RegistrationButton_Click);
             // 
             // textBoxLogin
             // 
@@ -138,27 +139,33 @@ namespace kanbanboard
             // 
             // LoginLabel
             // 
+            this.LoginLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.LoginLabel.AutoSize = true;
-            this.LoginLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LoginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LoginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.LoginLabel.Location = new System.Drawing.Point(15, 15);
+            this.LoginLabel.Location = new System.Drawing.Point(10, 15);
             this.LoginLabel.Name = "LoginLabel";
-            this.LoginLabel.Size = new System.Drawing.Size(47, 16);
+            this.LoginLabel.Size = new System.Drawing.Size(90, 16);
             this.LoginLabel.TabIndex = 6;
-            this.LoginLabel.Text = "Логин";
+            this.LoginLabel.Text = "Логин | Email";
+            this.LoginLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PassLabel
             // 
+            this.PassLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PassLabel.AutoSize = true;
-            this.PassLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PassLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.PassLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.PassLabel.Location = new System.Drawing.Point(15, 15);
+            this.PassLabel.Location = new System.Drawing.Point(27, 14);
             this.PassLabel.Name = "PassLabel";
             this.PassLabel.Size = new System.Drawing.Size(57, 16);
             this.PassLabel.TabIndex = 7;
             this.PassLabel.Text = "Пароль";
+            this.PassLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LoginPasswordMailPanel
             // 
@@ -253,11 +260,13 @@ namespace kanbanboard
             // 
             // EmailLabel
             // 
+            this.EmailLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.EmailLabel.AutoSize = true;
-            this.EmailLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EmailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.EmailLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.EmailLabel.Location = new System.Drawing.Point(10, 10);
+            this.EmailLabel.Location = new System.Drawing.Point(6, 11);
             this.EmailLabel.Name = "EmailLabel";
             this.EmailLabel.Size = new System.Drawing.Size(98, 32);
             this.EmailLabel.TabIndex = 9;

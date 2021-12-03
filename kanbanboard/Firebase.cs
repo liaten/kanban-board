@@ -1,9 +1,11 @@
-﻿using FireSharp;
+﻿using System;
+using FireSharp;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Windows.Forms;
 using Microsoft.SqlServer.Server;
 
 namespace kanbanboard
@@ -148,6 +150,28 @@ namespace kanbanboard
             // удаляем из базы
             Client.SetAsync($"Users/{user.Username}/Projects", data);
         }
-        
+
+        public static bool CheckUser(this string username)
+        {
+            if (Client.GetAsync($"Users/{username}") is null)
+                return false;
+            return true;
+        }
+
+        // Получить все сообщения проекта
+        public static List<Dictionary<string, string>> GetMessages(this User user, string projectName)
+        {
+            if (user == null) throw new ArgumentNullException(nameof(user));
+            try { return Client.GetAsync($"Projects/{projectName}/Chat/").Result.ResultAs<List<Dictionary<string, string>>>(); }
+            catch { return null; }
+        }
+
+        // Сохранить сообщение в базу
+        public static async void SaveMessage(this User user, string projectName, string message)
+        {
+            var list = user.GetMessages(projectName) ?? new List<Dictionary<string, string>>();
+            list.Add(new Dictionary<string, string> { { user.Username, message } });
+            await Client.SetAsync($"Projects/{projectName}/Chat/", list);
+        }
     }
 }
