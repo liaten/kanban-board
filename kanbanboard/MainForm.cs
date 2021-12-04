@@ -2,22 +2,35 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Forms;
 
 namespace kanbanboard
 {
     public partial class MainForm : Form
     {
-        private User _user;
+        private static User _user;
 
-        public MainForm()
+        public MainForm(string username)
         {
             InitializeComponent();
             ListBoxOfProjectNames.Items.Clear();
 
+            // Вернуться в LoginForm по ESC
             KeyDown += (s, a) =>
             {
                 if (a.KeyValue == (int)Keys.Escape) ExitButton.PerformClick();
+            };
+
+            // Отправить сообщение по Enter
+            MessengerTextBox.KeyPress += (fsa, key) =>
+            {
+                if (key.KeyChar == (int)Keys.Enter)
+                {
+                    SendMessage();
+                    MessengerTextBox.Clear();
+                }
             };
 
             // Событие при изменении размера таблицы
@@ -26,6 +39,11 @@ namespace kanbanboard
             // Установка двойной буферизации для устранения мерцания
             SetDoubleBuffered(TableLayoutPanel);
             SetDoubleBuffered(BasicContentPanel);
+            SetDoubleBuffered(MessengerListBox);
+
+            // Создаём экземпляр через который будем работать с базой
+            _user = new User(username);
+            UserInfoLabel.Text = _user.Role;
 
             Load += (s, a) =>
             {
@@ -36,48 +54,56 @@ namespace kanbanboard
                     return;
                 }
 
-                // Создаём экземпляр через который будем работать с базой
-                _user = new User(LoginForm.Username);
-                UserInfoLabel.Text = _user.Role;
-
                 // Проекты пользователя
                 ListBoxOfProjectNames.Items.Clear();
                 ListBoxOfProjectNames.Items.AddRange(_user.ProjectNames.Cast<object>().ToArray());
                 ListBoxOfProjectNames.SelectedValueChanged += (ss, aa) => {
-                    try { TableFromFirebase(ListBoxOfProjectNames.SelectedItem.ToString()); }
+                    try
+                    {
+                        TableFromFirebase(ListBoxOfProjectNames.SelectedItem.ToString());
+                        ShowMessages();
+                    }
                     catch {
                         // ignored
                     } };
 
+                // Стартовый вид -> панель с профилем
                 UserControlsPanel_Click(null, null);
                 UsernameLabel.Text = LoginForm.Username;
 
                 // Подсказка на кнопку с плюсом
                 new ToolTip().SetToolTip(AddTitleButton, "Добавить столбец");
-
-                // Добавить колонку
-                AddTitleButton.Click += (u, p) =>
-                {
-                    AddTitleToPanel("Это тайтл", TableLayoutPanel.ColumnStyles.Count);
-                    AddControlToPanel("Заголовок", "Описание", "Разработчики", TableLayoutPanel.ColumnStyles.Count, 1);
-                };
-
+                
                 // Сохранение данных в базу
                 // Сохраняется только активная таблица (выбранная в listbox)
                 FormClosing += (b, q) => {
                     if (ListBoxOfProjectNames.SelectedItem != null) Upload(ListBoxOfProjectNames.SelectedItem.ToString());
                 };
 
-                // Сохранение по кнопке
-                SaveProjectButton.Click += (b, q) =>
-                {
-                    if (ListBoxOfProjectNames.SelectedItem != null)
-                        Upload(ListBoxOfProjectNames.SelectedItem.ToString());
-                };
-
                 // Загрузка первого элемента из списка
-                ListBoxOfProjectNames.SelectedIndex = 0;
+                try { ListBoxOfProjectNames.SelectedIndex = 0; }
+                catch { }
             };
+        }
+
+        // Показ сообщений
+        private void ShowMessages()
+        {
+            MessengerListBox.Items.Clear();
+            var messages = _user.GetMessages(ListBoxOfProjectNames.SelectedItem.ToString());
+            if (messages != null)
+            {
+                foreach (var dic in messages)
+                {
+                    foreach (var item in dic)
+                    {
+                        MessengerListBox.Items.Add($"{item.Key}: {item.Value}");
+                    }
+                }
+
+                try { MessengerListBox.TopIndex = MessengerListBox.Items.Count - 1; }
+                catch { }
+            }
         }
 
         // Процедура загрузки в базу
@@ -140,7 +166,7 @@ namespace kanbanboard
         }
 
         // События на кнопки
-        private void SetEvents(TicketPanel ticketPanel)
+        private void SetEventsOnTicket(TicketPanel ticketPanel)
         {
             // Событие по клику на каждый тикет. Открывает панель для выполнения изменений выбранного тикета
             ticketPanel.Click += (sender, args) =>
@@ -149,7 +175,7 @@ namespace kanbanboard
                 if (!Application.OpenForms.OfType<TicketsChangeForm>().Any()) new TicketsChangeForm(this, ticketPanel).Show();
             };
 
-            // перемещение тикетов влево, вправо и удаление тикета
+            // перемещение тикетов влево, вправо и 
             ticketPanel.LeftButton.Click += (sender, w) =>
             {
                 var column = TableLayoutPanel.GetPositionFromControl(ticketPanel).Column - 1;
@@ -164,6 +190,7 @@ namespace kanbanboard
                 }
             };
 
+            // Перемещение вправо
             ticketPanel.RightButton.Click += (sender, w) =>
             {
                 var column = TableLayoutPanel.GetPositionFromControl(ticketPanel).Column + 1;
@@ -178,6 +205,7 @@ namespace kanbanboard
                 }
             };
 
+            // Удаление тикета
             ticketPanel.DelButton.Click += (sender, w) => TableLayoutPanel.Controls.Remove(ticketPanel);
         }
 
@@ -233,11 +261,12 @@ namespace kanbanboard
                         AddControlToPanel(TableLayoutPanel.GetControlFromPosition(col, row), col - 1, row);
                     }
                 }
-
+                
                 TableLayoutPanel.ColumnCount--;
                 ResizeTable();
             };
 
+            // Изменить заголовок
             titlePanel.Click += (s, a) =>
             {
                 if (!Application.OpenForms.OfType<ChangeTitleForm>().Any())
@@ -248,7 +277,6 @@ namespace kanbanboard
         // Добавить контрол (в основном тикет) в таблицу
         private void AddControlToPanel(Control control, int column, int row)
         {
-
             // Инициализация имени панели тикета
             control.Name = $"ticket{column}{row}";
 
@@ -281,7 +309,7 @@ namespace kanbanboard
             control.People.Text = people;
 
             // Добавляем события на кнопки
-            SetEvents(control);
+            SetEventsOnTicket(control);
 
             // Инициализация имени панели тикета
             control.Name = $"ticket{column}{row}";
@@ -328,6 +356,8 @@ namespace kanbanboard
             StripPanel.Size = new Size(StripPanel.Size.Width, TasksButton.Size.Height);
 
             PanelWithTable.BringToFront();
+
+
             ListBoxOfProjectNames.Visible = true;
         }
 
@@ -347,12 +377,17 @@ namespace kanbanboard
         private void MessengerButton_Click(object sender, EventArgs e)
         {
             LabelHead.Text = "Мессенджер";
-            DialogPanel.BringToFront();
+            MessengerPanel.BringToFront();
+
             // перемещение панельки выделения
             StripPanel.Location = MessengerButton.Location;
+
             // изменение размера панельки выделения
             StripPanel.Size = new Size(StripPanel.Size.Width, MessengerButton.Size.Height);
-            ListBoxOfProjectNames.Visible = false;
+            
+            MessengerTextBox.Focus();
+
+            ListBoxOfProjectNames.Visible = true;
         }
 
         // Обработчик календаря
@@ -383,7 +418,7 @@ namespace kanbanboard
             LoginForm.Show();
         }
 
-        // масштабируемость канбан доски
+        // Масштабируемость канбан доски
         private void ResizeTable()
         {
             try
@@ -414,6 +449,33 @@ namespace kanbanboard
             catch (Exception e) { Console.WriteLine("Ошибка" + e.Message); }
         }
 
+        // Добавить колонку
+        private void AddTitleButton_Click(object sender, EventArgs e)
+        {
+            AddTitleToPanel("Это тайтл", TableLayoutPanel.ColumnStyles.Count);
+            AddControlToPanel("Заголовок", "Описание", "Разработчики", TableLayoutPanel.ColumnStyles.Count, 1);
+        }
+
+        // Показать пароль
+        private void PasswordShowLinkLabel_Click(object sender, EventArgs e)
+        {
+            using (var tripleDes = new TripleDESCryptoServiceProvider() { 
+                Key = new MD5CryptoServiceProvider().ComputeHash(Encoding.UTF8.GetBytes("R0CK5T4R")),
+                Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 }) 
+            {
+                var data = Convert.FromBase64String(_user.Password);
+                PasswordShowLabel.Text = Encoding.UTF8.GetString(tripleDes.CreateDecryptor().TransformFinalBlock(data, 0, data.Length));
+                PasswordShowLabel.Visible = true;
+            }
+        }
+
+        // Доп. ручное сохранение
+        private void SaveProjectButton_Click(object sender, EventArgs e)
+        {
+            if (ListBoxOfProjectNames.SelectedItem != null)
+                Upload(ListBoxOfProjectNames.SelectedItem.ToString());
+        }
+
         // Дальше идут три события, связанные с DRAG AND DROP
         private void TableLayoutPanel_DragEnter(object sender, DragEventArgs e)
         {
@@ -433,6 +495,20 @@ namespace kanbanboard
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        // Мессенджер
+        // Отправка сообщений
+        private void SendMessage()
+        {
+            // Проверка валидности текста
+            if (string.IsNullOrEmpty(MessengerTextBox.Text) || string.IsNullOrWhiteSpace(MessengerTextBox.Text)) return;
+            MessengerListBox.Items.Add($"{_user.Username}: {MessengerTextBox.Text.Trim()}");
+
+            _user.SaveMessage(ListBoxOfProjectNames.SelectedItem.ToString(), MessengerTextBox.Text);
+
+            // В конец сообщений
+            MessengerListBox.TopIndex = MessengerListBox.Items.Count - 1;
         }
     }
 }
