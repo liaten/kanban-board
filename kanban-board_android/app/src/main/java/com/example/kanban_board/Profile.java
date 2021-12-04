@@ -2,6 +2,9 @@ package com.example.kanban_board;
 
 import static android.content.Intent.getIntent;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -45,6 +48,7 @@ public class Profile extends Fragment {
     private FirebaseDatabase db;
     private DatabaseReference users;
 
+    private Button logOut;
 
     public Profile() {
         // Required empty public constructor
@@ -83,22 +87,45 @@ public class Profile extends Fragment {
         auth = FirebaseAuth.getInstance();
         db = FirebaseDatabase.getInstance();
         users = db.getReference("Users");
-
         FirebaseUser cUser = auth.getCurrentUser();
 
-
-
         profileName = (TextView) viewGroup.findViewById(R.id.profile_name);
+        logOut = (Button) viewGroup.findViewById(R.id.LogOut);
 
+
+        GetCurUserInfo();
+        LogOut();
+
+
+
+        return viewGroup;
+       // return inflater.inflate(R.layout.fragment_profile, container, false);
+    }
+
+    private void LogOut() {
+
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent mStartActivity = new Intent(getActivity(), MainActivity.class);
+                int mPendingIntentId = 123456;
+                PendingIntent mPendingIntent = PendingIntent.getActivity(getActivity(), mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
+                AlarmManager mgr = (AlarmManager)getActivity().getSystemService(Context.ALARM_SERVICE);
+                mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+                System.exit(0);
+
+            }
+        });
+
+    }
+
+    private void GetCurUserInfo() {
 
         Intent intent = getActivity().getIntent();
         String usernamei = intent.getStringExtra("login");
         String userName = "Вы вошли как " + usernamei;
         profileName.setText(userName);
 
-
-
-        return viewGroup;
-       // return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 }

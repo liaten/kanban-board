@@ -365,8 +365,9 @@ public class MainActivity extends AppCompatActivity {
 
                 String login_u = login.getText().toString();
                 String password_u = password.getText().toString();
+                String email_u = email.getText().toString();
 
-                UserNew user = new UserNew("User", password_u, login_u);
+                UserNew user = new UserNew("User", password_u, login_u, email_u);
 
 
                 users.child(login_u).setValue(user);

@@ -2,9 +2,16 @@ package com.example.kanban_board.Models;
 
 public class UserNew {
 
-    public String role, password, login;
+    public String role, password, login, email;
 
     public UserNew() {
+    }
+
+    public UserNew(String role, String password, String login, String email) {
+        this.role = role;
+        this.password = password;
+        this.login = login;
+        this.email = email;
     }
 
     public UserNew(String role, String password, String login) {
