@@ -4,6 +4,7 @@ using FireSharp.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FireSharp.Extensions;
 
 namespace kanbanboard
 {
@@ -98,12 +99,26 @@ namespace kanbanboard
             try { return Client.GetAsync($"Users/{user.Username}/password").Result.ResultAs<string>(); }
             catch { return null; }
         }
+        
+        public static string GetPassword(this string username)
+        {
+            try { return Client.GetAsync($"Users/{username}/password").Result.ResultAs<string>(); }
+            catch { return null; }
+        }
 
         // Проверка пароля.
         // Если пароля нет в базе, пользователь входит в любом случае (хоть с липовым паролем, хоть без него)
         public static bool CheckPassword(this User user, string potentialPassword)
         {
             var password = user.GetPassword();
+
+            if (password is null) return true;
+            return password == potentialPassword;
+        }
+        
+        public static bool CheckPassword(this string username, string potentialPassword)
+        {
+            var password = GetPassword(username);
 
             if (password is null) return true;
             return password == potentialPassword;
@@ -150,7 +165,8 @@ namespace kanbanboard
 
         public static bool CheckUser(this string username)
         {
-            if (Client.GetAsync($"Users/{username}") is null)
+            var response = Client.GetAsync($"Users/{username}").Result.Body;
+            if (response == "null" || string.IsNullOrEmpty(response))
                 return false;
             return true;
         }

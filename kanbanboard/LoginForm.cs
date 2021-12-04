@@ -47,8 +47,17 @@ namespace kanbanboard
         {
             Username = textBoxLogin.Text;
 
-            if (CheckPassword() is false) {
-                MessageBox.Show("Неверный пароль", "Ошибка");
+            if (Firebase.CheckUser(Username) && !string.IsNullOrEmpty(Username))
+            {
+                if (CheckPassword() is false)
+                {
+                    MessageBox.Show("Неверный пароль", "Ошибка");
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Пользователя не существует");
                 return;
             }
 
@@ -64,11 +73,11 @@ namespace kanbanboard
             // Переводим в массив битов строку из пароля
             var data = Encoding.UTF8.GetBytes(textBoxPassword.Text);
 
-            // Шифрование (MD5)
+            // Расшифровка (MD5)
             // ComputeHash — хэш (ключ к расшифровке). 
             using (var tripleDes = new TripleDESCryptoServiceProvider() { Key = new MD5CryptoServiceProvider().ComputeHash(Encoding.UTF8.GetBytes("R0CK5T4R")),
                 Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
-                return new User(Username).CheckPassword(Convert.ToBase64String(tripleDes.CreateEncryptor().TransformFinalBlock(data, 0, data.Length)));
+                return Firebase.CheckPassword(Username, Convert.ToBase64String(tripleDes.CreateEncryptor().TransformFinalBlock(data, 0, data.Length)));
         }
 
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
