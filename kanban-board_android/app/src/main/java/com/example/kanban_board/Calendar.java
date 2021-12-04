@@ -19,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,7 +64,7 @@ public class Calendar extends Fragment {
     String boardName = "";
 
     Button addBoardBtn;
-    LinearLayout root;
+    ScrollView root;
     DatabaseReference boards;
 
     Button addTicketBtn;
@@ -106,7 +107,7 @@ public class Calendar extends Fragment {
         spinner = (Spinner) viewGroup.findViewById(R.id.spinnerBoards);
         addBoardBtn = (Button) viewGroup.findViewById(R.id.addBoardBtn);
         addTicketBtn = (Button) viewGroup.findViewById(R.id.addTicketBtn);
-        root = (LinearLayout) viewGroup.findViewById(R.id.calendar_root_layout);
+        root = (ScrollView) viewGroup.findViewById(R.id.calendar_root_layout);
         Header = (TextView) viewGroup.findViewById(R.id.headerCalender);
 
         TestGet();
@@ -184,8 +185,7 @@ public class Calendar extends Fragment {
 
 
                         FirebaseDatabase db = FirebaseDatabase.getInstance();
-                        tickets = db.getReference(ticketBoardName);
-
+                        tickets = db.getReference("Projects").child(ticketBoardName).child("Kanban");
                         tickets.child(ticketName).setValue(ticket);
 
 
@@ -252,7 +252,7 @@ public class Calendar extends Fragment {
 
         boardName = spinner.getSelectedItem().toString();
 
-        database = FirebaseDatabase.getInstance().getReference(boardName);
+        database = FirebaseDatabase.getInstance().getReference("Projects").child(boardName).child("Kanban");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
