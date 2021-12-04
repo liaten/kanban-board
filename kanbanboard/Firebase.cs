@@ -1,12 +1,9 @@
-﻿using System;
-using FireSharp;
+﻿using FireSharp;
 using FireSharp.Config;
 using FireSharp.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Windows.Forms;
-using Microsoft.SqlServer.Server;
 
 namespace kanbanboard
 {

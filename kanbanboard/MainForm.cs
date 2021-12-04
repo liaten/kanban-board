@@ -5,7 +5,6 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
-using Microsoft.Runtime.CompilerServices;
 
 namespace kanbanboard
 {
@@ -460,12 +459,9 @@ namespace kanbanboard
         // Показать пароль
         private void PasswordShowLinkLabel_Click(object sender, EventArgs e)
         {
-            using (var tripleDes = new TripleDESCryptoServiceProvider()
-            {
+            using (var tripleDes = new TripleDESCryptoServiceProvider() { 
                 Key = new MD5CryptoServiceProvider().ComputeHash(Encoding.UTF8.GetBytes("R0CK5T4R")),
-                Mode = CipherMode.ECB,
-                Padding = PaddingMode.PKCS7
-            })
+                Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 }) 
             {
                 var data = Convert.FromBase64String(_user.Password);
                 PasswordShowLabel.Text = Encoding.UTF8.GetString(tripleDes.CreateDecryptor().TransformFinalBlock(data, 0, data.Length));
