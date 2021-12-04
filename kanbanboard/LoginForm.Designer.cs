@@ -58,6 +58,7 @@ namespace kanbanboard
             this.PanelOfButtons = new System.Windows.Forms.Panel();
             this.RegPanel = new System.Windows.Forms.Panel();
             this.LoginPanel = new System.Windows.Forms.Panel();
+            this.checkPass = new System.Windows.Forms.CheckBox();
             this.LoginPasswordMailPanel.SuspendLayout();
             this.PanelOfTextBoxes.SuspendLayout();
             this.EmailTextBoxPanel.SuspendLayout();
@@ -130,10 +131,10 @@ namespace kanbanboard
             this.textBoxPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.textBoxPassword.Location = new System.Drawing.Point(15, 15);
             this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(194, 17);
             this.textBoxPassword.TabIndex = 4;
             this.textBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxPassword.UseSystemPasswordChar = true;
             this.textBoxPassword.MouseEnter += new System.EventHandler(this.TextBoxPass_MouseEnter);
             this.textBoxPassword.MouseLeave += new System.EventHandler(this.TextBoxPass_MouseLeave);
             // 
@@ -160,7 +161,7 @@ namespace kanbanboard
             this.PassLabel.AutoSize = true;
             this.PassLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.PassLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.PassLabel.Location = new System.Drawing.Point(27, 14);
+            this.PassLabel.Location = new System.Drawing.Point(10, 14);
             this.PassLabel.Name = "PassLabel";
             this.PassLabel.Size = new System.Drawing.Size(57, 16);
             this.PassLabel.TabIndex = 7;
@@ -177,7 +178,7 @@ namespace kanbanboard
             this.LoginPasswordMailPanel.MinimumSize = new System.Drawing.Size(300, 200);
             this.LoginPasswordMailPanel.Name = "LoginPasswordMailPanel";
             this.LoginPasswordMailPanel.Padding = new System.Windows.Forms.Padding(0, 70, 0, 0);
-            this.LoginPasswordMailPanel.Size = new System.Drawing.Size(334, 325);
+            this.LoginPasswordMailPanel.Size = new System.Drawing.Size(334, 281);
             this.LoginPasswordMailPanel.TabIndex = 9;
             // 
             // PanelOfTextBoxes
@@ -188,7 +189,7 @@ namespace kanbanboard
             this.PanelOfTextBoxes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelOfTextBoxes.Location = new System.Drawing.Point(110, 70);
             this.PanelOfTextBoxes.Name = "PanelOfTextBoxes";
-            this.PanelOfTextBoxes.Size = new System.Drawing.Size(224, 255);
+            this.PanelOfTextBoxes.Size = new System.Drawing.Size(224, 211);
             this.PanelOfTextBoxes.TabIndex = 1;
             // 
             // EmailTextBoxPanel
@@ -245,7 +246,7 @@ namespace kanbanboard
             this.LabelsPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.LabelsPanel.Location = new System.Drawing.Point(0, 70);
             this.LabelsPanel.Name = "LabelsPanel";
-            this.LabelsPanel.Size = new System.Drawing.Size(110, 255);
+            this.LabelsPanel.Size = new System.Drawing.Size(110, 211);
             this.LabelsPanel.TabIndex = 0;
             // 
             // EmailLabelPanel
@@ -364,20 +365,21 @@ namespace kanbanboard
             this.BottomPanel.Controls.Add(this.PanelOfCheckBoxes);
             this.BottomPanel.Controls.Add(this.PanelOfButtons);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 220);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 159);
             this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Size = new System.Drawing.Size(334, 105);
+            this.BottomPanel.Size = new System.Drawing.Size(334, 122);
             this.BottomPanel.TabIndex = 13;
             // 
             // PanelOfCheckBoxes
             // 
             this.PanelOfCheckBoxes.Controls.Add(this.CheckBoxRegistration);
+            this.PanelOfCheckBoxes.Controls.Add(this.checkPass);
             this.PanelOfCheckBoxes.Controls.Add(this.StayLoggedCheckBox);
             this.PanelOfCheckBoxes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelOfCheckBoxes.Location = new System.Drawing.Point(0, 65);
             this.PanelOfCheckBoxes.Name = "PanelOfCheckBoxes";
             this.PanelOfCheckBoxes.Padding = new System.Windows.Forms.Padding(15, 0, 15, 15);
-            this.PanelOfCheckBoxes.Size = new System.Drawing.Size(334, 40);
+            this.PanelOfCheckBoxes.Size = new System.Drawing.Size(334, 57);
             this.PanelOfCheckBoxes.TabIndex = 12;
             // 
             // CheckBoxRegistration
@@ -387,7 +389,7 @@ namespace kanbanboard
             this.CheckBoxRegistration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CheckBoxRegistration.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CheckBoxRegistration.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
-            this.CheckBoxRegistration.Location = new System.Drawing.Point(15, 17);
+            this.CheckBoxRegistration.Location = new System.Drawing.Point(15, 34);
             this.CheckBoxRegistration.Name = "CheckBoxRegistration";
             this.CheckBoxRegistration.Size = new System.Drawing.Size(304, 17);
             this.CheckBoxRegistration.TabIndex = 11;
@@ -425,20 +427,35 @@ namespace kanbanboard
             this.LoginPanel.Size = new System.Drawing.Size(161, 65);
             this.LoginPanel.TabIndex = 3;
             // 
+            // checkPass
+            // 
+            this.checkPass.AutoSize = true;
+            this.checkPass.Dock = System.Windows.Forms.DockStyle.Top;
+            this.checkPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
+            this.checkPass.Location = new System.Drawing.Point(15, 17);
+            this.checkPass.Name = "checkPass";
+            this.checkPass.Size = new System.Drawing.Size(304, 17);
+            this.checkPass.TabIndex = 12;
+            this.checkPass.Text = "Показать пароль";
+            this.checkPass.UseVisualStyleBackColor = true;
+            this.checkPass.CheckedChanged += new System.EventHandler(this.checkPass_CheckedChanged);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(334, 325);
+            this.ClientSize = new System.Drawing.Size(334, 281);
             this.Controls.Add(this.BottomPanel);
             this.Controls.Add(this.HeaderPanel);
             this.Controls.Add(this.LoginPasswordMailPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.MinimumSize = new System.Drawing.Size(350, 360);
+            this.MinimumSize = new System.Drawing.Size(350, 320);
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
@@ -504,5 +521,6 @@ namespace kanbanboard
         private System.Windows.Forms.Panel EmailLabelPanel;
         private System.Windows.Forms.Panel PasswordLabelPanel;
         private System.Windows.Forms.Panel loginLabelPanel;
+        private System.Windows.Forms.CheckBox checkPass;
     }
 }

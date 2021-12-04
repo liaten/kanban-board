@@ -24,12 +24,13 @@ namespace kanbanboard
         private void Login_Load(object sender, EventArgs e)
         {
             LoginPanel.Width = Size.Width / 2;
-            MinimumSize = new Size(350, 360 - EmailLabelPanel.Height);
-            Size = new Size(350, 360 - EmailLabelPanel.Height);
+            MinimumSize = new Size(350, 375 - EmailLabelPanel.Height);
+            Size = new Size(350, 375 - EmailLabelPanel.Height);
 
             var headerPadding = (Width - AuthorizationLabel.Width - AuthorizationPictureBox.Width) / 2;
             HeaderLabelPanel.Padding = new Padding(headerPadding, 15, headerPadding, 15);
             CheckBoxRegistration.ForeColor = Color.FromArgb(200, 200, 200);
+            checkPass.ForeColor = Color.FromArgb(200, 200, 200);
 
             EmailLabelPanel.Hide();
             EmailTextBoxPanel.Hide();
@@ -115,28 +116,25 @@ namespace kanbanboard
         {
             if (CheckBoxRegistration.Checked)
             {
+                CheckBoxRegistration.ForeColor = Color.FromArgb(200, 250, 200);
                 EmailLabelPanel.Show();
                 EmailTextBoxPanel.Show();
-
                 for (var i = 0; i <= EmailTextBoxPanel.Size.Height; i++)
                 {
-                    Size = new Size(350, 360 - EmailTextBoxPanel.Size.Height + i);
+                    Size = new Size(350, 375 - EmailTextBoxPanel.Size.Height + i);
                     await Task.Delay(1);
                 }
-                CheckBoxRegistration.ForeColor = Color.FromArgb(200, 250, 200);
             }
             else
             {
+                CheckBoxRegistration.ForeColor = Color.FromArgb(200, 200, 200);
                 for (var i = 0; i <= EmailTextBoxPanel.Size.Height; i++)
                 {
-                    Size = new Size(350, 360 - i);
+                    Size = new Size(350, 375 - i);
                     await Task.Delay(1);
                 }
-
                 EmailLabelPanel.Hide();
                 EmailTextBoxPanel.Hide();
-
-                CheckBoxRegistration.ForeColor = Color.FromArgb(200, 200, 200);
             }
         }
 
@@ -153,6 +151,12 @@ namespace kanbanboard
                     MessageBox.Show("Укажите пароль");
                 }
             }
+        }
+
+        private void checkPass_CheckedChanged(object sender, EventArgs e)
+        {
+            checkPass.ForeColor = Color.FromArgb(200, checkPass.Checked ? 255 : 200, 200);
+            textBoxPassword.PasswordChar = checkPass.Checked?'\0':'*';
         }
     }
 }
