@@ -191,7 +191,7 @@ namespace kanbanboard
         {
             await Client.SetAsync($"Users/{username}/", new Dictionary<string, string>() { 
                 {"password", MD5.Encrypt(password) },
-                { "role", "User"},
+                { "Role", "User"},
             });
             if (!(projectsNames is null)) await Client.UpdateAsync($"Users/{username}/", new Dictionary<string, List<string>>() { {"Projects", projectsNames}});
             if (!string.IsNullOrEmpty(email)) await Client.UpdateAsync($"Users/{username}/", new Dictionary<string, string>() { {"email", email } });
