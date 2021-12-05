@@ -57,15 +57,18 @@ namespace kanbanboard
                 // Проекты пользователя
                 ListBoxOfProjectNames.Items.Clear();
                 ListBoxOfProjectNames.Items.AddRange(_user.ProjectNames.Cast<object>().ToArray());
-                ListBoxOfProjectNames.SelectedValueChanged += (ss, aa) => {
+                ListBoxOfProjectNames.SelectedValueChanged += (ss, aa) =>
+                {
                     try
                     {
                         TableFromFirebase(ListBoxOfProjectNames.SelectedItem.ToString());
                         ShowMessages();
                     }
-                    catch {
+                    catch
+                    {
                         // ignored
-                    } };
+                    }
+                };
 
                 // Стартовый вид -> панель с профилем
                 UserControlsPanel_Click(null, null);
@@ -73,10 +76,11 @@ namespace kanbanboard
 
                 // Подсказка на кнопку с плюсом
                 new ToolTip().SetToolTip(AddTitleButton, "Добавить столбец");
-                
+
                 // Сохранение данных в базу
                 // Сохраняется только активная таблица (выбранная в listbox)
-                FormClosing += (b, q) => {
+                FormClosing += (b, q) =>
+                {
                     if (ListBoxOfProjectNames.SelectedItem != null) Upload(ListBoxOfProjectNames.SelectedItem.ToString());
                 };
 
@@ -244,7 +248,8 @@ namespace kanbanboard
             };
 
             // Удалить колонку
-            titlePanel.DelColumnButton.Click += (s, a) => {
+            titlePanel.DelColumnButton.Click += (s, a) =>
+            {
                 for (var i = 1; i < TableLayoutPanel.ColumnStyles.Count; i++)
                 {
                     TableLayoutPanel.Controls.Remove(TableLayoutPanel.GetControlFromPosition(TableLayoutPanel.GetPositionFromControl(titlePanel).Column, i));
@@ -261,7 +266,7 @@ namespace kanbanboard
                         AddControlToPanel(TableLayoutPanel.GetControlFromPosition(col, row), col - 1, row);
                     }
                 }
-                
+
                 TableLayoutPanel.ColumnCount--;
                 ResizeTable();
             };
@@ -384,7 +389,7 @@ namespace kanbanboard
 
             // изменение размера панельки выделения
             StripPanel.Size = new Size(StripPanel.Size.Width, MessengerButton.Size.Height);
-            
+
             MessengerTextBox.Focus();
 
             ListBoxOfProjectNames.Visible = true;
@@ -459,14 +464,8 @@ namespace kanbanboard
         // Показать пароль
         private void PasswordShowLinkLabel_Click(object sender, EventArgs e)
         {
-            using (var tripleDes = new TripleDESCryptoServiceProvider() { 
-                Key = new MD5CryptoServiceProvider().ComputeHash(Encoding.UTF8.GetBytes("R0CK5T4R")),
-                Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 }) 
-            {
-                var data = Convert.FromBase64String(_user.Password);
-                PasswordShowLabel.Text = Encoding.UTF8.GetString(tripleDes.CreateDecryptor().TransformFinalBlock(data, 0, data.Length));
-                PasswordShowLabel.Visible = true;
-            }
+            PasswordShowLabel.Text = MD5.Decrypt(_user.Password);
+            PasswordShowLabel.Visible = true;
         }
 
         // Доп. ручное сохранение

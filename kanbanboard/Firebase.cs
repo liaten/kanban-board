@@ -133,22 +133,22 @@ namespace kanbanboard
         }
 
         // Создает проект в базе пользователя.
-        public static void CreateProject(this User user, string projectName)
+        public static async void CreateProject(this User user, string projectName)
         {
             // Вытаскиваем данные о проектах, либо заносим, если их нет
             if (Client.Get($"Users/{user.Username}/Projects").ResultAs<List<string>>() is null)
             {
-                Client.SetAsync($"Users/{user.Username}/Projects", new List<string> { projectName });
+                await Client.SetAsync($"Users/{user.Username}/Projects", new List<string> { projectName });
                 return;
             }
-            var data = Client.GetAsync($"Users/{user.Username}/Projects").Result.ResultAs<List<string>>();
+            var data = Client.Get($"Users/{user.Username}/Projects").ResultAs<List<string>>();
 
             // Добавляем в данные данные
             if (!data.Exists(x => x == projectName))
                 data.Add(projectName);
 
             // добавляем в базу
-            Client.SetAsync($"Users/{user.Username}/Projects", data);
+            await Client.SetAsync($"Users/{user.Username}/Projects", data);
         }
 
         // Удаляет проект из базы пользователя.
@@ -185,6 +185,16 @@ namespace kanbanboard
             var list = user.GetMessages(projectName) ?? new List<Dictionary<string, string>>();
             list.Add(new Dictionary<string, string> { { user.Username, message } });
             await Client.SetAsync($"Projects/{projectName}/Chat/", list);
+        }
+
+        public static async void CreateUser(this string username, string password, List<string> projectsNames = null,string email = "")
+        {
+            await Client.SetAsync($"Users/{username}/", new Dictionary<string, string>() { 
+                {"password", MD5.Encrypt(password) },
+                { "role", "User"},
+            });
+            if (!(projectsNames is null)) await Client.UpdateAsync($"Users/{username}/", new Dictionary<string, List<string>>() { {"Projects", projectsNames}});
+            if (!string.IsNullOrEmpty(email)) await Client.UpdateAsync($"Users/{username}/", new Dictionary<string, string>() { {"email", email } });
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Security.Cryptography;
 using System.Text;
@@ -69,17 +70,7 @@ namespace kanbanboard
         }
 
         // Верификация пароля (возвращает true/false)
-        public bool CheckPassword()
-        {
-            // Переводим в массив битов строку из пароля
-            var data = Encoding.UTF8.GetBytes(textBoxPassword.Text);
-
-            // Расшифровка (MD5)
-            // ComputeHash — хэш (ключ к расшифровке). 
-            using (var tripleDes = new TripleDESCryptoServiceProvider() { Key = new MD5CryptoServiceProvider().ComputeHash(Encoding.UTF8.GetBytes("R0CK5T4R")),
-                Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
-                return Firebase.CheckPassword(Username, Convert.ToBase64String(tripleDes.CreateEncryptor().TransformFinalBlock(data, 0, data.Length)));
-        }
+        public bool CheckPassword() => Firebase.CheckPassword(Username, MD5.Encrypt(textBoxPassword.Text));
 
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -148,15 +139,16 @@ namespace kanbanboard
             {
                 if (textBoxPassword.Text == "")
                 {
-                    MessageBox.Show("Укажите пароль");
+                    MessageBox.Show("Укажите пароль"); return;
                 }
+                Firebase.CreateUser(Username, textBoxPassword.Text, email:textBoxEmail.Text);
             }
         }
 
-        private void checkPass_CheckedChanged(object sender, EventArgs e)
+        public void CheckPass_CheckedChanged(object sender, EventArgs e)
         {
             checkPass.ForeColor = Color.FromArgb(200, checkPass.Checked ? 255 : 200, 200);
-            textBoxPassword.PasswordChar = checkPass.Checked?'\0':'*';
+            textBoxPassword.PasswordChar = checkPass.Checked ? '\0':'*';
         }
     }
 }
