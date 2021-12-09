@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Security.Cryptography;
-using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using kanbanboard.Properties;
 
 namespace kanbanboard
 {
     public partial class LoginForm : Form
     {
-        public static string Username { get; set; }
+        public static string Username;
 
         public LoginForm()
         {
@@ -37,7 +37,7 @@ namespace kanbanboard
             EmailTextBoxPanel.Hide();
         }
 
-        // private static bool ValidEmail(string email) => new Regex(@"^(\w|\d|\.|_|-)+@(\w|\d){1,}\.[\w]{1,}\.?[\w]*$", RegexOptions.IgnoreCase).IsMatch(email);
+        private bool ValidEmail(string email) => new Regex(@"^(\w|\d|\.|_|-)+@(\w|\d){1,}\.[\w]{1,}\.?[\w]*$", RegexOptions.IgnoreCase).IsMatch(email);
 
         private void TextBoxLogin_MouseEnter(object sender, EventArgs e) => LoginLabel.ForeColor = Color.FromArgb(114, 119, 139);
         private void TextBoxLogin_MouseLeave(object sender, EventArgs e) => LoginLabel.ForeColor = Color.FromArgb(74, 79, 99);
@@ -48,29 +48,21 @@ namespace kanbanboard
         private void LoginButton_Click(object sender, EventArgs e)
         {
             Username = textBoxLogin.Text;
-
-            if (Firebase.CheckUser(Username) && !string.IsNullOrEmpty(Username))
+            if (Username.CheckUser() && !string.IsNullOrEmpty(Username))
             {
-                if (CheckPassword() is false)
+                if (CheckPassword())
                 {
-                    MessageBox.Show("Неверный пароль", "Ошибка");
-                    return;
+                    var mainForm = new MainForm(Username);
+                    Hide();
+                    mainForm.Show();
                 }
+                else MessageBox.Show("Неверный пароль", "Ошибка");
             }
-            else
-            {
-                MessageBox.Show("Пользователя не существует");
-                return;
-            }
-
-            LoginButton.Image = Properties.Resources.check;
-            Hide();
-            var main = new MainForm(Username);
-            main.Show();
+            else MessageBox.Show("Пользователя не существует");
         }
 
         // Верификация пароля (возвращает true/false)
-        public bool CheckPassword() => Firebase.CheckPassword(Username, MD5.Encrypt(textBoxPassword.Text));
+        public bool CheckPassword() => Username.CheckPassword(MD5.Encrypt(textBoxPassword.Text));
 
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -141,14 +133,21 @@ namespace kanbanboard
                 {
                     MessageBox.Show("Укажите пароль"); return;
                 }
-                Firebase.CreateUser(Username, textBoxPassword.Text, email:textBoxEmail.Text);
+
+                if (!string.IsNullOrEmpty(textBoxEmail.Text))
+                {
+                    if (ValidEmail(textBoxEmail.Text))
+                        Username.CreateUser(textBoxPassword.Text, email: textBoxEmail.Text);
+                    else MessageBox.Show("Неправильный email. Попробуй ещё раз");
+                }
+                else Username.CreateUser(textBoxPassword.Text);
             }
         }
 
         public void CheckPass_CheckedChanged(object sender, EventArgs e)
         {
             checkPass.ForeColor = Color.FromArgb(200, checkPass.Checked ? 255 : 200, 200);
-            textBoxPassword.PasswordChar = checkPass.Checked ? '\0':'*';
+            textBoxPassword.PasswordChar = checkPass.Checked ? '\0' : '*';
         }
     }
 }

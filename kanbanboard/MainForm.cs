@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace kanbanboard
@@ -15,7 +18,6 @@ namespace kanbanboard
         public MainForm(string username)
         {
             InitializeComponent();
-            ListBoxOfProjectNames.Items.Clear();
 
             // Вернуться в LoginForm по ESC
             KeyDown += (s, a) =>
@@ -45,6 +47,31 @@ namespace kanbanboard
             _user = new User(username);
             UserInfoLabel.Text = _user.Role;
 
+            // Событие при изменении выбранной строки в listbox
+            ListBoxOfProjectNames.Items.Clear();
+            ListBoxOfProjectNames.SelectedIndexChanged += (ss, aa) =>
+            {
+                try
+                {
+                    // LineJoдобавить methodinvoker
+                    Parallel.Invoke(
+                        () => Invoke((MethodInvoker)(() => TableFromFirebase(ListBoxOfProjectNames.SelectedItem.ToString()))),
+                        () => ShowMessages()
+                        );
+                }
+                catch { }
+            };
+
+            // Сохранение данных в базу
+            // Сохраняется только активная таблица (выбранная в listbox)
+            FormClosing += (b, q) =>
+            {
+                if (ListBoxOfProjectNames.SelectedItem != null) Upload(ListBoxOfProjectNames.SelectedItem.ToString());
+            };
+
+            // Подсказка на кнопку с плюсом
+            new ToolTip().SetToolTip(AddTitleButton, "Добавить столбец");
+
             Load += (s, a) =>
             {
                 if (LoginForm.Username == "")
@@ -55,34 +82,11 @@ namespace kanbanboard
                 }
 
                 // Проекты пользователя
-                ListBoxOfProjectNames.Items.Clear();
                 ListBoxOfProjectNames.Items.AddRange(_user.ProjectNames.Cast<object>().ToArray());
-                ListBoxOfProjectNames.SelectedValueChanged += (ss, aa) =>
-                {
-                    try
-                    {
-                        TableFromFirebase(ListBoxOfProjectNames.SelectedItem.ToString());
-                        ShowMessages();
-                    }
-                    catch
-                    {
-                        // ignored
-                    }
-                };
-
+                
                 // Стартовый вид -> панель с профилем
                 UserControlsPanel_Click(null, null);
                 UsernameLabel.Text = LoginForm.Username;
-
-                // Подсказка на кнопку с плюсом
-                new ToolTip().SetToolTip(AddTitleButton, "Добавить столбец");
-
-                // Сохранение данных в базу
-                // Сохраняется только активная таблица (выбранная в listbox)
-                FormClosing += (b, q) =>
-                {
-                    if (ListBoxOfProjectNames.SelectedItem != null) Upload(ListBoxOfProjectNames.SelectedItem.ToString());
-                };
 
                 // Загрузка первого элемента из списка
                 try { ListBoxOfProjectNames.SelectedIndex = 0; }
@@ -145,6 +149,7 @@ namespace kanbanboard
         private void TableFromFirebase(string selectedProject)
         {
             TableLayoutPanel.RowStyles.Clear();
+            TableLayoutPanel.ColumnCount = 0;
             TableLayoutPanel.ColumnStyles.Clear();
             TableLayoutPanel.Controls.Clear();
 
@@ -166,6 +171,8 @@ namespace kanbanboard
                     row = 1;
                 }
             }
+
+            TableLayoutPanel.ColumnCount--;
             ResizeTable();
         }
 
@@ -221,7 +228,7 @@ namespace kanbanboard
 
             TableLayoutPanel.SuspendLayout();
 
-            if (TableLayoutPanel.ColumnCount <= column)
+            if (TableLayoutPanel.ColumnStyles.Count <= column)
             {
                 TableLayoutPanel.ColumnCount++;
                 TableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
@@ -230,53 +237,83 @@ namespace kanbanboard
             TableLayoutPanel.Controls.Add(titlePanel, column, 0);
             TableLayoutPanel.ResumeLayout();
 
-            // Изменить заголовок
-            titlePanel.TitleColumnLabel.Click += (s, a) =>
+            // Добавляем события на кнопки, если пользователь соответствующей роли
+            if (_user.Role == "Admin")
             {
-                if (!Application.OpenForms.OfType<ChangeTitleForm>().Any()) new ChangeTitleForm(this, titlePanel).Show();
-            };
-
-            // Добавляем события на кнопки
-            titlePanel.PlusButton.Click += (s, a) =>
-            {
-                for (var row = 1; row <= TableLayoutPanel.RowStyles.Count; row++)
+                // Изменить заголовок
+                titlePanel.TitleColumnLabel.Click += (s, a) =>
                 {
-                    if (!(TableLayoutPanel.GetControlFromPosition(column, row) is null)) continue;
-                    AddControlToPanel("Заголовок", "Описание", "Разработчики", column, row);
-                    break;
-                }
-            };
+                    if (!Application.OpenForms.OfType<ChangeTitleForm>().Any())
+                        new ChangeTitleForm(this, titlePanel).Show();
+                };
 
-            // Удалить колонку
-            titlePanel.DelColumnButton.Click += (s, a) =>
-            {
-                for (var i = 1; i < TableLayoutPanel.ColumnStyles.Count; i++)
+                // Добавляем события на кнопки
+                titlePanel.PlusButton.Click += (s, a) =>
                 {
-                    TableLayoutPanel.Controls.Remove(TableLayoutPanel.GetControlFromPosition(TableLayoutPanel.GetPositionFromControl(titlePanel).Column, i));
-                }
-
-                var col = TableLayoutPanel.GetPositionFromControl(titlePanel).Column + 1;
-                TableLayoutPanel.Controls.Remove(titlePanel);
-
-                for (; col < TableLayoutPanel.ColumnStyles.Count; col++)
-                {
-                    for (var row = 0; row < TableLayoutPanel.RowStyles.Count; row++)
+                    for (var row = 1; row <= TableLayoutPanel.RowStyles.Count; row++)
                     {
-                        if (TableLayoutPanel.GetControlFromPosition(col, row) == null) continue;
-                        AddControlToPanel(TableLayoutPanel.GetControlFromPosition(col, row), col - 1, row);
+                        if (!(TableLayoutPanel.GetControlFromPosition(column, row) is null)) continue;
+                        AddControlToPanel("Заголовок", "Описание", "Разработчики", column, row);
+                        break;
                     }
-                }
+                };
 
-                TableLayoutPanel.ColumnCount--;
-                ResizeTable();
-            };
+                // Удалить колонку
+                titlePanel.DelColumnButton.Click += (s, a) =>
+                {
+                    for (var i = 1; i < TableLayoutPanel.ColumnStyles.Count; i++)
+                    {
+                        var control = TableLayoutPanel.GetControlFromPosition(TableLayoutPanel.GetPositionFromControl(titlePanel).Column, i);
+                        TableLayoutPanel.Controls.Remove(control);
+                    }
 
-            // Изменить заголовок
-            titlePanel.Click += (s, a) =>
+                    var col = TableLayoutPanel.GetPositionFromControl(titlePanel).Column;
+                    TableLayoutPanel.Controls.Remove(titlePanel);
+
+                    for (; col < TableLayoutPanel.ColumnStyles.Count; col++)
+                    {
+                        for (var row = 0; row < TableLayoutPanel.RowStyles.Count; row++)
+                        {
+                            if (TableLayoutPanel.GetControlFromPosition(col, row) == null) continue;
+                            AddControlToPanel(TableLayoutPanel.GetControlFromPosition(col, row), col - 1, row);
+                        }
+                    }
+                    
+                    if (TableLayoutPanel.ColumnStyles.Count == TableLayoutPanel.ColumnCount) TableLayoutPanel.ColumnStyles.RemoveAt(TableLayoutPanel.ColumnCount - 1);
+                    TableLayoutPanel.ColumnCount--;
+                    ResizeTable();
+                };
+                
+                // Изменить заголовок
+                titlePanel.Click += (s, a) =>
+                {
+                    if (!Application.OpenForms.OfType<ChangeTitleForm>().Any())
+                        new ChangeTitleForm(this, titlePanel).Show();
+                };
+            }
+            else
             {
-                if (!Application.OpenForms.OfType<ChangeTitleForm>().Any())
-                    new ChangeTitleForm(this, titlePanel).Show();
-            };
+                titlePanel.PlusButton.Visible = false;
+                titlePanel.DelColumnButton.Visible = false;
+            }
+        }
+
+        // Добавить колонку
+        private void AddTitleButton_Click(object sender, EventArgs e)
+        {
+            var column = 0;
+
+            for (var findColumn = 0; findColumn < TableLayoutPanel.ColumnStyles.Count; findColumn++)
+            {
+                if (!(TableLayoutPanel.GetControlFromPosition(findColumn, 0) is null)) continue;
+                column = TableLayoutPanel.ColumnStyles.Count;
+                break;
+            }
+
+            if (TableLayoutPanel.ColumnStyles.Count > 1 && column == 0) column = TableLayoutPanel.ColumnStyles.Count;
+
+            AddTitleToPanel("Это тайтл", column);
+            AddControlToPanel("Заголовок", "Описание", "Разработчики", column, 1);
         }
 
         // Добавить контрол (в основном тикет) в таблицу
@@ -313,8 +350,14 @@ namespace kanbanboard
             control.Ticket.Text = ticket;
             control.People.Text = people;
 
-            // Добавляем события на кнопки
-            SetEventsOnTicket(control);
+            // Добавляем события на кнопки, если пользователь соответствующей роли
+            if (_user.Role == "Admin") SetEventsOnTicket(control);
+            else
+            {
+                control.DelButton.Visible = false;
+                control.LeftButton.Visible = false;
+                control.RightButton.Visible = false;
+            }
 
             // Инициализация имени панели тикета
             control.Name = $"ticket{column}{row}";
@@ -431,7 +474,6 @@ namespace kanbanboard
                 foreach (ColumnStyle column in TableLayoutPanel.ColumnStyles)
                 {
                     column.SizeType = SizeType.Percent;
-                    //column.Width = 100 / TableLayoutPanel.ColumnCount;
                     column.Width = 25;
                 }
                 TableLayoutPanel.Controls.OfType<TicketPanel>().ToList().ForEach(x => x.Width = TableLayoutPanel.Width / TableLayoutPanel.ColumnCount);
@@ -452,13 +494,6 @@ namespace kanbanboard
                 });
             }
             catch (Exception e) { Console.WriteLine("Ошибка" + e.Message); }
-        }
-
-        // Добавить колонку
-        private void AddTitleButton_Click(object sender, EventArgs e)
-        {
-            AddTitleToPanel("Это тайтл", TableLayoutPanel.ColumnStyles.Count);
-            AddControlToPanel("Заголовок", "Описание", "Разработчики", TableLayoutPanel.ColumnStyles.Count, 1);
         }
 
         // Показать пароль

@@ -3,6 +3,7 @@ using FireSharp.Config;
 using FireSharp.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using FireSharp.Extensions;
 
@@ -25,11 +26,12 @@ namespace kanbanboard
         // Получить роль пользователя
         public static string GetRole(this User user)
         {
-            if (!(Client.GetAsync($"Users/{user.Username}/Role").Result.ResultAs<string>() is null))
-                return Client.GetAsync($"Users/{user.Username}/Role").Result.ResultAs<string>();
+            var role = Client.GetAsync($"Users/{user.Username}/Role").Result.ResultAs<string>();
+            if (!(role is null)) 
+                return role;
 
             Client.SetAsync($"Users/{user.Username}/Role", "User");
-            return Client.GetAsync($"Users/{user.Username}/Role").Result.ResultAs<string>();
+            return "User";
         }
 
         // Получаем имена проектов и их данные канбан доски
@@ -166,9 +168,7 @@ namespace kanbanboard
         public static bool CheckUser(this string username)
         {
             var response = Client.GetAsync($"Users/{username}").Result.Body;
-            if (response == "null" || string.IsNullOrEmpty(response))
-                return false;
-            return true;
+            return response != "null" && !string.IsNullOrEmpty(response);
         }
 
         // Получить все сообщения проекта
