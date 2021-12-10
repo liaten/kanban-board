@@ -54,11 +54,11 @@ namespace kanbanboard
             this.HeaderLabelPanel = new System.Windows.Forms.Panel();
             this.BottomPanel = new System.Windows.Forms.Panel();
             this.PanelOfCheckBoxes = new System.Windows.Forms.Panel();
+            this.CheckBoxRegistration = new System.Windows.Forms.CheckBox();
             this.checkPass = new System.Windows.Forms.CheckBox();
             this.PanelOfButtons = new System.Windows.Forms.Panel();
             this.RegPanel = new System.Windows.Forms.Panel();
             this.LoginPanel = new System.Windows.Forms.Panel();
-            this.CheckBoxRegistration = new System.Windows.Forms.CheckBox();
             this.LoginPasswordMailPanel.SuspendLayout();
             this.PanelOfTextBoxes.SuspendLayout();
             this.EmailTextBoxPanel.SuspendLayout();
@@ -382,6 +382,21 @@ namespace kanbanboard
             this.PanelOfCheckBoxes.Size = new System.Drawing.Size(334, 57);
             this.PanelOfCheckBoxes.TabIndex = 12;
             // 
+            // CheckBoxRegistration
+            // 
+            this.CheckBoxRegistration.AutoSize = true;
+            this.CheckBoxRegistration.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CheckBoxRegistration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CheckBoxRegistration.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CheckBoxRegistration.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
+            this.CheckBoxRegistration.Location = new System.Drawing.Point(15, 34);
+            this.CheckBoxRegistration.Name = "CheckBoxRegistration";
+            this.CheckBoxRegistration.Size = new System.Drawing.Size(304, 17);
+            this.CheckBoxRegistration.TabIndex = 11;
+            this.CheckBoxRegistration.Text = "Регистрация";
+            this.CheckBoxRegistration.UseVisualStyleBackColor = true;
+            this.CheckBoxRegistration.CheckedChanged += new System.EventHandler(this.CheckBoxRegistration_CheckedChanged);
+            // 
             // checkPass
             // 
             this.checkPass.AutoSize = true;
@@ -426,21 +441,6 @@ namespace kanbanboard
             this.LoginPanel.Padding = new System.Windows.Forms.Padding(15);
             this.LoginPanel.Size = new System.Drawing.Size(161, 65);
             this.LoginPanel.TabIndex = 3;
-            // 
-            // CheckBoxRegistration
-            // 
-            this.CheckBoxRegistration.AutoSize = true;
-            this.CheckBoxRegistration.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CheckBoxRegistration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CheckBoxRegistration.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CheckBoxRegistration.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
-            this.CheckBoxRegistration.Location = new System.Drawing.Point(15, 34);
-            this.CheckBoxRegistration.Name = "CheckBoxRegistration";
-            this.CheckBoxRegistration.Size = new System.Drawing.Size(304, 17);
-            this.CheckBoxRegistration.TabIndex = 11;
-            this.CheckBoxRegistration.Text = "Регистрация";
-            this.CheckBoxRegistration.UseVisualStyleBackColor = true;
-            this.CheckBoxRegistration.CheckedChanged += new System.EventHandler(this.CheckBoxRegistration_CheckedChanged);
             // 
             // LoginForm
             // 
