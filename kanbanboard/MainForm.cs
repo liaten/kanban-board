@@ -10,7 +10,6 @@ namespace kanbanboard
     public partial class MainForm : Form
     {
         private static User _user;
-        private int show_password = 0;
 
         public MainForm(string username)
         {
@@ -42,7 +41,7 @@ namespace kanbanboard
 
             // Создаём экземпляр через который будем работать с базой
             _user = new User(username);
-            UserInfoLabel.Text = _user.Role;
+            UserInfoLabel.Text = "Роль:" + _user.Role;
 
             // Событие при изменении выбранной строки в listbox
             ListBoxOfProjectNames.Items.Clear();
@@ -495,7 +494,7 @@ namespace kanbanboard
         // Показать пароль
         private void PasswordShowLinkLabel_Click(object sender, EventArgs e)
         {
-            if (show_password % 2 == 0)
+            if (!PasswordShowLabel.Visible)
             {
                 PasswordShowLabel.Text = MD5.Decrypt(_user.Password);
                 PasswordShowLabel.Visible = true;
@@ -506,8 +505,6 @@ namespace kanbanboard
                 PasswordShowLabel.Visible = false;
                 PasswordShowLinkLabel.Text = "Показать";
             }
-            show_password++;
-           
         }
 
         // Доп. ручное сохранение
