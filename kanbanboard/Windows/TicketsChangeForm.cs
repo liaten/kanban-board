@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using kanbanboard.Classes;
+using kanbanboard.Controls;
 
-namespace kanbanboard
+namespace kanbanboard.Windows
 {
     public partial class TicketsChangeForm : Form
     {

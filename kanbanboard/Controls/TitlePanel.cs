@@ -2,11 +2,10 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace kanbanboard
+namespace kanbanboard.Controls
 {
     public sealed class TitlePanel : Panel
     {
-
         public Label TitleColumnLabel { get; set; }
         public Button PlusButton { get; set; }
         public Button DelColumnButton { get; set; }

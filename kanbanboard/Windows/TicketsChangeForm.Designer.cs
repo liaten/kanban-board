@@ -1,5 +1,5 @@
 ﻿
-namespace kanbanboard
+namespace kanbanboard.Windows
 {
     partial class TicketsChangeForm
     {

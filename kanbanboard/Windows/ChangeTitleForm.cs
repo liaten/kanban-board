@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
+using kanbanboard.Controls;
 
-namespace kanbanboard
+namespace kanbanboard.Windows
 {
     public partial class ChangeTitleForm : Form
     {
