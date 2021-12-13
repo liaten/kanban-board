@@ -1,13 +1,11 @@
-﻿using FireSharp;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using FireSharp;
 using FireSharp.Config;
 using FireSharp.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using FireSharp.Extensions;
 
-namespace kanbanboard
+namespace kanbanboard.Classes
 {
     static class Firebase
     {

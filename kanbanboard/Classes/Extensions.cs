@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace kanbanboard
+namespace kanbanboard.Classes
 {
     public static class Extensions
     {

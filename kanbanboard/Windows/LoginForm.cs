@@ -4,9 +4,10 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using kanbanboard.Classes;
 using kanbanboard.Properties;
 
-namespace kanbanboard
+namespace kanbanboard.Windows
 {
     public partial class LoginForm : Form
     {
