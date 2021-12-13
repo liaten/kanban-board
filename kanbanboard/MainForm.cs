@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,6 +10,7 @@ namespace kanbanboard
     public partial class MainForm : Form
     {
         private static User _user;
+        private int show_password = 0;
 
         public MainForm(string username)
         {
@@ -82,7 +79,7 @@ namespace kanbanboard
 
                 // Проекты пользователя
                 ListBoxOfProjectNames.Items.AddRange(_user.ProjectNames.Cast<object>().ToArray());
-                
+
                 // Стартовый вид -> панель с профилем
                 UserControlsPanel_Click(null, null);
                 UsernameLabel.Text = LoginForm.Username;
@@ -277,12 +274,12 @@ namespace kanbanboard
                             AddControlToPanel(TableLayoutPanel.GetControlFromPosition(col, row), col - 1, row);
                         }
                     }
-                    
+
                     if (TableLayoutPanel.ColumnStyles.Count == TableLayoutPanel.ColumnCount) TableLayoutPanel.ColumnStyles.RemoveAt(TableLayoutPanel.ColumnCount - 1);
                     TableLayoutPanel.ColumnCount--;
                     ResizeTable();
                 };
-                
+
                 // Изменить заголовок
                 titlePanel.Click += (s, a) =>
                 {
@@ -498,8 +495,19 @@ namespace kanbanboard
         // Показать пароль
         private void PasswordShowLinkLabel_Click(object sender, EventArgs e)
         {
-            PasswordShowLabel.Text = MD5.Decrypt(_user.Password);
-            PasswordShowLabel.Visible = true;
+            if (show_password % 2 == 0)
+            {
+                PasswordShowLabel.Text = MD5.Decrypt(_user.Password);
+                PasswordShowLabel.Visible = true;
+                PasswordShowLinkLabel.Text = "Скрыть";
+            }
+            else
+            {
+                PasswordShowLabel.Visible = false;
+                PasswordShowLinkLabel.Text = "Показать";
+            }
+            show_password++;
+           
         }
 
         // Доп. ручное сохранение
