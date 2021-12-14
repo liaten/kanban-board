@@ -4,7 +4,7 @@ using kanbanboard.Windows;
 
 namespace kanbanboard.Classes
 {
-    internal class User
+    public class User
     {
         public string Username { get; set; }
         public string Role { get; set; }

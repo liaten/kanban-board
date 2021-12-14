@@ -76,8 +76,7 @@ namespace kanbanboard.Windows
                     return;
                 }
 
-                // Проекты пользователя
-                ListBoxOfProjectNames.Items.AddRange(_user.ProjectNames.Cast<object>().ToArray());
+                SetUserProjectNames();
 
                 // Стартовый вид -> панель с профилем
                 UserControlsPanel_Click(null, null);
@@ -87,6 +86,12 @@ namespace kanbanboard.Windows
                 try { ListBoxOfProjectNames.SelectedIndex = 0; }
                 catch { }
             };
+        }
+
+        // Проекты пользователя
+        private void SetUserProjectNames()
+        {
+            ListBoxOfProjectNames.Items.AddRange(_user.ProjectNames.Cast<object>().ToArray());
         }
 
         // Устранение мерцания при изменении размеров таблицы
@@ -163,6 +168,12 @@ namespace kanbanboard.Windows
         {
             CalendarLabel.ToCenter(CalendarPanel);
             CalendarLabel.MaximumSize = CalendarPanel.Size;
+        }
+
+        // Кнопка по созданию проекта
+        private void CreateProjectButton_Click(object sender, EventArgs e)
+        {
+            if (!Application.OpenForms.OfType<ChangeForm>().Any()) new ChangeForm(this, _user.Username).Show();
         }
 
         // Выход из мейнформы

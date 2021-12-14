@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace kanbanboard.Classes
@@ -20,5 +21,22 @@ namespace kanbanboard.Classes
                 default: return input[0].ToString().ToUpper() + input.Substring(1);
             }
         }
+
+        public static bool IsControlAtFront(this Control control)
+        {
+            while (control.Parent != null)
+            {
+                if (control.Parent.Controls.GetChildIndex(control) == 0)
+                {
+                    control = control.Parent;
+                    if (control.Parent == null)
+                        return true;
+                }
+                else return false;
+            }
+            return false;
+        }
+
+        public static bool ValidEmail(this string email) => new Regex(@"^(\w|\d|\.|_|-)+@(\w|\d){1,}\.[\w]{1,}\.?[\w]*$", RegexOptions.IgnoreCase).IsMatch(email);
     }
 }

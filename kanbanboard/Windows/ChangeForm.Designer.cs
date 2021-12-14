@@ -1,7 +1,7 @@
 ﻿
 namespace kanbanboard.Windows
 {
-    partial class ChangeTitleForm
+    partial class ChangeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,33 +29,35 @@ namespace kanbanboard.Windows
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangeTitleForm));
-            this.TitleTextBox = new System.Windows.Forms.TextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangeForm));
+            this.ChangingTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // TitleTextBox
+            // ChangingTextBox
             // 
-            this.TitleTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.TitleTextBox.Location = new System.Drawing.Point(51, 7);
-            this.TitleTextBox.Name = "TitleTextBox";
-            this.TitleTextBox.Size = new System.Drawing.Size(180, 26);
-            this.TitleTextBox.TabIndex = 1;
+            this.ChangingTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.ChangingTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ChangingTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.ChangingTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.ChangingTextBox.Location = new System.Drawing.Point(51, 11);
+            this.ChangingTextBox.Name = "ChangingTextBox";
+            this.ChangingTextBox.Size = new System.Drawing.Size(180, 19);
+            this.ChangingTextBox.TabIndex = 1;
             // 
-            // ChangeTitleForm
+            // ChangeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
             this.ClientSize = new System.Drawing.Size(283, 40);
-            this.Controls.Add(this.TitleTextBox);
+            this.Controls.Add(this.ChangingTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.Name = "ChangeTitleForm";
+            this.Name = "ChangeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Изменение заголовка";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ChangeTitleForm_FormClosing);
-            this.Load += new System.EventHandler(this.ChangeTitleForm_Load);
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -63,6 +65,6 @@ namespace kanbanboard.Windows
 
         #endregion
 
-        private System.Windows.Forms.TextBox TitleTextBox;
+        private System.Windows.Forms.TextBox ChangingTextBox;
     }
 }

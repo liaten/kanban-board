@@ -45,6 +45,7 @@ namespace kanbanboard.Windows
         {
             TableLayoutPanel.RowStyles.Clear();
             TableLayoutPanel.ColumnCount = 0;
+            TableLayoutPanel.RowCount = 1;
             TableLayoutPanel.ColumnStyles.Clear();
             TableLayoutPanel.Controls.Clear();
 
@@ -66,7 +67,7 @@ namespace kanbanboard.Windows
                     row = 1;
                 }
             }
-            
+
             ResizeTable();
         }
 
@@ -113,7 +114,7 @@ namespace kanbanboard.Windows
             // Удаление тикета
             ticketPanel.DelButton.Click += (sender, w) => TableLayoutPanel.Controls.Remove(ticketPanel);
         }
-        
+
         // Добавление заголовков
         private void AddTitleToPanel(string textOfLabel, int column)
         {
@@ -137,8 +138,8 @@ namespace kanbanboard.Windows
                 // Изменить заголовок
                 titlePanel.TitleColumnLabel.Click += (s, a) =>
                 {
-                    if (!Application.OpenForms.OfType<ChangeTitleForm>().Any())
-                        new ChangeTitleForm(this, titlePanel).Show();
+                    if (!Application.OpenForms.OfType<ChangeForm>().Any())
+                        new ChangeForm(this, titlePanel).Show();
                 };
 
                 // Добавляем события на кнопки
@@ -162,27 +163,39 @@ namespace kanbanboard.Windows
                     }
 
                     var col = TableLayoutPanel.GetPositionFromControl(titlePanel).Column;
-                    TableLayoutPanel.Controls.Remove(titlePanel);
-
-                    for (; col < TableLayoutPanel.ColumnStyles.Count; col++)
+                    if (col != 0)
                     {
-                        for (var row = 0; row < TableLayoutPanel.RowStyles.Count; row++)
-                        {
-                            if (TableLayoutPanel.GetControlFromPosition(col, row) == null) continue;
-                            AddControlToPanel(TableLayoutPanel.GetControlFromPosition(col, row), col - 1, row);
-                        }
-                    }
+                        TableLayoutPanel.Controls.Remove(titlePanel);
 
-                    if (TableLayoutPanel.ColumnStyles.Count == TableLayoutPanel.ColumnCount) TableLayoutPanel.ColumnStyles.RemoveAt(TableLayoutPanel.ColumnCount - 1);
-                    TableLayoutPanel.ColumnCount--;
-                    ResizeTable();
+                        for (; col < TableLayoutPanel.ColumnStyles.Count; col++)
+                        {
+                            for (var row = 0; row < TableLayoutPanel.RowStyles.Count; row++)
+                            {
+                                if (TableLayoutPanel.GetControlFromPosition(col, row) == null) continue;
+                                AddControlToPanel(TableLayoutPanel.GetControlFromPosition(col, row), col - 1, row);
+                            }
+                        }
+
+                        if (TableLayoutPanel.ColumnStyles.Count == TableLayoutPanel.ColumnCount)
+                            TableLayoutPanel.ColumnStyles.RemoveAt(TableLayoutPanel.ColumnCount - 1);
+                        TableLayoutPanel.ColumnCount--;
+                        ResizeTable();
+                    }
+                    else
+                    {
+                        TableLayoutPanel.Controls.Clear();
+                        TableLayoutPanel.RowCount = 1;
+                        TableLayoutPanel.RowStyles.Clear();
+                        TableLayoutPanel.ColumnCount = 0;
+                        TableLayoutPanel.ColumnStyles.Clear();
+                    }
                 };
 
                 // Изменить заголовок
                 titlePanel.Click += (s, a) =>
                 {
-                    if (!Application.OpenForms.OfType<ChangeTitleForm>().Any())
-                        new ChangeTitleForm(this, titlePanel).Show();
+                    if (!Application.OpenForms.OfType<ChangeForm>().Any())
+                        new ChangeForm(this, titlePanel).Show();
                 };
             }
             else
@@ -204,10 +217,10 @@ namespace kanbanboard.Windows
                 break;
             }
 
-            if (TableLayoutPanel.ColumnStyles.Count > 1 && column == 0) column = TableLayoutPanel.ColumnStyles.Count;
+            if (TableLayoutPanel.ColumnStyles.Count >= 1 && column == 0) column = TableLayoutPanel.ColumnStyles.Count;
 
-            AddTitleToPanel("Это тайтл", column);
             AddControlToPanel("Заголовок", "Описание", "Разработчики", column, 1);
+            AddTitleToPanel("Это тайтл", column);
         }
 
         // Добавить контрол (в основном тикет) в таблицу
@@ -259,8 +272,18 @@ namespace kanbanboard.Windows
             // Нужно ли добавлять доп. строки и/или колонки
             if (TableLayoutPanel.RowStyles.Count <= row)
             {
-                TableLayoutPanel.RowCount++;
-                TableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent));
+                if (row <= 1)
+                {
+                    TableLayoutPanel.RowCount++;
+                    TableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent));
+                    TableLayoutPanel.RowCount++;
+                    TableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent));
+                }
+                else
+                {
+                    TableLayoutPanel.RowCount++;
+                    TableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent));
+                }
             }
 
             if (TableLayoutPanel.ColumnStyles.Count <= column)
