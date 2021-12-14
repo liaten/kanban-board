@@ -1,11 +1,8 @@
-﻿using System;
+﻿using kanbanboard.Classes;
+using System;
 using System.Drawing;
-using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
+using System.Linq;
 using System.Windows.Forms;
-using kanbanboard.Classes;
-using kanbanboard.Properties;
 
 namespace kanbanboard.Windows
 {
@@ -17,28 +14,26 @@ namespace kanbanboard.Windows
         {
             InitializeComponent();
 
+            // Вход по Enter
             KeyDown += (s, a) =>
             {
+                if (RegPanel.IsControlAtFront() && a.KeyValue == (int)Keys.Enter) RegPanelButton.PerformClick();
                 if (a.KeyValue == (int)Keys.Enter) LoginButton.PerformClick();
             };
+
+            var toolTipForProjectNames = new ToolTip { AutomaticDelay = 100 };
+            toolTipForProjectNames.SetToolTip(RegProjectsTextBox, "Формат ввода через пробел: Проект1 Проект2 Проект3.");
+            toolTipForProjectNames.SetToolTip(RegProjectsLabel, "Формат ввода через пробел: Проект1 Проект2 Проект3.");
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
             LoginPanel.Width = Size.Width / 2;
-            MinimumSize = new Size(350, 375 - EmailLabelPanel.Height);
-            Size = new Size(350, 375 - EmailLabelPanel.Height);
 
             var headerPadding = (Width - AuthorizationLabel.Width - AuthorizationPictureBox.Width) / 2;
             HeaderLabelPanel.Padding = new Padding(headerPadding, 15, headerPadding, 15);
-            CheckBoxRegistration.ForeColor = Color.FromArgb(200, 200, 200);
             checkPass.ForeColor = Color.FromArgb(200, 200, 200);
-
-            EmailLabelPanel.Hide();
-            EmailTextBoxPanel.Hide();
         }
-
-        private bool ValidEmail(string email) => new Regex(@"^(\w|\d|\.|_|-)+@(\w|\d){1,}\.[\w]{1,}\.?[\w]*$", RegexOptions.IgnoreCase).IsMatch(email);
 
         private void TextBoxLogin_MouseEnter(object sender, EventArgs e) => LoginLabel.ForeColor = Color.FromArgb(114, 119, 139);
         private void TextBoxLogin_MouseLeave(object sender, EventArgs e) => LoginLabel.ForeColor = Color.FromArgb(74, 79, 99);
@@ -74,81 +69,68 @@ namespace kanbanboard.Windows
         {
             Application.Exit();
         }
-
-        private void TextBoxEmail_MouseEnter(object sender, EventArgs e)
-        {
-            EmailLabel.ForeColor = Color.FromArgb(114, 119, 139);
-        }
-
-        private void TextBoxEmail_MouseLeave(object sender, EventArgs e)
-        {
-            EmailLabel.ForeColor = Color.FromArgb(74, 79, 99);
-        }
-
-        private void TextBoxEmail_Click(object sender, EventArgs e)
-        {
-            textBoxEmail.Text = "";
-        }
         private void Login_Resize(object sender, EventArgs e)
         {
             LoginPanel.Width = Size.Width / 2;
-            int HeaderPadding = (Width - AuthorizationLabel.Width - AuthorizationPictureBox.Width) / 2;
+            var HeaderPadding = (Width - AuthorizationLabel.Width - AuthorizationPictureBox.Width) / 2;
             HeaderLabelPanel.Padding = new Padding(HeaderPadding, 15, HeaderPadding, 15);
-        }
-
-        private async void CheckBoxRegistration_CheckedChanged(object sender, EventArgs e)
-        {
-            if (CheckBoxRegistration.Checked)
-            {
-                CheckBoxRegistration.ForeColor = Color.FromArgb(200, 250, 200);
-                EmailLabelPanel.Show();
-                EmailTextBoxPanel.Show();
-                for (var i = 0; i <= EmailTextBoxPanel.Size.Height; i++)
-                {
-                    Size = new Size(350, 375 - EmailTextBoxPanel.Size.Height + i);
-                    await Task.Delay(1);
-                }
-            }
-            else
-            {
-                CheckBoxRegistration.ForeColor = Color.FromArgb(200, 200, 200);
-                for (var i = 0; i <= EmailTextBoxPanel.Size.Height; i++)
-                {
-                    Size = new Size(350, 375 - i);
-                    await Task.Delay(1);
-                }
-                EmailLabelPanel.Hide();
-                EmailTextBoxPanel.Hide();
-            }
         }
 
         private void RegistrationButton_Click(object sender, EventArgs e)
         {
             Username = textBoxLogin.Text;
 
-            if (Username.CheckUser())
-                MessageBox.Show("Пользователь уже существует");
-            else
-            {
-                if (textBoxPassword.Text == "")
-                {
-                    MessageBox.Show("Укажите пароль"); return;
-                }
+            RegLoginTextBox.Text = textBoxLogin.Text.ValidEmail() ? "" : textBoxLogin.Text;
+            RegEmailTextBox.Text = textBoxLogin.Text.ValidEmail() ? textBoxLogin.Text : "";
+            RegPasswordTextBox.Text = textBoxPassword.Text;
 
-                if (!string.IsNullOrEmpty(textBoxEmail.Text))
-                {
-                    if (ValidEmail(textBoxEmail.Text))
-                        Username.CreateUser(textBoxPassword.Text, email: textBoxEmail.Text);
-                    else MessageBox.Show("Неправильный email. Попробуй ещё раз");
-                }
-                else Username.CreateUser(textBoxPassword.Text);
-            }
+            RegPanel.BringToFront();
         }
 
         public void CheckPass_CheckedChanged(object sender, EventArgs e)
         {
             checkPass.ForeColor = Color.FromArgb(200, checkPass.Checked ? 255 : 200, 200);
             textBoxPassword.PasswordChar = checkPass.Checked ? '\0' : '*';
+        }
+
+        // Кнопка регистрации после кнопки регистрации
+        private void RegPanelButton_Click(object sender, EventArgs e)
+        {
+            Username = RegLoginTextBox.Text;
+
+            if (Username.CheckUser())
+                MessageBox.Show("Пользователь уже существует");
+            else
+            {
+                if (RegPasswordTextBox.Text == "")
+                {
+                    MessageBox.Show("Укажите пароль"); return;
+                }
+
+                if (!string.IsNullOrEmpty(RegEmailTextBox.Text))
+                {
+                    if (!RegEmailTextBox.Text.ValidEmail())
+                    {
+                        MessageBox.Show("Неправильный email. Попробуй ещё раз");
+                        return;
+                    }
+
+                    if (!string.IsNullOrEmpty(RegEmailTextBox.Text))
+                        Username.CreateUser(RegPasswordTextBox.Text, email: RegEmailTextBox.Text);
+                    else Username.CreateUser(textBoxPassword.Text);
+
+                    Username.CreateProjects(RegProjectsTextBox.Text.Split().ToList());
+
+                    MessageBox.Show("Успешно зарегистрирован");
+                    MainPanel.BringToFront();
+
+                    textBoxLogin.Text = RegLoginTextBox.Text;
+                    textBoxPassword.Text = RegPasswordTextBox.Text;
+                    LoginButton.PerformClick();
+
+                    RegPanel.Controls.OfType<TextBox>().ToList().ForEach(x => x.Clear());
+                }
+            }
         }
     }
 }

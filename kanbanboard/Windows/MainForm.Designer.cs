@@ -32,6 +32,8 @@ namespace kanbanboard.Windows
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ControlsPanel = new System.Windows.Forms.Panel();
             this.ProjectsPanel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.CreateProjectButton = new System.Windows.Forms.Button();
             this.SaveProjectPanel = new System.Windows.Forms.Panel();
             this.SaveProjectButton = new System.Windows.Forms.Button();
             this.ListBoxOfProjectNames = new System.Windows.Forms.ListBox();
@@ -98,6 +100,7 @@ namespace kanbanboard.Windows
             this.HeadPanel = new System.Windows.Forms.Panel();
             this.ControlsPanel.SuspendLayout();
             this.ProjectsPanel.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SaveProjectPanel.SuspendLayout();
             this.ExitButtonPanel.SuspendLayout();
             this.UserControlsPanel.SuspendLayout();
@@ -156,19 +159,46 @@ namespace kanbanboard.Windows
             // ProjectsPanel
             // 
             this.ProjectsPanel.AutoSize = true;
+            this.ProjectsPanel.Controls.Add(this.panel1);
             this.ProjectsPanel.Controls.Add(this.SaveProjectPanel);
             this.ProjectsPanel.Controls.Add(this.ListBoxOfProjectNames);
             this.ProjectsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ProjectsPanel.Location = new System.Drawing.Point(0, 277);
+            this.ProjectsPanel.Location = new System.Drawing.Point(0, 285);
             this.ProjectsPanel.Name = "ProjectsPanel";
-            this.ProjectsPanel.Size = new System.Drawing.Size(205, 232);
+            this.ProjectsPanel.Size = new System.Drawing.Size(205, 224);
             this.ProjectsPanel.TabIndex = 7;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.CreateProjectButton);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 112);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(10);
+            this.panel1.Size = new System.Drawing.Size(205, 56);
+            this.panel1.TabIndex = 8;
+            // 
+            // CreateProjectButton
+            // 
+            this.CreateProjectButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CreateProjectButton.FlatAppearance.BorderColor = System.Drawing.Color.Indigo;
+            this.CreateProjectButton.FlatAppearance.BorderSize = 2;
+            this.CreateProjectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CreateProjectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CreateProjectButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.CreateProjectButton.Location = new System.Drawing.Point(10, 10);
+            this.CreateProjectButton.Name = "CreateProjectButton";
+            this.CreateProjectButton.Size = new System.Drawing.Size(185, 36);
+            this.CreateProjectButton.TabIndex = 5;
+            this.CreateProjectButton.Text = "Создать проект";
+            this.CreateProjectButton.UseVisualStyleBackColor = true;
+            this.CreateProjectButton.Click += new System.EventHandler(this.CreateProjectButton_Click);
             // 
             // SaveProjectPanel
             // 
             this.SaveProjectPanel.Controls.Add(this.SaveProjectButton);
             this.SaveProjectPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SaveProjectPanel.Location = new System.Drawing.Point(0, 176);
+            this.SaveProjectPanel.Location = new System.Drawing.Point(0, 168);
             this.SaveProjectPanel.Name = "SaveProjectPanel";
             this.SaveProjectPanel.Padding = new System.Windows.Forms.Padding(10);
             this.SaveProjectPanel.Size = new System.Drawing.Size(205, 56);
@@ -209,7 +239,7 @@ namespace kanbanboard.Windows
             "6"});
             this.ListBoxOfProjectNames.Location = new System.Drawing.Point(0, 0);
             this.ListBoxOfProjectNames.Name = "ListBoxOfProjectNames";
-            this.ListBoxOfProjectNames.Size = new System.Drawing.Size(205, 176);
+            this.ListBoxOfProjectNames.Size = new System.Drawing.Size(205, 112);
             this.ListBoxOfProjectNames.Sorted = true;
             this.ListBoxOfProjectNames.TabIndex = 6;
             // 
@@ -399,7 +429,7 @@ namespace kanbanboard.Windows
             this.TableLayoutPanel.AutoScroll = true;
             this.TableLayoutPanel.AutoSize = true;
             this.TableLayoutPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
-            this.TableLayoutPanel.ColumnCount = 1;
+            this.TableLayoutPanel.ColumnCount = 2;
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -1956,6 +1986,7 @@ namespace kanbanboard.Windows
             this.ControlsPanel.ResumeLayout(false);
             this.ControlsPanel.PerformLayout();
             this.ProjectsPanel.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.SaveProjectPanel.ResumeLayout(false);
             this.ExitButtonPanel.ResumeLayout(false);
             this.UserControlsPanel.ResumeLayout(false);
@@ -2089,6 +2120,8 @@ namespace kanbanboard.Windows
         private System.Windows.Forms.ListBox MessengerListBox;
         private System.Windows.Forms.Panel MessengerSendPanel;
         private System.Windows.Forms.TextBox MessengerTextBox;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button CreateProjectButton;
     }
 }
 
