@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace kanbanboard
+namespace kanbanboard.Controls
 {
     public sealed class TicketPanel : Panel
     {
@@ -57,7 +57,6 @@ namespace kanbanboard
             });
 
             // Добавляем панель с кнопками перемещений и удаления тикета
-
             // кнопка удаления тикета, перемещения ВПРАВО, перемещения ВЛЕВО
             DelButton = new Button()
             {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using kanbanboard.Windows;
 
-namespace kanbanboard
+namespace kanbanboard.Classes
 {
     internal class User
     {

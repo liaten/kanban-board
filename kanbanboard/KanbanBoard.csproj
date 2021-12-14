@@ -74,45 +74,58 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChangeTitleForm.cs">
+    <Compile Include="Windows\ChangeTitleForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChangeTitleForm.Designer.cs">
+    <Compile Include="Windows\ChangeTitleForm.Designer.cs">
       <DependentUpon>ChangeTitleForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Extensions.cs" />
-    <Compile Include="Firebase.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Classes\Extensions.cs" />
+    <Compile Include="Classes\Firebase.cs" />
+    <Compile Include="Windows\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Windows\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginForm.cs">
+    <Compile Include="Windows\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="Windows\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\MD5.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TicketPanel.cs">
+    <Compile Include="Controls\TicketPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TicketsChangeForm.cs">
+    <Compile Include="Windows\MainForm.DragNDrop.cs">
+      <SubType>Form</SubType>
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MainForm.Messenger.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TicketsChangeForm.Designer.cs">
+    <Compile Include="Windows\MainForm.Table.cs">
+      <SubType>Form</SubType>
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\TicketsChangeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\TicketsChangeForm.Designer.cs">
       <DependentUpon>TicketsChangeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="TitlePanel.cs">
+    <Compile Include="Controls\TitlePanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="User.cs" />
-    <EmbeddedResource Include="ChangeTitleForm.resx">
+    <Compile Include="Classes\User.cs" />
+    <EmbeddedResource Include="Windows\ChangeTitleForm.resx">
       <DependentUpon>ChangeTitleForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TicketsChangeForm.resx">
+    <EmbeddedResource Include="Windows\TicketsChangeForm.resx">
       <DependentUpon>TicketsChangeForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -120,10 +133,10 @@
     <None Include="Resources\send-message.png" />
     <None Include="Resources\check.png" />
     <None Include="Resources\checked.png" />
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Windows\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="Windows\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -152,6 +165,7 @@
   <ItemGroup>
     <None Include="Resources\user.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>tasklist /fi "imagename eq kanbanboard.exe" |find ":" &gt; nul &amp; if errorlevel 1 taskkill /f /im "kanbanboard.exe"</PreBuildEvent>
