@@ -1,12 +1,14 @@
 package com.example.kanban_board.Models;
 
 import android.content.Context;
+import android.icu.text.CaseMap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kanban_board.R;
@@ -43,6 +45,7 @@ public class MyAdapterForCalendar extends RecyclerView.Adapter<MyAdapterForCalen
 
     }
 
+
     @Override
     public int getItemCount() {
         return list.size();
@@ -62,7 +65,11 @@ public class MyAdapterForCalendar extends RecyclerView.Adapter<MyAdapterForCalen
 
 
         }
+
+
     }
+
+
 
 
 }

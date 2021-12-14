@@ -2,11 +2,13 @@ package com.example.kanban_board;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.icu.text.CaseMap;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -39,6 +41,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
@@ -76,6 +79,7 @@ public class Calendar extends Fragment {
     DatabaseReference itemsRef;
 
 
+
     public Calendar() {
         // Required empty public constructor
     }
@@ -110,6 +114,10 @@ public class Calendar extends Fragment {
         root = (ScrollView) viewGroup.findViewById(R.id.calendar_root_layout);
         Header = (TextView) viewGroup.findViewById(R.id.headerCalender);
 
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
+
+
         TestGet();
         GetBoards();
         GetTicketsFromSpinner();
@@ -120,11 +128,43 @@ public class Calendar extends Fragment {
 
 
 
-
         return viewGroup;
         //return inflater.inflate(R.layout.fragment_calendar, container, false);
     }
 
+    //Свайпы(удаление)
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
+            int position = viewHolder.getAdapterPosition();
+
+            switch (direction){
+
+                case ItemTouchHelper.LEFT:
+
+                    String ticketBoardName = spinner.getSelectedItem().toString();
+                    Ticket ticket = list.get(position);
+                    String titleDB = ticket.gettitle();
+
+                    DatabaseReference mPostReference = FirebaseDatabase.getInstance().getReference().child("Projects").child(ticketBoardName).child("Kanban").child(titleDB);
+                    mPostReference.removeValue();
+
+                    list.remove(position);
+                    adapter.notifyItemRemoved(position);
+                    break;
+                case ItemTouchHelper.RIGHT:
+
+                    break;
+            }
+
+        }
+    };
 
     //добавить тикет
     private void AddTicket() {
@@ -306,7 +346,7 @@ public class Calendar extends Fragment {
 
     }
 
-    //добавление тикетов
+    //добавление доски
     private void AddBoard(){
 
         addBoardBtn.setOnClickListener(new View.OnClickListener() {
