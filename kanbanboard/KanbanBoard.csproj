@@ -129,7 +129,6 @@
       <DependentUpon>TicketsChangeForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="Resources\send-message %281%29.png" />
     <None Include="Resources\send-message.png" />
     <None Include="Resources\check.png" />
     <None Include="Resources\checked.png" />
