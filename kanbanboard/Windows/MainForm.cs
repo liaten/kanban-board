@@ -51,7 +51,7 @@ namespace kanbanboard.Windows
                 {
                     Parallel.Invoke(
                         () => Invoke((MethodInvoker)(() => TableFromFirebase(ListBoxOfProjectNames.SelectedItem.ToString()))),
-                        () => ShowMessages()
+                        () => Invoke((MethodInvoker)(() => ShowMessages()))
                         );
                 }
                 catch { }
