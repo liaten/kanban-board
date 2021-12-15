@@ -56,11 +56,11 @@ namespace kanbanboard.Windows
             this.AuthorizationLabel = new System.Windows.Forms.Label();
             this.AuthorizationPictureBox = new System.Windows.Forms.PictureBox();
             this.RegPanel = new System.Windows.Forms.Panel();
+            this.Reg = new System.Windows.Forms.Panel();
+            this.RegPanelButton = new System.Windows.Forms.Button();
             this.ProjectsPanel = new System.Windows.Forms.Panel();
             this.RegProjectsLabel = new System.Windows.Forms.Label();
             this.RegProjectsTextBox = new System.Windows.Forms.TextBox();
-            this.Reg = new System.Windows.Forms.Panel();
-            this.RegPanelButton = new System.Windows.Forms.Button();
             this.RolePanel = new System.Windows.Forms.Panel();
             this.RegRoleLabel = new System.Windows.Forms.Label();
             this.RegRoleTextBox = new System.Windows.Forms.TextBox();
@@ -90,8 +90,8 @@ namespace kanbanboard.Windows
             this.HeaderLabelPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AuthorizationPictureBox)).BeginInit();
             this.RegPanel.SuspendLayout();
-            this.ProjectsPanel.SuspendLayout();
             this.Reg.SuspendLayout();
+            this.ProjectsPanel.SuspendLayout();
             this.RolePanel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -417,6 +417,31 @@ namespace kanbanboard.Windows
             this.RegPanel.Size = new System.Drawing.Size(334, 282);
             this.RegPanel.TabIndex = 13;
             // 
+            // Reg
+            // 
+            this.Reg.Controls.Add(this.RegPanelButton);
+            this.Reg.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Reg.Location = new System.Drawing.Point(0, 217);
+            this.Reg.Name = "Reg";
+            this.Reg.Padding = new System.Windows.Forms.Padding(15);
+            this.Reg.Size = new System.Drawing.Size(334, 65);
+            this.Reg.TabIndex = 14;
+            // 
+            // RegPanelButton
+            // 
+            this.RegPanelButton.BackColor = System.Drawing.Color.Transparent;
+            this.RegPanelButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RegPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RegPanelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RegPanelButton.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.RegPanelButton.Location = new System.Drawing.Point(15, 15);
+            this.RegPanelButton.Name = "RegPanelButton";
+            this.RegPanelButton.Size = new System.Drawing.Size(304, 35);
+            this.RegPanelButton.TabIndex = 4;
+            this.RegPanelButton.Text = "Регистрация";
+            this.RegPanelButton.UseVisualStyleBackColor = false;
+            this.RegPanelButton.Click += new System.EventHandler(this.RegPanelButton_Click);
+            // 
             // ProjectsPanel
             // 
             this.ProjectsPanel.Controls.Add(this.RegProjectsLabel);
@@ -453,31 +478,6 @@ namespace kanbanboard.Windows
             this.RegProjectsTextBox.TabIndex = 3;
             this.RegProjectsTextBox.TabStop = false;
             this.RegProjectsTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // Reg
-            // 
-            this.Reg.Controls.Add(this.RegPanelButton);
-            this.Reg.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Reg.Location = new System.Drawing.Point(0, 217);
-            this.Reg.Name = "Reg";
-            this.Reg.Padding = new System.Windows.Forms.Padding(15);
-            this.Reg.Size = new System.Drawing.Size(334, 65);
-            this.Reg.TabIndex = 14;
-            // 
-            // RegPanelButton
-            // 
-            this.RegPanelButton.BackColor = System.Drawing.Color.Transparent;
-            this.RegPanelButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RegPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RegPanelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RegPanelButton.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.RegPanelButton.Location = new System.Drawing.Point(15, 15);
-            this.RegPanelButton.Name = "RegPanelButton";
-            this.RegPanelButton.Size = new System.Drawing.Size(304, 35);
-            this.RegPanelButton.TabIndex = 4;
-            this.RegPanelButton.Text = "Регистрация";
-            this.RegPanelButton.UseVisualStyleBackColor = false;
-            this.RegPanelButton.Click += new System.EventHandler(this.RegPanelButton_Click);
             // 
             // RolePanel
             // 
@@ -665,9 +665,9 @@ namespace kanbanboard.Windows
             this.HeaderLabelPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AuthorizationPictureBox)).EndInit();
             this.RegPanel.ResumeLayout(false);
+            this.Reg.ResumeLayout(false);
             this.ProjectsPanel.ResumeLayout(false);
             this.ProjectsPanel.PerformLayout();
-            this.Reg.ResumeLayout(false);
             this.RolePanel.ResumeLayout(false);
             this.RolePanel.PerformLayout();
             this.panel3.ResumeLayout(false);
