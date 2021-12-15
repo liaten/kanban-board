@@ -22,6 +22,11 @@ namespace kanbanboard.Windows
             KeyDown += (s, a) => {
                 if (a.KeyValue == (int)Keys.Enter || a.KeyValue == (int)Keys.Escape) SaveChangesButton.PerformClick();
             };
+            Load += (s, a) =>
+             {
+                 // Загрузка шрифта для всех элементов
+                 this.InitRoboto();
+             };
         }
 
         // Изменяем при нажатии на кнопку сохранения

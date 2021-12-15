@@ -1,7 +1,10 @@
 ﻿using kanbanboard.Classes;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace kanbanboard.Windows
@@ -33,12 +36,16 @@ namespace kanbanboard.Windows
             var headerPadding = (Width - AuthorizationLabel.Width - AuthorizationPictureBox.Width) / 2;
             HeaderLabelPanel.Padding = new Padding(headerPadding, 15, headerPadding, 15);
             checkPass.ForeColor = Color.FromArgb(200, 200, 200);
+            // Загрузка шрифта для всех элементов
+            this.InitRoboto();
         }
 
         private void TextBoxLogin_MouseEnter(object sender, EventArgs e) => LoginLabel.ForeColor = Color.FromArgb(114, 119, 139);
         private void TextBoxLogin_MouseLeave(object sender, EventArgs e) => LoginLabel.ForeColor = Color.FromArgb(74, 79, 99);
         private void TextBoxPass_MouseEnter(object sender, EventArgs e) => PassLabel.ForeColor = Color.FromArgb(114, 119, 139);
         private void TextBoxPass_MouseLeave(object sender, EventArgs e) => PassLabel.ForeColor = Color.FromArgb(74, 79, 99);
+
+        
 
         // Логин в приложение
         private void LoginButton_Click(object sender, EventArgs e)
