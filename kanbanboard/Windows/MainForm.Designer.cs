@@ -1459,8 +1459,8 @@ namespace kanbanboard.Windows
             // 
             // BasicContentPanel
             // 
-            this.BasicContentPanel.Controls.Add(this.PanelWithTable);
             this.BasicContentPanel.Controls.Add(this.MessengerPanel);
+            this.BasicContentPanel.Controls.Add(this.PanelWithTable);
             this.BasicContentPanel.Controls.Add(this.UserPanel);
             this.BasicContentPanel.Controls.Add(this.CalendarPanel);
             this.BasicContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
