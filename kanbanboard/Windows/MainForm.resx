@@ -578,6 +578,29 @@
         Qf4rwVWQ/nLAT8IjxPaI9v8BYYzkoAHiKBcAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="SendMessageButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAB
+        2AAAAdgB+lymcgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAPjSURBVHhe5Zs7
+        aBRBGMfXZ3b3EowoiIoPFCtf+KpVtFBBCyWtWG1ud++IYmElRgsVtDClnQ+0sBLstIiFEYWQRnK3jyQX
+        DaQQCzUBTSA5/7M3Ytj7Yrhkdnf29g8/UiQ33/+b3OzOfDOjMKmWe0Oz3ElQAVeVK2Na8IssSDOGtyLp
+        WVCdw7hmekWl6LfwP2tetdr+7lDyc/mim56hGP2r+J83ofBfRqK/QomHGQ06ort3Jf9UcwkJ9oUSno+R
+        oCM6qiv4R5tDmuXcI5KdF912B/HgvKh0V5fzJtItzfLOU4kuhGp5nzTT6VCU6jLeVDqV6xrZQCXYAB90
+        yz/Lm0unkASbA1DJNUKfarsneJPpkmY7z4iEFofpvlNN/yhvOh2C8UJdIktEt9w34AgPIbd0s3yISkIE
+        QUfY/kEeSlJhkgOzE2HzApnF0HiVK7r7eUT5hPl/L2FcNDOa7b1o6Szt4mHlESY4twnDUTGNb8STlqK/
+        k4dPXuxdThiNmmm8Oh9qeXczt5Gc2uzyOhgKL43jwXanWEfoRmkjt5OMYMatMxcvk1ib9LDZKbcUr/Ac
+        eESYSoIJPCzvtl+utHNr8Ui3vE7CTJL8ZB2x1hhewy1Gq1yhvJcwIQPfsPK8phjjOrcakbDGR7DvoeAy
+        8TXoiCgLt5i6viYCy8YYHpZdkRRu8SC8SQSUE9v5LLxembOcU2QwuakIq1eyVw8anAkFSAUYviUh9Uo0
+        9hKw3SIyUAoYEFKm0wvOJtX0TrIHDlu8aJbXj8YX2keQB9v9KL5eiQcOOmUHaxhfuW62vGWlcgSUeNg4
+        76OvV3YMrmZbbWwMstkbK4Ag+HC9mQRh9cpC+Rh3HI/aDHe9ajnHYaAQLH1rO1EJT7acHm4vOal2aRuG
+        zhk2s4Opp2AA/P5nMlrUfHk7t5KMMtMBcg4B7wG3J1BpeQguedMmS6/B1E+EFrtxiw9mdyqc6sWQiMMb
+        uumephqXHHHHd3TLu0UEkBXxB7jYbi4RSDYiKolh7KADfhABZaFWFL1UUbljscqZzj4iqAzEUxbXTSdP
+        BE+SeDdG8PV/TJhIgmS2xjDT8wgzcZLc5ihbtcFAdrfHMf7PkeaiRZ4DEjBzJ2QuSuQ7IoOx95YwKhpJ
+        D0nVjslFufqrHZPDPINHlEtY9x8mTAuBTa31vH+Ah5JT7I4QZX4pBImjY3kIuQXDz8MJLJqUHpYerUuk
+        cdJ5XJ7V/YhkGiHdFya0vHeBSGpBmubKDJK5H07ufwipu8kkVjOnEiVowmtzWb842Zov7SES/kvzX53V
+        rKEtSDS7l6eZVMu5jqQnMIEZws8MXZ9XlD9JcQAIUjDf2AAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAgIAAAAEAIAAoCAEAFgAAACgAAACAAAAAAAEAAAEAIAAAAAAAAAgBAAAAAAAAAAAAAAAAAAAA

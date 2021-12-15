@@ -26,10 +26,10 @@ namespace kanbanboard.Windows
             {
                 if (key.KeyChar == (int)Keys.Enter)
                 {
-                    SendMessage();
-                    MessengerTextBox.Clear();
+                    SendMessageButton.PerformClick();
                 }
             };
+
 
             // Событие при изменении размера таблицы
             TableLayoutPanel.Resize += (s, a) => ResizeTable();
@@ -203,6 +203,17 @@ namespace kanbanboard.Windows
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void SendMessageButton_Click(object sender, EventArgs e)
+        {
+            SendMessage();
+            MessengerTextBox.Clear();
+        }
+
+        private void SendMessageButton_MouseEnter(object sender, EventArgs e)
+        {
+            SendMessageButton.ForeColor = Color.FromArgb(46, 51, 73);
         }
     }
 }
