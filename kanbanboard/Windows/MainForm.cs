@@ -25,9 +25,7 @@ namespace kanbanboard.Windows
             MessengerTextBox.KeyPress += (fsa, key) =>
             {
                 if (key.KeyChar == (int)Keys.Enter)
-                {
                     SendMessageButton.PerformClick();
-                }
             };
 
 
