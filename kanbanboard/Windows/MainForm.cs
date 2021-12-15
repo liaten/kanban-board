@@ -25,9 +25,7 @@ namespace kanbanboard.Windows
             MessengerTextBox.KeyPress += (fsa, key) =>
             {
                 if (key.KeyChar == (int)Keys.Enter)
-                {
                     SendMessageButton.PerformClick();
-                }
             };
 
 
@@ -85,9 +83,6 @@ namespace kanbanboard.Windows
                 // Загрузка первого элемента из списка
                 try { ListBoxOfProjectNames.SelectedIndex = 0; }
                 catch { }
-
-                // Загрузка шрифта для всех элементов
-                this.InitRoboto();
             };
         }
 
