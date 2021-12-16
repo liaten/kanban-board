@@ -1536,12 +1536,14 @@ namespace kanbanboard.Windows
             this.SendMessageButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.SendMessageButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SendMessageButton.FlatAppearance.BorderSize = 0;
+            this.SendMessageButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.SendMessageButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.SendMessageButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SendMessageButton.Location = new System.Drawing.Point(7, 7);
             this.SendMessageButton.Name = "SendMessageButton";
             this.SendMessageButton.Size = new System.Drawing.Size(26, 26);
             this.SendMessageButton.TabIndex = 1;
-            this.SendMessageButton.UseVisualStyleBackColor = true;
+            this.SendMessageButton.UseVisualStyleBackColor = false;
             this.SendMessageButton.Click += new System.EventHandler(this.SendMessageButton_Click);
             this.SendMessageButton.MouseEnter += new System.EventHandler(this.SendMessageButton_MouseEnter);
             // 
