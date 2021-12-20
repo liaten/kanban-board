@@ -25,11 +25,9 @@ namespace kanbanboard.Windows
             MessengerTextBox.KeyPress += (fsa, key) =>
             {
                 if (key.KeyChar == (int)Keys.Enter)
-                {
-                    SendMessage();
-                    MessengerTextBox.Clear();
-                }
+                    SendMessageButton.PerformClick();
             };
+
 
             // Событие при изменении размера таблицы
             TableLayoutPanel.Resize += (s, a) => ResizeTable();
@@ -51,7 +49,7 @@ namespace kanbanboard.Windows
                 {
                     Parallel.Invoke(
                         () => Invoke((MethodInvoker)(() => TableFromFirebase(ListBoxOfProjectNames.SelectedItem.ToString()))),
-                        () => ShowMessages()
+                        () => Invoke((MethodInvoker)(() => ShowMessages()))
                         );
                 }
                 catch { }
@@ -76,8 +74,7 @@ namespace kanbanboard.Windows
                     return;
                 }
 
-                // Проекты пользователя
-                ListBoxOfProjectNames.Items.AddRange(_user.ProjectNames.Cast<object>().ToArray());
+                SetUserProjectNames();
 
                 // Стартовый вид -> панель с профилем
                 UserControlsPanel_Click(null, null);
@@ -87,6 +84,12 @@ namespace kanbanboard.Windows
                 try { ListBoxOfProjectNames.SelectedIndex = 0; }
                 catch { }
             };
+        }
+
+        // Проекты пользователя
+        private void SetUserProjectNames()
+        {
+            ListBoxOfProjectNames.Items.AddRange(_user.ProjectNames.Cast<object>().ToArray());
         }
 
         // Устранение мерцания при изменении размеров таблицы
@@ -165,6 +168,12 @@ namespace kanbanboard.Windows
             CalendarLabel.MaximumSize = CalendarPanel.Size;
         }
 
+        // Кнопка по созданию проекта
+        private void CreateProjectButton_Click(object sender, EventArgs e)
+        {
+            if (!Application.OpenForms.OfType<ChangeForm>().Any()) new ChangeForm(this, _user.Username).Show();
+        }
+
         // Выход из мейнформы
         private void ExitButton_Click(object sender, EventArgs e)
         {
@@ -192,6 +201,17 @@ namespace kanbanboard.Windows
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void SendMessageButton_Click(object sender, EventArgs e)
+        {
+            SendMessage();
+            MessengerTextBox.Clear();
+        }
+
+        private void SendMessageButton_MouseEnter(object sender, EventArgs e)
+        {
+            SendMessageButton.ForeColor = Color.FromArgb(46, 51, 73);
         }
     }
 }

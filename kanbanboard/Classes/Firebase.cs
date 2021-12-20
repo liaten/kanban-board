@@ -21,6 +21,8 @@ namespace kanbanboard.Classes
             Client = new FirebaseClient(new FirebaseConfig() { AuthSecret = Secret, BasePath = Path });
         }
 
+        public static void RemoveNullsFromData(this List<string> data) => data.RemoveAll(x => x is null);
+
         // Получить роль пользователя
         public static string GetRole(this User user)
         {
@@ -87,7 +89,7 @@ namespace kanbanboard.Classes
             try
             {
                 var data = Client.GetAsync($"Users/{user.Username}/Projects").Result.ResultAs<List<string>>() ?? new List<string>();
-                data.RemoveAll(x => x is null);
+                data.RemoveNullsFromData();
                 return data;
             }
             catch { return null; }
@@ -143,12 +145,41 @@ namespace kanbanboard.Classes
             }
             var data = Client.Get($"Users/{user.Username}/Projects").ResultAs<List<string>>();
 
+            data.RemoveNullsFromData();
+
             // Добавляем в данные данные
             if (!data.Exists(x => x == projectName))
                 data.Add(projectName);
 
             // добавляем в базу
             await Client.SetAsync($"Users/{user.Username}/Projects", data);
+        }
+        
+        // Создает проект в базе пользователя.
+        public static async void CreateProject(this string username, string projectName)
+        {
+            // Вытаскиваем данные о проектах, либо заносим, если их нет
+            if (Client.Get($"Users/{username}/Projects").ResultAs<List<string>>() is null)
+            {
+                await Client.SetAsync($"Users/{username}/Projects", new List<string> { projectName });
+                return;
+            }
+            var data = Client.Get($"Users/{username}/Projects").ResultAs<List<string>>();
+
+            data.RemoveNullsFromData();
+
+            // Добавляем в данные данные
+            if (!data.Exists(x => x == projectName))
+                data.Add(projectName);
+
+            // добавляем в базу
+            await Client.SetAsync($"Users/{username}/Projects", data);
+        }
+        
+        public static async void CreateProjects(this string username, List<string> projectNames)
+        {
+            // добавляем в базу
+            await Client.SetAsync($"Users/{username}/Projects", projectNames);
         }
 
         // Удаляет проект из базы пользователя.

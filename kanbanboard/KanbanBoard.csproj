@@ -74,11 +74,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Windows\ChangeTitleForm.cs">
+    <Compile Include="Windows\ChangeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\ChangeTitleForm.Designer.cs">
-      <DependentUpon>ChangeTitleForm.cs</DependentUpon>
+    <Compile Include="Windows\ChangeForm.Designer.cs">
+      <DependentUpon>ChangeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Extensions.cs" />
     <Compile Include="Classes\Firebase.cs" />
@@ -122,14 +122,13 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Classes\User.cs" />
-    <EmbeddedResource Include="Windows\ChangeTitleForm.resx">
-      <DependentUpon>ChangeTitleForm.cs</DependentUpon>
+    <EmbeddedResource Include="Windows\ChangeForm.resx">
+      <DependentUpon>ChangeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\TicketsChangeForm.resx">
       <DependentUpon>TicketsChangeForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="Resources\send-message %281%29.png" />
     <None Include="Resources\send-message.png" />
     <None Include="Resources\check.png" />
     <None Include="Resources\checked.png" />
