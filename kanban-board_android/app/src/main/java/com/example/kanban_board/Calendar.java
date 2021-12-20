@@ -67,7 +67,7 @@ public class Calendar extends Fragment {
     String boardName = "";
 
     Button addBoardBtn;
-    ScrollView root;
+    LinearLayout root;
     DatabaseReference boards;
 
     Button addTicketBtn;
@@ -78,7 +78,14 @@ public class Calendar extends Fragment {
     Integer myNum = 0;
     DatabaseReference itemsRef;
 
+    Integer myNumTicket = 0;
 
+
+    String ticketName;
+    String ticketText;
+    String ticketPeople;
+    String ticketStatus;
+    String ticketBoardName;
 
     public Calendar() {
         // Required empty public constructor
@@ -111,7 +118,7 @@ public class Calendar extends Fragment {
         spinner = (Spinner) viewGroup.findViewById(R.id.spinnerBoards);
         addBoardBtn = (Button) viewGroup.findViewById(R.id.addBoardBtn);
         addTicketBtn = (Button) viewGroup.findViewById(R.id.addTicketBtn);
-        root = (ScrollView) viewGroup.findViewById(R.id.calendar_root_layout);
+        root = (LinearLayout) viewGroup.findViewById(R.id.calendar_root_layout);
         Header = (TextView) viewGroup.findViewById(R.id.headerCalender);
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
@@ -125,15 +132,12 @@ public class Calendar extends Fragment {
         AddTicket();
 
 
-
-
-
         return viewGroup;
         //return inflater.inflate(R.layout.fragment_calendar, container, false);
     }
 
     //Свайпы(удаление)
-    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
             return false;
@@ -151,16 +155,29 @@ public class Calendar extends Fragment {
                     String ticketBoardName = spinner.getSelectedItem().toString();
                     Ticket ticket = list.get(position);
                     String titleDB = ticket.gettitle();
+                    String ticketStatus = ticket.getstatus();
 
-                    DatabaseReference mPostReference = FirebaseDatabase.getInstance().getReference().child("Projects").child(ticketBoardName).child("Kanban").child(titleDB);
-                    mPostReference.removeValue();
+                    DatabaseReference dReference = FirebaseDatabase.getInstance().getReference();
+
+                    Query delQuery = dReference.child("Projects").child(ticketBoardName).child("Kanban").child(ticketStatus).orderByChild("title").equalTo(titleDB);
+                    delQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            for (DataSnapshot delSnapshot: dataSnapshot.getChildren()) {
+                                delSnapshot.getRef().removeValue();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
 
                     list.remove(position);
                     adapter.notifyItemRemoved(position);
                     break;
-                case ItemTouchHelper.RIGHT:
 
-                    break;
             }
 
         }
@@ -214,19 +231,17 @@ public class Calendar extends Fragment {
                             return;
                         }
 
-
-                        String ticketName = name.getText().toString();
-                        String ticketText = text.getText().toString();
-                        String ticketPeople = people.getText().toString();
-                        String ticketStatus = status.getText().toString();
-                        String ticketBoardName = spinner.getSelectedItem().toString();
+                        ticketName = name.getText().toString();
+                        ticketText = text.getText().toString();
+                        ticketPeople = people.getText().toString();
+                        ticketStatus = status.getText().toString();
+                        ticketBoardName = spinner.getSelectedItem().toString();
 
                         Ticket ticket = new Ticket(ticketPeople, ticketText, ticketName);
 
+                        TestGetTicket();
 
-                        FirebaseDatabase db = FirebaseDatabase.getInstance();
-                        tickets = db.getReference("Projects").child(ticketBoardName).child("Kanban");
-                        tickets.child(ticketName).setValue(ticket);
+                        tickets.child(String.valueOf(myNumTicket)).setValue(ticket);
 
 
                     }
@@ -305,10 +320,29 @@ public class Calendar extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    Ticket ticket = dataSnapshot.getValue(Ticket.class);
-                    list.add(ticket);
+
+                        String ticketStatus = dataSnapshot.getKey();
+                        DatabaseReference databaseStatus = database.child(ticketStatus);
+
+                        databaseStatus.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshotT) {
+                                for (DataSnapshot statusSnapshot : snapshotT.getChildren()) {
+                                    Ticket ticket = statusSnapshot.getValue(Ticket.class);
+                                    ticket.setStatus(ticketStatus);
+                                    list.add(ticket);
+                                }
+                                adapter.notifyDataSetChanged();
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
                 }
-                adapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -319,7 +353,7 @@ public class Calendar extends Fragment {
 
     }
 
-    //вспомогательная для добавления тикетов
+    //вспомогательная для добавления досок
     private void TestGet(){
 
         Intent intent = getActivity().getIntent();
@@ -334,6 +368,31 @@ public class Calendar extends Fragment {
                     String increment = ds.getKey();
 
                     myNum = Integer.parseInt(increment);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
+    //вспомогательная для добавления тикетов
+    private void TestGetTicket(){
+
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        tickets = db.getReference("Projects").child(ticketBoardName).child("Kanban").child(ticketStatus);
+
+        tickets.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds : snapshot.getChildren()) {
+                    String increment = ds.getKey();
+
+                    myNumTicket = Integer.parseInt(increment) + 1;
 
                 }
             }

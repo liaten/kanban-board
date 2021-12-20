@@ -42,6 +42,7 @@ public class MyAdapterForCalendar extends RecyclerView.Adapter<MyAdapterForCalen
         holder.Title.setText(ticket.gettitle());
         holder.Ticket.setText(ticket.getticket());
         holder.People.setText(ticket.getpeople());
+        holder.Status.setText(ticket.getstatus());
 
     }
 
@@ -53,7 +54,7 @@ public class MyAdapterForCalendar extends RecyclerView.Adapter<MyAdapterForCalen
 
     public static class MyViewHolderForCalendar extends RecyclerView.ViewHolder{
 
-        TextView Title, Ticket, People;
+        TextView Title, Ticket, People, Status;
 
 
         public MyViewHolderForCalendar(@NonNull View itemView) {
@@ -62,7 +63,7 @@ public class MyAdapterForCalendar extends RecyclerView.Adapter<MyAdapterForCalen
             Title = itemView.findViewById(R.id.ticketTitle);
             Ticket = itemView.findViewById(R.id.ticketText);
             People = itemView.findViewById(R.id.ticketPeople);
-
+            Status = itemView.findViewById(R.id.ticketStatus);
 
         }
 

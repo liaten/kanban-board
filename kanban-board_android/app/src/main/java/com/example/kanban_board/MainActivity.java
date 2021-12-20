@@ -192,20 +192,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-   /*     auth.signInWithEmailAndPassword(login.getText().toString(), password.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-            @Override
-            public void onSuccess(AuthResult authResult) {
-                startActivity(new  Intent(MainActivity.this, Kanban_menu.class));
-                finish();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Snackbar.make(root, "Неправильное имя пользователя или пароль" + e.getMessage(), Snackbar.LENGTH_SHORT).show();
-                return;
-            }
-        });  */
-
 
         String login_e = login.getText().toString().trim();
         String password_e = password.getText().toString().trim();
@@ -235,7 +221,6 @@ public class MainActivity extends AppCompatActivity {
 
                         startActivity(intent);
 
-                        //startActivity(new  Intent(MainActivity.this, Kanban_menu.class));
 
                     }
                     else {
@@ -256,9 +241,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
-
 
 
     }
@@ -320,10 +302,7 @@ public class MainActivity extends AppCompatActivity {
         reg.setPositiveButton("Отправить", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-              /*  if (TextUtils.isEmpty(email.getText().toString())){
-                    Snackbar.make(root, "Введите почту", Snackbar.LENGTH_SHORT).show();
-                    return;
-                } */
+
 
                     if (TextUtils.isEmpty(login.getText().toString())){
                     Snackbar.make(root, "Введите логин", Snackbar.LENGTH_SHORT).show();
@@ -335,34 +314,6 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                //Регистрация нового пользователя
-
-          /*      auth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                    @Override
-                    public void onSuccess(AuthResult authResult) {
-                        User user = new User();
-                        user.setEmail(email.getText().toString());
-                        user.setLogin(login.getText().toString());
-                        user.setPassword(password.getText().toString());
-
-                        users.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
-                                Snackbar.make(root, "Пользователь добавлен", Snackbar.LENGTH_SHORT).show();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Snackbar.make(root, "Ошибка: " + e.getMessage(), Snackbar.LENGTH_SHORT).show();
-                            }
-                        });
-
-
-
-                    }
-                });*/
-
-
                 String login_u = login.getText().toString();
                 String password_u = password.getText().toString();
                 String email_u = email.getText().toString();
@@ -371,22 +322,14 @@ public class MainActivity extends AppCompatActivity {
 
 
                 users.child(login_u).setValue(user);
-                //users.child(login_u).child("Projects").setValue("0");
+
                 users.child(login_u).child("Projects").child("1").setValue("info");
-
-               // newUser = db.getReference(login_u);
-               // newUser.child("Projects").setValue("0");
-
-
-
-
 
 
             }
        });
 
                 reg.show();
-
 
     }
 
