@@ -5,7 +5,7 @@ public class Ticket {
     private String People;
     private String Ticket;
     private String Title;
-    private String status;
+    private String Status;
     private String boards;
 
     public Ticket() {
@@ -15,6 +15,13 @@ public class Ticket {
         this.People = People;
         this.Ticket = Ticket;
         this.Title = Title;
+    }
+
+    public Ticket(String People, String Ticket, String Title, String Status) {
+        this.People = People;
+        this.Ticket = Ticket;
+        this.Title = Title;
+        this.Status = Status;
     }
 
     public String getpeople() {
@@ -29,6 +36,9 @@ public class Ticket {
         return Title;
     }
 
+    public String getstatus() {
+        return Status;
+    }
 
     public void setPeople(String People) {
         this.People = People;
@@ -42,12 +52,8 @@ public class Ticket {
         this.Title = Title;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
     public void setStatus(String status) {
-        this.status = status;
+        this.Status = status;
     }
 
     public String getBoards() {

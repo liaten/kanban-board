@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Название"
-                android:textSize="20dp"
+                android:textSize="17dp"
                 android:textStyle="bold"
                 style="@style/View_top">
 
@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Задача: "
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:textStyle="italic"
                 style="@style/View_top">
 
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:text="задание"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 style="@style/View_top">
 
             </TextView>
@@ -78,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Разработчики: "
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:textStyle="italic"
                 style="@style/View_top">
 
@@ -90,7 +90,37 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:text="чел"
-                android:textSize="20dp"
+                android:textSize="15dp"
+                style="@style/View_top">
+
+            </TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Статус: "
+                android:textSize="15dp"
+                android:textStyle="italic"
+                style="@style/View_top">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/ticketStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="статус"
+                android:textSize="15dp"
                 style="@style/View_top">
 
             </TextView>
