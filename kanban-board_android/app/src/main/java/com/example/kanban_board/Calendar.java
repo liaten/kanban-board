@@ -173,9 +173,9 @@ public class Calendar extends Fragment {
 
                         }
                     });
-
                     list.remove(position);
                     adapter.notifyItemRemoved(position);
+                    Toast.makeText(getActivity(),"Удалена задача " + titleDB,Toast.LENGTH_SHORT).show();
                     break;
 
             }
@@ -235,6 +235,7 @@ public class Calendar extends Fragment {
                         ticketText = text.getText().toString();
                         ticketPeople = people.getText().toString();
                         ticketStatus = status.getText().toString();
+
                         ticketBoardName = spinner.getSelectedItem().toString();
 
                         Ticket ticket = new Ticket(ticketPeople, ticketText, ticketName);
@@ -329,7 +330,8 @@ public class Calendar extends Fragment {
                             public void onDataChange(@NonNull DataSnapshot snapshotT) {
                                 for (DataSnapshot statusSnapshot : snapshotT.getChildren()) {
                                     Ticket ticket = statusSnapshot.getValue(Ticket.class);
-                                    ticket.setStatus(ticketStatus);
+                                    String newStatus = ticketStatus.substring(2, ticketStatus.length());
+                                    ticket.setStatus(newStatus);
                                     list.add(ticket);
                                 }
                                 adapter.notifyDataSetChanged();

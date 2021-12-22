@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "787003974614",
-    "firebase_url": "https://kanban-android-test-default-rtdb.europe-west1.firebasedatabase.app",
-    "project_id": "kanban-android-test",
-    "storage_bucket": "kanban-android-test.appspot.com"
+    "project_number": "814728290101",
+    "firebase_url": "https://kanban-2e9a3-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "kanban-2e9a3",
+    "storage_bucket": "kanban-2e9a3.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:787003974614:android:bac8b2a215a4309aea3a77",
+        "mobilesdk_app_id": "1:814728290101:android:452102561bd2abae7b367c",
         "android_client_info": {
           "package_name": "com.example.kanban_board"
         }
       },
       "oauth_client": [
         {
-          "client_id": "787003974614-0b5tbmta9p6lg4oc3khjg6h790ipcojj.apps.googleusercontent.com",
+          "client_id": "814728290101-bntvn3omimv0p3sdq6ajnjs8kjs3iq96.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCZ8WHXm56K3bph6LrtES7_roOwj5zgbiM"
+          "current_key": "AIzaSyDE7KZPwVxG6cJ29S-48Iy10QvqEv872uc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "787003974614-0b5tbmta9p6lg4oc3khjg6h790ipcojj.apps.googleusercontent.com",
+              "client_id": "814728290101-bntvn3omimv0p3sdq6ajnjs8kjs3iq96.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
