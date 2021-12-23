@@ -224,12 +224,12 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                     else {
-                        Snackbar.make(root, "Неправильное пароль", Snackbar.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this,"Неправильный пароль",Toast.LENGTH_SHORT).show();
                     }
 
                 }
                 else {
-                    Snackbar.make(root, "Неправильный логин", Snackbar.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,"Неправильный логин",Toast.LENGTH_SHORT).show();
                 }
 
 
