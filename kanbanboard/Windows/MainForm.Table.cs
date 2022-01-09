@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using kanbanboard.Classes;
 using kanbanboard.Controls;
@@ -40,16 +42,24 @@ namespace kanbanboard.Windows
             Firebase.UploadData(allData);
         }
 
+        private void LoadPanel_Paint(object sender, PaintEventArgs e)
+        {
+            var rnd = new Random();
+            LoadLabel.ForeColor = Color.FromArgb(rnd.Next(255), rnd.Next(255), rnd.Next(255));
+        }
+
         // Загрузить данные в tablelayoutpanel
         private void TableFromFirebase(string selectedProject)
         {
+            LoadPanel.BringToFront();
+
             TableLayoutPanel.RowStyles.Clear();
             TableLayoutPanel.ColumnCount = 0;
             TableLayoutPanel.RowCount = 1;
             TableLayoutPanel.ColumnStyles.Clear();
             TableLayoutPanel.Controls.Clear();
 
-            foreach (var projects in _user.ProjectsData.Where(item => item.Key == selectedProject))
+            foreach (var projects in _user.GetProjectsData().Where(item => item.Key == selectedProject))
             {
                 int column = 0, row = 1;
                 foreach (var titles in projects.Value)
@@ -69,6 +79,9 @@ namespace kanbanboard.Windows
             }
 
             ResizeTable();
+
+            if (BasicContentPanel.Controls.GetChildIndex(PanelWithTable) == 1) PanelWithTable.BringToFront();
+            else if (BasicContentPanel.Controls.GetChildIndex(MessengerPanel) == 1) MessengerPanel.BringToFront();
         }
 
         // События на кнопки
@@ -133,7 +146,7 @@ namespace kanbanboard.Windows
             TableLayoutPanel.ResumeLayout();
 
             // Добавляем события на кнопки, если пользователь соответствующей роли
-            if (_user.Role == "Admin")
+            if (_user.Role is Roles.Admin || _user.Role is Roles.Manager)
             {
                 // Изменить заголовок
                 titlePanel.TitleColumnLabel.Click += (s, a) =>
@@ -258,7 +271,7 @@ namespace kanbanboard.Windows
             control.People.Text = people;
 
             // Добавляем события на кнопки, если пользователь соответствующей роли
-            if (_user.Role == "Admin") SetEventsOnTicket(control);
+            if (_user.Role is Roles.Admin || _user.Role is Roles.Manager) SetEventsOnTicket(control);
             else
             {
                 control.DelButton.Visible = false;
@@ -302,13 +315,13 @@ namespace kanbanboard.Windows
         // Масштабируемость канбан доски
         private void ResizeTable()
         {
-            try
-            {
+            try {
                 foreach (ColumnStyle column in TableLayoutPanel.ColumnStyles)
                 {
                     column.SizeType = SizeType.Percent;
                     column.Width = 25;
                 }
+
                 TableLayoutPanel.Controls.OfType<TicketPanel>().ToList().ForEach(x => x.Width = TableLayoutPanel.Width / TableLayoutPanel.ColumnCount);
 
                 TableLayoutPanel.RowStyles[0].SizeType = SizeType.Absolute;
@@ -326,7 +339,8 @@ namespace kanbanboard.Windows
                     if (TableLayoutPanel.GetCellPosition(x).Row != 0) x.Height = TableLayoutPanel.Height / TableLayoutPanel.RowCount;
                 });
             }
-            catch (Exception e) { Console.WriteLine("Ошибка" + e.Message); }
+
+            catch (Exception) { }
         }
 
         // Доп. ручное сохранение таблицы
@@ -335,5 +349,6 @@ namespace kanbanboard.Windows
             if (ListBoxOfProjectNames.SelectedItem != null)
                 Upload(ListBoxOfProjectNames.SelectedItem.ToString());
         }
+
     }
 }

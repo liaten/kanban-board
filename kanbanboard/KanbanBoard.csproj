@@ -82,6 +82,14 @@
     </Compile>
     <Compile Include="Classes\Extensions.cs" />
     <Compile Include="Classes\Firebase.cs" />
+    <Compile Include="Windows\LoginForm.Registation.cs">
+      <SubType>Form</SubType>
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MainForm.Calendar.cs">
+      <SubType>Form</SubType>
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,9 +137,10 @@
       <DependentUpon>TicketsChangeForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="Resources\send-message.png" />
-    <None Include="Resources\check.png" />
-    <None Include="Resources\checked.png" />
+    <None Include="Resources\Fonts\Roboto.ttf" />
+    <None Include="Resources\Images\send-message.png" />
+    <None Include="Resources\Images\check.png" />
+    <None Include="Resources\Images\checked.png" />
     <EmbeddedResource Include="Windows\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,7 +171,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\user.png" />
+    <None Include="Resources\Images\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Icon1.ico" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

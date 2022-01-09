@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 using FireSharp;
 using FireSharp.Config;
+using FireSharp.Extensions;
 using FireSharp.Interfaces;
+using Newtonsoft.Json;
 
 namespace kanbanboard.Classes
 {
@@ -24,14 +29,14 @@ namespace kanbanboard.Classes
         public static void RemoveNullsFromData(this List<string> data) => data.RemoveAll(x => x is null);
 
         // Получить роль пользователя
-        public static string GetRole(this User user)
+        public static Roles GetRole(this User user)
         {
             var role = Client.GetAsync($"Users/{user.Username}/Role").Result.ResultAs<string>();
             if (!(role is null)) 
-                return role;
+                return role.ToEnum<Roles>();
 
             Client.SetAsync($"Users/{user.Username}/Role", "User");
-            return "User";
+            return "User".ToEnum<Roles>();
         }
 
         // Получаем имена проектов и их данные канбан доски
@@ -98,13 +103,13 @@ namespace kanbanboard.Classes
         // Получить пароль профиля
         public static string GetPassword(this User user)
         {
-            try { return Client.GetAsync($"Users/{user.Username}/password").Result.ResultAs<string>(); }
+            try { return Client.GetAsync($"Users/{user.Username}/Password").Result.ResultAs<string>(); }
             catch { return null; }
         }
         
         public static string GetPassword(this string username)
         {
-            try { return Client.GetAsync($"Users/{username}/password").Result.ResultAs<string>(); }
+            try { return Client.GetAsync($"Users/{username}/Password").Result.ResultAs<string>(); }
             catch { return null; }
         }
 
@@ -129,9 +134,9 @@ namespace kanbanboard.Classes
         // Установить пароль пользователю
         public static void SetPassword(this User user, string password)
         {
-            if (Client.Get($"Users/{user.Username}/password").ResultAs<string>() is null)
-                Client.SetAsync($"Users/{user.Username}/password", password);
-            else Client.SetAsync($"Users/{user.Username}/password", password);
+            if (Client.Get($"Users/{user.Username}/Password").ResultAs<string>() is null)
+                Client.SetAsync($"Users/{user.Username}/Password", password);
+            else Client.SetAsync($"Users/{user.Username}/Password", password);
         }
 
         // Создает проект в базе пользователя.
@@ -194,6 +199,11 @@ namespace kanbanboard.Classes
             Client.SetAsync($"Users/{user.Username}/Projects", data);
         }
 
+        public static Dictionary<string, User> GetAllUsers()
+        {
+            return Client.Get("Users/").ResultAs<Dictionary<string, User>>();
+        }
+
         public static bool CheckUser(this string username)
         {
             var response = Client.GetAsync($"Users/{username}").Result.Body;
@@ -216,14 +226,19 @@ namespace kanbanboard.Classes
             await Client.SetAsync($"Projects/{projectName}/Chat/", list);
         }
 
-        public static async void CreateUser(this string username, string password, List<string> projectsNames = null,string email = "")
+        public static async void CreateUser(this string username, string password, List<string> projectsNames = null, string email = "")
         {
             await Client.SetAsync($"Users/{username}/", new Dictionary<string, string>() { 
                 {"password", MD5.Encrypt(password) },
                 { "Role", "User"},
             });
             if (!(projectsNames is null)) await Client.UpdateAsync($"Users/{username}/", new Dictionary<string, List<string>>() { {"Projects", projectsNames}});
-            if (!string.IsNullOrEmpty(email)) await Client.UpdateAsync($"Users/{username}/", new Dictionary<string, string>() { {"email", email } });
+            if (!string.IsNullOrEmpty(email)) await Client.UpdateAsync($"Users/{username}/", new Dictionary<string, string>() { {"Email", email } });
+        }
+        
+        public static async void CreateUser(this User user)
+        {
+            await Client.SetAsync($"Users/{user.Username}/", user);
         }
     }
 }

@@ -1,35 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 using kanbanboard.Windows;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace kanbanboard.Classes
 {
+    public enum Roles
+    {
+        Admin,
+        User,
+        Manager,
+        Programmer
+    }
+
     public class User
     {
         public string Username { get; set; }
-        public string Role { get; set; }
+        public List<string> Projects { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))] public Roles Role { get; set; }
         public string Password { get; set; }
-
-        public Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>> ProjectsData
-        {
-            get => this.GetDataForAllProjects();
-            set
-            {
-                if (value.Count == 0) throw new ArgumentException("Value cannot be an empty collection.", nameof(value));
-                ProjectsData = value;
-            }
-        }
-
-        public List<string> ProjectNames { get; set; }
-
-        public User() : this(LoginForm.Username) { }
+        public string Email { get; set; }
+        public Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>> GetProjectsData() => this.GetDataForAllProjects();
+        public List<string> ProjectNames() => this.GetProjectNames();
 
         public User(string username)
         {
             Username = username;
             Role = this.GetRole();
             Password = this.GetPassword();
-            ProjectNames = this.GetProjectNames();
+        }
+        
+        [JsonConstructor]
+        public User(string username, string password, string email, List<string> projects, Roles role)
+        {
+            Username = username;
+            Password = password;
+            Email = email;
+            Projects = projects;
+            Role = role;
         }
     }
 }

@@ -62,8 +62,8 @@ namespace kanbanboard.Windows
             this.RegProjectsLabel = new System.Windows.Forms.Label();
             this.RegProjectsTextBox = new System.Windows.Forms.TextBox();
             this.RolePanel = new System.Windows.Forms.Panel();
+            this.RegRoleComboBox = new System.Windows.Forms.ComboBox();
             this.RegRoleLabel = new System.Windows.Forms.Label();
-            this.RegRoleTextBox = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.RegPasswordLabel = new System.Windows.Forms.Label();
             this.RegPasswordTextBox = new System.Windows.Forms.TextBox();
@@ -421,10 +421,10 @@ namespace kanbanboard.Windows
             // 
             this.Reg.Controls.Add(this.RegPanelButton);
             this.Reg.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Reg.Location = new System.Drawing.Point(0, 217);
+            this.Reg.Location = new System.Drawing.Point(0, 228);
             this.Reg.Name = "Reg";
             this.Reg.Padding = new System.Windows.Forms.Padding(15);
-            this.Reg.Size = new System.Drawing.Size(334, 65);
+            this.Reg.Size = new System.Drawing.Size(334, 54);
             this.Reg.TabIndex = 14;
             // 
             // RegPanelButton
@@ -436,7 +436,7 @@ namespace kanbanboard.Windows
             this.RegPanelButton.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.RegPanelButton.Location = new System.Drawing.Point(15, 15);
             this.RegPanelButton.Name = "RegPanelButton";
-            this.RegPanelButton.Size = new System.Drawing.Size(304, 35);
+            this.RegPanelButton.Size = new System.Drawing.Size(304, 24);
             this.RegPanelButton.TabIndex = 4;
             this.RegPanelButton.Text = "Регистрация";
             this.RegPanelButton.UseVisualStyleBackColor = false;
@@ -450,7 +450,7 @@ namespace kanbanboard.Windows
             this.ProjectsPanel.Location = new System.Drawing.Point(0, 180);
             this.ProjectsPanel.Name = "ProjectsPanel";
             this.ProjectsPanel.Padding = new System.Windows.Forms.Padding(15);
-            this.ProjectsPanel.Size = new System.Drawing.Size(334, 45);
+            this.ProjectsPanel.Size = new System.Drawing.Size(334, 50);
             this.ProjectsPanel.TabIndex = 15;
             // 
             // RegProjectsLabel
@@ -481,14 +481,34 @@ namespace kanbanboard.Windows
             // 
             // RolePanel
             // 
+            this.RolePanel.Controls.Add(this.RegRoleComboBox);
             this.RolePanel.Controls.Add(this.RegRoleLabel);
-            this.RolePanel.Controls.Add(this.RegRoleTextBox);
             this.RolePanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.RolePanel.Location = new System.Drawing.Point(0, 135);
             this.RolePanel.Name = "RolePanel";
             this.RolePanel.Padding = new System.Windows.Forms.Padding(15);
             this.RolePanel.Size = new System.Drawing.Size(334, 45);
             this.RolePanel.TabIndex = 13;
+            // 
+            // RegRoleComboBox
+            // 
+            this.RegRoleComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.RegRoleComboBox.DropDownHeight = 100;
+            this.RegRoleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.RegRoleComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.RegRoleComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RegRoleComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.RegRoleComboBox.FormattingEnabled = true;
+            this.RegRoleComboBox.IntegralHeight = false;
+            this.RegRoleComboBox.Items.AddRange(new object[] {
+            "User",
+            "Programmer",
+            "Manager",
+            "Admin"});
+            this.RegRoleComboBox.Location = new System.Drawing.Point(125, 12);
+            this.RegRoleComboBox.Name = "RegRoleComboBox";
+            this.RegRoleComboBox.Size = new System.Drawing.Size(194, 24);
+            this.RegRoleComboBox.TabIndex = 5;
             // 
             // RegRoleLabel
             // 
@@ -501,19 +521,6 @@ namespace kanbanboard.Windows
             this.RegRoleLabel.Size = new System.Drawing.Size(40, 16);
             this.RegRoleLabel.TabIndex = 4;
             this.RegRoleLabel.Text = "Роль";
-            // 
-            // RegRoleTextBox
-            // 
-            this.RegRoleTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.RegRoleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.RegRoleTextBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.RegRoleTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RegRoleTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.RegRoleTextBox.Location = new System.Drawing.Point(125, 15);
-            this.RegRoleTextBox.Name = "RegRoleTextBox";
-            this.RegRoleTextBox.Size = new System.Drawing.Size(194, 17);
-            this.RegRoleTextBox.TabIndex = 3;
-            this.RegRoleTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel3
             // 
@@ -635,13 +642,13 @@ namespace kanbanboard.Windows
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(350, 310);
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);
             this.Load += new System.EventHandler(this.Login_Load);
-            this.Resize += new System.EventHandler(this.Login_Resize);
             this.LoginPasswordMailPanel.ResumeLayout(false);
             this.PanelOfTextBoxes.ResumeLayout(false);
             this.PasswordTextBoxPanel.ResumeLayout(false);
@@ -710,7 +717,6 @@ namespace kanbanboard.Windows
         private System.Windows.Forms.Panel RegPanel;
         private System.Windows.Forms.Panel RolePanel;
         private System.Windows.Forms.Label RegRoleLabel;
-        private System.Windows.Forms.TextBox RegRoleTextBox;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label RegPasswordLabel;
         private System.Windows.Forms.TextBox RegPasswordTextBox;
@@ -725,5 +731,6 @@ namespace kanbanboard.Windows
         private System.Windows.Forms.TextBox RegProjectsTextBox;
         private System.Windows.Forms.Panel Reg;
         private System.Windows.Forms.Button RegPanelButton;
+        private System.Windows.Forms.ComboBox RegRoleComboBox;
     }
 }
