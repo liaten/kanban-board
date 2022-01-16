@@ -350,5 +350,11 @@ namespace kanbanboard.Forms
                 Upload(ListBoxOfProjectNames.SelectedItem.ToString());
         }
 
+        // Удалить выбранный проект
+        private async void TrashButton_Click(object sender, EventArgs e)
+        {
+            if (await Firebase.DeleteProject(_user, ListBoxOfProjectNames.SelectedItem?.ToString()) == "OK")
+                SetUserProjectNames();
+        }
     }
 }

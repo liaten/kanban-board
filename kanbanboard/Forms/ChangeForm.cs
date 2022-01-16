@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Linq;
+using System.Windows.Forms;
 using kanbanboard.Classes;
 using kanbanboard.Controls;
 
@@ -36,7 +38,7 @@ namespace kanbanboard.Forms
             };
         }
 
-        public ChangeForm(MainForm owner, string username)
+        public ChangeForm(MainForm owner, User user)
         {
             Owner = owner;
             InitializeComponent();
@@ -49,9 +51,18 @@ namespace kanbanboard.Forms
             };
 
             // Сохранение
-            FormClosing += (sender, args) =>
+            FormClosing += async (sender, args) =>
             {
-                if (!string.IsNullOrEmpty(ChangingTextBox.Text)) username.CreateProject(ChangingTextBox.Text);
+                if (!string.IsNullOrEmpty(ChangingTextBox.Text))
+                {
+                    if (await user.CreateProject(ChangingTextBox.Text) == "OK")
+                        Owner.Controls.OfType<ListBox>().Where(x => string.Equals(x.Name, "ListBoxOfProjectNames")).ToList().ForEach(
+                            x =>
+                            {
+                                x.Items.Clear();
+                                x.Items.AddRange(user.ProjectNames().Cast<object>().ToArray());
+                            });
+                }
             };
         }
     }
