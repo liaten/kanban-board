@@ -12,6 +12,13 @@ namespace kanbanboard.Classes
             control.Top = (where.Height - control.Height) / 2;
         }
 
+        /// <summary> Из string в enum </summary>
+        public static T ToEnum<T>(this string value)
+        {
+            return (T)Enum.Parse(typeof(T), value, true);
+        }
+
+        /// <summary> Первый символ принимаемой строки переводится в верхний регистр </summary>
         public static string FirstCharToUpper(this string input)
         {
             switch (input) 
@@ -22,6 +29,7 @@ namespace kanbanboard.Classes
             }
         }
 
+        /// <summary> Проверка на то, находится ли контрол на самом верху иерархии </summary>
         public static bool IsControlAtFront(this Control control)
         {
             while (control.Parent != null)
@@ -37,6 +45,7 @@ namespace kanbanboard.Classes
             return false;
         }
 
+        /// <summary> Валидация email </summary>
         public static bool ValidEmail(this string email) => new Regex(@"^(\w|\d|\.|_|-)+@(\w|\d){1,}\.[\w]{1,}\.?[\w]*$", RegexOptions.IgnoreCase).IsMatch(email);
     }
 }
