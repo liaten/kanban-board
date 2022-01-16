@@ -1,9 +1,9 @@
-﻿using FireSharp;
-using FireSharp.Config;
-using FireSharp.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FireSharp;
+using FireSharp.Config;
+using FireSharp.Interfaces;
 
 namespace kanbanboard.Classes
 {
@@ -18,7 +18,7 @@ namespace kanbanboard.Classes
         {
             Secret = "hebNTLDeI3UdiZnzjsM8qRxJufACuQJIgRsCfroW";
             Path = "https://kanban-2e9a3-default-rtdb.europe-west1.firebasedatabase.app/";
-            Client = new FirebaseClient(new FirebaseConfig() { AuthSecret = Secret, BasePath = Path });
+            Client = new FirebaseClient(new FirebaseConfig { AuthSecret = Secret, BasePath = Path });
         }
 
         public static void RemoveNullsFromData(this List<string> data) => data.RemoveAll(x => x is null);
@@ -223,12 +223,13 @@ namespace kanbanboard.Classes
 
         public static async void CreateUser(this string username, string password, List<string> projectsNames = null, string email = "")
         {
-            await Client.SetAsync($"Users/{username}/", new Dictionary<string, string>() {
+            await Client.SetAsync($"Users/{username}/", new Dictionary<string, string>
+            {
                 {"password", MD5.Encrypt(password) },
                 { "Role", "User"},
             });
-            if (!(projectsNames is null)) await Client.UpdateAsync($"Users/{username}/", new Dictionary<string, List<string>>() { { "Projects", projectsNames } });
-            if (!string.IsNullOrEmpty(email)) await Client.UpdateAsync($"Users/{username}/", new Dictionary<string, string>() { { "Email", email } });
+            if (!(projectsNames is null)) await Client.UpdateAsync($"Users/{username}/", new Dictionary<string, List<string>> { { "Projects", projectsNames } });
+            if (!string.IsNullOrEmpty(email)) await Client.UpdateAsync($"Users/{username}/", new Dictionary<string, string> { { "Email", email } });
         }
 
         public static async void CreateUser(this User user)

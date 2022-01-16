@@ -1,21 +1,22 @@
-﻿using kanbanboard.Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using kanbanboard.Classes;
 
 namespace kanbanboard.Forms
 {
     public partial class LoginForm
     {
         // Кнопка назад внутри окна регистрации
-        private void RegPanelBackButton(object sender, EventArgs e)
+        private void RegOfRegButton_Click(object sender, EventArgs e)
         {
             MainPanel.BringToFront();
-            this.Text = "Авторизация";
-            this.Size = new Size(350, 262);
+
+            Text = "Авторизация";
         }
+
         // Кнопка регистрации после кнопки регистрации
         private void RegPanelButton_Click(object sender, EventArgs e)
         {
@@ -25,7 +26,7 @@ namespace kanbanboard.Forms
             var role = RegRoleComboBox.SelectedItem?.ToString();
             var projects = RegProjectsTextBox.Text;
 
-            if (new List<string>() { login, email, password, role, projects }.Any(x => string.IsNullOrEmpty(x)))
+            if (new List<string> { login, email, password, role, projects }.Any(x => string.IsNullOrEmpty(x)))
             {
                 MessageBox.Show(@"Мало данных.");
                 return;
@@ -51,7 +52,7 @@ namespace kanbanboard.Forms
                 role.ToEnum<Roles>());
 
             _users.Add(newUser.Username, newUser);
-            Firebase.CreateUser(newUser);
+            newUser.CreateUser();
 
             // Вопрос на выполнение логина после регистрации
             if (MessageBox.Show($@"Пользователь зарегистрирован.{Environment.NewLine}Войти в созданную учётную запись?", "Регистрация", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
@@ -86,7 +87,7 @@ namespace kanbanboard.Forms
             textBoxLogin.Clear();
             textBoxPassword.Clear();
             // Устанавливаем название окна - "Регистрация"
-            this.Text = "Регистрация";
+            Text = "Регистрация";
         }
     }
 }

@@ -1,4 +1,7 @@
 ﻿
+using System.ComponentModel;
+using System.Windows.Forms;
+
 namespace kanbanboard.Forms
 {
     partial class LoginForm
@@ -6,7 +9,7 @@ namespace kanbanboard.Forms
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -54,11 +57,11 @@ namespace kanbanboard.Forms
             this.AuthorizationLabel = new System.Windows.Forms.Label();
             this.AuthorizationPictureBox = new System.Windows.Forms.PictureBox();
             this.RegPanel = new System.Windows.Forms.Panel();
-            this.Reg = new System.Windows.Forms.Panel();
-            this.RegReg = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.RegBack = new System.Windows.Forms.Panel();
-            this.RegPanelButton = new System.Windows.Forms.Button();
+            this.RegButtonsPanel = new System.Windows.Forms.Panel();
+            this.RegOfRegPanel = new System.Windows.Forms.Panel();
+            this.RegOfRegButton = new System.Windows.Forms.Button();
+            this.RegBackPanel = new System.Windows.Forms.Panel();
+            this.RegOfRegBackButton = new System.Windows.Forms.Button();
             this.ProjectsPanel = new System.Windows.Forms.Panel();
             this.RegProjectsLabel = new System.Windows.Forms.Label();
             this.RegProjectsTextBox = new System.Windows.Forms.TextBox();
@@ -90,9 +93,9 @@ namespace kanbanboard.Forms
             this.HeaderLabelPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AuthorizationPictureBox)).BeginInit();
             this.RegPanel.SuspendLayout();
-            this.Reg.SuspendLayout();
-            this.RegReg.SuspendLayout();
-            this.RegBack.SuspendLayout();
+            this.RegButtonsPanel.SuspendLayout();
+            this.RegOfRegPanel.SuspendLayout();
+            this.RegBackPanel.SuspendLayout();
             this.ProjectsPanel.SuspendLayout();
             this.RolePanel.SuspendLayout();
             this.RegPasswordPanel.SuspendLayout();
@@ -102,15 +105,16 @@ namespace kanbanboard.Forms
             // 
             // RegistrationButton
             // 
+            this.RegistrationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.RegistrationButton.BackColor = System.Drawing.Color.Transparent;
-            this.RegistrationButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RegistrationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RegistrationButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.RegistrationButton.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.RegistrationButton.Location = new System.Drawing.Point(10, 0);
-            this.RegistrationButton.Margin = new System.Windows.Forms.Padding(0);
+            this.RegistrationButton.Location = new System.Drawing.Point(18, 11);
             this.RegistrationButton.Name = "RegistrationButton";
-            this.RegistrationButton.Size = new System.Drawing.Size(103, 30);
+            this.RegistrationButton.Size = new System.Drawing.Size(137, 24);
             this.RegistrationButton.TabIndex = 2;
             this.RegistrationButton.Text = "Регистрация";
             this.RegistrationButton.UseVisualStyleBackColor = false;
@@ -118,12 +122,14 @@ namespace kanbanboard.Forms
             // 
             // textBoxLogin
             // 
+            this.textBoxLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.textBoxLogin.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxLogin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.textBoxLogin.Location = new System.Drawing.Point(15, 15);
+            this.textBoxLogin.Location = new System.Drawing.Point(15, 21);
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(194, 17);
             this.textBoxLogin.TabIndex = 3;
@@ -133,12 +139,14 @@ namespace kanbanboard.Forms
             // 
             // textBoxPassword
             // 
+            this.textBoxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.textBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxPassword.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.textBoxPassword.Location = new System.Drawing.Point(15, 15);
+            this.textBoxPassword.Location = new System.Drawing.Point(15, 19);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(194, 17);
@@ -155,9 +163,9 @@ namespace kanbanboard.Forms
             this.LoginLabel.AutoSize = true;
             this.LoginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LoginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.LoginLabel.Location = new System.Drawing.Point(10, 15);
+            this.LoginLabel.Location = new System.Drawing.Point(10, 20);
             this.LoginLabel.Name = "LoginLabel";
-            this.LoginLabel.Size = new System.Drawing.Size(89, 16);
+            this.LoginLabel.Size = new System.Drawing.Size(90, 16);
             this.LoginLabel.TabIndex = 6;
             this.LoginLabel.Text = "Логин | Email";
             this.LoginLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -170,9 +178,9 @@ namespace kanbanboard.Forms
             this.PassLabel.AutoSize = true;
             this.PassLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.PassLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.PassLabel.Location = new System.Drawing.Point(10, 14);
+            this.PassLabel.Location = new System.Drawing.Point(27, 19);
             this.PassLabel.Name = "PassLabel";
-            this.PassLabel.Size = new System.Drawing.Size(56, 16);
+            this.PassLabel.Size = new System.Drawing.Size(57, 16);
             this.PassLabel.TabIndex = 7;
             this.PassLabel.Text = "Пароль";
             this.PassLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -185,7 +193,7 @@ namespace kanbanboard.Forms
             this.LoginPasswordMailPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.LoginPasswordMailPanel.Location = new System.Drawing.Point(0, 70);
             this.LoginPasswordMailPanel.Name = "LoginPasswordMailPanel";
-            this.LoginPasswordMailPanel.Size = new System.Drawing.Size(334, 90);
+            this.LoginPasswordMailPanel.Size = new System.Drawing.Size(334, 125);
             this.LoginPasswordMailPanel.TabIndex = 9;
             // 
             // PanelOfTextBoxes
@@ -195,17 +203,17 @@ namespace kanbanboard.Forms
             this.PanelOfTextBoxes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelOfTextBoxes.Location = new System.Drawing.Point(110, 0);
             this.PanelOfTextBoxes.Name = "PanelOfTextBoxes";
-            this.PanelOfTextBoxes.Size = new System.Drawing.Size(224, 90);
+            this.PanelOfTextBoxes.Size = new System.Drawing.Size(224, 125);
             this.PanelOfTextBoxes.TabIndex = 1;
             // 
             // PasswordTextBoxPanel
             // 
             this.PasswordTextBoxPanel.Controls.Add(this.textBoxPassword);
             this.PasswordTextBoxPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PasswordTextBoxPanel.Location = new System.Drawing.Point(0, 45);
+            this.PasswordTextBoxPanel.Location = new System.Drawing.Point(0, 59);
             this.PasswordTextBoxPanel.Name = "PasswordTextBoxPanel";
             this.PasswordTextBoxPanel.Padding = new System.Windows.Forms.Padding(15);
-            this.PasswordTextBoxPanel.Size = new System.Drawing.Size(224, 45);
+            this.PasswordTextBoxPanel.Size = new System.Drawing.Size(224, 54);
             this.PasswordTextBoxPanel.TabIndex = 10;
             // 
             // LoginTextBoxPanel
@@ -215,7 +223,7 @@ namespace kanbanboard.Forms
             this.LoginTextBoxPanel.Location = new System.Drawing.Point(0, 0);
             this.LoginTextBoxPanel.Name = "LoginTextBoxPanel";
             this.LoginTextBoxPanel.Padding = new System.Windows.Forms.Padding(15);
-            this.LoginTextBoxPanel.Size = new System.Drawing.Size(224, 45);
+            this.LoginTextBoxPanel.Size = new System.Drawing.Size(224, 59);
             this.LoginTextBoxPanel.TabIndex = 9;
             // 
             // LabelsPanel
@@ -225,17 +233,17 @@ namespace kanbanboard.Forms
             this.LabelsPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.LabelsPanel.Location = new System.Drawing.Point(0, 0);
             this.LabelsPanel.Name = "LabelsPanel";
-            this.LabelsPanel.Size = new System.Drawing.Size(110, 90);
+            this.LabelsPanel.Size = new System.Drawing.Size(110, 125);
             this.LabelsPanel.TabIndex = 0;
             // 
             // PasswordLabelPanel
             // 
             this.PasswordLabelPanel.Controls.Add(this.PassLabel);
             this.PasswordLabelPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PasswordLabelPanel.Location = new System.Drawing.Point(0, 45);
+            this.PasswordLabelPanel.Location = new System.Drawing.Point(0, 59);
             this.PasswordLabelPanel.Name = "PasswordLabelPanel";
             this.PasswordLabelPanel.Padding = new System.Windows.Forms.Padding(15);
-            this.PasswordLabelPanel.Size = new System.Drawing.Size(110, 45);
+            this.PasswordLabelPanel.Size = new System.Drawing.Size(110, 54);
             this.PasswordLabelPanel.TabIndex = 11;
             // 
             // loginLabelPanel
@@ -245,20 +253,22 @@ namespace kanbanboard.Forms
             this.loginLabelPanel.Location = new System.Drawing.Point(0, 0);
             this.loginLabelPanel.Name = "loginLabelPanel";
             this.loginLabelPanel.Padding = new System.Windows.Forms.Padding(15);
-            this.loginLabelPanel.Size = new System.Drawing.Size(110, 45);
+            this.loginLabelPanel.Size = new System.Drawing.Size(110, 59);
             this.loginLabelPanel.TabIndex = 10;
             // 
             // LoginButton
             // 
+            this.LoginButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.LoginButton.BackColor = System.Drawing.Color.Transparent;
-            this.LoginButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LoginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LoginButton.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.LoginButton.Location = new System.Drawing.Point(60, 0);
+            this.LoginButton.Location = new System.Drawing.Point(12, 11);
             this.LoginButton.Margin = new System.Windows.Forms.Padding(0);
             this.LoginButton.Name = "LoginButton";
-            this.LoginButton.Size = new System.Drawing.Size(91, 30);
+            this.LoginButton.Size = new System.Drawing.Size(137, 24);
             this.LoginButton.TabIndex = 1;
             this.LoginButton.Text = "Войти";
             this.LoginButton.UseVisualStyleBackColor = false;
@@ -268,23 +278,21 @@ namespace kanbanboard.Forms
             // 
             this.PanelOfCheckBoxes.AutoSize = true;
             this.PanelOfCheckBoxes.Controls.Add(this.checkPass);
-            this.PanelOfCheckBoxes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelOfCheckBoxes.Location = new System.Drawing.Point(0, 160);
+            this.PanelOfCheckBoxes.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.PanelOfCheckBoxes.Location = new System.Drawing.Point(0, 244);
             this.PanelOfCheckBoxes.Name = "PanelOfCheckBoxes";
             this.PanelOfCheckBoxes.Padding = new System.Windows.Forms.Padding(15, 5, 5, 5);
-            this.PanelOfCheckBoxes.Size = new System.Drawing.Size(334, 27);
+            this.PanelOfCheckBoxes.Size = new System.Drawing.Size(334, 40);
             this.PanelOfCheckBoxes.TabIndex = 12;
             // 
             // checkPass
             // 
-            this.checkPass.AutoSize = true;
-            this.checkPass.Dock = System.Windows.Forms.DockStyle.Top;
             this.checkPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.checkPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
-            this.checkPass.Location = new System.Drawing.Point(15, 5);
+            this.checkPass.Location = new System.Drawing.Point(95, 8);
             this.checkPass.Name = "checkPass";
-            this.checkPass.Size = new System.Drawing.Size(314, 17);
+            this.checkPass.Size = new System.Drawing.Size(136, 24);
             this.checkPass.TabIndex = 12;
             this.checkPass.Text = "Показать пароль";
             this.checkPass.UseVisualStyleBackColor = true;
@@ -294,20 +302,20 @@ namespace kanbanboard.Forms
             // 
             this.PanelOfButtons.Controls.Add(this.RegButtonPanel);
             this.PanelOfButtons.Controls.Add(this.LoginPanel);
-            this.PanelOfButtons.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelOfButtons.Location = new System.Drawing.Point(0, 187);
+            this.PanelOfButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.PanelOfButtons.Location = new System.Drawing.Point(0, 198);
             this.PanelOfButtons.Name = "PanelOfButtons";
-            this.PanelOfButtons.Size = new System.Drawing.Size(334, 30);
+            this.PanelOfButtons.Size = new System.Drawing.Size(334, 46);
             this.PanelOfButtons.TabIndex = 11;
             // 
             // RegButtonPanel
             // 
             this.RegButtonPanel.Controls.Add(this.RegistrationButton);
-            this.RegButtonPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.RegButtonPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.RegButtonPanel.Location = new System.Drawing.Point(161, 0);
             this.RegButtonPanel.Name = "RegButtonPanel";
             this.RegButtonPanel.Padding = new System.Windows.Forms.Padding(10, 0, 60, 0);
-            this.RegButtonPanel.Size = new System.Drawing.Size(173, 30);
+            this.RegButtonPanel.Size = new System.Drawing.Size(173, 46);
             this.RegButtonPanel.TabIndex = 4;
             // 
             // LoginPanel
@@ -317,14 +325,14 @@ namespace kanbanboard.Forms
             this.LoginPanel.Location = new System.Drawing.Point(0, 0);
             this.LoginPanel.Name = "LoginPanel";
             this.LoginPanel.Padding = new System.Windows.Forms.Padding(60, 0, 10, 0);
-            this.LoginPanel.Size = new System.Drawing.Size(161, 30);
+            this.LoginPanel.Size = new System.Drawing.Size(161, 46);
             this.LoginPanel.TabIndex = 3;
             // 
             // MainPanel
             // 
+            this.MainPanel.Controls.Add(this.LoginPasswordMailPanel);
             this.MainPanel.Controls.Add(this.PanelOfButtons);
             this.MainPanel.Controls.Add(this.PanelOfCheckBoxes);
-            this.MainPanel.Controls.Add(this.LoginPasswordMailPanel);
             this.MainPanel.Controls.Add(this.HeaderPanel);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(0, 0);
@@ -381,7 +389,7 @@ namespace kanbanboard.Forms
             // 
             // RegPanel
             // 
-            this.RegPanel.Controls.Add(this.Reg);
+            this.RegPanel.Controls.Add(this.RegButtonsPanel);
             this.RegPanel.Controls.Add(this.ProjectsPanel);
             this.RegPanel.Controls.Add(this.RolePanel);
             this.RegPanel.Controls.Add(this.RegPasswordPanel);
@@ -393,65 +401,65 @@ namespace kanbanboard.Forms
             this.RegPanel.Size = new System.Drawing.Size(334, 284);
             this.RegPanel.TabIndex = 13;
             // 
-            // Reg
+            // RegButtonsPanel
             // 
-            this.Reg.Controls.Add(this.RegReg);
-            this.Reg.Controls.Add(this.RegBack);
-            this.Reg.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Reg.Location = new System.Drawing.Point(0, 230);
-            this.Reg.Name = "Reg";
-            this.Reg.Size = new System.Drawing.Size(334, 54);
-            this.Reg.TabIndex = 14;
+            this.RegButtonsPanel.Controls.Add(this.RegOfRegPanel);
+            this.RegButtonsPanel.Controls.Add(this.RegBackPanel);
+            this.RegButtonsPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.RegButtonsPanel.Location = new System.Drawing.Point(0, 230);
+            this.RegButtonsPanel.Name = "RegButtonsPanel";
+            this.RegButtonsPanel.Size = new System.Drawing.Size(334, 54);
+            this.RegButtonsPanel.TabIndex = 14;
             // 
-            // RegReg
+            // RegOfRegPanel
             // 
-            this.RegReg.Controls.Add(this.button1);
-            this.RegReg.Dock = System.Windows.Forms.DockStyle.Left;
-            this.RegReg.Location = new System.Drawing.Point(167, 0);
-            this.RegReg.Name = "RegReg";
-            this.RegReg.Padding = new System.Windows.Forms.Padding(15);
-            this.RegReg.Size = new System.Drawing.Size(167, 54);
-            this.RegReg.TabIndex = 16;
+            this.RegOfRegPanel.Controls.Add(this.RegOfRegButton);
+            this.RegOfRegPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.RegOfRegPanel.Location = new System.Drawing.Point(167, 0);
+            this.RegOfRegPanel.Name = "RegOfRegPanel";
+            this.RegOfRegPanel.Padding = new System.Windows.Forms.Padding(15);
+            this.RegOfRegPanel.Size = new System.Drawing.Size(167, 54);
+            this.RegOfRegPanel.TabIndex = 16;
             // 
-            // button1
+            // RegOfRegButton
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.button1.Location = new System.Drawing.Point(15, 15);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(137, 24);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Регистрация";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.RegPanelButton_Click);
+            this.RegOfRegButton.BackColor = System.Drawing.Color.Transparent;
+            this.RegOfRegButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RegOfRegButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RegOfRegButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RegOfRegButton.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.RegOfRegButton.Location = new System.Drawing.Point(15, 15);
+            this.RegOfRegButton.Name = "RegOfRegButton";
+            this.RegOfRegButton.Size = new System.Drawing.Size(137, 24);
+            this.RegOfRegButton.TabIndex = 4;
+            this.RegOfRegButton.Text = "Регистрация";
+            this.RegOfRegButton.UseVisualStyleBackColor = false;
+            this.RegOfRegButton.Click += new System.EventHandler(this.RegPanelButton_Click);
             // 
-            // RegBack
+            // RegBackPanel
             // 
-            this.RegBack.Controls.Add(this.RegPanelButton);
-            this.RegBack.Dock = System.Windows.Forms.DockStyle.Left;
-            this.RegBack.Location = new System.Drawing.Point(0, 0);
-            this.RegBack.Name = "RegBack";
-            this.RegBack.Padding = new System.Windows.Forms.Padding(15);
-            this.RegBack.Size = new System.Drawing.Size(167, 54);
-            this.RegBack.TabIndex = 15;
+            this.RegBackPanel.Controls.Add(this.RegOfRegBackButton);
+            this.RegBackPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.RegBackPanel.Location = new System.Drawing.Point(0, 0);
+            this.RegBackPanel.Name = "RegBackPanel";
+            this.RegBackPanel.Padding = new System.Windows.Forms.Padding(15);
+            this.RegBackPanel.Size = new System.Drawing.Size(167, 54);
+            this.RegBackPanel.TabIndex = 15;
             // 
-            // RegPanelButton
+            // RegOfRegBackButton
             // 
-            this.RegPanelButton.BackColor = System.Drawing.Color.Transparent;
-            this.RegPanelButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RegPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RegPanelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RegPanelButton.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.RegPanelButton.Location = new System.Drawing.Point(15, 15);
-            this.RegPanelButton.Name = "RegPanelButton";
-            this.RegPanelButton.Size = new System.Drawing.Size(137, 24);
-            this.RegPanelButton.TabIndex = 4;
-            this.RegPanelButton.Text = "Назад";
-            this.RegPanelButton.UseVisualStyleBackColor = false;
-            this.RegPanelButton.Click += new System.EventHandler(this.RegPanelBackButton);
+            this.RegOfRegBackButton.BackColor = System.Drawing.Color.Transparent;
+            this.RegOfRegBackButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RegOfRegBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RegOfRegBackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RegOfRegBackButton.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.RegOfRegBackButton.Location = new System.Drawing.Point(15, 15);
+            this.RegOfRegBackButton.Name = "RegOfRegBackButton";
+            this.RegOfRegBackButton.Size = new System.Drawing.Size(137, 24);
+            this.RegOfRegBackButton.TabIndex = 4;
+            this.RegOfRegBackButton.Text = "Назад";
+            this.RegOfRegBackButton.UseVisualStyleBackColor = false;
+            this.RegOfRegBackButton.Click += new System.EventHandler(this.RegOfRegButton_Click);
             // 
             // ProjectsPanel
             // 
@@ -472,7 +480,7 @@ namespace kanbanboard.Forms
             this.RegProjectsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.RegProjectsLabel.Location = new System.Drawing.Point(15, 15);
             this.RegProjectsLabel.Name = "RegProjectsLabel";
-            this.RegProjectsLabel.Size = new System.Drawing.Size(64, 16);
+            this.RegProjectsLabel.Size = new System.Drawing.Size(65, 16);
             this.RegProjectsLabel.TabIndex = 4;
             this.RegProjectsLabel.Text = "Проекты";
             // 
@@ -530,7 +538,7 @@ namespace kanbanboard.Forms
             this.RegRoleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.RegRoleLabel.Location = new System.Drawing.Point(15, 15);
             this.RegRoleLabel.Name = "RegRoleLabel";
-            this.RegRoleLabel.Size = new System.Drawing.Size(39, 16);
+            this.RegRoleLabel.Size = new System.Drawing.Size(40, 16);
             this.RegRoleLabel.TabIndex = 4;
             this.RegRoleLabel.Text = "Роль";
             // 
@@ -553,7 +561,7 @@ namespace kanbanboard.Forms
             this.RegPasswordLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.RegPasswordLabel.Location = new System.Drawing.Point(15, 15);
             this.RegPasswordLabel.Name = "RegPasswordLabel";
-            this.RegPasswordLabel.Size = new System.Drawing.Size(56, 16);
+            this.RegPasswordLabel.Size = new System.Drawing.Size(57, 16);
             this.RegPasswordLabel.TabIndex = 4;
             this.RegPasswordLabel.Text = "Пароль";
             // 
@@ -589,7 +597,7 @@ namespace kanbanboard.Forms
             this.RegEmailLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.RegEmailLabel.Location = new System.Drawing.Point(15, 15);
             this.RegEmailLabel.Name = "RegEmailLabel";
-            this.RegEmailLabel.Size = new System.Drawing.Size(41, 16);
+            this.RegEmailLabel.Size = new System.Drawing.Size(42, 16);
             this.RegEmailLabel.TabIndex = 4;
             this.RegEmailLabel.Text = "Email";
             // 
@@ -625,7 +633,7 @@ namespace kanbanboard.Forms
             this.RegLoginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.RegLoginLabel.Location = new System.Drawing.Point(15, 15);
             this.RegLoginLabel.Name = "RegLoginLabel";
-            this.RegLoginLabel.Size = new System.Drawing.Size(46, 16);
+            this.RegLoginLabel.Size = new System.Drawing.Size(47, 16);
             this.RegLoginLabel.TabIndex = 4;
             this.RegLoginLabel.Text = "Логин";
             // 
@@ -649,9 +657,10 @@ namespace kanbanboard.Forms
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(334, 284);
-            this.Controls.Add(this.RegPanel);
             this.Controls.Add(this.MainPanel);
+            this.Controls.Add(this.RegPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -673,7 +682,6 @@ namespace kanbanboard.Forms
             this.loginLabelPanel.ResumeLayout(false);
             this.loginLabelPanel.PerformLayout();
             this.PanelOfCheckBoxes.ResumeLayout(false);
-            this.PanelOfCheckBoxes.PerformLayout();
             this.PanelOfButtons.ResumeLayout(false);
             this.RegButtonPanel.ResumeLayout(false);
             this.LoginPanel.ResumeLayout(false);
@@ -684,9 +692,9 @@ namespace kanbanboard.Forms
             this.HeaderLabelPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AuthorizationPictureBox)).EndInit();
             this.RegPanel.ResumeLayout(false);
-            this.Reg.ResumeLayout(false);
-            this.RegReg.ResumeLayout(false);
-            this.RegBack.ResumeLayout(false);
+            this.RegButtonsPanel.ResumeLayout(false);
+            this.RegOfRegPanel.ResumeLayout(false);
+            this.RegBackPanel.ResumeLayout(false);
             this.ProjectsPanel.ResumeLayout(false);
             this.ProjectsPanel.PerformLayout();
             this.RolePanel.ResumeLayout(false);
@@ -703,49 +711,49 @@ namespace kanbanboard.Forms
 
         #endregion
 
-        private System.Windows.Forms.Button LoginButton;
-        private System.Windows.Forms.Button RegistrationButton;
-        private System.Windows.Forms.TextBox textBoxLogin;
-        private System.Windows.Forms.TextBox textBoxPassword;
-        private System.Windows.Forms.Label LoginLabel;
-        private System.Windows.Forms.Label PassLabel;
-        private System.Windows.Forms.Panel LoginPasswordMailPanel;
-        private System.Windows.Forms.Panel PanelOfTextBoxes;
-        private System.Windows.Forms.Panel LabelsPanel;
-        private System.Windows.Forms.Panel PanelOfCheckBoxes;
-        private System.Windows.Forms.Panel PanelOfButtons;
-        private System.Windows.Forms.Panel RegButtonPanel;
-        private System.Windows.Forms.Panel LoginPanel;
-        private System.Windows.Forms.Panel PasswordTextBoxPanel;
-        private System.Windows.Forms.Panel LoginTextBoxPanel;
-        private System.Windows.Forms.Panel PasswordLabelPanel;
-        private System.Windows.Forms.Panel loginLabelPanel;
-        private System.Windows.Forms.CheckBox checkPass;
-        private System.Windows.Forms.Panel MainPanel;
-        private System.Windows.Forms.Panel HeaderPanel;
-        private System.Windows.Forms.Panel HeaderLabelPanel;
-        private System.Windows.Forms.Label AuthorizationLabel;
-        private System.Windows.Forms.PictureBox AuthorizationPictureBox;
-        private System.Windows.Forms.Panel RegPanel;
-        private System.Windows.Forms.Panel RolePanel;
-        private System.Windows.Forms.Label RegRoleLabel;
-        private System.Windows.Forms.Panel RegPasswordPanel;
-        private System.Windows.Forms.Label RegPasswordLabel;
-        private System.Windows.Forms.TextBox RegPasswordTextBox;
-        private System.Windows.Forms.Panel RegEmailPanel;
-        private System.Windows.Forms.Label RegEmailLabel;
-        private System.Windows.Forms.TextBox RegEmailTextBox;
-        private System.Windows.Forms.Panel RegLoginPanel;
-        private System.Windows.Forms.Label RegLoginLabel;
-        private System.Windows.Forms.TextBox RegLoginTextBox;
-        private System.Windows.Forms.Panel ProjectsPanel;
-        private System.Windows.Forms.Label RegProjectsLabel;
-        private System.Windows.Forms.TextBox RegProjectsTextBox;
-        private System.Windows.Forms.Panel Reg;
-        private System.Windows.Forms.Button RegPanelButton;
-        private System.Windows.Forms.ComboBox RegRoleComboBox;
-        private System.Windows.Forms.Panel RegReg;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Panel RegBack;
+        private Button LoginButton;
+        private Button RegistrationButton;
+        private TextBox textBoxLogin;
+        private TextBox textBoxPassword;
+        private Label LoginLabel;
+        private Label PassLabel;
+        private Panel LoginPasswordMailPanel;
+        private Panel PanelOfTextBoxes;
+        private Panel LabelsPanel;
+        private Panel PanelOfCheckBoxes;
+        private Panel PanelOfButtons;
+        private Panel RegButtonPanel;
+        private Panel LoginPanel;
+        private Panel PasswordTextBoxPanel;
+        private Panel LoginTextBoxPanel;
+        private Panel PasswordLabelPanel;
+        private Panel loginLabelPanel;
+        private CheckBox checkPass;
+        private Panel MainPanel;
+        private Panel HeaderPanel;
+        private Panel HeaderLabelPanel;
+        private Label AuthorizationLabel;
+        private PictureBox AuthorizationPictureBox;
+        private Panel RegPanel;
+        private Panel RolePanel;
+        private Label RegRoleLabel;
+        private Panel RegPasswordPanel;
+        private Label RegPasswordLabel;
+        private TextBox RegPasswordTextBox;
+        private Panel RegEmailPanel;
+        private Label RegEmailLabel;
+        private TextBox RegEmailTextBox;
+        private Panel RegLoginPanel;
+        private Label RegLoginLabel;
+        private TextBox RegLoginTextBox;
+        private Panel ProjectsPanel;
+        private Label RegProjectsLabel;
+        private TextBox RegProjectsTextBox;
+        private Panel RegButtonsPanel;
+        private Button RegOfRegBackButton;
+        private ComboBox RegRoleComboBox;
+        private Panel RegOfRegPanel;
+        private Button RegOfRegButton;
+        private Panel RegBackPanel;
     }
 }

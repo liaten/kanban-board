@@ -1,10 +1,10 @@
-﻿using kanbanboard.Classes;
-using kanbanboard.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using kanbanboard.Classes;
+using kanbanboard.Controls;
 
 namespace kanbanboard.Forms
 {
@@ -24,7 +24,7 @@ namespace kanbanboard.Forms
                 for (var row = 1; row < TableLayoutPanel.RowStyles.Count; row++)
                 {
                     if (TableLayoutPanel.GetControlFromPosition(column, row) != null)
-                        ticket.Add(new Dictionary<string, string>()
+                        ticket.Add(new Dictionary<string, string>
                         {
                             {"Title", ((TicketPanel)TableLayoutPanel.GetControlFromPosition(column, row)).Title.Text},
                             {"Ticket", ((TicketPanel)TableLayoutPanel.GetControlFromPosition(column, row)).Ticket.Text},

@@ -1,9 +1,10 @@
-﻿using kanbanboard.Classes;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using kanbanboard.Classes;
 
 namespace kanbanboard.Forms
 {
@@ -105,8 +106,8 @@ namespace kanbanboard.Forms
             if (SystemInformation.TerminalServerSession)
                 return;
             var aProp = typeof(Control).GetProperty("DoubleBuffered",
-                System.Reflection.BindingFlags.NonPublic |
-                System.Reflection.BindingFlags.Instance);
+                BindingFlags.NonPublic |
+                BindingFlags.Instance);
             aProp?.SetValue(c, true, null);
         }
 
