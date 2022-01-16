@@ -11,7 +11,7 @@ namespace kanbanboard.Windows
         // Кнопка назад внутри окна регистрации
         private void RegPanelBackButton(object sender, EventArgs e)
         {
-            //
+            MainPanel.BringToFront();
         }
         // Кнопка регистрации после кнопки регистрации
         private void RegPanelButton_Click(object sender, EventArgs e)
@@ -73,13 +73,13 @@ namespace kanbanboard.Windows
 
         private void RegistrationButton_Click(object sender, EventArgs e)
         {
-            // Перекидываем введенные на панель регистрации, если они есть
+            // Перекидываем введенные данные на панель регистрации, если они есть
             RegLoginTextBox.Text = textBoxLogin.Text.ValidEmail() ? "" : textBoxLogin.Text;
             RegEmailTextBox.Text = textBoxLogin.Text.ValidEmail() ? textBoxLogin.Text : "";
             RegPasswordTextBox.Text = textBoxPassword.Text;
-            
+            // Переносим панельку с регистрацией на передний план
             RegPanel.BringToFront();
-
+            // Чистим текстбоксы
             textBoxLogin.Clear();
             textBoxPassword.Clear();
         }

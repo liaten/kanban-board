@@ -2,9 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
 namespace kanbanboard.Windows
 {
@@ -33,6 +31,7 @@ namespace kanbanboard.Windows
         {
             // Получаем всех пользователей
             _users = Firebase.GetAllUsers();
+            MainPanel.BringToFront();
         }
 
         // Логин в приложение
@@ -68,6 +67,5 @@ namespace kanbanboard.Windows
         private void TextBoxLogin_MouseLeave(object sender, EventArgs e) => LoginLabel.ForeColor = Color.FromArgb(74, 79, 99);
         private void TextBoxPass_MouseEnter(object sender, EventArgs e) => PassLabel.ForeColor = Color.FromArgb(114, 119, 139);
         private void TextBoxPass_MouseLeave(object sender, EventArgs e) => PassLabel.ForeColor = Color.FromArgb(74, 79, 99);
-        private void CheckBox1_CheckedChanged(object sender, EventArgs e) => StayLoggedCheckBox.ForeColor = Color.FromArgb(200, StayLoggedCheckBox.Checked ? 255 : 200, 200);
     }
 }

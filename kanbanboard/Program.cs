@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using kanbanboard.Windows;
+using kanbanboard.Forms;
 
 namespace kanbanboard
 {
