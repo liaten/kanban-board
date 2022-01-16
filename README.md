@@ -2,7 +2,10 @@
 ## Скриншоты программы:
 ### 1. Desktop-клиент
 #### 1.1 Логин
-![image](https://user-images.githubusercontent.com/35489460/146372825-bd16b771-e36b-48af-a76b-58df5a0a5da2.png)
+![image](https://user-images.githubusercontent.com/35489460/149675703-8d195884-7425-4425-a312-4b208b920dee.png)
+#### 1.1.1 Регистрация
+![image](https://user-images.githubusercontent.com/35489460/149675745-61fb37e8-458b-43fc-83b9-037c962f1c88.png)
+
 
 #### 1.2 Профиль
 ![image](https://user-images.githubusercontent.com/35489460/146372892-88495b1b-f2f2-4491-a276-44ce3e7fb9e2.png)
