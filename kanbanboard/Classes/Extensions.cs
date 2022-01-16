@@ -21,7 +21,7 @@ namespace kanbanboard.Classes
         /// <summary> Первый символ принимаемой строки переводится в верхний регистр </summary>
         public static string FirstCharToUpper(this string input)
         {
-            switch (input) 
+            switch (input)
             {
                 case null: throw new ArgumentNullException(nameof(input));
                 case "": throw new ArgumentException($"{nameof(input)}", nameof(input));

@@ -1,13 +1,12 @@
-﻿using System;
+﻿using kanbanboard.Classes;
+using kanbanboard.Controls;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using kanbanboard.Classes;
-using kanbanboard.Controls;
 
-namespace kanbanboard.Windows
+namespace kanbanboard.Forms
 {
     public partial class MainForm
     {
@@ -315,7 +314,8 @@ namespace kanbanboard.Windows
         // Масштабируемость канбан доски
         private void ResizeTable()
         {
-            try {
+            try
+            {
                 foreach (ColumnStyle column in TableLayoutPanel.ColumnStyles)
                 {
                     column.SizeType = SizeType.Percent;

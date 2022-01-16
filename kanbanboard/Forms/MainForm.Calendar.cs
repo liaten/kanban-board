@@ -1,4 +1,4 @@
-﻿namespace kanbanboard.Windows
+﻿namespace kanbanboard.Forms
 {
     public partial class MainForm
     {

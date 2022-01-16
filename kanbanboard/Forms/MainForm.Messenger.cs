@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using kanbanboard.Classes;
 
-namespace kanbanboard.Windows
+namespace kanbanboard.Forms
 {
     partial class MainForm
     {

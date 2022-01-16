@@ -329,7 +329,7 @@ namespace kanbanboard.Forms
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(334, 316);
+            this.MainPanel.Size = new System.Drawing.Size(334, 284);
             this.MainPanel.TabIndex = 13;
             // 
             // HeaderPanel
@@ -390,7 +390,7 @@ namespace kanbanboard.Forms
             this.RegPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RegPanel.Location = new System.Drawing.Point(0, 0);
             this.RegPanel.Name = "RegPanel";
-            this.RegPanel.Size = new System.Drawing.Size(334, 316);
+            this.RegPanel.Size = new System.Drawing.Size(334, 284);
             this.RegPanel.TabIndex = 13;
             // 
             // Reg
@@ -496,6 +496,7 @@ namespace kanbanboard.Forms
             this.RolePanel.Controls.Add(this.RegRoleLabel);
             this.RolePanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.RolePanel.Location = new System.Drawing.Point(0, 135);
+            this.RolePanel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.RolePanel.Name = "RolePanel";
             this.RolePanel.Padding = new System.Windows.Forms.Padding(15);
             this.RolePanel.Size = new System.Drawing.Size(334, 45);
@@ -647,14 +648,14 @@ namespace kanbanboard.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(334, 316);
+            this.ClientSize = new System.Drawing.Size(334, 284);
             this.Controls.Add(this.RegPanel);
             this.Controls.Add(this.MainPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(350, 260);
+            this.MinimumSize = new System.Drawing.Size(350, 262);
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
