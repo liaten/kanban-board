@@ -74,32 +74,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Windows\ChangeForm.cs">
+    <Compile Include="Forms\ChangeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\ChangeForm.Designer.cs">
+    <Compile Include="Forms\ChangeForm.Designer.cs">
       <DependentUpon>ChangeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Extensions.cs" />
     <Compile Include="Classes\Firebase.cs" />
-    <Compile Include="Windows\LoginForm.Registation.cs">
+    <Compile Include="Forms\LoginForm.Registation.cs">
       <SubType>Form</SubType>
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\MainForm.Calendar.cs">
+    <Compile Include="Forms\MainForm.Calendar.cs">
       <SubType>Form</SubType>
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\MainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\LoginForm.cs">
+    <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\LoginForm.Designer.cs">
+    <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\MD5.cs" />
@@ -108,32 +108,32 @@
     <Compile Include="Controls\TicketPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\MainForm.DragNDrop.cs">
+    <Compile Include="Forms\MainForm.DragNDrop.cs">
       <SubType>Form</SubType>
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\MainForm.Messenger.cs">
+    <Compile Include="Forms\MainForm.Messenger.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\MainForm.Table.cs">
+    <Compile Include="Forms\MainForm.Table.cs">
       <SubType>Form</SubType>
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\TicketsChangeForm.cs">
+    <Compile Include="Forms\TicketsChangeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\TicketsChangeForm.Designer.cs">
+    <Compile Include="Forms\TicketsChangeForm.Designer.cs">
       <DependentUpon>TicketsChangeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\TitlePanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Classes\User.cs" />
-    <EmbeddedResource Include="Windows\ChangeForm.resx">
+    <EmbeddedResource Include="Forms\ChangeForm.resx">
       <DependentUpon>ChangeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\TicketsChangeForm.resx">
+    <EmbeddedResource Include="Forms\TicketsChangeForm.resx">
       <DependentUpon>TicketsChangeForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -141,10 +141,10 @@
     <None Include="Resources\Images\send-message.png" />
     <None Include="Resources\Images\check.png" />
     <None Include="Resources\Images\checked.png" />
-    <EmbeddedResource Include="Windows\MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\LoginForm.resx">
+    <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

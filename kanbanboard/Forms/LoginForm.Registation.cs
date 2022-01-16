@@ -8,6 +8,11 @@ namespace kanbanboard.Windows
 {
     public partial class LoginForm
     {
+        // Кнопка назад внутри окна регистрации
+        private void RegPanelBackButton(object sender, EventArgs e)
+        {
+            //
+        }
         // Кнопка регистрации после кнопки регистрации
         private void RegPanelButton_Click(object sender, EventArgs e)
         {
