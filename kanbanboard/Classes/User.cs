@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using kanbanboard.Windows;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using System.Collections.Generic;
 
 namespace kanbanboard.Classes
 {
@@ -32,7 +28,7 @@ namespace kanbanboard.Classes
             Role = this.GetRole();
             Password = this.GetPassword();
         }
-        
+
         [JsonConstructor]
         public User(string username, string password, string email, List<string> projects, Roles role)
         {

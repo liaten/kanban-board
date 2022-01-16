@@ -1,5 +1,5 @@
 ﻿
-namespace kanbanboard.Windows
+namespace kanbanboard.Forms
 {
     partial class LoginForm
     {
@@ -329,7 +329,7 @@ namespace kanbanboard.Windows
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(334, 221);
+            this.MainPanel.Size = new System.Drawing.Size(334, 316);
             this.MainPanel.TabIndex = 13;
             // 
             // HeaderPanel
@@ -390,7 +390,7 @@ namespace kanbanboard.Windows
             this.RegPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RegPanel.Location = new System.Drawing.Point(0, 0);
             this.RegPanel.Name = "RegPanel";
-            this.RegPanel.Size = new System.Drawing.Size(334, 221);
+            this.RegPanel.Size = new System.Drawing.Size(334, 316);
             this.RegPanel.TabIndex = 13;
             // 
             // Reg
@@ -647,9 +647,9 @@ namespace kanbanboard.Windows
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(334, 221);
-            this.Controls.Add(this.MainPanel);
+            this.ClientSize = new System.Drawing.Size(334, 316);
             this.Controls.Add(this.RegPanel);
+            this.Controls.Add(this.MainPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;

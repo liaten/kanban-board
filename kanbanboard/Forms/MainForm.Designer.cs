@@ -1,5 +1,5 @@
 ﻿
-namespace kanbanboard.Windows
+namespace kanbanboard.Forms
 {
     partial class MainForm
     {

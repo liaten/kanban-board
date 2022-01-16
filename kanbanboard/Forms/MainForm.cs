@@ -1,14 +1,11 @@
 ﻿using kanbanboard.Classes;
 using System;
 using System.Drawing;
-using System.Drawing.Text;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace kanbanboard.Windows
+namespace kanbanboard.Forms
 {
     public partial class MainForm : Form
     {
@@ -75,7 +72,8 @@ namespace kanbanboard.Windows
 
             Load += (s, a) =>
             {
-                if (string.IsNullOrEmpty(username)) {
+                if (string.IsNullOrEmpty(username))
+                {
                     UsernameLabel.Text = "Гость";
                     UserInfoLabel.Text = "";
                     return;
@@ -94,7 +92,8 @@ namespace kanbanboard.Windows
         }
 
         // Проекты пользователя
-        private void SetUserProjectNames() {
+        private void SetUserProjectNames()
+        {
             ListBoxOfProjectNames.Items.Clear();
             ListBoxOfProjectNames.Items.AddRange(_user.ProjectNames().Cast<object>().ToArray());
         }
@@ -119,7 +118,7 @@ namespace kanbanboard.Windows
                 {
                     var changeForm = new ChangeForm(this, _user.Username);
                     changeForm.Show();
-                    
+
                     while (true)
                     {
                         if (changeForm.IsDisposed)
@@ -129,10 +128,12 @@ namespace kanbanboard.Windows
                 }
 
             if (e.Button == MouseButtons.Right)
-                try {
+                try
+                {
                     _user.DeleteProject(ListBoxOfProjectNames.SelectedItem.ToString());
-                    SetUserProjectNames(); }
-                catch {}
+                    SetUserProjectNames();
+                }
+                catch { }
                 finally { SetUserProjectNames(); }
         }
 

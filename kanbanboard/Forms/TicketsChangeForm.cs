@@ -1,10 +1,9 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
-using kanbanboard.Classes;
+﻿using kanbanboard.Classes;
 using kanbanboard.Controls;
+using System;
+using System.Windows.Forms;
 
-namespace kanbanboard.Windows
+namespace kanbanboard.Forms
 {
     public partial class TicketsChangeForm : Form
     {
@@ -19,7 +18,8 @@ namespace kanbanboard.Windows
 
             Resize += (o, eventArgs) => ChangingPanel.ToCenter(this);
 
-            KeyDown += (s, a) => {
+            KeyDown += (s, a) =>
+            {
                 if (a.KeyValue == (int)Keys.Enter || a.KeyValue == (int)Keys.Escape) SaveChangesButton.PerformClick();
             };
         }

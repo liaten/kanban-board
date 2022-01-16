@@ -1,14 +1,9 @@
-﻿using System;
+﻿using FireSharp;
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using FireSharp;
-using FireSharp.Config;
-using FireSharp.Extensions;
-using FireSharp.Interfaces;
-using Newtonsoft.Json;
 
 namespace kanbanboard.Classes
 {
@@ -32,7 +27,7 @@ namespace kanbanboard.Classes
         public static Roles GetRole(this User user)
         {
             var role = Client.GetAsync($"Users/{user.Username}/Role").Result.ResultAs<string>();
-            if (!(role is null)) 
+            if (!(role is null))
                 return role.ToEnum<Roles>();
 
             Client.SetAsync($"Users/{user.Username}/Role", "User");
@@ -106,7 +101,7 @@ namespace kanbanboard.Classes
             try { return Client.GetAsync($"Users/{user.Username}/Password").Result.ResultAs<string>(); }
             catch { return null; }
         }
-        
+
         public static string GetPassword(this string username)
         {
             try { return Client.GetAsync($"Users/{username}/Password").Result.ResultAs<string>(); }
@@ -122,7 +117,7 @@ namespace kanbanboard.Classes
             if (password is null) return true;
             return password == potentialPassword;
         }
-        
+
         public static bool CheckPassword(this string username, string potentialPassword)
         {
             var password = GetPassword(username);
@@ -159,7 +154,7 @@ namespace kanbanboard.Classes
             // добавляем в базу
             await Client.SetAsync($"Users/{user.Username}/Projects", data);
         }
-        
+
         // Создает проект в базе пользователя.
         public static async void CreateProject(this string username, string projectName)
         {
@@ -180,7 +175,7 @@ namespace kanbanboard.Classes
             // добавляем в базу
             await Client.SetAsync($"Users/{username}/Projects", data);
         }
-        
+
         public static async void CreateProjects(this string username, List<string> projectNames)
         {
             // добавляем в базу
@@ -228,14 +223,14 @@ namespace kanbanboard.Classes
 
         public static async void CreateUser(this string username, string password, List<string> projectsNames = null, string email = "")
         {
-            await Client.SetAsync($"Users/{username}/", new Dictionary<string, string>() { 
+            await Client.SetAsync($"Users/{username}/", new Dictionary<string, string>() {
                 {"password", MD5.Encrypt(password) },
                 { "Role", "User"},
             });
-            if (!(projectsNames is null)) await Client.UpdateAsync($"Users/{username}/", new Dictionary<string, List<string>>() { {"Projects", projectsNames}});
-            if (!string.IsNullOrEmpty(email)) await Client.UpdateAsync($"Users/{username}/", new Dictionary<string, string>() { {"Email", email } });
+            if (!(projectsNames is null)) await Client.UpdateAsync($"Users/{username}/", new Dictionary<string, List<string>>() { { "Projects", projectsNames } });
+            if (!string.IsNullOrEmpty(email)) await Client.UpdateAsync($"Users/{username}/", new Dictionary<string, string>() { { "Email", email } });
         }
-        
+
         public static async void CreateUser(this User user)
         {
             await Client.SetAsync($"Users/{user.Username}/", user);

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using kanbanboard.Classes;
+﻿using kanbanboard.Classes;
 using kanbanboard.Controls;
+using System.Windows.Forms;
 
-namespace kanbanboard.Windows
+namespace kanbanboard.Forms
 {
     public partial class ChangeForm : Form
     {
@@ -19,7 +17,8 @@ namespace kanbanboard.Windows
 
             Text = "Изменение заголовка";
 
-            KeyDown += (s, a) => {
+            KeyDown += (s, a) =>
+            {
                 if (a.KeyValue == (int)Keys.Enter || a.KeyValue == (int)Keys.Escape) Close();
             };
 
@@ -36,7 +35,7 @@ namespace kanbanboard.Windows
                 _titlePanel.TitleColumnLabel.Text = ChangingTextBox.Text;
             };
         }
-        
+
         public ChangeForm(MainForm owner, string username)
         {
             Owner = owner;
@@ -44,12 +43,14 @@ namespace kanbanboard.Windows
 
             Text = "Создать новый проект";
 
-            KeyDown += (s, a) => {
+            KeyDown += (s, a) =>
+            {
                 if (a.KeyValue == (int)Keys.Enter || a.KeyValue == (int)Keys.Escape) Close();
             };
 
             // Сохранение
-            FormClosing += (sender, args) => {
+            FormClosing += (sender, args) =>
+            {
                 if (!string.IsNullOrEmpty(ChangingTextBox.Text)) username.CreateProject(ChangingTextBox.Text);
             };
         }
