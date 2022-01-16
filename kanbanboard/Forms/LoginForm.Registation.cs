@@ -16,38 +16,36 @@ namespace kanbanboard.Windows
         // Кнопка регистрации после кнопки регистрации
         private void RegPanelButton_Click(object sender, EventArgs e)
         {
-            var potentialListOfDataUser = new List<string> {
-                RegLoginTextBox.Text,
-                RegEmailTextBox.Text,
-                RegPasswordTextBox.Text,
-                RegRoleComboBox.SelectedItem?.ToString(),
-                RegProjectsTextBox.Text
-            };
+            var login = RegLoginTextBox.Text;
+            var email = RegEmailTextBox.Text;
+            var password = RegPasswordTextBox.Text;
+            var role = RegRoleComboBox.SelectedItem?.ToString();
+            var projects = RegProjectsTextBox.Text;
 
-            if (potentialListOfDataUser.Any(x => string.IsNullOrEmpty(x)))
+            if (new List<string>() { login, email, password, role, projects }.Any(x => string.IsNullOrEmpty(x)))
             {
                 MessageBox.Show(@"Мало данных.");
                 return;
             }
 
-            if (_users.ContainsKey(potentialListOfDataUser[0]))
+            if (_users.ContainsKey(login))
             {
                 MessageBox.Show(@"Пользователь с таким именем уже существует.");
                 return;
             }
 
-            if (!potentialListOfDataUser[1].ValidEmail())
+            if (!email.ValidEmail())
             {
                 MessageBox.Show(@"Неправильная почта.");
                 return;
             }
 
             var newUser = new User(
-                potentialListOfDataUser[0],
-                MD5.Encrypt(potentialListOfDataUser[2]),
-                potentialListOfDataUser[1],
-                potentialListOfDataUser.Last().Split(' ').ToList(),
-                potentialListOfDataUser[3].ToEnum<Roles>());
+                login,
+                MD5.Encrypt(password),
+                email,
+                projects.Split(' ').ToList(),
+                role.ToEnum<Roles>());
 
             _users.Add(newUser.Username, newUser);
             Firebase.CreateUser(newUser);
@@ -56,8 +54,8 @@ namespace kanbanboard.Windows
             if (MessageBox.Show($@"Пользователь зарегистрирован.{Environment.NewLine}Войти в созданную учётную запись?", "Регистрация", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
                 MainPanel.BringToFront();
-                textBoxLogin.Text = potentialListOfDataUser[0];
-                textBoxPassword.Text = potentialListOfDataUser[2];
+                textBoxLogin.Text = login;
+                textBoxPassword.Text = password;
                 LoginButton.PerformClick();
             }
             else MainPanel.BringToFront();
