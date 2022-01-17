@@ -1,9 +1,11 @@
-﻿using FireSharp;
-using FireSharp.Config;
-using FireSharp.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
+using FireSharp;
+using FireSharp.Config;
+using FireSharp.Interfaces;
 
 namespace kanbanboard.Classes
 {
@@ -18,7 +20,7 @@ namespace kanbanboard.Classes
         {
             Secret = "hebNTLDeI3UdiZnzjsM8qRxJufACuQJIgRsCfroW";
             Path = "https://kanban-2e9a3-default-rtdb.europe-west1.firebasedatabase.app/";
-            Client = new FirebaseClient(new FirebaseConfig() { AuthSecret = Secret, BasePath = Path });
+            Client = new FirebaseClient(new FirebaseConfig { AuthSecret = Secret, BasePath = Path });
         }
 
         public static void RemoveNullsFromData(this List<string> data) => data.RemoveAll(x => x is null);
@@ -135,15 +137,16 @@ namespace kanbanboard.Classes
         }
 
         // Создает проект в базе пользователя.
-        public static async void CreateProject(this User user, string projectName)
+        public static async Task<string> CreateProject(this User user, string projectName)
         {
+            var data = Client.Get($"Users/{user.Username}/Projects").ResultAs<List<string>>();
+
             // Вытаскиваем данные о проектах, либо заносим, если их нет
-            if (Client.Get($"Users/{user.Username}/Projects").ResultAs<List<string>>() is null)
+            if (data is null)
             {
                 await Client.SetAsync($"Users/{user.Username}/Projects", new List<string> { projectName });
-                return;
+                return null;
             }
-            var data = Client.Get($"Users/{user.Username}/Projects").ResultAs<List<string>>();
 
             data.RemoveNullsFromData();
 
@@ -152,19 +155,22 @@ namespace kanbanboard.Classes
                 data.Add(projectName);
 
             // добавляем в базу
-            await Client.SetAsync($"Users/{user.Username}/Projects", data);
+            var result = await Client.SetAsync($"Users/{user.Username}/Projects", data);
+            
+            return result.StatusCode.ToString();
         }
 
         // Создает проект в базе пользователя.
         public static async void CreateProject(this string username, string projectName)
         {
+            var data = Client.Get($"Users/{username}/Projects").ResultAs<List<string>>();
+
             // Вытаскиваем данные о проектах, либо заносим, если их нет
-            if (Client.Get($"Users/{username}/Projects").ResultAs<List<string>>() is null)
+            if (data is null)
             {
                 await Client.SetAsync($"Users/{username}/Projects", new List<string> { projectName });
                 return;
             }
-            var data = Client.Get($"Users/{username}/Projects").ResultAs<List<string>>();
 
             data.RemoveNullsFromData();
 
@@ -183,7 +189,7 @@ namespace kanbanboard.Classes
         }
 
         // Удаляет проект из базы пользователя.
-        public static void DeleteProject(this User user, string projectName)
+        public static async Task<string> DeleteProject(this User user, string projectName)
         {
             // Вытаскиваем данные
             var data = Client.GetAsync($"Users/{user.Username}/Projects").Result.ResultAs<List<string>>();
@@ -191,7 +197,9 @@ namespace kanbanboard.Classes
             data.RemoveAll(x => x == projectName);
 
             // удаляем из базы
-            Client.SetAsync($"Users/{user.Username}/Projects", data);
+            var result = await Client.SetAsync($"Users/{user.Username}/Projects", data);
+
+            return result.StatusCode.ToString();
         }
 
         public static Dictionary<string, User> GetAllUsers()
@@ -223,12 +231,13 @@ namespace kanbanboard.Classes
 
         public static async void CreateUser(this string username, string password, List<string> projectsNames = null, string email = "")
         {
-            await Client.SetAsync($"Users/{username}/", new Dictionary<string, string>() {
+            await Client.SetAsync($"Users/{username}/", new Dictionary<string, string>
+            {
                 {"password", MD5.Encrypt(password) },
                 { "Role", "User"},
             });
-            if (!(projectsNames is null)) await Client.UpdateAsync($"Users/{username}/", new Dictionary<string, List<string>>() { { "Projects", projectsNames } });
-            if (!string.IsNullOrEmpty(email)) await Client.UpdateAsync($"Users/{username}/", new Dictionary<string, string>() { { "Email", email } });
+            if (!(projectsNames is null)) await Client.UpdateAsync($"Users/{username}/", new Dictionary<string, List<string>> { { "Projects", projectsNames } });
+            if (!string.IsNullOrEmpty(email)) await Client.UpdateAsync($"Users/{username}/", new Dictionary<string, string> { { "Email", email } });
         }
 
         public static async void CreateUser(this User user)

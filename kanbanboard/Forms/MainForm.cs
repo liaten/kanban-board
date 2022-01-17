@@ -1,9 +1,10 @@
-﻿using kanbanboard.Classes;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using kanbanboard.Classes;
 
 namespace kanbanboard.Forms
 {
@@ -105,8 +106,8 @@ namespace kanbanboard.Forms
             if (SystemInformation.TerminalServerSession)
                 return;
             var aProp = typeof(Control).GetProperty("DoubleBuffered",
-                System.Reflection.BindingFlags.NonPublic |
-                System.Reflection.BindingFlags.Instance);
+                BindingFlags.NonPublic |
+                BindingFlags.Instance);
             aProp?.SetValue(c, true, null);
         }
 
@@ -116,24 +117,25 @@ namespace kanbanboard.Forms
             if (e.Button == MouseButtons.Left)
                 if (!Application.OpenForms.OfType<ChangeForm>().Any())
                 {
-                    var changeForm = new ChangeForm(this, _user.Username);
+                    var changeForm = new ChangeForm(this, _user);
                     changeForm.Show();
 
                     while (true)
                     {
-                        if (changeForm.IsDisposed)
-                            SetUserProjectNames();
                         await Task.Delay(50);
+
+                        if (changeForm.IsDisposed)
+                        {
+                            SetUserProjectNames();
+                            break;
+                        }
                     }
+
+                    SetUserProjectNames();
                 }
 
             if (e.Button == MouseButtons.Right)
-                try
-                {
-                    _user.DeleteProject(ListBoxOfProjectNames.SelectedItem.ToString());
-                    SetUserProjectNames();
-                }
-                catch { }
+                try { TrashButton.PerformClick(); }
                 finally { SetUserProjectNames(); }
         }
 
@@ -148,7 +150,6 @@ namespace kanbanboard.Forms
             StripPanel.Size = new Size(StripPanel.Size.Width, TasksButton.Size.Height);
 
             PanelWithTable.BringToFront();
-
 
             ListBoxOfProjectNames.Visible = true;
         }

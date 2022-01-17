@@ -1,10 +1,10 @@
-﻿using kanbanboard.Classes;
-using kanbanboard.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using kanbanboard.Classes;
+using kanbanboard.Controls;
 
 namespace kanbanboard.Forms
 {
@@ -24,7 +24,7 @@ namespace kanbanboard.Forms
                 for (var row = 1; row < TableLayoutPanel.RowStyles.Count; row++)
                 {
                     if (TableLayoutPanel.GetControlFromPosition(column, row) != null)
-                        ticket.Add(new Dictionary<string, string>()
+                        ticket.Add(new Dictionary<string, string>
                         {
                             {"Title", ((TicketPanel)TableLayoutPanel.GetControlFromPosition(column, row)).Title.Text},
                             {"Ticket", ((TicketPanel)TableLayoutPanel.GetControlFromPosition(column, row)).Ticket.Text},
@@ -316,8 +316,7 @@ namespace kanbanboard.Forms
         {
             try
             {
-                foreach (ColumnStyle column in TableLayoutPanel.ColumnStyles)
-                {
+                foreach (ColumnStyle column in TableLayoutPanel.ColumnStyles) {
                     column.SizeType = SizeType.Percent;
                     column.Width = 25;
                 }
@@ -326,18 +325,19 @@ namespace kanbanboard.Forms
 
                 TableLayoutPanel.RowStyles[0].SizeType = SizeType.Absolute;
                 TableLayoutPanel.RowStyles[0].Height = 25;
-
-                // Строки
-                foreach (var row in TableLayoutPanel.RowStyles.Cast<RowStyle>().ToList().Skip(1))
-                {
+                
+                foreach (var row in TableLayoutPanel.RowStyles.Cast<RowStyle>().ToList().Skip(1)) {
                     row.SizeType = SizeType.Absolute;
                     row.Height = 150;
                 }
 
-                TableLayoutPanel.Controls.OfType<TicketPanel>().ToList().ForEach(x =>
-                {
-                    if (TableLayoutPanel.GetCellPosition(x).Row != 0) x.Height = TableLayoutPanel.Height / TableLayoutPanel.RowCount;
+                TableLayoutPanel.Controls.OfType<TicketPanel>().ToList().ForEach(x => {
+                    if (TableLayoutPanel.GetCellPosition(x).Row != 0)
+                        x.Height = TableLayoutPanel.Height / TableLayoutPanel.RowCount;
                 });
+
+                if (WindowState == FormWindowState.Maximized)
+                    TableLayoutPanel.Refresh();
             }
 
             catch (Exception) { }
@@ -350,5 +350,11 @@ namespace kanbanboard.Forms
                 Upload(ListBoxOfProjectNames.SelectedItem.ToString());
         }
 
+        // Удалить выбранный проект
+        private async void TrashButton_Click(object sender, EventArgs e)
+        {
+            if (await Firebase.DeleteProject(_user, ListBoxOfProjectNames.SelectedItem?.ToString()) == "OK")
+                SetUserProjectNames();
+        }
     }
 }

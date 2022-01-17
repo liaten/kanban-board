@@ -1,4 +1,7 @@
 ﻿
+using System.ComponentModel;
+using System.Windows.Forms;
+
 namespace kanbanboard.Forms
 {
     partial class TicketsChangeForm
@@ -6,7 +9,7 @@ namespace kanbanboard.Forms
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -153,13 +156,13 @@ namespace kanbanboard.Forms
 
         #endregion
 
-        private System.Windows.Forms.Panel ChangingPanel;
-        private System.Windows.Forms.TextBox ChangingTicketTextBox;
-        private System.Windows.Forms.Button SaveChangesButton;
-        private System.Windows.Forms.Label ChangingPeopleLabel;
-        private System.Windows.Forms.Label ChangingTicketLabel;
-        private System.Windows.Forms.Label ChangingTitleLabel;
-        private System.Windows.Forms.TextBox ChangingPeopleTextBox;
-        private System.Windows.Forms.TextBox ChangingTitleTextBox;
+        private Panel ChangingPanel;
+        private TextBox ChangingTicketTextBox;
+        private Button SaveChangesButton;
+        private Label ChangingPeopleLabel;
+        private Label ChangingTicketLabel;
+        private Label ChangingTitleLabel;
+        private TextBox ChangingPeopleTextBox;
+        private TextBox ChangingTitleTextBox;
     }
 }

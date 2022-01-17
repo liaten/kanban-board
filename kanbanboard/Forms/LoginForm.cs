@@ -1,8 +1,8 @@
-﻿using kanbanboard.Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using kanbanboard.Classes;
 
 namespace kanbanboard.Forms
 {
@@ -14,12 +14,14 @@ namespace kanbanboard.Forms
         {
             InitializeComponent();
 
-            // Вход по Enter
+            // Вход по Enter,
+            // ESCAPE на регистрации (возврат к панели логина),
+            // Регистрация по Enter
             KeyDown += (s, a) =>
             {
                 if (MainPanel.IsControlAtFront() && a.KeyValue == (int)Keys.Enter) LoginButton.PerformClick();
                 else if (RegPanel.IsControlAtFront() && a.KeyValue == (int)Keys.Escape) MainPanel.BringToFront();
-                else if (RegPanel.IsControlAtFront() && a.KeyValue == (int)Keys.Enter) RegPanelButton.PerformClick();
+                else if (RegPanel.IsControlAtFront() && a.KeyValue == (int)Keys.Enter) RegOfRegBackButton.PerformClick();
             };
 
             var toolTipForProjectNames = new ToolTip { AutomaticDelay = 100 };
@@ -31,8 +33,6 @@ namespace kanbanboard.Forms
         {
             // Получаем всех пользователей
             _users = Firebase.GetAllUsers();
-            MainPanel.BringToFront();
-            this.Size = new Size(350, 262);
         }
 
         // Логин в приложение

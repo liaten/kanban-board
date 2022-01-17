@@ -28,7 +28,7 @@ namespace kanbanboard.Controls
             DoubleBuffered = true;
 
             // Заголовок, текст, исполнители (может быть изменено). Из чего-то мб сделать другой контрол
-            Title = new Label()
+            Title = new Label
             {
                 Name = "Title",
                 Text = "Заголовок",
@@ -36,14 +36,14 @@ namespace kanbanboard.Controls
                 Location = new Point(Size.Width - Size.Width + 5, Size.Height - Size.Height + 5),
                 Margin = new Padding(20, 20, 40, 20),
             };
-            Ticket = new Label()
+            Ticket = new Label
             {
                 Name = "Ticket",
                 Text = "Текст тикета",
                 Margin = new Padding(5),
                 Location = new Point(Size.Width - Size.Width + 5, Size.Height / 2),
             };
-            People = new Label()
+            People = new Label
             {
                 Name = "People",
                 Text = "Разработчики",
@@ -58,25 +58,25 @@ namespace kanbanboard.Controls
 
             // Добавляем панель с кнопками перемещений и удаления тикета
             // кнопка удаления тикета, перемещения ВПРАВО, перемещения ВЛЕВО
-            DelButton = new Button()
+            DelButton = new Button
             {
                 Name = "delButton",
                 Text = "✖",
                 Font = new Font("Tahoma", 7.5f),
             };
-            LeftButton = new Button()
+            LeftButton = new Button
             {
                 Name = "leftButton",
                 Text = "«",
                 Font = DelButton.Font,
             };
-            RightButton = new Button()
+            RightButton = new Button
             {
                 Name = "rightButton",
                 Text = "»",
                 Font = DelButton.Font
             };
-            new List<Button>() { DelButton, LeftButton, RightButton }.ForEach(x =>
+            new List<Button> { DelButton, LeftButton, RightButton }.ForEach(x =>
              {
                  x.BackColor = Color.Transparent;
                  x.FlatAppearance.MouseDownBackColor = Color.Transparent;

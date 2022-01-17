@@ -1,4 +1,9 @@
 ﻿
+using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
+
 namespace kanbanboard.Forms
 {
     partial class MainForm
@@ -6,7 +11,7 @@ namespace kanbanboard.Forms
         /// <summary>
         /// Обязательная переменная конструктора.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Освободить все используемые ресурсы.
@@ -56,6 +61,7 @@ namespace kanbanboard.Forms
             this.BasicContentPanel = new System.Windows.Forms.Panel();
             this.PanelWithTable = new System.Windows.Forms.Panel();
             this.AddingPanel = new System.Windows.Forms.Panel();
+            this.TrashButton = new System.Windows.Forms.Button();
             this.AddTitleButton = new System.Windows.Forms.Button();
             this.LoadPanel = new System.Windows.Forms.Panel();
             this.LoadLabel = new System.Windows.Forms.Label();
@@ -356,7 +362,7 @@ namespace kanbanboard.Forms
             this.UsernameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.UsernameLabel.Location = new System.Drawing.Point(3, 3);
             this.UsernameLabel.Name = "UsernameLabel";
-            this.UsernameLabel.Size = new System.Drawing.Size(131, 16);
+            this.UsernameLabel.Size = new System.Drawing.Size(132, 16);
             this.UsernameLabel.TabIndex = 1;
             this.UsernameLabel.Text = "USERNAME_GET";
             this.UsernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1485,6 +1491,7 @@ namespace kanbanboard.Forms
             // AddingPanel
             // 
             this.AddingPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.AddingPanel.Controls.Add(this.TrashButton);
             this.AddingPanel.Controls.Add(this.AddTitleButton);
             this.AddingPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.AddingPanel.Location = new System.Drawing.Point(937, 0);
@@ -1492,19 +1499,36 @@ namespace kanbanboard.Forms
             this.AddingPanel.Size = new System.Drawing.Size(42, 494);
             this.AddingPanel.TabIndex = 0;
             // 
+            // TrashButton
+            // 
+            this.TrashButton.BackColor = System.Drawing.Color.Transparent;
+            this.TrashButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TrashButton.FlatAppearance.BorderSize = 0;
+            this.TrashButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TrashButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F);
+            this.TrashButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.TrashButton.Location = new System.Drawing.Point(0, 36);
+            this.TrashButton.Name = "TrashButton";
+            this.TrashButton.Size = new System.Drawing.Size(42, 42);
+            this.TrashButton.TabIndex = 2;
+            this.TrashButton.Text = "🗑";
+            this.TrashButton.UseVisualStyleBackColor = false;
+            this.TrashButton.Click += new System.EventHandler(this.TrashButton_Click);
+            // 
             // AddTitleButton
             // 
+            this.AddTitleButton.BackColor = System.Drawing.Color.Transparent;
             this.AddTitleButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.AddTitleButton.FlatAppearance.BorderSize = 0;
             this.AddTitleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddTitleButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AddTitleButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F);
             this.AddTitleButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.AddTitleButton.Location = new System.Drawing.Point(0, 0);
             this.AddTitleButton.Name = "AddTitleButton";
             this.AddTitleButton.Size = new System.Drawing.Size(42, 36);
             this.AddTitleButton.TabIndex = 3;
             this.AddTitleButton.Text = "+";
-            this.AddTitleButton.UseVisualStyleBackColor = true;
+            this.AddTitleButton.UseVisualStyleBackColor = false;
             this.AddTitleButton.Click += new System.EventHandler(this.AddTitleButton_Click);
             // 
             // LoadPanel
@@ -2051,74 +2075,75 @@ namespace kanbanboard.Forms
 
         #endregion
 
-        private System.Windows.Forms.Panel ControlsPanel;
-        private System.Windows.Forms.Button TasksButton;
-        private System.Windows.Forms.Button CalendarButton;
-        private System.Windows.Forms.Button MessengerButton;
-        private System.Windows.Forms.Label LabelHead;
-        private System.Windows.Forms.Button ExitButton;
-        private System.Windows.Forms.Panel StripPanel;
-        private System.Windows.Forms.Panel BasicPanel;
-        private System.Windows.Forms.Panel HeadPanel;
-        private System.Windows.Forms.Panel ExitButtonPanel;
-        private System.Windows.Forms.TableLayoutPanel TableLayoutPanel;
-        private System.Windows.Forms.Panel BasicContentPanel;
-        private System.Windows.Forms.Panel MessengerPanel;
-        private System.Windows.Forms.Panel CalendarPanel;
-        private System.Windows.Forms.Panel UserPanel;
-        private System.Windows.Forms.Panel TimeZonePanel;
-        private System.Windows.Forms.Panel TimeZoneGetPanel;
-        private System.Windows.Forms.Label TimeZoneLabel;
-        private System.Windows.Forms.Panel TimeZoneLabelPanel;
-        private System.Windows.Forms.Label TimeZoneTitleLabel;
-        private System.Windows.Forms.Panel OrganizationPanel;
-        private System.Windows.Forms.Panel OrganizationGetPanel;
-        private System.Windows.Forms.Label OrganizationLabel;
-        private System.Windows.Forms.Panel OrganizationLabelPanel;
-        private System.Windows.Forms.Label OrganizationTitleLabel;
-        private System.Windows.Forms.Panel NickNamePanel;
-        private System.Windows.Forms.Panel NickNameGetPanel;
-        private System.Windows.Forms.Label NickNameLabel;
-        private System.Windows.Forms.Panel NickNameLabelPanel;
-        private System.Windows.Forms.Label NickNameTitleLabel;
-        private System.Windows.Forms.Panel FullNamePanel;
-        private System.Windows.Forms.Panel FullNameGetLabelPanel;
-        private System.Windows.Forms.Label FullNameLabel;
-        private System.Windows.Forms.Panel FullNameLabelPanel;
-        private System.Windows.Forms.Label FullNameTitleLabel;
-        private System.Windows.Forms.Panel UserControlsPanel;
-        private System.Windows.Forms.Panel UserNamePanel;
-        private System.Windows.Forms.Label UsernameLabel;
-        private System.Windows.Forms.Panel UserInfoPanel;
-        private System.Windows.Forms.Label UserInfoLabel;
-        private System.Windows.Forms.Panel UserPhotoPanel;
-        private System.Windows.Forms.PictureBox UserPictureBox;
-        private System.Windows.Forms.Panel AddingPanel;
-        private System.Windows.Forms.Button AddTitleButton;
-        private System.Windows.Forms.Panel PanelWithTable;
-        private System.Windows.Forms.ListBox ListBoxOfProjectNames;
-        private System.Windows.Forms.Panel ProjectsPanel;
-        private System.Windows.Forms.Panel SaveProjectPanel;
-        private System.Windows.Forms.Button SaveProjectButton;
-        private System.Windows.Forms.Panel PasswordPanel;
-        private System.Windows.Forms.Panel PasswordShowPanel;
-        private System.Windows.Forms.Panel PasswordGetPanel;
-        private System.Windows.Forms.Label PasswordGetLabel;
-        private System.Windows.Forms.Label PasswordShowLabel;
-        private System.Windows.Forms.LinkLabel PasswordShowLinkLabel;
-        private System.Windows.Forms.Panel MessengerMainPanel;
-        private System.Windows.Forms.Panel MessengerShowPanel;
-        private System.Windows.Forms.ListBox MessengerListBox;
-        private System.Windows.Forms.Panel MessengerSendPanel;
-        private System.Windows.Forms.TextBox MessengerTextBox;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button CreateProjectButton;
-        private System.Windows.Forms.Panel SendMessageButtonPanel;
-        private System.Windows.Forms.Button SendMessageButton;
-        private System.Windows.Forms.Panel MessengerTextBoxPanel;
-        private System.Windows.Forms.DateTimePicker CalendarDateTimePicker;
-        private System.Windows.Forms.Panel LoadPanel;
-        private System.Windows.Forms.Label LoadLabel;
+        private Panel ControlsPanel;
+        private Button TasksButton;
+        private Button CalendarButton;
+        private Button MessengerButton;
+        private Label LabelHead;
+        private Button ExitButton;
+        private Panel StripPanel;
+        private Panel BasicPanel;
+        private Panel HeadPanel;
+        private Panel ExitButtonPanel;
+        private TableLayoutPanel TableLayoutPanel;
+        private Panel BasicContentPanel;
+        private Panel MessengerPanel;
+        private Panel CalendarPanel;
+        private Panel UserPanel;
+        private Panel TimeZonePanel;
+        private Panel TimeZoneGetPanel;
+        private Label TimeZoneLabel;
+        private Panel TimeZoneLabelPanel;
+        private Label TimeZoneTitleLabel;
+        private Panel OrganizationPanel;
+        private Panel OrganizationGetPanel;
+        private Label OrganizationLabel;
+        private Panel OrganizationLabelPanel;
+        private Label OrganizationTitleLabel;
+        private Panel NickNamePanel;
+        private Panel NickNameGetPanel;
+        private Label NickNameLabel;
+        private Panel NickNameLabelPanel;
+        private Label NickNameTitleLabel;
+        private Panel FullNamePanel;
+        private Panel FullNameGetLabelPanel;
+        private Label FullNameLabel;
+        private Panel FullNameLabelPanel;
+        private Label FullNameTitleLabel;
+        private Panel UserControlsPanel;
+        private Panel UserNamePanel;
+        private Label UsernameLabel;
+        private Panel UserInfoPanel;
+        private Label UserInfoLabel;
+        private Panel UserPhotoPanel;
+        private PictureBox UserPictureBox;
+        private Panel AddingPanel;
+        private Button AddTitleButton;
+        private Panel PanelWithTable;
+        private ListBox ListBoxOfProjectNames;
+        private Panel ProjectsPanel;
+        private Panel SaveProjectPanel;
+        private Button SaveProjectButton;
+        private Panel PasswordPanel;
+        private Panel PasswordShowPanel;
+        private Panel PasswordGetPanel;
+        private Label PasswordGetLabel;
+        private Label PasswordShowLabel;
+        private LinkLabel PasswordShowLinkLabel;
+        private Panel MessengerMainPanel;
+        private Panel MessengerShowPanel;
+        private ListBox MessengerListBox;
+        private Panel MessengerSendPanel;
+        private TextBox MessengerTextBox;
+        private Panel panel1;
+        private Button CreateProjectButton;
+        private Panel SendMessageButtonPanel;
+        private Button SendMessageButton;
+        private Panel MessengerTextBoxPanel;
+        private DateTimePicker CalendarDateTimePicker;
+        private Panel LoadPanel;
+        private Label LoadLabel;
+        private Button TrashButton;
     }
 }
 
