@@ -33,6 +33,7 @@ namespace kanbanboard.Forms
         {
             // Получаем всех пользователей
             _users = Firebase.GetAllUsers();
+            this.Size = new Size(350, 305);
         }
 
         // Логин в приложение
