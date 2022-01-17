@@ -1,8 +1,8 @@
-﻿using System;
+﻿using kanbanboard.Classes;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using kanbanboard.Classes;
 
 namespace kanbanboard.Forms
 {
@@ -50,7 +50,6 @@ namespace kanbanboard.Forms
                     var mainForm = new MainForm(username);
                     Hide();
                     mainForm.Show();
-
                     return;
                 }
             }
@@ -72,10 +71,17 @@ namespace kanbanboard.Forms
         private void TextBoxLogin_MouseLeave(object sender, EventArgs e) => LoginLabel.ForeColor = Color.FromArgb(74, 79, 99);
         private void TextBoxPass_MouseEnter(object sender, EventArgs e) => PassLabel.ForeColor = Color.FromArgb(114, 119, 139);
         private void TextBoxPass_MouseLeave(object sender, EventArgs e) => PassLabel.ForeColor = Color.FromArgb(74, 79, 99);
-
-        private void RegLoginTextBox_KeyDown(object sender, KeyEventArgs e)
+        private void RegLoginTextBox_TextChanged(object sender, EventArgs e)
         {
-
+            var logintextbox = RegLoginTextBox.Text;
+            if (_users.ContainsKey(logintextbox) || logintextbox.ToString().Trim().Equals(""))
+            {
+                RegLoginCheck.ForeColor = Color.Red;
+            }
+            else
+            {
+                RegLoginCheck.ForeColor = Color.Green;
+            }
         }
     }
 }
