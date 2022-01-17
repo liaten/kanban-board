@@ -19,6 +19,10 @@ namespace kanbanboard.Classes
         [JsonConverter(typeof(StringEnumConverter))] public Roles Role { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
+        public string Organization { get; set; }
+        public string FullName { get; set; }
+        public double GMT { get; set; }
+
         public Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>> GetProjectsData() => this.GetDataForAllProjects();
         public List<string> ProjectNames() => this.GetProjectNames();
 
@@ -28,15 +32,17 @@ namespace kanbanboard.Classes
             Role = this.GetRole();
             Password = this.GetPassword();
         }
-
         [JsonConstructor]
-        public User(string username, string password, string email, List<string> projects, Roles role)
+        public User(string username, string password, string email, List<string> projects, Roles role, string organization, string fullname, double gmt)
         {
             Username = username;
             Password = password;
             Email = email;
             Projects = projects;
             Role = role;
+            Organization = organization;
+            FullName = fullname;
+            GMT = gmt;
         }
     }
 }

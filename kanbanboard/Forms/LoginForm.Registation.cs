@@ -28,29 +28,37 @@ namespace kanbanboard.Forms
             var password = RegPasswordTextBox.Text;
             var role = RegRoleComboBox.SelectedItem?.ToString();
             var projects = RegProjectsTextBox.Text;
+            var gmt = RegGMTComboBox.SelectedItem?.ToString();
+            var org = RegOrgTextBox.Text;
+            var fullname = RegFullNameTextBox.Text;
 
-            if (new List<string> { login, email, password, role, projects }.Any(x => string.IsNullOrEmpty(x)))
+            if (new List<string> { login, email, password, role, projects, gmt, org, fullname }.Any(x => string.IsNullOrEmpty(x)))
             {
-                MessageBox.Show(@"Мало данных.");
+                MessageBox.Show(@"Не все поля заполнены.");
                 return;
             }
             if (_users.ContainsKey(login))
             {
-                MessageBox.Show(@"Пользователь с таким именем уже существует.");
+                MessageBox.Show(@"Пользователь с таким логином уже существует.");
                 return;
             }
 
             if (!email.ValidEmail())
             {
-                MessageBox.Show(@"Неправильная почта.");
+                MessageBox.Show(@"Неправильно введена почта.\nВведите почту в формате any@anymail.com");
                 return;
             }
-            var newUser = new User(
-                login,
-                MD5.Encrypt(password),
-                email,
-                projects.Split(' ').ToList(),
-                role.ToEnum<Roles>());
+            var newUser = new User
+                (
+                    login,
+                    MD5.Encrypt(password),
+                    email,
+                    projects.Split(' ').ToList(),
+                    role.ToEnum<Roles>(),
+                    org,
+                    fullname,
+                    Get_GMT_From_String(gmt)
+                );
 
             _users.Add(newUser.Username, newUser);
             newUser.CreateUser();
@@ -75,7 +83,6 @@ namespace kanbanboard.Forms
             }.ForEach(x => x.Text = "");
             RegRoleComboBox.SelectedIndex = -1;
         }
-
         private void RegistrationButton_Click(object sender, EventArgs e)
         {
             // Перекидываем введенные данные на панель регистрации, если они есть
@@ -90,6 +97,10 @@ namespace kanbanboard.Forms
             // Устанавливаем название окна - "Регистрация"
             Text = "Регистрация";
             this.Size = new Size(350, 465);
+        }
+        public double Get_GMT_From_String(string GMT_String)
+        {
+            return 0;
         }
     }
 }

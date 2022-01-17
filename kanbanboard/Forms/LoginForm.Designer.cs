@@ -62,19 +62,19 @@ namespace kanbanboard.Forms
             this.RegOfRegButton = new System.Windows.Forms.Button();
             this.RegBackPanel = new System.Windows.Forms.Panel();
             this.RegOfRegBackButton = new System.Windows.Forms.Button();
-            this.OrgPanel = new System.Windows.Forms.Panel();
-            this.OrgLabel = new System.Windows.Forms.Label();
-            this.OrgTextBox = new System.Windows.Forms.TextBox();
-            this.TimeZonePanel = new System.Windows.Forms.Panel();
-            this.TimeZoneCB = new System.Windows.Forms.ComboBox();
-            this.TimeZoneLabel = new System.Windows.Forms.Label();
-            this.FullNamePanel = new System.Windows.Forms.Panel();
-            this.FullNameLabel = new System.Windows.Forms.Label();
-            this.FullNameTextBox = new System.Windows.Forms.TextBox();
-            this.ProjectsPanel = new System.Windows.Forms.Panel();
+            this.RegOrgPanel = new System.Windows.Forms.Panel();
+            this.RegOrgLabel = new System.Windows.Forms.Label();
+            this.RegOrgTextBox = new System.Windows.Forms.TextBox();
+            this.RegGMTPanel = new System.Windows.Forms.Panel();
+            this.RegGMTComboBox = new System.Windows.Forms.ComboBox();
+            this.RegGMTLabel = new System.Windows.Forms.Label();
+            this.RegFullNamePanel = new System.Windows.Forms.Panel();
+            this.RegFullNameLabel = new System.Windows.Forms.Label();
+            this.RegFullNameTextBox = new System.Windows.Forms.TextBox();
+            this.RegProjectsPanel = new System.Windows.Forms.Panel();
             this.RegProjectsLabel = new System.Windows.Forms.Label();
             this.RegProjectsTextBox = new System.Windows.Forms.TextBox();
-            this.RolePanel = new System.Windows.Forms.Panel();
+            this.RegRolePanel = new System.Windows.Forms.Panel();
             this.RegRoleComboBox = new System.Windows.Forms.ComboBox();
             this.RegRoleLabel = new System.Windows.Forms.Label();
             this.RegPasswordPanel = new System.Windows.Forms.Panel();
@@ -86,6 +86,14 @@ namespace kanbanboard.Forms
             this.RegLoginPanel = new System.Windows.Forms.Panel();
             this.RegLoginLabel = new System.Windows.Forms.Label();
             this.RegLoginTextBox = new System.Windows.Forms.TextBox();
+            this.RegLoginCheck = new System.Windows.Forms.Label();
+            this.RegEmailCheck = new System.Windows.Forms.Label();
+            this.RegPasswordCheck = new System.Windows.Forms.Label();
+            this.RegRoleCheck = new System.Windows.Forms.Label();
+            this.RegProjectsCheck = new System.Windows.Forms.Label();
+            this.RegFullNameCheck = new System.Windows.Forms.Label();
+            this.RegGMTCheck = new System.Windows.Forms.Label();
+            this.RegOrgCheck = new System.Windows.Forms.Label();
             this.LoginPasswordMailPanel.SuspendLayout();
             this.PanelOfTextBoxes.SuspendLayout();
             this.PasswordTextBoxPanel.SuspendLayout();
@@ -105,11 +113,11 @@ namespace kanbanboard.Forms
             this.RegButtonsPanel.SuspendLayout();
             this.RegOfRegPanel.SuspendLayout();
             this.RegBackPanel.SuspendLayout();
-            this.OrgPanel.SuspendLayout();
-            this.TimeZonePanel.SuspendLayout();
-            this.FullNamePanel.SuspendLayout();
-            this.ProjectsPanel.SuspendLayout();
-            this.RolePanel.SuspendLayout();
+            this.RegOrgPanel.SuspendLayout();
+            this.RegGMTPanel.SuspendLayout();
+            this.RegFullNamePanel.SuspendLayout();
+            this.RegProjectsPanel.SuspendLayout();
+            this.RegRolePanel.SuspendLayout();
             this.RegPasswordPanel.SuspendLayout();
             this.RegEmailPanel.SuspendLayout();
             this.RegLoginPanel.SuspendLayout();
@@ -397,11 +405,11 @@ namespace kanbanboard.Forms
             // RegPanel
             // 
             this.RegPanel.Controls.Add(this.RegButtonsPanel);
-            this.RegPanel.Controls.Add(this.OrgPanel);
-            this.RegPanel.Controls.Add(this.TimeZonePanel);
-            this.RegPanel.Controls.Add(this.FullNamePanel);
-            this.RegPanel.Controls.Add(this.ProjectsPanel);
-            this.RegPanel.Controls.Add(this.RolePanel);
+            this.RegPanel.Controls.Add(this.RegOrgPanel);
+            this.RegPanel.Controls.Add(this.RegGMTPanel);
+            this.RegPanel.Controls.Add(this.RegFullNamePanel);
+            this.RegPanel.Controls.Add(this.RegProjectsPanel);
+            this.RegPanel.Controls.Add(this.RegRolePanel);
             this.RegPanel.Controls.Add(this.RegPasswordPanel);
             this.RegPanel.Controls.Add(this.RegEmailPanel);
             this.RegPanel.Controls.Add(this.RegLoginPanel);
@@ -427,7 +435,7 @@ namespace kanbanboard.Forms
             this.RegOfRegPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.RegOfRegPanel.Location = new System.Drawing.Point(167, 0);
             this.RegOfRegPanel.Name = "RegOfRegPanel";
-            this.RegOfRegPanel.Padding = new System.Windows.Forms.Padding(15);
+            this.RegOfRegPanel.Padding = new System.Windows.Forms.Padding(15, 15, 50, 15);
             this.RegOfRegPanel.Size = new System.Drawing.Size(167, 54);
             this.RegOfRegPanel.TabIndex = 16;
             // 
@@ -440,7 +448,7 @@ namespace kanbanboard.Forms
             this.RegOfRegButton.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.RegOfRegButton.Location = new System.Drawing.Point(15, 15);
             this.RegOfRegButton.Name = "RegOfRegButton";
-            this.RegOfRegButton.Size = new System.Drawing.Size(137, 24);
+            this.RegOfRegButton.Size = new System.Drawing.Size(102, 24);
             this.RegOfRegButton.TabIndex = 4;
             this.RegOfRegButton.Text = "Регистрация";
             this.RegOfRegButton.UseVisualStyleBackColor = false;
@@ -452,7 +460,7 @@ namespace kanbanboard.Forms
             this.RegBackPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.RegBackPanel.Location = new System.Drawing.Point(0, 0);
             this.RegBackPanel.Name = "RegBackPanel";
-            this.RegBackPanel.Padding = new System.Windows.Forms.Padding(15);
+            this.RegBackPanel.Padding = new System.Windows.Forms.Padding(50, 15, 15, 15);
             this.RegBackPanel.Size = new System.Drawing.Size(167, 54);
             this.RegBackPanel.TabIndex = 15;
             // 
@@ -463,74 +471,77 @@ namespace kanbanboard.Forms
             this.RegOfRegBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RegOfRegBackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.RegOfRegBackButton.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.RegOfRegBackButton.Location = new System.Drawing.Point(15, 15);
+            this.RegOfRegBackButton.Location = new System.Drawing.Point(50, 15);
             this.RegOfRegBackButton.Name = "RegOfRegBackButton";
-            this.RegOfRegBackButton.Size = new System.Drawing.Size(137, 24);
+            this.RegOfRegBackButton.Size = new System.Drawing.Size(102, 24);
             this.RegOfRegBackButton.TabIndex = 4;
             this.RegOfRegBackButton.Text = "Назад";
             this.RegOfRegBackButton.UseVisualStyleBackColor = false;
             this.RegOfRegBackButton.Click += new System.EventHandler(this.RegOfRegButton_Click);
             // 
-            // OrgPanel
+            // RegOrgPanel
             // 
-            this.OrgPanel.Controls.Add(this.OrgLabel);
-            this.OrgPanel.Controls.Add(this.OrgTextBox);
-            this.OrgPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.OrgPanel.Location = new System.Drawing.Point(0, 325);
-            this.OrgPanel.Name = "OrgPanel";
-            this.OrgPanel.Padding = new System.Windows.Forms.Padding(15);
-            this.OrgPanel.Size = new System.Drawing.Size(334, 50);
-            this.OrgPanel.TabIndex = 18;
+            this.RegOrgPanel.Controls.Add(this.RegOrgTextBox);
+            this.RegOrgPanel.Controls.Add(this.RegOrgCheck);
+            this.RegOrgPanel.Controls.Add(this.RegOrgLabel);
+            this.RegOrgPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.RegOrgPanel.Location = new System.Drawing.Point(0, 325);
+            this.RegOrgPanel.Name = "RegOrgPanel";
+            this.RegOrgPanel.Padding = new System.Windows.Forms.Padding(5, 15, 5, 15);
+            this.RegOrgPanel.Size = new System.Drawing.Size(334, 50);
+            this.RegOrgPanel.TabIndex = 18;
             // 
-            // OrgLabel
+            // RegOrgLabel
             // 
-            this.OrgLabel.AutoSize = true;
-            this.OrgLabel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.OrgLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.OrgLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.OrgLabel.Location = new System.Drawing.Point(15, 15);
-            this.OrgLabel.Name = "OrgLabel";
-            this.OrgLabel.Size = new System.Drawing.Size(94, 16);
-            this.OrgLabel.TabIndex = 4;
-            this.OrgLabel.Text = "Организация";
+            this.RegOrgLabel.AutoSize = true;
+            this.RegOrgLabel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.RegOrgLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.RegOrgLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.RegOrgLabel.Location = new System.Drawing.Point(5, 15);
+            this.RegOrgLabel.Name = "RegOrgLabel";
+            this.RegOrgLabel.Size = new System.Drawing.Size(94, 16);
+            this.RegOrgLabel.TabIndex = 4;
+            this.RegOrgLabel.Text = "Организация";
             // 
-            // OrgTextBox
+            // RegOrgTextBox
             // 
-            this.OrgTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.OrgTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.OrgTextBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.OrgTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.OrgTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.OrgTextBox.Location = new System.Drawing.Point(125, 15);
-            this.OrgTextBox.Name = "OrgTextBox";
-            this.OrgTextBox.Size = new System.Drawing.Size(194, 17);
-            this.OrgTextBox.TabIndex = 3;
-            this.OrgTextBox.TabStop = false;
-            this.OrgTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.RegOrgTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.RegOrgTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RegOrgTextBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.RegOrgTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RegOrgTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.RegOrgTextBox.Location = new System.Drawing.Point(117, 15);
+            this.RegOrgTextBox.Name = "RegOrgTextBox";
+            this.RegOrgTextBox.Size = new System.Drawing.Size(194, 17);
+            this.RegOrgTextBox.TabIndex = 3;
+            this.RegOrgTextBox.TabStop = false;
+            this.RegOrgTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // TimeZonePanel
+            // RegGMTPanel
             // 
-            this.TimeZonePanel.Controls.Add(this.TimeZoneCB);
-            this.TimeZonePanel.Controls.Add(this.TimeZoneLabel);
-            this.TimeZonePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TimeZonePanel.Location = new System.Drawing.Point(0, 280);
-            this.TimeZonePanel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.TimeZonePanel.Name = "TimeZonePanel";
-            this.TimeZonePanel.Padding = new System.Windows.Forms.Padding(15);
-            this.TimeZonePanel.Size = new System.Drawing.Size(334, 45);
-            this.TimeZonePanel.TabIndex = 17;
+            this.RegGMTPanel.Controls.Add(this.RegGMTComboBox);
+            this.RegGMTPanel.Controls.Add(this.RegGMTCheck);
+            this.RegGMTPanel.Controls.Add(this.RegGMTLabel);
+            this.RegGMTPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.RegGMTPanel.Location = new System.Drawing.Point(0, 280);
+            this.RegGMTPanel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.RegGMTPanel.Name = "RegGMTPanel";
+            this.RegGMTPanel.Padding = new System.Windows.Forms.Padding(5, 15, 5, 15);
+            this.RegGMTPanel.Size = new System.Drawing.Size(334, 45);
+            this.RegGMTPanel.TabIndex = 17;
             // 
-            // TimeZoneCB
+            // RegGMTComboBox
             // 
-            this.TimeZoneCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.TimeZoneCB.DropDownHeight = 100;
-            this.TimeZoneCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.TimeZoneCB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.TimeZoneCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TimeZoneCB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.TimeZoneCB.FormattingEnabled = true;
-            this.TimeZoneCB.IntegralHeight = false;
-            this.TimeZoneCB.Items.AddRange(new object[] {
+            this.RegGMTComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.RegGMTComboBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.RegGMTComboBox.DropDownHeight = 100;
+            this.RegGMTComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.RegGMTComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.RegGMTComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RegGMTComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.RegGMTComboBox.FormattingEnabled = true;
+            this.RegGMTComboBox.IntegralHeight = false;
+            this.RegGMTComboBox.Items.AddRange(new object[] {
             "(GMT-11:00) Midway Island",
             "(GMT-11:00) Samoa",
             "(GMT-10:00) Hawaii",
@@ -643,70 +654,72 @@ namespace kanbanboard.Forms
             "(GMT+12:00) Magadan",
             "(GMT+12:00) Auckland",
             "(GMT+12:00) Fiji"});
-            this.TimeZoneCB.Location = new System.Drawing.Point(125, 12);
-            this.TimeZoneCB.Name = "TimeZoneCB";
-            this.TimeZoneCB.Size = new System.Drawing.Size(194, 24);
-            this.TimeZoneCB.TabIndex = 5;
+            this.RegGMTComboBox.Location = new System.Drawing.Point(117, 15);
+            this.RegGMTComboBox.Name = "RegGMTComboBox";
+            this.RegGMTComboBox.Size = new System.Drawing.Size(194, 24);
+            this.RegGMTComboBox.TabIndex = 5;
             // 
-            // TimeZoneLabel
+            // RegGMTLabel
             // 
-            this.TimeZoneLabel.AutoSize = true;
-            this.TimeZoneLabel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.TimeZoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.TimeZoneLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.TimeZoneLabel.Location = new System.Drawing.Point(15, 15);
-            this.TimeZoneLabel.Name = "TimeZoneLabel";
-            this.TimeZoneLabel.Size = new System.Drawing.Size(72, 16);
-            this.TimeZoneLabel.TabIndex = 4;
-            this.TimeZoneLabel.Text = "GMT зона";
+            this.RegGMTLabel.AutoSize = true;
+            this.RegGMTLabel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.RegGMTLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.RegGMTLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.RegGMTLabel.Location = new System.Drawing.Point(5, 15);
+            this.RegGMTLabel.Name = "RegGMTLabel";
+            this.RegGMTLabel.Size = new System.Drawing.Size(72, 16);
+            this.RegGMTLabel.TabIndex = 4;
+            this.RegGMTLabel.Text = "GMT зона";
             // 
-            // FullNamePanel
+            // RegFullNamePanel
             // 
-            this.FullNamePanel.Controls.Add(this.FullNameLabel);
-            this.FullNamePanel.Controls.Add(this.FullNameTextBox);
-            this.FullNamePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.FullNamePanel.Location = new System.Drawing.Point(0, 230);
-            this.FullNamePanel.Name = "FullNamePanel";
-            this.FullNamePanel.Padding = new System.Windows.Forms.Padding(15);
-            this.FullNamePanel.Size = new System.Drawing.Size(334, 50);
-            this.FullNamePanel.TabIndex = 16;
+            this.RegFullNamePanel.Controls.Add(this.RegFullNameTextBox);
+            this.RegFullNamePanel.Controls.Add(this.RegFullNameCheck);
+            this.RegFullNamePanel.Controls.Add(this.RegFullNameLabel);
+            this.RegFullNamePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.RegFullNamePanel.Location = new System.Drawing.Point(0, 230);
+            this.RegFullNamePanel.Name = "RegFullNamePanel";
+            this.RegFullNamePanel.Padding = new System.Windows.Forms.Padding(5, 15, 5, 15);
+            this.RegFullNamePanel.Size = new System.Drawing.Size(334, 50);
+            this.RegFullNamePanel.TabIndex = 16;
             // 
-            // FullNameLabel
+            // RegFullNameLabel
             // 
-            this.FullNameLabel.AutoSize = true;
-            this.FullNameLabel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.FullNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.FullNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.FullNameLabel.Location = new System.Drawing.Point(15, 15);
-            this.FullNameLabel.Name = "FullNameLabel";
-            this.FullNameLabel.Size = new System.Drawing.Size(38, 16);
-            this.FullNameLabel.TabIndex = 4;
-            this.FullNameLabel.Text = "ФИО";
+            this.RegFullNameLabel.AutoSize = true;
+            this.RegFullNameLabel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.RegFullNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.RegFullNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.RegFullNameLabel.Location = new System.Drawing.Point(5, 15);
+            this.RegFullNameLabel.Name = "RegFullNameLabel";
+            this.RegFullNameLabel.Size = new System.Drawing.Size(38, 16);
+            this.RegFullNameLabel.TabIndex = 4;
+            this.RegFullNameLabel.Text = "ФИО";
             // 
-            // FullNameTextBox
+            // RegFullNameTextBox
             // 
-            this.FullNameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.FullNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.FullNameTextBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.FullNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.FullNameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.FullNameTextBox.Location = new System.Drawing.Point(125, 15);
-            this.FullNameTextBox.Name = "FullNameTextBox";
-            this.FullNameTextBox.Size = new System.Drawing.Size(194, 17);
-            this.FullNameTextBox.TabIndex = 3;
-            this.FullNameTextBox.TabStop = false;
-            this.FullNameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.RegFullNameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.RegFullNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RegFullNameTextBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.RegFullNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RegFullNameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.RegFullNameTextBox.Location = new System.Drawing.Point(117, 15);
+            this.RegFullNameTextBox.Name = "RegFullNameTextBox";
+            this.RegFullNameTextBox.Size = new System.Drawing.Size(194, 17);
+            this.RegFullNameTextBox.TabIndex = 3;
+            this.RegFullNameTextBox.TabStop = false;
+            this.RegFullNameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // ProjectsPanel
+            // RegProjectsPanel
             // 
-            this.ProjectsPanel.Controls.Add(this.RegProjectsLabel);
-            this.ProjectsPanel.Controls.Add(this.RegProjectsTextBox);
-            this.ProjectsPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ProjectsPanel.Location = new System.Drawing.Point(0, 180);
-            this.ProjectsPanel.Name = "ProjectsPanel";
-            this.ProjectsPanel.Padding = new System.Windows.Forms.Padding(15);
-            this.ProjectsPanel.Size = new System.Drawing.Size(334, 50);
-            this.ProjectsPanel.TabIndex = 15;
+            this.RegProjectsPanel.Controls.Add(this.RegProjectsTextBox);
+            this.RegProjectsPanel.Controls.Add(this.RegProjectsCheck);
+            this.RegProjectsPanel.Controls.Add(this.RegProjectsLabel);
+            this.RegProjectsPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.RegProjectsPanel.Location = new System.Drawing.Point(0, 180);
+            this.RegProjectsPanel.Name = "RegProjectsPanel";
+            this.RegProjectsPanel.Padding = new System.Windows.Forms.Padding(5, 15, 5, 15);
+            this.RegProjectsPanel.Size = new System.Drawing.Size(334, 50);
+            this.RegProjectsPanel.TabIndex = 15;
             // 
             // RegProjectsLabel
             // 
@@ -714,7 +727,7 @@ namespace kanbanboard.Forms
             this.RegProjectsLabel.Dock = System.Windows.Forms.DockStyle.Left;
             this.RegProjectsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.RegProjectsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.RegProjectsLabel.Location = new System.Drawing.Point(15, 15);
+            this.RegProjectsLabel.Location = new System.Drawing.Point(5, 15);
             this.RegProjectsLabel.Name = "RegProjectsLabel";
             this.RegProjectsLabel.Size = new System.Drawing.Size(64, 16);
             this.RegProjectsLabel.TabIndex = 4;
@@ -727,33 +740,36 @@ namespace kanbanboard.Forms
             this.RegProjectsTextBox.Dock = System.Windows.Forms.DockStyle.Right;
             this.RegProjectsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.RegProjectsTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.RegProjectsTextBox.Location = new System.Drawing.Point(125, 15);
+            this.RegProjectsTextBox.Location = new System.Drawing.Point(117, 15);
             this.RegProjectsTextBox.Name = "RegProjectsTextBox";
             this.RegProjectsTextBox.Size = new System.Drawing.Size(194, 17);
             this.RegProjectsTextBox.TabIndex = 3;
             this.RegProjectsTextBox.TabStop = false;
             this.RegProjectsTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // RolePanel
+            // RegRolePanel
             // 
-            this.RolePanel.Controls.Add(this.RegRoleComboBox);
-            this.RolePanel.Controls.Add(this.RegRoleLabel);
-            this.RolePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.RolePanel.Location = new System.Drawing.Point(0, 135);
-            this.RolePanel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.RolePanel.Name = "RolePanel";
-            this.RolePanel.Padding = new System.Windows.Forms.Padding(15);
-            this.RolePanel.Size = new System.Drawing.Size(334, 45);
-            this.RolePanel.TabIndex = 13;
+            this.RegRolePanel.Controls.Add(this.RegRoleComboBox);
+            this.RegRolePanel.Controls.Add(this.RegRoleCheck);
+            this.RegRolePanel.Controls.Add(this.RegRoleLabel);
+            this.RegRolePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.RegRolePanel.Location = new System.Drawing.Point(0, 135);
+            this.RegRolePanel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.RegRolePanel.Name = "RegRolePanel";
+            this.RegRolePanel.Padding = new System.Windows.Forms.Padding(5, 15, 5, 15);
+            this.RegRolePanel.Size = new System.Drawing.Size(334, 45);
+            this.RegRolePanel.TabIndex = 13;
             // 
             // RegRoleComboBox
             // 
             this.RegRoleComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.RegRoleComboBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.RegRoleComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.RegRoleComboBox.DropDownHeight = 100;
             this.RegRoleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.RegRoleComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.RegRoleComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RegRoleComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.RegRoleComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.RegRoleComboBox.FormattingEnabled = true;
             this.RegRoleComboBox.IntegralHeight = false;
             this.RegRoleComboBox.Items.AddRange(new object[] {
@@ -761,9 +777,9 @@ namespace kanbanboard.Forms
             "Programmer",
             "Manager",
             "Admin"});
-            this.RegRoleComboBox.Location = new System.Drawing.Point(125, 12);
+            this.RegRoleComboBox.Location = new System.Drawing.Point(117, 15);
             this.RegRoleComboBox.Name = "RegRoleComboBox";
-            this.RegRoleComboBox.Size = new System.Drawing.Size(194, 24);
+            this.RegRoleComboBox.Size = new System.Drawing.Size(194, 23);
             this.RegRoleComboBox.TabIndex = 5;
             // 
             // RegRoleLabel
@@ -772,7 +788,7 @@ namespace kanbanboard.Forms
             this.RegRoleLabel.Dock = System.Windows.Forms.DockStyle.Left;
             this.RegRoleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.RegRoleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.RegRoleLabel.Location = new System.Drawing.Point(15, 15);
+            this.RegRoleLabel.Location = new System.Drawing.Point(5, 15);
             this.RegRoleLabel.Name = "RegRoleLabel";
             this.RegRoleLabel.Size = new System.Drawing.Size(39, 16);
             this.RegRoleLabel.TabIndex = 4;
@@ -780,12 +796,13 @@ namespace kanbanboard.Forms
             // 
             // RegPasswordPanel
             // 
-            this.RegPasswordPanel.Controls.Add(this.RegPasswordLabel);
             this.RegPasswordPanel.Controls.Add(this.RegPasswordTextBox);
+            this.RegPasswordPanel.Controls.Add(this.RegPasswordCheck);
+            this.RegPasswordPanel.Controls.Add(this.RegPasswordLabel);
             this.RegPasswordPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.RegPasswordPanel.Location = new System.Drawing.Point(0, 90);
             this.RegPasswordPanel.Name = "RegPasswordPanel";
-            this.RegPasswordPanel.Padding = new System.Windows.Forms.Padding(15);
+            this.RegPasswordPanel.Padding = new System.Windows.Forms.Padding(5, 15, 5, 15);
             this.RegPasswordPanel.Size = new System.Drawing.Size(334, 45);
             this.RegPasswordPanel.TabIndex = 12;
             // 
@@ -795,7 +812,7 @@ namespace kanbanboard.Forms
             this.RegPasswordLabel.Dock = System.Windows.Forms.DockStyle.Left;
             this.RegPasswordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.RegPasswordLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.RegPasswordLabel.Location = new System.Drawing.Point(15, 15);
+            this.RegPasswordLabel.Location = new System.Drawing.Point(5, 15);
             this.RegPasswordLabel.Name = "RegPasswordLabel";
             this.RegPasswordLabel.Size = new System.Drawing.Size(56, 16);
             this.RegPasswordLabel.TabIndex = 4;
@@ -808,7 +825,7 @@ namespace kanbanboard.Forms
             this.RegPasswordTextBox.Dock = System.Windows.Forms.DockStyle.Right;
             this.RegPasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.RegPasswordTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.RegPasswordTextBox.Location = new System.Drawing.Point(125, 15);
+            this.RegPasswordTextBox.Location = new System.Drawing.Point(117, 15);
             this.RegPasswordTextBox.Name = "RegPasswordTextBox";
             this.RegPasswordTextBox.Size = new System.Drawing.Size(194, 17);
             this.RegPasswordTextBox.TabIndex = 3;
@@ -816,12 +833,13 @@ namespace kanbanboard.Forms
             // 
             // RegEmailPanel
             // 
-            this.RegEmailPanel.Controls.Add(this.RegEmailLabel);
             this.RegEmailPanel.Controls.Add(this.RegEmailTextBox);
+            this.RegEmailPanel.Controls.Add(this.RegEmailCheck);
+            this.RegEmailPanel.Controls.Add(this.RegEmailLabel);
             this.RegEmailPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.RegEmailPanel.Location = new System.Drawing.Point(0, 45);
             this.RegEmailPanel.Name = "RegEmailPanel";
-            this.RegEmailPanel.Padding = new System.Windows.Forms.Padding(15);
+            this.RegEmailPanel.Padding = new System.Windows.Forms.Padding(5, 15, 5, 15);
             this.RegEmailPanel.Size = new System.Drawing.Size(334, 45);
             this.RegEmailPanel.TabIndex = 11;
             // 
@@ -831,7 +849,7 @@ namespace kanbanboard.Forms
             this.RegEmailLabel.Dock = System.Windows.Forms.DockStyle.Left;
             this.RegEmailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.RegEmailLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.RegEmailLabel.Location = new System.Drawing.Point(15, 15);
+            this.RegEmailLabel.Location = new System.Drawing.Point(5, 15);
             this.RegEmailLabel.Name = "RegEmailLabel";
             this.RegEmailLabel.Size = new System.Drawing.Size(41, 16);
             this.RegEmailLabel.TabIndex = 4;
@@ -844,7 +862,7 @@ namespace kanbanboard.Forms
             this.RegEmailTextBox.Dock = System.Windows.Forms.DockStyle.Right;
             this.RegEmailTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.RegEmailTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.RegEmailTextBox.Location = new System.Drawing.Point(125, 15);
+            this.RegEmailTextBox.Location = new System.Drawing.Point(117, 15);
             this.RegEmailTextBox.Name = "RegEmailTextBox";
             this.RegEmailTextBox.Size = new System.Drawing.Size(194, 17);
             this.RegEmailTextBox.TabIndex = 3;
@@ -852,12 +870,13 @@ namespace kanbanboard.Forms
             // 
             // RegLoginPanel
             // 
-            this.RegLoginPanel.Controls.Add(this.RegLoginLabel);
             this.RegLoginPanel.Controls.Add(this.RegLoginTextBox);
+            this.RegLoginPanel.Controls.Add(this.RegLoginCheck);
+            this.RegLoginPanel.Controls.Add(this.RegLoginLabel);
             this.RegLoginPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.RegLoginPanel.Location = new System.Drawing.Point(0, 0);
             this.RegLoginPanel.Name = "RegLoginPanel";
-            this.RegLoginPanel.Padding = new System.Windows.Forms.Padding(15);
+            this.RegLoginPanel.Padding = new System.Windows.Forms.Padding(5, 15, 5, 0);
             this.RegLoginPanel.Size = new System.Drawing.Size(334, 45);
             this.RegLoginPanel.TabIndex = 10;
             // 
@@ -867,7 +886,7 @@ namespace kanbanboard.Forms
             this.RegLoginLabel.Dock = System.Windows.Forms.DockStyle.Left;
             this.RegLoginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.RegLoginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.RegLoginLabel.Location = new System.Drawing.Point(15, 15);
+            this.RegLoginLabel.Location = new System.Drawing.Point(5, 15);
             this.RegLoginLabel.Name = "RegLoginLabel";
             this.RegLoginLabel.Size = new System.Drawing.Size(46, 16);
             this.RegLoginLabel.TabIndex = 4;
@@ -880,11 +899,124 @@ namespace kanbanboard.Forms
             this.RegLoginTextBox.Dock = System.Windows.Forms.DockStyle.Right;
             this.RegLoginTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.RegLoginTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.RegLoginTextBox.Location = new System.Drawing.Point(125, 15);
+            this.RegLoginTextBox.Location = new System.Drawing.Point(117, 15);
             this.RegLoginTextBox.Name = "RegLoginTextBox";
             this.RegLoginTextBox.Size = new System.Drawing.Size(194, 17);
             this.RegLoginTextBox.TabIndex = 3;
             this.RegLoginTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.RegLoginTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RegLoginTextBox_KeyDown);
+            // 
+            // RegLoginCheck
+            // 
+            this.RegLoginCheck.AutoSize = true;
+            this.RegLoginCheck.Dock = System.Windows.Forms.DockStyle.Right;
+            this.RegLoginCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.RegLoginCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.RegLoginCheck.Location = new System.Drawing.Point(311, 15);
+            this.RegLoginCheck.Margin = new System.Windows.Forms.Padding(3);
+            this.RegLoginCheck.Name = "RegLoginCheck";
+            this.RegLoginCheck.Padding = new System.Windows.Forms.Padding(3);
+            this.RegLoginCheck.Size = new System.Drawing.Size(18, 22);
+            this.RegLoginCheck.TabIndex = 5;
+            this.RegLoginCheck.Text = "*";
+            // 
+            // RegEmailCheck
+            // 
+            this.RegEmailCheck.AutoSize = true;
+            this.RegEmailCheck.Dock = System.Windows.Forms.DockStyle.Right;
+            this.RegEmailCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.RegEmailCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.RegEmailCheck.Location = new System.Drawing.Point(311, 15);
+            this.RegEmailCheck.Margin = new System.Windows.Forms.Padding(3);
+            this.RegEmailCheck.Name = "RegEmailCheck";
+            this.RegEmailCheck.Padding = new System.Windows.Forms.Padding(3);
+            this.RegEmailCheck.Size = new System.Drawing.Size(18, 22);
+            this.RegEmailCheck.TabIndex = 6;
+            this.RegEmailCheck.Text = "*";
+            // 
+            // RegPasswordCheck
+            // 
+            this.RegPasswordCheck.AutoSize = true;
+            this.RegPasswordCheck.Dock = System.Windows.Forms.DockStyle.Right;
+            this.RegPasswordCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.RegPasswordCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.RegPasswordCheck.Location = new System.Drawing.Point(311, 15);
+            this.RegPasswordCheck.Margin = new System.Windows.Forms.Padding(3);
+            this.RegPasswordCheck.Name = "RegPasswordCheck";
+            this.RegPasswordCheck.Padding = new System.Windows.Forms.Padding(3);
+            this.RegPasswordCheck.Size = new System.Drawing.Size(18, 22);
+            this.RegPasswordCheck.TabIndex = 7;
+            this.RegPasswordCheck.Text = "*";
+            // 
+            // RegRoleCheck
+            // 
+            this.RegRoleCheck.AutoSize = true;
+            this.RegRoleCheck.Dock = System.Windows.Forms.DockStyle.Right;
+            this.RegRoleCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.RegRoleCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.RegRoleCheck.Location = new System.Drawing.Point(311, 15);
+            this.RegRoleCheck.Margin = new System.Windows.Forms.Padding(3);
+            this.RegRoleCheck.Name = "RegRoleCheck";
+            this.RegRoleCheck.Padding = new System.Windows.Forms.Padding(3);
+            this.RegRoleCheck.Size = new System.Drawing.Size(18, 22);
+            this.RegRoleCheck.TabIndex = 7;
+            this.RegRoleCheck.Text = "*";
+            // 
+            // RegProjectsCheck
+            // 
+            this.RegProjectsCheck.AutoSize = true;
+            this.RegProjectsCheck.Dock = System.Windows.Forms.DockStyle.Right;
+            this.RegProjectsCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.RegProjectsCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.RegProjectsCheck.Location = new System.Drawing.Point(311, 15);
+            this.RegProjectsCheck.Margin = new System.Windows.Forms.Padding(3);
+            this.RegProjectsCheck.Name = "RegProjectsCheck";
+            this.RegProjectsCheck.Padding = new System.Windows.Forms.Padding(3);
+            this.RegProjectsCheck.Size = new System.Drawing.Size(18, 22);
+            this.RegProjectsCheck.TabIndex = 8;
+            this.RegProjectsCheck.Text = "*";
+            // 
+            // RegFullNameCheck
+            // 
+            this.RegFullNameCheck.AutoSize = true;
+            this.RegFullNameCheck.Dock = System.Windows.Forms.DockStyle.Right;
+            this.RegFullNameCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.RegFullNameCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.RegFullNameCheck.Location = new System.Drawing.Point(311, 15);
+            this.RegFullNameCheck.Margin = new System.Windows.Forms.Padding(3);
+            this.RegFullNameCheck.Name = "RegFullNameCheck";
+            this.RegFullNameCheck.Padding = new System.Windows.Forms.Padding(3);
+            this.RegFullNameCheck.Size = new System.Drawing.Size(18, 22);
+            this.RegFullNameCheck.TabIndex = 8;
+            this.RegFullNameCheck.Text = "*";
+            // 
+            // RegGMTCheck
+            // 
+            this.RegGMTCheck.AutoSize = true;
+            this.RegGMTCheck.Dock = System.Windows.Forms.DockStyle.Right;
+            this.RegGMTCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.RegGMTCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.RegGMTCheck.Location = new System.Drawing.Point(311, 15);
+            this.RegGMTCheck.Margin = new System.Windows.Forms.Padding(3);
+            this.RegGMTCheck.Name = "RegGMTCheck";
+            this.RegGMTCheck.Padding = new System.Windows.Forms.Padding(3);
+            this.RegGMTCheck.Size = new System.Drawing.Size(18, 22);
+            this.RegGMTCheck.TabIndex = 8;
+            this.RegGMTCheck.Text = "*";
+            // 
+            // RegOrgCheck
+            // 
+            this.RegOrgCheck.AutoSize = true;
+            this.RegOrgCheck.Dock = System.Windows.Forms.DockStyle.Right;
+            this.RegOrgCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.RegOrgCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.RegOrgCheck.Location = new System.Drawing.Point(311, 15);
+            this.RegOrgCheck.Margin = new System.Windows.Forms.Padding(3);
+            this.RegOrgCheck.Name = "RegOrgCheck";
+            this.RegOrgCheck.Padding = new System.Windows.Forms.Padding(3);
+            this.RegOrgCheck.Size = new System.Drawing.Size(18, 22);
+            this.RegOrgCheck.TabIndex = 8;
+            this.RegOrgCheck.Text = "*";
             // 
             // LoginForm
             // 
@@ -931,16 +1063,16 @@ namespace kanbanboard.Forms
             this.RegButtonsPanel.ResumeLayout(false);
             this.RegOfRegPanel.ResumeLayout(false);
             this.RegBackPanel.ResumeLayout(false);
-            this.OrgPanel.ResumeLayout(false);
-            this.OrgPanel.PerformLayout();
-            this.TimeZonePanel.ResumeLayout(false);
-            this.TimeZonePanel.PerformLayout();
-            this.FullNamePanel.ResumeLayout(false);
-            this.FullNamePanel.PerformLayout();
-            this.ProjectsPanel.ResumeLayout(false);
-            this.ProjectsPanel.PerformLayout();
-            this.RolePanel.ResumeLayout(false);
-            this.RolePanel.PerformLayout();
+            this.RegOrgPanel.ResumeLayout(false);
+            this.RegOrgPanel.PerformLayout();
+            this.RegGMTPanel.ResumeLayout(false);
+            this.RegGMTPanel.PerformLayout();
+            this.RegFullNamePanel.ResumeLayout(false);
+            this.RegFullNamePanel.PerformLayout();
+            this.RegProjectsPanel.ResumeLayout(false);
+            this.RegProjectsPanel.PerformLayout();
+            this.RegRolePanel.ResumeLayout(false);
+            this.RegRolePanel.PerformLayout();
             this.RegPasswordPanel.ResumeLayout(false);
             this.RegPasswordPanel.PerformLayout();
             this.RegEmailPanel.ResumeLayout(false);
@@ -977,7 +1109,7 @@ namespace kanbanboard.Forms
         private Label AuthorizationLabel;
         private PictureBox AuthorizationPictureBox;
         private Panel RegPanel;
-        private Panel RolePanel;
+        private Panel RegRolePanel;
         private Label RegRoleLabel;
         private Panel RegPasswordPanel;
         private Label RegPasswordLabel;
@@ -988,7 +1120,7 @@ namespace kanbanboard.Forms
         private Panel RegLoginPanel;
         private Label RegLoginLabel;
         private TextBox RegLoginTextBox;
-        private Panel ProjectsPanel;
+        private Panel RegProjectsPanel;
         private Label RegProjectsLabel;
         private TextBox RegProjectsTextBox;
         private Panel RegButtonsPanel;
@@ -997,14 +1129,22 @@ namespace kanbanboard.Forms
         private Panel RegOfRegPanel;
         private Button RegOfRegButton;
         private Panel RegBackPanel;
-        private Panel FullNamePanel;
-        private Label FullNameLabel;
-        private TextBox FullNameTextBox;
-        private Panel TimeZonePanel;
-        private ComboBox TimeZoneCB;
-        private Label TimeZoneLabel;
-        private Panel OrgPanel;
-        private Label OrgLabel;
-        private TextBox OrgTextBox;
+        private Panel RegFullNamePanel;
+        private Label RegFullNameLabel;
+        private TextBox RegFullNameTextBox;
+        private Panel RegGMTPanel;
+        private ComboBox RegGMTComboBox;
+        private Label RegGMTLabel;
+        private Panel RegOrgPanel;
+        private Label RegOrgLabel;
+        private TextBox RegOrgTextBox;
+        private Label RegOrgCheck;
+        private Label RegGMTCheck;
+        private Label RegFullNameCheck;
+        private Label RegProjectsCheck;
+        private Label RegRoleCheck;
+        private Label RegPasswordCheck;
+        private Label RegEmailCheck;
+        private Label RegLoginCheck;
     }
 }

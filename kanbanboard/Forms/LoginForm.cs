@@ -72,5 +72,10 @@ namespace kanbanboard.Forms
         private void TextBoxLogin_MouseLeave(object sender, EventArgs e) => LoginLabel.ForeColor = Color.FromArgb(74, 79, 99);
         private void TextBoxPass_MouseEnter(object sender, EventArgs e) => PassLabel.ForeColor = Color.FromArgb(114, 119, 139);
         private void TextBoxPass_MouseLeave(object sender, EventArgs e) => PassLabel.ForeColor = Color.FromArgb(74, 79, 99);
+
+        private void RegLoginTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }
