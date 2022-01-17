@@ -34,19 +34,16 @@ namespace kanbanboard.Forms
                 MessageBox.Show(@"Мало данных.");
                 return;
             }
-            else
+            if (_users.ContainsKey(login))
             {
-                if (_users.ContainsKey(login))
-                {
-                    MessageBox.Show(@"Пользователь с таким именем уже существует.");
-                    return;
-                }
+                MessageBox.Show(@"Пользователь с таким именем уже существует.");
+                return;
+            }
 
-                if (!email.ValidEmail())
-                {
-                    MessageBox.Show(@"Неправильная почта.");
-                    return;
-                }
+            if (!email.ValidEmail())
+            {
+                MessageBox.Show(@"Неправильная почта.");
+                return;
             }
             var newUser = new User(
                 login,
