@@ -15,7 +15,7 @@ namespace kanbanboard.Forms
             // Главную панельку на передний план
             MainPanel.BringToFront();
             // Меняем размер панельки
-            this.Size = new Size(350, 270);
+            this.Size = new Size(350, 245);
             // Меняем текст окна
             Text = "Авторизация";
         }
