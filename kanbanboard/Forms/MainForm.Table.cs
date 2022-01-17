@@ -316,8 +316,7 @@ namespace kanbanboard.Forms
         {
             try
             {
-                foreach (ColumnStyle column in TableLayoutPanel.ColumnStyles)
-                {
+                foreach (ColumnStyle column in TableLayoutPanel.ColumnStyles) {
                     column.SizeType = SizeType.Percent;
                     column.Width = 25;
                 }
@@ -326,18 +325,19 @@ namespace kanbanboard.Forms
 
                 TableLayoutPanel.RowStyles[0].SizeType = SizeType.Absolute;
                 TableLayoutPanel.RowStyles[0].Height = 25;
-
-                // Строки
-                foreach (var row in TableLayoutPanel.RowStyles.Cast<RowStyle>().ToList().Skip(1))
-                {
+                
+                foreach (var row in TableLayoutPanel.RowStyles.Cast<RowStyle>().ToList().Skip(1)) {
                     row.SizeType = SizeType.Absolute;
                     row.Height = 150;
                 }
 
-                TableLayoutPanel.Controls.OfType<TicketPanel>().ToList().ForEach(x =>
-                {
-                    if (TableLayoutPanel.GetCellPosition(x).Row != 0) x.Height = TableLayoutPanel.Height / TableLayoutPanel.RowCount;
+                TableLayoutPanel.Controls.OfType<TicketPanel>().ToList().ForEach(x => {
+                    if (TableLayoutPanel.GetCellPosition(x).Row != 0)
+                        x.Height = TableLayoutPanel.Height / TableLayoutPanel.RowCount;
                 });
+
+                if (WindowState == FormWindowState.Maximized)
+                    TableLayoutPanel.Refresh();
             }
 
             catch (Exception) { }
