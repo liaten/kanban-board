@@ -83,5 +83,14 @@ namespace kanbanboard.Forms
                 RegLoginCheck.ForeColor = Color.Green;
             }
         }
+
+        private void RegLoginTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == ' ')
+            {
+                string reglogin = RegLoginTextBox.Text;
+                RegLoginTextBox.Text= reglogin.Remove(reglogin.Length - 1);
+            }
+        }
     }
 }

@@ -1038,6 +1038,7 @@ namespace kanbanboard.Forms
             this.RegLoginTextBox.TabIndex = 3;
             this.RegLoginTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.RegLoginTextBox.TextChanged += new System.EventHandler(this.RegLoginTextBox_TextChanged);
+            this.RegLoginTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RegLoginTextBox_KeyPress);
             // 
             // RegLoginCheck
             // 
