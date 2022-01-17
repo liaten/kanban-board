@@ -1,9 +1,9 @@
-﻿using System;
+﻿using kanbanboard.Classes;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using kanbanboard.Classes;
 
 namespace kanbanboard.Forms
 {
@@ -12,8 +12,11 @@ namespace kanbanboard.Forms
         // Кнопка назад внутри окна регистрации
         private void RegOfRegButton_Click(object sender, EventArgs e)
         {
+            // Главную панельку на передний план
             MainPanel.BringToFront();
-
+            // Меняем размер панельки
+            this.Size = new Size(350, 305);
+            // Меняем текст окна
             Text = "Авторизация";
         }
 
@@ -88,6 +91,7 @@ namespace kanbanboard.Forms
             textBoxPassword.Clear();
             // Устанавливаем название окна - "Регистрация"
             Text = "Регистрация";
+            this.Size = new Size(350, 320);
         }
     }
 }
