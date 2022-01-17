@@ -362,7 +362,7 @@ namespace kanbanboard.Forms
             this.UsernameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.UsernameLabel.Location = new System.Drawing.Point(3, 3);
             this.UsernameLabel.Name = "UsernameLabel";
-            this.UsernameLabel.Size = new System.Drawing.Size(132, 16);
+            this.UsernameLabel.Size = new System.Drawing.Size(131, 16);
             this.UsernameLabel.TabIndex = 1;
             this.UsernameLabel.Text = "USERNAME_GET";
             this.UsernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1465,11 +1465,11 @@ namespace kanbanboard.Forms
             // 
             // BasicContentPanel
             // 
+            this.BasicContentPanel.Controls.Add(this.UserPanel);
             this.BasicContentPanel.Controls.Add(this.PanelWithTable);
             this.BasicContentPanel.Controls.Add(this.LoadPanel);
             this.BasicContentPanel.Controls.Add(this.CalendarPanel);
             this.BasicContentPanel.Controls.Add(this.MessengerPanel);
-            this.BasicContentPanel.Controls.Add(this.UserPanel);
             this.BasicContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BasicContentPanel.Location = new System.Drawing.Point(0, 70);
             this.BasicContentPanel.Name = "BasicContentPanel";

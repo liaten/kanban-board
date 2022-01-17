@@ -15,7 +15,7 @@ namespace kanbanboard.Forms
             // Главную панельку на передний план
             MainPanel.BringToFront();
             // Меняем размер панельки
-            this.Size = new Size(350, 305);
+            this.Size = new Size(350, 270);
             // Меняем текст окна
             Text = "Авторизация";
         }
@@ -92,7 +92,7 @@ namespace kanbanboard.Forms
             textBoxPassword.Clear();
             // Устанавливаем название окна - "Регистрация"
             Text = "Регистрация";
-            this.Size = new Size(350, 320);
+            this.Size = new Size(350, 465);
         }
     }
 }
