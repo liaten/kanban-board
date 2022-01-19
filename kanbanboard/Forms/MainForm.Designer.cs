@@ -59,23 +59,6 @@ namespace kanbanboard.Forms
             this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.BasicPanel = new System.Windows.Forms.Panel();
             this.BasicContentPanel = new System.Windows.Forms.Panel();
-            this.PanelWithTable = new System.Windows.Forms.Panel();
-            this.AddingPanel = new System.Windows.Forms.Panel();
-            this.TrashButton = new System.Windows.Forms.Button();
-            this.AddTitleButton = new System.Windows.Forms.Button();
-            this.LoadPanel = new System.Windows.Forms.Panel();
-            this.LoadLabel = new System.Windows.Forms.Label();
-            this.CalendarPanel = new System.Windows.Forms.Panel();
-            this.CalendarDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.MessengerPanel = new System.Windows.Forms.Panel();
-            this.MessengerMainPanel = new System.Windows.Forms.Panel();
-            this.MessengerShowPanel = new System.Windows.Forms.Panel();
-            this.MessengerListBox = new System.Windows.Forms.ListBox();
-            this.MessengerSendPanel = new System.Windows.Forms.Panel();
-            this.SendMessageButtonPanel = new System.Windows.Forms.Panel();
-            this.SendMessageButton = new System.Windows.Forms.Button();
-            this.MessengerTextBoxPanel = new System.Windows.Forms.Panel();
-            this.MessengerTextBox = new System.Windows.Forms.TextBox();
             this.UserPanel = new System.Windows.Forms.Panel();
             this.PasswordPanel = new System.Windows.Forms.Panel();
             this.PasswordShowPanel = new System.Windows.Forms.Panel();
@@ -103,6 +86,23 @@ namespace kanbanboard.Forms
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.FullNameLabelPanel = new System.Windows.Forms.Panel();
             this.FullNameTitleLabel = new System.Windows.Forms.Label();
+            this.PanelWithTable = new System.Windows.Forms.Panel();
+            this.AddingPanel = new System.Windows.Forms.Panel();
+            this.TrashButton = new System.Windows.Forms.Button();
+            this.AddTitleButton = new System.Windows.Forms.Button();
+            this.LoadPanel = new System.Windows.Forms.Panel();
+            this.LoadLabel = new System.Windows.Forms.Label();
+            this.CalendarPanel = new System.Windows.Forms.Panel();
+            this.CalendarDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.MessengerPanel = new System.Windows.Forms.Panel();
+            this.MessengerMainPanel = new System.Windows.Forms.Panel();
+            this.MessengerShowPanel = new System.Windows.Forms.Panel();
+            this.MessengerListBox = new System.Windows.Forms.ListBox();
+            this.MessengerSendPanel = new System.Windows.Forms.Panel();
+            this.SendMessageButtonPanel = new System.Windows.Forms.Panel();
+            this.SendMessageButton = new System.Windows.Forms.Button();
+            this.MessengerTextBoxPanel = new System.Windows.Forms.Panel();
+            this.MessengerTextBox = new System.Windows.Forms.TextBox();
             this.HeadPanel = new System.Windows.Forms.Panel();
             this.ControlsPanel.SuspendLayout();
             this.ProjectsPanel.SuspendLayout();
@@ -116,16 +116,6 @@ namespace kanbanboard.Forms
             ((System.ComponentModel.ISupportInitialize)(this.UserPictureBox)).BeginInit();
             this.BasicPanel.SuspendLayout();
             this.BasicContentPanel.SuspendLayout();
-            this.PanelWithTable.SuspendLayout();
-            this.AddingPanel.SuspendLayout();
-            this.LoadPanel.SuspendLayout();
-            this.CalendarPanel.SuspendLayout();
-            this.MessengerPanel.SuspendLayout();
-            this.MessengerMainPanel.SuspendLayout();
-            this.MessengerShowPanel.SuspendLayout();
-            this.MessengerSendPanel.SuspendLayout();
-            this.SendMessageButtonPanel.SuspendLayout();
-            this.MessengerTextBoxPanel.SuspendLayout();
             this.UserPanel.SuspendLayout();
             this.PasswordPanel.SuspendLayout();
             this.PasswordShowPanel.SuspendLayout();
@@ -142,6 +132,16 @@ namespace kanbanboard.Forms
             this.FullNamePanel.SuspendLayout();
             this.FullNameGetLabelPanel.SuspendLayout();
             this.FullNameLabelPanel.SuspendLayout();
+            this.PanelWithTable.SuspendLayout();
+            this.AddingPanel.SuspendLayout();
+            this.LoadPanel.SuspendLayout();
+            this.CalendarPanel.SuspendLayout();
+            this.MessengerPanel.SuspendLayout();
+            this.MessengerMainPanel.SuspendLayout();
+            this.MessengerShowPanel.SuspendLayout();
+            this.MessengerSendPanel.SuspendLayout();
+            this.SendMessageButtonPanel.SuspendLayout();
+            this.MessengerTextBoxPanel.SuspendLayout();
             this.HeadPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -362,7 +362,7 @@ namespace kanbanboard.Forms
             this.UsernameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.UsernameLabel.Location = new System.Drawing.Point(3, 3);
             this.UsernameLabel.Name = "UsernameLabel";
-            this.UsernameLabel.Size = new System.Drawing.Size(131, 16);
+            this.UsernameLabel.Size = new System.Drawing.Size(132, 16);
             this.UsernameLabel.TabIndex = 1;
             this.UsernameLabel.Text = "USERNAME_GET";
             this.UsernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1476,211 +1476,6 @@ namespace kanbanboard.Forms
             this.BasicContentPanel.Size = new System.Drawing.Size(979, 495);
             this.BasicContentPanel.TabIndex = 2;
             // 
-            // PanelWithTable
-            // 
-            this.PanelWithTable.AutoSize = true;
-            this.PanelWithTable.Controls.Add(this.TableLayoutPanel);
-            this.PanelWithTable.Controls.Add(this.AddingPanel);
-            this.PanelWithTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelWithTable.Location = new System.Drawing.Point(0, 0);
-            this.PanelWithTable.Name = "PanelWithTable";
-            this.PanelWithTable.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
-            this.PanelWithTable.Size = new System.Drawing.Size(979, 495);
-            this.PanelWithTable.TabIndex = 0;
-            // 
-            // AddingPanel
-            // 
-            this.AddingPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.AddingPanel.Controls.Add(this.TrashButton);
-            this.AddingPanel.Controls.Add(this.AddTitleButton);
-            this.AddingPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.AddingPanel.Location = new System.Drawing.Point(937, 0);
-            this.AddingPanel.Name = "AddingPanel";
-            this.AddingPanel.Size = new System.Drawing.Size(42, 494);
-            this.AddingPanel.TabIndex = 0;
-            // 
-            // TrashButton
-            // 
-            this.TrashButton.BackColor = System.Drawing.Color.Transparent;
-            this.TrashButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TrashButton.FlatAppearance.BorderSize = 0;
-            this.TrashButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.TrashButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F);
-            this.TrashButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.TrashButton.Location = new System.Drawing.Point(0, 36);
-            this.TrashButton.Name = "TrashButton";
-            this.TrashButton.Size = new System.Drawing.Size(42, 42);
-            this.TrashButton.TabIndex = 2;
-            this.TrashButton.Text = "🗑";
-            this.TrashButton.UseVisualStyleBackColor = false;
-            this.TrashButton.Click += new System.EventHandler(this.TrashButton_Click);
-            // 
-            // AddTitleButton
-            // 
-            this.AddTitleButton.BackColor = System.Drawing.Color.Transparent;
-            this.AddTitleButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.AddTitleButton.FlatAppearance.BorderSize = 0;
-            this.AddTitleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddTitleButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F);
-            this.AddTitleButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.AddTitleButton.Location = new System.Drawing.Point(0, 0);
-            this.AddTitleButton.Name = "AddTitleButton";
-            this.AddTitleButton.Size = new System.Drawing.Size(42, 36);
-            this.AddTitleButton.TabIndex = 3;
-            this.AddTitleButton.Text = "+";
-            this.AddTitleButton.UseVisualStyleBackColor = false;
-            this.AddTitleButton.Click += new System.EventHandler(this.AddTitleButton_Click);
-            // 
-            // LoadPanel
-            // 
-            this.LoadPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
-            this.LoadPanel.Controls.Add(this.LoadLabel);
-            this.LoadPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LoadPanel.Location = new System.Drawing.Point(0, 0);
-            this.LoadPanel.Name = "LoadPanel";
-            this.LoadPanel.Size = new System.Drawing.Size(979, 495);
-            this.LoadPanel.TabIndex = 3;
-            this.LoadPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.LoadPanel_Paint);
-            // 
-            // LoadLabel
-            // 
-            this.LoadLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.LoadLabel.AutoSize = true;
-            this.LoadLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LoadLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.LoadLabel.Location = new System.Drawing.Point(444, 241);
-            this.LoadLabel.Name = "LoadLabel";
-            this.LoadLabel.Size = new System.Drawing.Size(63, 13);
-            this.LoadLabel.TabIndex = 3;
-            this.LoadLabel.Text = "Загрузка...";
-            // 
-            // CalendarPanel
-            // 
-            this.CalendarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
-            this.CalendarPanel.Controls.Add(this.CalendarDateTimePicker);
-            this.CalendarPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CalendarPanel.Location = new System.Drawing.Point(0, 0);
-            this.CalendarPanel.Name = "CalendarPanel";
-            this.CalendarPanel.Size = new System.Drawing.Size(979, 495);
-            this.CalendarPanel.TabIndex = 1;
-            // 
-            // CalendarDateTimePicker
-            // 
-            this.CalendarDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.CalendarDateTimePicker.Location = new System.Drawing.Point(35, 36);
-            this.CalendarDateTimePicker.MinDate = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
-            this.CalendarDateTimePicker.Name = "CalendarDateTimePicker";
-            this.CalendarDateTimePicker.Size = new System.Drawing.Size(161, 24);
-            this.CalendarDateTimePicker.TabIndex = 2;
-            // 
-            // MessengerPanel
-            // 
-            this.MessengerPanel.Controls.Add(this.MessengerMainPanel);
-            this.MessengerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MessengerPanel.Location = new System.Drawing.Point(0, 0);
-            this.MessengerPanel.Name = "MessengerPanel";
-            this.MessengerPanel.Size = new System.Drawing.Size(979, 495);
-            this.MessengerPanel.TabIndex = 1;
-            // 
-            // MessengerMainPanel
-            // 
-            this.MessengerMainPanel.Controls.Add(this.MessengerShowPanel);
-            this.MessengerMainPanel.Controls.Add(this.MessengerSendPanel);
-            this.MessengerMainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MessengerMainPanel.Location = new System.Drawing.Point(0, 0);
-            this.MessengerMainPanel.Name = "MessengerMainPanel";
-            this.MessengerMainPanel.Size = new System.Drawing.Size(979, 495);
-            this.MessengerMainPanel.TabIndex = 5;
-            // 
-            // MessengerShowPanel
-            // 
-            this.MessengerShowPanel.Controls.Add(this.MessengerListBox);
-            this.MessengerShowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MessengerShowPanel.Location = new System.Drawing.Point(0, 0);
-            this.MessengerShowPanel.Name = "MessengerShowPanel";
-            this.MessengerShowPanel.Padding = new System.Windows.Forms.Padding(10, 10, 10, 0);
-            this.MessengerShowPanel.Size = new System.Drawing.Size(979, 455);
-            this.MessengerShowPanel.TabIndex = 1;
-            // 
-            // MessengerListBox
-            // 
-            this.MessengerListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
-            this.MessengerListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.MessengerListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MessengerListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold);
-            this.MessengerListBox.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.MessengerListBox.FormattingEnabled = true;
-            this.MessengerListBox.ItemHeight = 17;
-            this.MessengerListBox.Location = new System.Drawing.Point(10, 10);
-            this.MessengerListBox.Name = "MessengerListBox";
-            this.MessengerListBox.Size = new System.Drawing.Size(959, 445);
-            this.MessengerListBox.TabIndex = 0;
-            // 
-            // MessengerSendPanel
-            // 
-            this.MessengerSendPanel.Controls.Add(this.SendMessageButtonPanel);
-            this.MessengerSendPanel.Controls.Add(this.MessengerTextBoxPanel);
-            this.MessengerSendPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.MessengerSendPanel.Location = new System.Drawing.Point(0, 455);
-            this.MessengerSendPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.MessengerSendPanel.Name = "MessengerSendPanel";
-            this.MessengerSendPanel.Size = new System.Drawing.Size(979, 40);
-            this.MessengerSendPanel.TabIndex = 4;
-            // 
-            // SendMessageButtonPanel
-            // 
-            this.SendMessageButtonPanel.Controls.Add(this.SendMessageButton);
-            this.SendMessageButtonPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.SendMessageButtonPanel.Location = new System.Drawing.Point(939, 0);
-            this.SendMessageButtonPanel.Name = "SendMessageButtonPanel";
-            this.SendMessageButtonPanel.Padding = new System.Windows.Forms.Padding(7);
-            this.SendMessageButtonPanel.Size = new System.Drawing.Size(40, 40);
-            this.SendMessageButtonPanel.TabIndex = 5;
-            // 
-            // SendMessageButton
-            // 
-            this.SendMessageButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SendMessageButton.BackgroundImage")));
-            this.SendMessageButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SendMessageButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SendMessageButton.FlatAppearance.BorderSize = 0;
-            this.SendMessageButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.SendMessageButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.SendMessageButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SendMessageButton.Location = new System.Drawing.Point(7, 7);
-            this.SendMessageButton.Name = "SendMessageButton";
-            this.SendMessageButton.Size = new System.Drawing.Size(26, 26);
-            this.SendMessageButton.TabIndex = 1;
-            this.SendMessageButton.UseVisualStyleBackColor = false;
-            this.SendMessageButton.Click += new System.EventHandler(this.SendMessageButton_Click);
-            this.SendMessageButton.MouseEnter += new System.EventHandler(this.SendMessageButton_MouseEnter);
-            // 
-            // MessengerTextBoxPanel
-            // 
-            this.MessengerTextBoxPanel.Controls.Add(this.MessengerTextBox);
-            this.MessengerTextBoxPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MessengerTextBoxPanel.Location = new System.Drawing.Point(0, 0);
-            this.MessengerTextBoxPanel.Name = "MessengerTextBoxPanel";
-            this.MessengerTextBoxPanel.Padding = new System.Windows.Forms.Padding(10, 10, 50, 10);
-            this.MessengerTextBoxPanel.Size = new System.Drawing.Size(979, 40);
-            this.MessengerTextBoxPanel.TabIndex = 4;
-            // 
-            // MessengerTextBox
-            // 
-            this.MessengerTextBox.AcceptsReturn = true;
-            this.MessengerTextBox.AcceptsTab = true;
-            this.MessengerTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.MessengerTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.MessengerTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MessengerTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MessengerTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.MessengerTextBox.Location = new System.Drawing.Point(10, 10);
-            this.MessengerTextBox.Margin = new System.Windows.Forms.Padding(0);
-            this.MessengerTextBox.Name = "MessengerTextBox";
-            this.MessengerTextBox.Size = new System.Drawing.Size(919, 20);
-            this.MessengerTextBox.TabIndex = 3;
-            // 
             // UserPanel
             // 
             this.UserPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
@@ -1979,6 +1774,211 @@ namespace kanbanboard.Forms
             this.FullNameTitleLabel.TabIndex = 0;
             this.FullNameTitleLabel.Text = "ФИО";
             // 
+            // PanelWithTable
+            // 
+            this.PanelWithTable.AutoSize = true;
+            this.PanelWithTable.Controls.Add(this.TableLayoutPanel);
+            this.PanelWithTable.Controls.Add(this.AddingPanel);
+            this.PanelWithTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelWithTable.Location = new System.Drawing.Point(0, 0);
+            this.PanelWithTable.Name = "PanelWithTable";
+            this.PanelWithTable.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
+            this.PanelWithTable.Size = new System.Drawing.Size(979, 495);
+            this.PanelWithTable.TabIndex = 0;
+            // 
+            // AddingPanel
+            // 
+            this.AddingPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.AddingPanel.Controls.Add(this.TrashButton);
+            this.AddingPanel.Controls.Add(this.AddTitleButton);
+            this.AddingPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.AddingPanel.Location = new System.Drawing.Point(937, 0);
+            this.AddingPanel.Name = "AddingPanel";
+            this.AddingPanel.Size = new System.Drawing.Size(42, 494);
+            this.AddingPanel.TabIndex = 0;
+            // 
+            // TrashButton
+            // 
+            this.TrashButton.BackColor = System.Drawing.Color.Transparent;
+            this.TrashButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TrashButton.FlatAppearance.BorderSize = 0;
+            this.TrashButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TrashButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F);
+            this.TrashButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.TrashButton.Location = new System.Drawing.Point(0, 36);
+            this.TrashButton.Name = "TrashButton";
+            this.TrashButton.Size = new System.Drawing.Size(42, 42);
+            this.TrashButton.TabIndex = 2;
+            this.TrashButton.Text = "🗑";
+            this.TrashButton.UseVisualStyleBackColor = false;
+            this.TrashButton.Click += new System.EventHandler(this.TrashButton_Click);
+            // 
+            // AddTitleButton
+            // 
+            this.AddTitleButton.BackColor = System.Drawing.Color.Transparent;
+            this.AddTitleButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.AddTitleButton.FlatAppearance.BorderSize = 0;
+            this.AddTitleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddTitleButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F);
+            this.AddTitleButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.AddTitleButton.Location = new System.Drawing.Point(0, 0);
+            this.AddTitleButton.Name = "AddTitleButton";
+            this.AddTitleButton.Size = new System.Drawing.Size(42, 36);
+            this.AddTitleButton.TabIndex = 3;
+            this.AddTitleButton.Text = "+";
+            this.AddTitleButton.UseVisualStyleBackColor = false;
+            this.AddTitleButton.Click += new System.EventHandler(this.AddTitleButton_Click);
+            // 
+            // LoadPanel
+            // 
+            this.LoadPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
+            this.LoadPanel.Controls.Add(this.LoadLabel);
+            this.LoadPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LoadPanel.Location = new System.Drawing.Point(0, 0);
+            this.LoadPanel.Name = "LoadPanel";
+            this.LoadPanel.Size = new System.Drawing.Size(979, 495);
+            this.LoadPanel.TabIndex = 3;
+            this.LoadPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.LoadPanel_Paint);
+            // 
+            // LoadLabel
+            // 
+            this.LoadLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LoadLabel.AutoSize = true;
+            this.LoadLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LoadLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.LoadLabel.Location = new System.Drawing.Point(444, 241);
+            this.LoadLabel.Name = "LoadLabel";
+            this.LoadLabel.Size = new System.Drawing.Size(63, 13);
+            this.LoadLabel.TabIndex = 3;
+            this.LoadLabel.Text = "Загрузка...";
+            // 
+            // CalendarPanel
+            // 
+            this.CalendarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
+            this.CalendarPanel.Controls.Add(this.CalendarDateTimePicker);
+            this.CalendarPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CalendarPanel.Location = new System.Drawing.Point(0, 0);
+            this.CalendarPanel.Name = "CalendarPanel";
+            this.CalendarPanel.Size = new System.Drawing.Size(979, 495);
+            this.CalendarPanel.TabIndex = 1;
+            // 
+            // CalendarDateTimePicker
+            // 
+            this.CalendarDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.CalendarDateTimePicker.Location = new System.Drawing.Point(35, 36);
+            this.CalendarDateTimePicker.MinDate = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
+            this.CalendarDateTimePicker.Name = "CalendarDateTimePicker";
+            this.CalendarDateTimePicker.Size = new System.Drawing.Size(161, 24);
+            this.CalendarDateTimePicker.TabIndex = 2;
+            // 
+            // MessengerPanel
+            // 
+            this.MessengerPanel.Controls.Add(this.MessengerMainPanel);
+            this.MessengerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MessengerPanel.Location = new System.Drawing.Point(0, 0);
+            this.MessengerPanel.Name = "MessengerPanel";
+            this.MessengerPanel.Size = new System.Drawing.Size(979, 495);
+            this.MessengerPanel.TabIndex = 1;
+            // 
+            // MessengerMainPanel
+            // 
+            this.MessengerMainPanel.Controls.Add(this.MessengerShowPanel);
+            this.MessengerMainPanel.Controls.Add(this.MessengerSendPanel);
+            this.MessengerMainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MessengerMainPanel.Location = new System.Drawing.Point(0, 0);
+            this.MessengerMainPanel.Name = "MessengerMainPanel";
+            this.MessengerMainPanel.Size = new System.Drawing.Size(979, 495);
+            this.MessengerMainPanel.TabIndex = 5;
+            // 
+            // MessengerShowPanel
+            // 
+            this.MessengerShowPanel.Controls.Add(this.MessengerListBox);
+            this.MessengerShowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MessengerShowPanel.Location = new System.Drawing.Point(0, 0);
+            this.MessengerShowPanel.Name = "MessengerShowPanel";
+            this.MessengerShowPanel.Padding = new System.Windows.Forms.Padding(10, 10, 10, 0);
+            this.MessengerShowPanel.Size = new System.Drawing.Size(979, 455);
+            this.MessengerShowPanel.TabIndex = 1;
+            // 
+            // MessengerListBox
+            // 
+            this.MessengerListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
+            this.MessengerListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.MessengerListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MessengerListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold);
+            this.MessengerListBox.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.MessengerListBox.FormattingEnabled = true;
+            this.MessengerListBox.ItemHeight = 17;
+            this.MessengerListBox.Location = new System.Drawing.Point(10, 10);
+            this.MessengerListBox.Name = "MessengerListBox";
+            this.MessengerListBox.Size = new System.Drawing.Size(959, 445);
+            this.MessengerListBox.TabIndex = 0;
+            // 
+            // MessengerSendPanel
+            // 
+            this.MessengerSendPanel.Controls.Add(this.SendMessageButtonPanel);
+            this.MessengerSendPanel.Controls.Add(this.MessengerTextBoxPanel);
+            this.MessengerSendPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.MessengerSendPanel.Location = new System.Drawing.Point(0, 455);
+            this.MessengerSendPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.MessengerSendPanel.Name = "MessengerSendPanel";
+            this.MessengerSendPanel.Size = new System.Drawing.Size(979, 40);
+            this.MessengerSendPanel.TabIndex = 4;
+            // 
+            // SendMessageButtonPanel
+            // 
+            this.SendMessageButtonPanel.Controls.Add(this.SendMessageButton);
+            this.SendMessageButtonPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.SendMessageButtonPanel.Location = new System.Drawing.Point(939, 0);
+            this.SendMessageButtonPanel.Name = "SendMessageButtonPanel";
+            this.SendMessageButtonPanel.Padding = new System.Windows.Forms.Padding(7);
+            this.SendMessageButtonPanel.Size = new System.Drawing.Size(40, 40);
+            this.SendMessageButtonPanel.TabIndex = 5;
+            // 
+            // SendMessageButton
+            // 
+            this.SendMessageButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SendMessageButton.BackgroundImage")));
+            this.SendMessageButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SendMessageButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SendMessageButton.FlatAppearance.BorderSize = 0;
+            this.SendMessageButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.SendMessageButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.SendMessageButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SendMessageButton.Location = new System.Drawing.Point(7, 7);
+            this.SendMessageButton.Name = "SendMessageButton";
+            this.SendMessageButton.Size = new System.Drawing.Size(26, 26);
+            this.SendMessageButton.TabIndex = 1;
+            this.SendMessageButton.UseVisualStyleBackColor = false;
+            this.SendMessageButton.Click += new System.EventHandler(this.SendMessageButton_Click);
+            this.SendMessageButton.MouseEnter += new System.EventHandler(this.SendMessageButton_MouseEnter);
+            // 
+            // MessengerTextBoxPanel
+            // 
+            this.MessengerTextBoxPanel.Controls.Add(this.MessengerTextBox);
+            this.MessengerTextBoxPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MessengerTextBoxPanel.Location = new System.Drawing.Point(0, 0);
+            this.MessengerTextBoxPanel.Name = "MessengerTextBoxPanel";
+            this.MessengerTextBoxPanel.Padding = new System.Windows.Forms.Padding(10, 10, 50, 10);
+            this.MessengerTextBoxPanel.Size = new System.Drawing.Size(979, 40);
+            this.MessengerTextBoxPanel.TabIndex = 4;
+            // 
+            // MessengerTextBox
+            // 
+            this.MessengerTextBox.AcceptsReturn = true;
+            this.MessengerTextBox.AcceptsTab = true;
+            this.MessengerTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.MessengerTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.MessengerTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MessengerTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MessengerTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.MessengerTextBox.Location = new System.Drawing.Point(10, 10);
+            this.MessengerTextBox.Margin = new System.Windows.Forms.Padding(0);
+            this.MessengerTextBox.Name = "MessengerTextBox";
+            this.MessengerTextBox.Size = new System.Drawing.Size(919, 20);
+            this.MessengerTextBox.TabIndex = 3;
+            // 
             // HeadPanel
             // 
             this.HeadPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
@@ -2022,19 +2022,6 @@ namespace kanbanboard.Forms
             this.BasicPanel.ResumeLayout(false);
             this.BasicContentPanel.ResumeLayout(false);
             this.BasicContentPanel.PerformLayout();
-            this.PanelWithTable.ResumeLayout(false);
-            this.PanelWithTable.PerformLayout();
-            this.AddingPanel.ResumeLayout(false);
-            this.LoadPanel.ResumeLayout(false);
-            this.LoadPanel.PerformLayout();
-            this.CalendarPanel.ResumeLayout(false);
-            this.MessengerPanel.ResumeLayout(false);
-            this.MessengerMainPanel.ResumeLayout(false);
-            this.MessengerShowPanel.ResumeLayout(false);
-            this.MessengerSendPanel.ResumeLayout(false);
-            this.SendMessageButtonPanel.ResumeLayout(false);
-            this.MessengerTextBoxPanel.ResumeLayout(false);
-            this.MessengerTextBoxPanel.PerformLayout();
             this.UserPanel.ResumeLayout(false);
             this.PasswordPanel.ResumeLayout(false);
             this.PasswordPanel.PerformLayout();
@@ -2066,6 +2053,19 @@ namespace kanbanboard.Forms
             this.FullNameGetLabelPanel.PerformLayout();
             this.FullNameLabelPanel.ResumeLayout(false);
             this.FullNameLabelPanel.PerformLayout();
+            this.PanelWithTable.ResumeLayout(false);
+            this.PanelWithTable.PerformLayout();
+            this.AddingPanel.ResumeLayout(false);
+            this.LoadPanel.ResumeLayout(false);
+            this.LoadPanel.PerformLayout();
+            this.CalendarPanel.ResumeLayout(false);
+            this.MessengerPanel.ResumeLayout(false);
+            this.MessengerMainPanel.ResumeLayout(false);
+            this.MessengerShowPanel.ResumeLayout(false);
+            this.MessengerSendPanel.ResumeLayout(false);
+            this.SendMessageButtonPanel.ResumeLayout(false);
+            this.MessengerTextBoxPanel.ResumeLayout(false);
+            this.MessengerTextBoxPanel.PerformLayout();
             this.HeadPanel.ResumeLayout(false);
             this.HeadPanel.PerformLayout();
             this.ResumeLayout(false);

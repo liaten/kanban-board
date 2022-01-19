@@ -28,15 +28,23 @@ namespace kanbanboard.Forms
             var password = RegPasswordTextBox.Text;
             var role = RegRoleComboBox.SelectedItem?.ToString();
             var projects = RegProjectsTextBox.Text;
-            var gmt = RegGMTComboBox.SelectedItem?.ToString();
             var org = RegOrgTextBox.Text;
             var fullname = RegFullNameTextBox.Text;
 
-            if (new List<string> { login, email, password, role, projects, gmt, org, fullname }.Any(x => string.IsNullOrEmpty(x)))
+            var currentTimeZoneHours = TimeZone.CurrentTimeZone.GetUtcOffset(DateTime.Now).Hours;
+            var utc = currentTimeZoneHours switch
+            {
+                > 0 => $"+{currentTimeZoneHours}",
+                < 0 => $"-{currentTimeZoneHours}",
+                0 => $"{currentTimeZoneHours}"
+            };
+
+            if (new List<string> { login, email, password, role, projects, utc, org, fullname }.Any(x => string.IsNullOrEmpty(x)))
             {
                 MessageBox.Show(@"Не все поля заполнены.");
                 return;
             }
+
             if (_users.ContainsKey(login))
             {
                 MessageBox.Show(@"Пользователь с таким логином уже существует.");
@@ -48,6 +56,7 @@ namespace kanbanboard.Forms
                 MessageBox.Show(@"Неправильно введена почта.\nВведите почту в формате any@anymail.com");
                 return;
             }
+
             var newUser = new User
                 (
                     login,
@@ -57,7 +66,7 @@ namespace kanbanboard.Forms
                     role.ToEnum<Roles>(),
                     org,
                     fullname,
-                    Get_GMT_From_String(gmt)
+                    utc
                 );
 
             _users.Add(newUser.Username, newUser);
@@ -97,10 +106,6 @@ namespace kanbanboard.Forms
             // Устанавливаем название окна - "Регистрация"
             Text = "Регистрация";
             this.Size = new Size(350, 465);
-        }
-        public double Get_GMT_From_String(string GMT_String)
-        {
-            return 0;
         }
     }
 }
