@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using FireSharp;
+﻿using FireSharp;
 using FireSharp.Config;
 using FireSharp.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace kanbanboard.Classes
 {
@@ -156,7 +155,7 @@ namespace kanbanboard.Classes
 
             // добавляем в базу
             var result = await Client.SetAsync($"Users/{user.Username}/Projects", data);
-            
+
             return result.StatusCode.ToString();
         }
 
