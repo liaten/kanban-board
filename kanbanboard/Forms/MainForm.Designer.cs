@@ -1842,17 +1842,15 @@ namespace kanbanboard.Forms
             // 
             // LoadLabel
             // 
-            this.LoadLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.LoadLabel.AutoSize = true;
-            this.LoadLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LoadLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LoadLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LoadLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.LoadLabel.Location = new System.Drawing.Point(444, 241);
+            this.LoadLabel.Location = new System.Drawing.Point(0, 0);
             this.LoadLabel.Name = "LoadLabel";
-            this.LoadLabel.Size = new System.Drawing.Size(63, 13);
+            this.LoadLabel.Size = new System.Drawing.Size(979, 495);
             this.LoadLabel.TabIndex = 3;
             this.LoadLabel.Text = "Загрузка...";
+            this.LoadLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CalendarPanel
             // 
@@ -2057,7 +2055,6 @@ namespace kanbanboard.Forms
             this.PanelWithTable.PerformLayout();
             this.AddingPanel.ResumeLayout(false);
             this.LoadPanel.ResumeLayout(false);
-            this.LoadPanel.PerformLayout();
             this.CalendarPanel.ResumeLayout(false);
             this.MessengerPanel.ResumeLayout(false);
             this.MessengerMainPanel.ResumeLayout(false);
