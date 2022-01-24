@@ -86,11 +86,16 @@ namespace kanbanboard.Forms
                     return;
                 }
 
-                // Загоняем в listbox проектов названия проектов текущего пользователя
+                // Загоняем в listbox названия проектов текущего пользователя
                 SetUserProjectNames();
 
                 // Стартовый вид -> панель с профилем
                 UserControlsPanel_Click(null, null);
+
+                // Начальное состояние после входа
+                try { ListBoxOfProjectNames.SelectedIndex = 0; }
+                catch {}
+                finally { UserPanel.BringToFront();}
             };
         }
 
