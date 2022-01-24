@@ -133,16 +133,15 @@ namespace kanbanboard.Classes
         // Если пароля нет в базе, пользователь входит в любом случае (хоть с липовым паролем, хоть без него)
         public static bool CheckPassword(this User user, string potentialPassword)
         {
-            var password = user.GetPassword();
+            string password = user.GetPassword();
             if (password is null) return true;
             return password == potentialPassword;
         }
 
         public static bool CheckPassword(this string username, string potentialPassword)
         {
-            var password = GetPassword(username);
-            if (password is null) return true;
-            return password == potentialPassword;
+            string password = GetPassword(username);
+            return password is null || password == potentialPassword;
         }
 
         // Установить пароль пользователю
@@ -161,7 +160,7 @@ namespace kanbanboard.Classes
         // Создает проект в базе пользователя.
         public static async Task<string> CreateProject(this User user, string projectName)
         {
-            var data = Client.Get($"Users/{user.Username}/Projects").ResultAs<List<string>>();
+            List<string> data = Client.Get($"Users/{user.Username}/Projects").ResultAs<List<string>>();
 
             // Вытаскиваем данные о проектах, либо заносим, если их нет
             if (data is not null)
@@ -175,7 +174,7 @@ namespace kanbanboard.Classes
                 }
 
                 // добавляем в базу
-                var result = await Client.SetAsync($"Users/{user.Username}/Projects", data);
+                FireSharp.Response.SetResponse result = await Client.SetAsync($"Users/{user.Username}/Projects", data);
 
                 return result.StatusCode.ToString();
             }
@@ -186,7 +185,7 @@ namespace kanbanboard.Classes
         // Создает проект в базе пользователя.
         public static async void CreateProject(this string username, string projectName)
         {
-            var data = Client.Get($"Users/{username}/Projects").ResultAs<List<string>>();
+            List<string> data = Client.Get($"Users/{username}/Projects").ResultAs<List<string>>();
 
             // Вытаскиваем данные о проектах, либо заносим, если их нет
             if (data is null)
@@ -199,7 +198,9 @@ namespace kanbanboard.Classes
 
             // Добавляем в данные данные
             if (!data.Exists(x => x == projectName))
+            {
                 data.Add(projectName);
+            }
 
             // добавляем в базу
             await Client.SetAsync($"Users/{username}/Projects", data);
@@ -232,7 +233,7 @@ namespace kanbanboard.Classes
 
         public static bool CheckUser(this string username)
         {
-            var response = Client.GetAsync($"Users/{username}").Result.Body;
+            string response = Client.GetAsync($"Users/{username}").Result.Body;
             return response != "null" && !string.IsNullOrEmpty(response);
         }
 
@@ -256,7 +257,8 @@ namespace kanbanboard.Classes
         // Сохранить сообщение в базу
         public static async void SaveMessage(this User user, string projectName, string message)
         {
-            var list = user.GetMessages(projectName) ?? new List<Dictionary<string, string>>();
+            List<Dictionary<string, string>> list =
+                user.GetMessages(projectName) ?? new List<Dictionary<string, string>>();
             list.Add(new Dictionary<string, string> { { user.Username, message } });
             await Client.SetAsync($"Projects/{projectName}/Chat/", list);
         }
