@@ -1,10 +1,11 @@
-﻿using FireSharp;
-using FireSharp.Config;
-using FireSharp.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FireSharp;
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
 
 namespace kanbanboard.Classes
 {
@@ -173,7 +174,7 @@ namespace kanbanboard.Classes
                 }
 
                 // добавляем в базу
-                FireSharp.Response.SetResponse result = await Client.SetAsync($"Users/{user.Username}/Projects", data);
+                SetResponse result = await Client.SetAsync($"Users/{user.Username}/Projects", data);
 
                 return result.StatusCode.ToString();
             }
@@ -220,7 +221,7 @@ namespace kanbanboard.Classes
             data.RemoveAll(x => x == projectName);
 
             // удаляем из базы
-            FireSharp.Response.SetResponse result = await Client.SetAsync($"Users/{user.Username}/Projects", data);
+            SetResponse result = await Client.SetAsync($"Users/{user.Username}/Projects", data);
 
             return result.StatusCode.ToString();
         }

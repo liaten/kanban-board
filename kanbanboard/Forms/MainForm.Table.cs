@@ -353,7 +353,7 @@ namespace kanbanboard.Forms
         // Удалить выбранный проект
         private async void TrashButton_Click(object sender, EventArgs e)
         {
-            if (await Firebase.DeleteProject(_user, ListBoxOfProjectNames.SelectedItem?.ToString()) == "OK")
+            if (await _user.DeleteProject(ListBoxOfProjectNames.SelectedItem?.ToString()) == "OK")
                 SetUserProjectNames();
         }
     }
