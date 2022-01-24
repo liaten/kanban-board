@@ -362,7 +362,7 @@ namespace kanbanboard.Forms
             this.UsernameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.UsernameLabel.Location = new System.Drawing.Point(3, 3);
             this.UsernameLabel.Name = "UsernameLabel";
-            this.UsernameLabel.Size = new System.Drawing.Size(132, 16);
+            this.UsernameLabel.Size = new System.Drawing.Size(131, 16);
             this.UsernameLabel.TabIndex = 1;
             this.UsernameLabel.Text = "USERNAME_GET";
             this.UsernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

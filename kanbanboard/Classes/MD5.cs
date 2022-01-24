@@ -9,8 +9,8 @@ namespace kanbanboard.Classes
         // Расшифровка
         static public string Decrypt(string line)
         {
-            var data = Convert.FromBase64String(line);
-            using (var tripleDes = new TripleDESCryptoServiceProvider
+            byte[] data = Convert.FromBase64String(line);
+            using (TripleDESCryptoServiceProvider tripleDes = new TripleDESCryptoServiceProvider
             {
                 Key = new MD5CryptoServiceProvider().ComputeHash(Encoding.UTF8.GetBytes("R0CK5T4R")),
                 Mode = CipherMode.ECB,
@@ -22,8 +22,8 @@ namespace kanbanboard.Classes
         // Зашифровка
         static public string Encrypt(string line)
         {
-            var data = Encoding.UTF8.GetBytes(line);
-            using (var tripleDes = new TripleDESCryptoServiceProvider
+            byte[] data = Encoding.UTF8.GetBytes(line);
+            using (TripleDESCryptoServiceProvider tripleDes = new TripleDESCryptoServiceProvider
             {
                 Key = new MD5CryptoServiceProvider().ComputeHash(Encoding.UTF8.GetBytes("R0CK5T4R")),
                 Mode = CipherMode.ECB,

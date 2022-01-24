@@ -1,7 +1,7 @@
-﻿using System;
-using System.Windows.Forms;
-using kanbanboard.Classes;
+﻿using kanbanboard.Classes;
 using kanbanboard.Controls;
+using System;
+using System.Windows.Forms;
 
 namespace kanbanboard.Forms
 {

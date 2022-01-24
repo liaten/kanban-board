@@ -105,7 +105,7 @@ namespace kanbanboard.Forms
         {
             if (SystemInformation.TerminalServerSession)
                 return;
-            var aProp = typeof(Control).GetProperty("DoubleBuffered",
+            PropertyInfo aProp = typeof(Control).GetProperty("DoubleBuffered",
                 BindingFlags.NonPublic |
                 BindingFlags.Instance);
             aProp?.SetValue(c, true, null);
@@ -117,7 +117,7 @@ namespace kanbanboard.Forms
             if (e.Button == MouseButtons.Left)
                 if (!Application.OpenForms.OfType<ChangeForm>().Any())
                 {
-                    var changeForm = new ChangeForm(this, _user);
+                    ChangeForm changeForm = new ChangeForm(this, _user);
                     changeForm.Show();
 
                     while (true)
@@ -200,7 +200,7 @@ namespace kanbanboard.Forms
         private void ExitButton_Click(object sender, EventArgs e)
         {
             Hide();
-            var LoginForm = new LoginForm();
+            LoginForm LoginForm = new LoginForm();
             LoginForm.Show();
         }
 

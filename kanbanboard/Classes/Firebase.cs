@@ -49,7 +49,7 @@ namespace kanbanboard.Classes
             List<string> projects = Client.GetAsync($"Users/{user.Username}/Projects").Result.ResultAs<List<string>>() ?? new List<string>();
             projects.RemoveAll(x => x is null);
 
-            foreach (var p in projects)
+            foreach (string p in projects)
             {
                 // Получаем канбан-доску проекта, если он есть в базе
                 Dictionary<string, List<Dictionary<string, string>>> kanban =
@@ -86,7 +86,7 @@ namespace kanbanboard.Classes
         // Загрузить данные
         public static void UploadData(Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>> dataDictionary)
         {
-            foreach (var project in dataDictionary)
+            foreach (KeyValuePair<string, Dictionary<string, List<Dictionary<string, string>>>> project in dataDictionary)
             {
                 Client.Set($"Projects/{project.Key}/Kanban", project.Value);
             }
