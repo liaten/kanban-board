@@ -42,8 +42,7 @@ namespace kanbanboard.Classes
         // [ключ — НАЗВАНИЕ ПРОЕКТА | значение — ДАННЫЕ КАНБАН-ДОСКИ (тоже в виде словаря)]
         public static Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>> GetDataForAllProjects(this User user)
         {
-            Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>> dataOfProjects =
-                new Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>>();
+            Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>> dataOfProjects = new();
 
             // Получаем имена проектов пользователя. Очищаем значения с null
             List<string> projects = Client.GetAsync($"Users/{user.Username}/Projects").Result.ResultAs<List<string>>() ?? new List<string>();
