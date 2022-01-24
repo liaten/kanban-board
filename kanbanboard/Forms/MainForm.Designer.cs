@@ -1505,10 +1505,10 @@ namespace kanbanboard.Forms
             this.PasswordShowPanel.Controls.Add(this.PasswordShowLabel);
             this.PasswordShowPanel.Controls.Add(this.PasswordShowLinkLabel);
             this.PasswordShowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PasswordShowPanel.Location = new System.Drawing.Point(77, 0);
+            this.PasswordShowPanel.Location = new System.Drawing.Point(80, 0);
             this.PasswordShowPanel.Name = "PasswordShowPanel";
             this.PasswordShowPanel.Padding = new System.Windows.Forms.Padding(5);
-            this.PasswordShowPanel.Size = new System.Drawing.Size(902, 36);
+            this.PasswordShowPanel.Size = new System.Drawing.Size(899, 36);
             this.PasswordShowPanel.TabIndex = 4;
             // 
             // PasswordShowLabel
@@ -1516,7 +1516,7 @@ namespace kanbanboard.Forms
             this.PasswordShowLabel.AutoSize = true;
             this.PasswordShowLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
             this.PasswordShowLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.PasswordShowLabel.Location = new System.Drawing.Point(113, 5);
+            this.PasswordShowLabel.Location = new System.Drawing.Point(113, 8);
             this.PasswordShowLabel.Name = "PasswordShowLabel";
             this.PasswordShowLabel.Size = new System.Drawing.Size(0, 20);
             this.PasswordShowLabel.TabIndex = 1;
@@ -1527,7 +1527,7 @@ namespace kanbanboard.Forms
             this.PasswordShowLinkLabel.AutoSize = true;
             this.PasswordShowLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
             this.PasswordShowLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.PasswordShowLinkLabel.Location = new System.Drawing.Point(10, 5);
+            this.PasswordShowLinkLabel.Location = new System.Drawing.Point(10, 8);
             this.PasswordShowLinkLabel.Name = "PasswordShowLinkLabel";
             this.PasswordShowLinkLabel.Size = new System.Drawing.Size(98, 20);
             this.PasswordShowLinkLabel.TabIndex = 0;
@@ -1543,16 +1543,15 @@ namespace kanbanboard.Forms
             this.PasswordGetPanel.Location = new System.Drawing.Point(0, 0);
             this.PasswordGetPanel.Name = "PasswordGetPanel";
             this.PasswordGetPanel.Padding = new System.Windows.Forms.Padding(5);
-            this.PasswordGetPanel.Size = new System.Drawing.Size(77, 36);
+            this.PasswordGetPanel.Size = new System.Drawing.Size(80, 36);
             this.PasswordGetPanel.TabIndex = 3;
             // 
             // PasswordGetLabel
             // 
             this.PasswordGetLabel.AutoSize = true;
-            this.PasswordGetLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PasswordGetLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.PasswordGetLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.PasswordGetLabel.Location = new System.Drawing.Point(5, 5);
+            this.PasswordGetLabel.Location = new System.Drawing.Point(5, 9);
             this.PasswordGetLabel.Name = "PasswordGetLabel";
             this.PasswordGetLabel.Size = new System.Drawing.Size(67, 20);
             this.PasswordGetLabel.TabIndex = 0;
@@ -1572,10 +1571,10 @@ namespace kanbanboard.Forms
             // 
             this.TimeZoneGetPanel.Controls.Add(this.TimeZoneLabel);
             this.TimeZoneGetPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TimeZoneGetPanel.Location = new System.Drawing.Point(139, 0);
+            this.TimeZoneGetPanel.Location = new System.Drawing.Point(142, 0);
             this.TimeZoneGetPanel.Name = "TimeZoneGetPanel";
             this.TimeZoneGetPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.TimeZoneGetPanel.Size = new System.Drawing.Size(840, 36);
+            this.TimeZoneGetPanel.Size = new System.Drawing.Size(837, 36);
             this.TimeZoneGetPanel.TabIndex = 4;
             // 
             // TimeZoneLabel
@@ -1583,7 +1582,7 @@ namespace kanbanboard.Forms
             this.TimeZoneLabel.AutoSize = true;
             this.TimeZoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TimeZoneLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.TimeZoneLabel.Location = new System.Drawing.Point(3, 3);
+            this.TimeZoneLabel.Location = new System.Drawing.Point(3, 7);
             this.TimeZoneLabel.Name = "TimeZoneLabel";
             this.TimeZoneLabel.Size = new System.Drawing.Size(145, 20);
             this.TimeZoneLabel.TabIndex = 1;
@@ -1597,16 +1596,15 @@ namespace kanbanboard.Forms
             this.TimeZoneLabelPanel.Location = new System.Drawing.Point(0, 0);
             this.TimeZoneLabelPanel.Name = "TimeZoneLabelPanel";
             this.TimeZoneLabelPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.TimeZoneLabelPanel.Size = new System.Drawing.Size(139, 36);
+            this.TimeZoneLabelPanel.Size = new System.Drawing.Size(142, 36);
             this.TimeZoneLabelPanel.TabIndex = 3;
             // 
             // TimeZoneTitleLabel
             // 
             this.TimeZoneTitleLabel.AutoSize = true;
-            this.TimeZoneTitleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TimeZoneTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TimeZoneTitleLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.TimeZoneTitleLabel.Location = new System.Drawing.Point(3, 3);
+            this.TimeZoneTitleLabel.Location = new System.Drawing.Point(3, 7);
             this.TimeZoneTitleLabel.Name = "TimeZoneTitleLabel";
             this.TimeZoneTitleLabel.Size = new System.Drawing.Size(133, 20);
             this.TimeZoneTitleLabel.TabIndex = 0;
@@ -1626,10 +1624,10 @@ namespace kanbanboard.Forms
             // 
             this.OrganizationGetPanel.Controls.Add(this.OrganizationLabel);
             this.OrganizationGetPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OrganizationGetPanel.Location = new System.Drawing.Point(114, 0);
+            this.OrganizationGetPanel.Location = new System.Drawing.Point(117, 0);
             this.OrganizationGetPanel.Name = "OrganizationGetPanel";
             this.OrganizationGetPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.OrganizationGetPanel.Size = new System.Drawing.Size(865, 36);
+            this.OrganizationGetPanel.Size = new System.Drawing.Size(862, 36);
             this.OrganizationGetPanel.TabIndex = 4;
             // 
             // OrganizationLabel
@@ -1637,7 +1635,7 @@ namespace kanbanboard.Forms
             this.OrganizationLabel.AutoSize = true;
             this.OrganizationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.OrganizationLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.OrganizationLabel.Location = new System.Drawing.Point(3, 3);
+            this.OrganizationLabel.Location = new System.Drawing.Point(3, 7);
             this.OrganizationLabel.Name = "OrganizationLabel";
             this.OrganizationLabel.Size = new System.Drawing.Size(189, 20);
             this.OrganizationLabel.TabIndex = 1;
@@ -1651,16 +1649,15 @@ namespace kanbanboard.Forms
             this.OrganizationLabelPanel.Location = new System.Drawing.Point(0, 0);
             this.OrganizationLabelPanel.Name = "OrganizationLabelPanel";
             this.OrganizationLabelPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.OrganizationLabelPanel.Size = new System.Drawing.Size(114, 36);
+            this.OrganizationLabelPanel.Size = new System.Drawing.Size(117, 36);
             this.OrganizationLabelPanel.TabIndex = 3;
             // 
             // OrganizationTitleLabel
             // 
             this.OrganizationTitleLabel.AutoSize = true;
-            this.OrganizationTitleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.OrganizationTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.OrganizationTitleLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.OrganizationTitleLabel.Location = new System.Drawing.Point(3, 3);
+            this.OrganizationTitleLabel.Location = new System.Drawing.Point(3, 7);
             this.OrganizationTitleLabel.Name = "OrganizationTitleLabel";
             this.OrganizationTitleLabel.Size = new System.Drawing.Size(108, 20);
             this.OrganizationTitleLabel.TabIndex = 0;
@@ -1680,10 +1677,10 @@ namespace kanbanboard.Forms
             // 
             this.NickNameGetPanel.Controls.Add(this.NickNameLabel);
             this.NickNameGetPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NickNameGetPanel.Location = new System.Drawing.Point(138, 0);
+            this.NickNameGetPanel.Location = new System.Drawing.Point(141, 0);
             this.NickNameGetPanel.Name = "NickNameGetPanel";
             this.NickNameGetPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.NickNameGetPanel.Size = new System.Drawing.Size(841, 36);
+            this.NickNameGetPanel.Size = new System.Drawing.Size(838, 36);
             this.NickNameGetPanel.TabIndex = 4;
             // 
             // NickNameLabel
@@ -1691,7 +1688,7 @@ namespace kanbanboard.Forms
             this.NickNameLabel.AutoSize = true;
             this.NickNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.NickNameLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.NickNameLabel.Location = new System.Drawing.Point(3, 3);
+            this.NickNameLabel.Location = new System.Drawing.Point(3, 7);
             this.NickNameLabel.Name = "NickNameLabel";
             this.NickNameLabel.Size = new System.Drawing.Size(146, 20);
             this.NickNameLabel.TabIndex = 1;
@@ -1705,16 +1702,15 @@ namespace kanbanboard.Forms
             this.NickNameLabelPanel.Location = new System.Drawing.Point(0, 0);
             this.NickNameLabelPanel.Name = "NickNameLabelPanel";
             this.NickNameLabelPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.NickNameLabelPanel.Size = new System.Drawing.Size(138, 36);
+            this.NickNameLabelPanel.Size = new System.Drawing.Size(141, 36);
             this.NickNameLabelPanel.TabIndex = 3;
             // 
             // NickNameTitleLabel
             // 
             this.NickNameTitleLabel.AutoSize = true;
-            this.NickNameTitleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.NickNameTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.NickNameTitleLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.NickNameTitleLabel.Location = new System.Drawing.Point(3, 3);
+            this.NickNameTitleLabel.Location = new System.Drawing.Point(3, 7);
             this.NickNameTitleLabel.Name = "NickNameTitleLabel";
             this.NickNameTitleLabel.Size = new System.Drawing.Size(132, 20);
             this.NickNameTitleLabel.TabIndex = 0;
@@ -1734,10 +1730,10 @@ namespace kanbanboard.Forms
             // 
             this.FullNameGetLabelPanel.Controls.Add(this.FullNameLabel);
             this.FullNameGetLabelPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FullNameGetLabelPanel.Location = new System.Drawing.Point(57, 0);
+            this.FullNameGetLabelPanel.Location = new System.Drawing.Point(60, 0);
             this.FullNameGetLabelPanel.Name = "FullNameGetLabelPanel";
             this.FullNameGetLabelPanel.Padding = new System.Windows.Forms.Padding(5);
-            this.FullNameGetLabelPanel.Size = new System.Drawing.Size(922, 36);
+            this.FullNameGetLabelPanel.Size = new System.Drawing.Size(919, 36);
             this.FullNameGetLabelPanel.TabIndex = 4;
             // 
             // FullNameLabel
@@ -1745,7 +1741,7 @@ namespace kanbanboard.Forms
             this.FullNameLabel.AutoSize = true;
             this.FullNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FullNameLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.FullNameLabel.Location = new System.Drawing.Point(5, 5);
+            this.FullNameLabel.Location = new System.Drawing.Point(5, 9);
             this.FullNameLabel.Name = "FullNameLabel";
             this.FullNameLabel.Size = new System.Drawing.Size(149, 20);
             this.FullNameLabel.TabIndex = 1;
@@ -1759,16 +1755,15 @@ namespace kanbanboard.Forms
             this.FullNameLabelPanel.Location = new System.Drawing.Point(0, 0);
             this.FullNameLabelPanel.Name = "FullNameLabelPanel";
             this.FullNameLabelPanel.Padding = new System.Windows.Forms.Padding(5);
-            this.FullNameLabelPanel.Size = new System.Drawing.Size(57, 36);
+            this.FullNameLabelPanel.Size = new System.Drawing.Size(60, 36);
             this.FullNameLabelPanel.TabIndex = 3;
             // 
             // FullNameTitleLabel
             // 
             this.FullNameTitleLabel.AutoSize = true;
-            this.FullNameTitleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FullNameTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FullNameTitleLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.FullNameTitleLabel.Location = new System.Drawing.Point(5, 5);
+            this.FullNameTitleLabel.Location = new System.Drawing.Point(5, 8);
             this.FullNameTitleLabel.Name = "FullNameTitleLabel";
             this.FullNameTitleLabel.Size = new System.Drawing.Size(47, 20);
             this.FullNameTitleLabel.TabIndex = 0;
