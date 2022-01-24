@@ -66,12 +66,6 @@ namespace kanbanboard.Forms
             this.RegOrgTextBox = new System.Windows.Forms.TextBox();
             this.RegOrgCheck = new System.Windows.Forms.Label();
             this.RegOrgLabel = new System.Windows.Forms.Label();
-            this.RegGMTPanel = new System.Windows.Forms.Panel();
-            this.RegGMTLabelPanel = new System.Windows.Forms.Panel();
-            this.RegGMTLabel = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.RegGMTComboBox = new System.Windows.Forms.ComboBox();
-            this.RegGMTCheck = new System.Windows.Forms.Label();
             this.RegFullNamePanel = new System.Windows.Forms.Panel();
             this.RegFullNameTextBox = new System.Windows.Forms.TextBox();
             this.RegFullNameCheck = new System.Windows.Forms.Label();
@@ -118,9 +112,6 @@ namespace kanbanboard.Forms
             this.RegOfRegPanel.SuspendLayout();
             this.RegBackPanel.SuspendLayout();
             this.RegOrgPanel.SuspendLayout();
-            this.RegGMTPanel.SuspendLayout();
-            this.RegGMTLabelPanel.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.RegFullNamePanel.SuspendLayout();
             this.RegProjectsPanel.SuspendLayout();
             this.RegRolePanel.SuspendLayout();
@@ -355,7 +346,7 @@ namespace kanbanboard.Forms
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(334, 449);
+            this.MainPanel.Size = new System.Drawing.Size(334, 386);
             this.MainPanel.TabIndex = 13;
             // 
             // HeaderPanel
@@ -409,7 +400,6 @@ namespace kanbanboard.Forms
             // 
             this.RegPanel.Controls.Add(this.RegButtonsPanel);
             this.RegPanel.Controls.Add(this.RegOrgPanel);
-            this.RegPanel.Controls.Add(this.RegGMTPanel);
             this.RegPanel.Controls.Add(this.RegFullNamePanel);
             this.RegPanel.Controls.Add(this.RegProjectsPanel);
             this.RegPanel.Controls.Add(this.RegRolePanel);
@@ -419,7 +409,7 @@ namespace kanbanboard.Forms
             this.RegPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RegPanel.Location = new System.Drawing.Point(0, 0);
             this.RegPanel.Name = "RegPanel";
-            this.RegPanel.Size = new System.Drawing.Size(334, 449);
+            this.RegPanel.Size = new System.Drawing.Size(334, 386);
             this.RegPanel.TabIndex = 13;
             // 
             // RegButtonsPanel
@@ -427,7 +417,7 @@ namespace kanbanboard.Forms
             this.RegButtonsPanel.Controls.Add(this.RegOfRegPanel);
             this.RegButtonsPanel.Controls.Add(this.RegBackPanel);
             this.RegButtonsPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.RegButtonsPanel.Location = new System.Drawing.Point(0, 375);
+            this.RegButtonsPanel.Location = new System.Drawing.Point(0, 330);
             this.RegButtonsPanel.Name = "RegButtonsPanel";
             this.RegButtonsPanel.Size = new System.Drawing.Size(334, 54);
             this.RegButtonsPanel.TabIndex = 14;
@@ -488,7 +478,7 @@ namespace kanbanboard.Forms
             this.RegOrgPanel.Controls.Add(this.RegOrgCheck);
             this.RegOrgPanel.Controls.Add(this.RegOrgLabel);
             this.RegOrgPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.RegOrgPanel.Location = new System.Drawing.Point(0, 325);
+            this.RegOrgPanel.Location = new System.Drawing.Point(0, 280);
             this.RegOrgPanel.Name = "RegOrgPanel";
             this.RegOrgPanel.Padding = new System.Windows.Forms.Padding(5, 15, 5, 15);
             this.RegOrgPanel.Size = new System.Drawing.Size(334, 50);
@@ -533,197 +523,6 @@ namespace kanbanboard.Forms
             this.RegOrgLabel.Size = new System.Drawing.Size(95, 16);
             this.RegOrgLabel.TabIndex = 4;
             this.RegOrgLabel.Text = "Организация";
-            // 
-            // RegGMTPanel
-            // 
-            this.RegGMTPanel.Controls.Add(this.RegGMTLabelPanel);
-            this.RegGMTPanel.Controls.Add(this.panel1);
-            this.RegGMTPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.RegGMTPanel.Location = new System.Drawing.Point(0, 280);
-            this.RegGMTPanel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.RegGMTPanel.Name = "RegGMTPanel";
-            this.RegGMTPanel.Size = new System.Drawing.Size(334, 45);
-            this.RegGMTPanel.TabIndex = 17;
-            // 
-            // RegGMTLabelPanel
-            // 
-            this.RegGMTLabelPanel.AutoSize = true;
-            this.RegGMTLabelPanel.Controls.Add(this.RegGMTLabel);
-            this.RegGMTLabelPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.RegGMTLabelPanel.Location = new System.Drawing.Point(0, 0);
-            this.RegGMTLabelPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.RegGMTLabelPanel.Name = "RegGMTLabelPanel";
-            this.RegGMTLabelPanel.Padding = new System.Windows.Forms.Padding(5, 15, 15, 0);
-            this.RegGMTLabelPanel.Size = new System.Drawing.Size(91, 45);
-            this.RegGMTLabelPanel.TabIndex = 16;
-            // 
-            // RegGMTLabel
-            // 
-            this.RegGMTLabel.AutoSize = true;
-            this.RegGMTLabel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.RegGMTLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.RegGMTLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.RegGMTLabel.Location = new System.Drawing.Point(5, 15);
-            this.RegGMTLabel.Name = "RegGMTLabel";
-            this.RegGMTLabel.Size = new System.Drawing.Size(71, 16);
-            this.RegGMTLabel.TabIndex = 4;
-            this.RegGMTLabel.Text = "UTC зона";
-            // 
-            // panel1
-            // 
-            this.panel1.AutoSize = true;
-            this.panel1.Controls.Add(this.RegGMTComboBox);
-            this.panel1.Controls.Add(this.RegGMTCheck);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(101, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(15, 10, 5, 10);
-            this.panel1.Size = new System.Drawing.Size(233, 45);
-            this.panel1.TabIndex = 17;
-            // 
-            // RegGMTComboBox
-            // 
-            this.RegGMTComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.RegGMTComboBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.RegGMTComboBox.DropDownHeight = 100;
-            this.RegGMTComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.RegGMTComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.RegGMTComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RegGMTComboBox.ForeColor = System.Drawing.Color.White;
-            this.RegGMTComboBox.FormattingEnabled = true;
-            this.RegGMTComboBox.IntegralHeight = false;
-            this.RegGMTComboBox.Items.AddRange(new object[] {
-            "(UTC-11:00) Midway Island",
-            "(UTC-11:00) Samoa",
-            "(UTC-10:00) Hawaii",
-            "(UTC-09:00) Alaska",
-            "(UTC-08:00) Pacific Time (US &amp; Canada)",
-            "(UTC-08:00) Tijuana",
-            "(UTC-07:00) Arizona",
-            "(UTC-07:00) Mountain Time (US &amp; Canada)",
-            "(UTC-07:00) Chihuahua",
-            "(UTC-07:00) Mazatlan",
-            "(UTC-06:00) Mexico City",
-            "(UTC-06:00) Monterrey",
-            "(UTC-06:00) Saskatchewan",
-            "(UTC-06:00) Central Time (US &amp; Canada)",
-            "(UTC-05:00) Eastern Time (US &amp; Canada)",
-            "(UTC-05:00) Indiana (East)",
-            "(UTC-05:00) Bogota",
-            "(UTC-05:00) Lima",
-            "(UTC-04:30) Caracas",
-            "(UTC-04:00) Atlantic Time (Canada)",
-            "(UTC-04:00) La Paz",
-            "(UTC-04:00) Santiago",
-            "(UTC-03:30) Newfoundland",
-            "(UTC-03:00) Buenos Aires",
-            "(UTC-03:00) Greenland",
-            "(UTC-02:00) Stanley",
-            "(UTC-01:00) Azores",
-            "(UTC-01:00) Cape Verde Is.",
-            "(UTC) Casablanca",
-            "(UTC) Dublin",
-            "(UTC) Lisbon",
-            "(UTC) London",
-            "(UTC) Monrovia",
-            "(UTC+01:00) Amsterdam",
-            "(UTC+01:00) Belgrade",
-            "(UTC+01:00) Berlin",
-            "(UTC+01:00) Bratislava",
-            "(UTC+01:00) Brussels",
-            "(UTC+01:00) Budapest",
-            "(UTC+01:00) Copenhagen",
-            "(UTC+01:00) Ljubljana",
-            "(UTC+01:00) Madrid",
-            "(UTC+01:00) Paris",
-            "(UTC+01:00) Prague",
-            "(UTC+01:00) Rome",
-            "(UTC+01:00) Sarajevo",
-            "(UTC+01:00) Skopje",
-            "(UTC+01:00) Stockholm",
-            "(UTC+01:00) Vienna",
-            "(UTC+01:00) Warsaw",
-            "(UTC+01:00) Zagreb",
-            "(UTC+02:00) Athens",
-            "(UTC+02:00) Bucharest",
-            "(UTC+02:00) Cairo",
-            "(UTC+02:00) Harare",
-            "(UTC+02:00) Helsinki",
-            "(UTC+02:00) Istanbul",
-            "(UTC+02:00) Jerusalem",
-            "(UTC+02:00) Kyiv",
-            "(UTC+02:00) Minsk",
-            "(UTC+02:00) Riga",
-            "(UTC+02:00) Sofia",
-            "(UTC+02:00) Tallinn",
-            "(UTC+02:00) Vilnius",
-            "(UTC+03:00) Baghdad",
-            "(UTC+03:00) Kuwait",
-            "(UTC+03:00) Nairobi",
-            "(UTC+03:00) Riyadh",
-            "(UTC+03:00) Moscow",
-            "(UTC+03:30) Tehran",
-            "(UTC+04:00) Baku",
-            "(UTC+04:00) Volgograd",
-            "(UTC+04:00) Muscat",
-            "(UTC+04:00) Tbilisi",
-            "(UTC+04:00) Yerevan",
-            "(UTC+04:30) Kabul",
-            "(UTC+05:00) Karachi",
-            "(UTC+05:00) Tashkent",
-            "(UTC+05:30) Kolkata",
-            "(UTC+05:45) Kathmandu",
-            "(UTC+06:00) Ekaterinburg",
-            "(UTC+06:00) Almaty",
-            "(UTC+06:00) Dhaka",
-            "(UTC+07:00) Novosibirsk",
-            "(UTC+07:00) Bangkok",
-            "(UTC+07:00) Jakarta",
-            "(UTC+08:00) Krasnoyarsk",
-            "(UTC+08:00) Chongqing",
-            "(UTC+08:00) Hong Kong",
-            "(UTC+08:00) Kuala Lumpur",
-            "(UTC+08:00) Perth",
-            "(UTC+08:00) Singapore",
-            "(UTC+08:00) Taipei",
-            "(UTC+08:00) Ulaan Bataar",
-            "(UTC+08:00) Urumqi",
-            "(UTC+09:00) Irkutsk",
-            "(UTC+09:00) Seoul",
-            "(UTC+09:00) Tokyo",
-            "(UTC+09:30) Adelaide",
-            "(UTC+09:30) Darwin",
-            "(UTC+10:00) Yakutsk",
-            "(UTC+10:00) Brisbane",
-            "(UTC+10:00) Canberra",
-            "(UTC+10:00) Guam",
-            "(UTC+10:00) Hobart",
-            "(UTC+10:00) Melbourne",
-            "(UTC+10:00) Port Moresby",
-            "(UTC+10:00) Sydney",
-            "(UTC+11:00) Vladivostok",
-            "(UTC+12:00) Magadan",
-            "(UTC+12:00) Auckland",
-            "(UTC+12:00) Fiji"});
-            this.RegGMTComboBox.Location = new System.Drawing.Point(15, 10);
-            this.RegGMTComboBox.Name = "RegGMTComboBox";
-            this.RegGMTComboBox.Size = new System.Drawing.Size(194, 24);
-            this.RegGMTComboBox.TabIndex = 5;
-            // 
-            // RegGMTCheck
-            // 
-            this.RegGMTCheck.AutoSize = true;
-            this.RegGMTCheck.Dock = System.Windows.Forms.DockStyle.Right;
-            this.RegGMTCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.RegGMTCheck.ForeColor = System.Drawing.Color.Red;
-            this.RegGMTCheck.Location = new System.Drawing.Point(209, 10);
-            this.RegGMTCheck.Margin = new System.Windows.Forms.Padding(3);
-            this.RegGMTCheck.Name = "RegGMTCheck";
-            this.RegGMTCheck.Padding = new System.Windows.Forms.Padding(3, 6, 3, 3);
-            this.RegGMTCheck.Size = new System.Drawing.Size(19, 25);
-            this.RegGMTCheck.TabIndex = 8;
-            this.RegGMTCheck.Text = "*";
             // 
             // RegFullNamePanel
             // 
@@ -1072,7 +871,7 @@ namespace kanbanboard.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(334, 449);
+            this.ClientSize = new System.Drawing.Size(334, 386);
             this.Controls.Add(this.RegPanel);
             this.Controls.Add(this.MainPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1113,12 +912,6 @@ namespace kanbanboard.Forms
             this.RegBackPanel.ResumeLayout(false);
             this.RegOrgPanel.ResumeLayout(false);
             this.RegOrgPanel.PerformLayout();
-            this.RegGMTPanel.ResumeLayout(false);
-            this.RegGMTPanel.PerformLayout();
-            this.RegGMTLabelPanel.ResumeLayout(false);
-            this.RegGMTLabelPanel.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.RegFullNamePanel.ResumeLayout(false);
             this.RegFullNamePanel.PerformLayout();
             this.RegProjectsPanel.ResumeLayout(false);
@@ -1188,14 +981,10 @@ namespace kanbanboard.Forms
         private Panel RegFullNamePanel;
         private Label RegFullNameLabel;
         private TextBox RegFullNameTextBox;
-        private Panel RegGMTPanel;
-        private ComboBox RegGMTComboBox;
-        private Label RegGMTLabel;
         private Panel RegOrgPanel;
         private Label RegOrgLabel;
         private TextBox RegOrgTextBox;
         private Label RegOrgCheck;
-        private Label RegGMTCheck;
         private Label RegFullNameCheck;
         private Label RegProjectsCheck;
         private Label RegRoleCheck;
@@ -1204,7 +993,5 @@ namespace kanbanboard.Forms
         private Label RegLoginCheck;
         private Panel ComboBoxPanel;
         private Panel RegRoleLabelPanel;
-        private Panel RegGMTLabelPanel;
-        private Panel panel1;
     }
 }

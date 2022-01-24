@@ -14,14 +14,19 @@ namespace kanbanboard.Forms
         {
             Owner = owner;
             _ticket = ticket;
+
             InitializeComponent();
 
-            Resize += (o, eventArgs) => ChangingPanel.ToCenter(this);
+            Resize += (_, _) => ChangingPanel.ToCenter(this);
 
-            KeyDown += (s, a) =>
+            KeyDown += (_, a) =>
             {
                 if (a.KeyValue == (int)Keys.Enter || a.KeyValue == (int)Keys.Escape) SaveChangesButton.PerformClick();
             };
+
+            var toolTipForProjectNames = new ToolTip { AutomaticDelay = 100 };
+            toolTipForProjectNames.SetToolTip(ChangingPeopleLabel, "Формат ввода строго через пробел: Имя1 Имя2 Имя3...");
+            toolTipForProjectNames.SetToolTip(ChangingPeopleLabel, "Формат ввода строго через пробел: Имя1 Имя2 Имя3...");
         }
 
         // Изменяем при нажатии на кнопку сохранения

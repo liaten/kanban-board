@@ -45,6 +45,7 @@ namespace kanbanboard.Forms
             // 
             // ChangingPanel
             // 
+            this.ChangingPanel.AutoScroll = true;
             this.ChangingPanel.Controls.Add(this.ChangingTicketTextBox);
             this.ChangingPanel.Controls.Add(this.SaveChangesButton);
             this.ChangingPanel.Controls.Add(this.ChangingPeopleLabel);
@@ -87,7 +88,7 @@ namespace kanbanboard.Forms
             this.ChangingPeopleLabel.AutoSize = true;
             this.ChangingPeopleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ChangingPeopleLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.ChangingPeopleLabel.Location = new System.Drawing.Point(97, 260);
+            this.ChangingPeopleLabel.Location = new System.Drawing.Point(104, 260);
             this.ChangingPeopleLabel.Name = "ChangingPeopleLabel";
             this.ChangingPeopleLabel.Size = new System.Drawing.Size(197, 29);
             this.ChangingPeopleLabel.TabIndex = 5;
@@ -99,7 +100,7 @@ namespace kanbanboard.Forms
             this.ChangingTicketLabel.AutoSize = true;
             this.ChangingTicketLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ChangingTicketLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.ChangingTicketLabel.Location = new System.Drawing.Point(126, 90);
+            this.ChangingTicketLabel.Location = new System.Drawing.Point(133, 90);
             this.ChangingTicketLabel.Name = "ChangingTicketLabel";
             this.ChangingTicketLabel.Size = new System.Drawing.Size(139, 29);
             this.ChangingTicketLabel.TabIndex = 4;
@@ -110,7 +111,7 @@ namespace kanbanboard.Forms
             this.ChangingTitleLabel.AutoSize = true;
             this.ChangingTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ChangingTitleLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.ChangingTitleLabel.Location = new System.Drawing.Point(124, 21);
+            this.ChangingTitleLabel.Location = new System.Drawing.Point(131, 21);
             this.ChangingTitleLabel.Name = "ChangingTitleLabel";
             this.ChangingTitleLabel.Size = new System.Drawing.Size(143, 29);
             this.ChangingTitleLabel.TabIndex = 3;

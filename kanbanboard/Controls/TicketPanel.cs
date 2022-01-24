@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using kanbanboard.Classes;
+using Newtonsoft.Json;
 
 namespace kanbanboard.Controls
 {
@@ -13,11 +16,11 @@ namespace kanbanboard.Controls
 
         public Label Title { get; set; }
         public Label Ticket { get; set; }
+        public List<User> Empoyees { get; set; }
         public Label People { get; set; }
         public Button DelButton { get; set; }
         public Button LeftButton { get; set; }
         public Button RightButton { get; set; }
-
 
         public TicketPanel()
         {
@@ -43,6 +46,7 @@ namespace kanbanboard.Controls
                 Margin = new Padding(5),
                 Location = new Point(Size.Width - Size.Width + 5, Size.Height / 2),
             };
+
             People = new Label
             {
                 Name = "People",
@@ -50,6 +54,7 @@ namespace kanbanboard.Controls
                 Margin = new Padding(5),
                 Location = new Point(Size.Width - Size.Width + 5, Size.Height - 5),
             };
+
             new List<Label> { Title, Ticket, People }.ForEach(x =>
             {
                 x.ForeColor = Color.WhiteSmoke;
@@ -86,8 +91,8 @@ namespace kanbanboard.Controls
                  x.FlatStyle = FlatStyle.Flat;
                  x.FlatAppearance.BorderSize = 0;
                  x.ForeColor = Color.WhiteSmoke;
-                 x.MouseEnter += (s, a) => x.ForeColor = Color.Red;
-                 x.MouseLeave += (s, a) => x.ForeColor = Color.WhiteSmoke;
+                 x.MouseEnter += (_, _) => x.ForeColor = Color.Red;
+                 x.MouseLeave += (_, _) => x.ForeColor = Color.WhiteSmoke;
              });
 
             Controls.AddRange(new Control[] { DelButton, LeftButton, RightButton });

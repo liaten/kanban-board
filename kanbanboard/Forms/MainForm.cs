@@ -12,25 +12,25 @@ namespace kanbanboard.Forms
     {
         private static User _user;
 
-        public MainForm(string username)
+        public MainForm(User user)
         {
             InitializeComponent();
 
             // Вернуться в LoginForm по ESC
-            KeyDown += (s, a) =>
+            KeyDown += (_, a) =>
             {
                 if (a.KeyValue == (int)Keys.Escape) ExitButton.PerformClick();
             };
 
             // Отправить сообщение по Enter
-            MessengerTextBox.KeyPress += (fsa, key) =>
+            MessengerTextBox.KeyPress += (_, key) =>
             {
                 if (key.KeyChar == (int)Keys.Enter)
                     SendMessageButton.PerformClick();
             };
 
             // Событие при изменении размера таблицы
-            TableLayoutPanel.Resize += (s, a) => ResizeTable();
+            TableLayoutPanel.Resize += (_, _) => ResizeTable();
 
             // Установка двойной буферизации для устранения мерцания
             SetDoubleBuffered(TableLayoutPanel);
@@ -38,14 +38,20 @@ namespace kanbanboard.Forms
             SetDoubleBuffered(MessengerListBox);
             SetDoubleBuffered(ListBoxOfProjectNames);
 
-            // Создаём экземпляр через который будем работать с базой
-            _user = new User(username);
+            // Данные пользователя
+            _user = user;
+
             UserInfoLabel.Text = $"Роль: {_user.Role}";
-            UsernameLabel.Text = username;
+            UsernameLabel.Text = _user.Username;
+            OrganizationLabel.Text = _user.Organization;
+            NickNameLabel.Text = _user.Username;
+            FullNameLabel.Text = _user.FullName;
+            var utc = TimeZone.CurrentTimeZone.GetUtcOffset(DateTime.Now).Hours;
+            TimeZoneLabel.Text = utc >= 0 ? $"UTC+{utc}" : $"UTC-{utc}";
 
             // Событие при изменении выбранной строки в listbox
             ListBoxOfProjectNames.Items.Clear();
-            ListBoxOfProjectNames.SelectedIndexChanged += (ss, aa) =>
+            ListBoxOfProjectNames.SelectedIndexChanged += (_, _) =>
             {
                 try
                 {
@@ -59,7 +65,7 @@ namespace kanbanboard.Forms
 
             // Сохранение данных в базу
             // Сохраняется только активная таблица (выбранная в listbox)
-            FormClosing += (b, q) =>
+            FormClosing += (_, _) =>
             {
                 if (ListBoxOfProjectNames.SelectedItem != null)
                 {
@@ -71,9 +77,9 @@ namespace kanbanboard.Forms
             // Подсказка на кнопку с плюсом
             new ToolTip().SetToolTip(AddTitleButton, "Добавить столбец");
 
-            Load += (s, a) =>
+            Load += (_, _) =>
             {
-                if (string.IsNullOrEmpty(username))
+                if (string.IsNullOrEmpty(user.ToString()))
                 {
                     UsernameLabel.Text = "Гость";
                     UserInfoLabel.Text = "";
@@ -85,10 +91,6 @@ namespace kanbanboard.Forms
 
                 // Стартовый вид -> панель с профилем
                 UserControlsPanel_Click(null, null);
-
-                //// Загрузка первого элемента из списка
-                //try { ListBoxOfProjectNames.SelectedIndex = 0; }
-                //catch { }
             };
         }
 

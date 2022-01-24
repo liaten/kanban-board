@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using kanbanboard.Classes;
 
@@ -17,7 +18,7 @@ namespace kanbanboard.Forms
             // Вход по Enter,
             // ESCAPE на регистрации (возврат к панели логина),
             // Регистрация по Enter
-            KeyDown += (s, a) =>
+            KeyDown += (_, a) =>
             {
                 if (MainPanel.IsControlAtFront() && a.KeyValue == (int)Keys.Enter) LoginButton.PerformClick();
                 else if (RegPanel.IsControlAtFront() && a.KeyValue == (int)Keys.Escape) MainPanel.BringToFront();
@@ -45,15 +46,13 @@ namespace kanbanboard.Forms
         private void LoginButton_Click(object sender, EventArgs e)
         {
             var username = textBoxLogin.Text;
-            if (_users.ContainsKey(username))
+
+            if (_users.ContainsKey(username) && _users[username].Password == MD5.Encrypt(textBoxPassword.Text))
             {
-                if (_users[username].Password == MD5.Encrypt(textBoxPassword.Text))
-                {
-                    var mainForm = new MainForm(username);
-                    Hide();
-                    mainForm.Show();
-                    return;
-                }
+                var mainForm = new MainForm(_users[username]);
+                Hide();
+                mainForm.Show();
+                return;
             }
             MessageBox.Show(@"Неверный логин или пароль");
         }

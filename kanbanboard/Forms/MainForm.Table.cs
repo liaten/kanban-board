@@ -14,9 +14,11 @@ namespace kanbanboard.Forms
         private void Upload(string project)
         {
             if (TableLayoutPanel.Controls.Count == 0) return;
+
             var allData = new Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>>();
-            var projectName = project;
+
             var columnDate = new Dictionary<string, List<Dictionary<string, string>>>();
+
             for (var column = 0; column < TableLayoutPanel.ColumnStyles.Count; column++)
             {
                 var ticket = new List<Dictionary<string, string>>();
@@ -35,7 +37,7 @@ namespace kanbanboard.Forms
                 if ((TitlePanel)TableLayoutPanel.GetControlFromPosition(column, 0) != null)
                     columnDate.Add($"{column + 1}-" + ((TitlePanel)TableLayoutPanel.GetControlFromPosition(column, 0)).TitleColumnLabel.Text, ticket);
             }
-            allData.Add(projectName, columnDate);
+            allData.Add(project, columnDate);
 
             // Вызов процедуры загрузки данных в базу
             Firebase.UploadData(allData);
@@ -63,13 +65,19 @@ namespace kanbanboard.Forms
                 int column = 0, row = 1;
                 foreach (var titles in projects.Value)
                 {
+                    // Заголовок
                     AddTitleToPanel(titles.Key.Substring(2).FirstCharToUpper(), column);
+
                     foreach (var tasks in titles.Value)
                     {
                         var ticket = new TicketPanel();
-                        try { ticket.Title.Text = tasks["Title"] ?? ""; } catch { ticket.Title.Text = ""; }
-                        try { ticket.Ticket.Text = tasks["Ticket"] ?? ""; } catch { ticket.Ticket.Text = ""; }
-                        try { ticket.People.Text = tasks["People"] ?? ""; } catch { ticket.People.Text = ""; }
+                        try {  
+                            ticket.Title.Text = tasks["Title"] ?? ""; 
+                            ticket.Ticket.Text = tasks["Ticket"] ?? ""; 
+                            ticket.People.Text = tasks["People"] ?? "";
+                        }
+                        catch { }
+
                         AddControlToPanel(ticket.Title.Text, ticket.Ticket.Text, ticket.People.Text, column, row++);
                     }
                     column++;
@@ -87,14 +95,14 @@ namespace kanbanboard.Forms
         private void SetEventsOnTicket(TicketPanel ticketPanel)
         {
             // Событие по клику на каждый тикет. Открывает панель для выполнения изменений выбранного тикета
-            ticketPanel.Click += (sender, args) =>
+            ticketPanel.Click += (_, _) =>
             {
                 // Показ панели. Возврат к тикетам. Масштабируемость
                 if (!Application.OpenForms.OfType<TicketsChangeForm>().Any()) new TicketsChangeForm(this, ticketPanel).Show();
             };
 
             // перемещение тикетов влево, вправо и 
-            ticketPanel.LeftButton.Click += (sender, w) =>
+            ticketPanel.LeftButton.Click += (_, _) =>
             {
                 var column = TableLayoutPanel.GetPositionFromControl(ticketPanel).Column - 1;
                 if (column < 0) return;
@@ -109,7 +117,7 @@ namespace kanbanboard.Forms
             };
 
             // Перемещение вправо
-            ticketPanel.RightButton.Click += (sender, w) =>
+            ticketPanel.RightButton.Click += (_, _) =>
             {
                 var column = TableLayoutPanel.GetPositionFromControl(ticketPanel).Column + 1;
                 if (column > TableLayoutPanel.ColumnCount) return;
@@ -124,7 +132,7 @@ namespace kanbanboard.Forms
             };
 
             // Удаление тикета
-            ticketPanel.DelButton.Click += (sender, w) => TableLayoutPanel.Controls.Remove(ticketPanel);
+            ticketPanel.DelButton.Click += (_, _) => TableLayoutPanel.Controls.Remove(ticketPanel);
         }
 
         // Добавление заголовков
@@ -148,14 +156,14 @@ namespace kanbanboard.Forms
             if (_user.Role is Roles.Admin || _user.Role is Roles.Manager)
             {
                 // Изменить заголовок
-                titlePanel.TitleColumnLabel.Click += (s, a) =>
+                titlePanel.TitleColumnLabel.Click += (_, _) =>
                 {
                     if (!Application.OpenForms.OfType<ChangeForm>().Any())
                         new ChangeForm(this, titlePanel).Show();
                 };
 
                 // Добавляем события на кнопки
-                titlePanel.PlusButton.Click += (s, a) =>
+                titlePanel.PlusButton.Click += (_, _) =>
                 {
                     for (var row = 1; row <= TableLayoutPanel.RowStyles.Count; row++)
                     {
@@ -166,7 +174,7 @@ namespace kanbanboard.Forms
                 };
 
                 // Удалить колонку
-                titlePanel.DelColumnButton.Click += (s, a) =>
+                titlePanel.DelColumnButton.Click += (_, _) =>
                 {
                     for (var i = 1; i < TableLayoutPanel.ColumnStyles.Count; i++)
                     {
@@ -204,7 +212,7 @@ namespace kanbanboard.Forms
                 };
 
                 // Изменить заголовок
-                titlePanel.Click += (s, a) =>
+                titlePanel.Click += (_, _) =>
                 {
                     if (!Application.OpenForms.OfType<ChangeForm>().Any())
                         new ChangeForm(this, titlePanel).Show();
