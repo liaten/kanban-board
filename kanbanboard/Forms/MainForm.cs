@@ -11,6 +11,7 @@ namespace kanbanboard.Forms
     public partial class MainForm : Form
     {
         private static User _user;
+        private static int _projectIndex = 0;
 
         public MainForm(User user)
         {
@@ -53,6 +54,16 @@ namespace kanbanboard.Forms
             ListBoxOfProjectNames.Items.Clear();
             ListBoxOfProjectNames.SelectedIndexChanged += (_, _) =>
             {
+                // Сохраняем предыдущий проект, с которым работали
+                if (ListBoxOfProjectNames.SelectedItem != null)
+                {
+                    try { Upload(ListBoxOfProjectNames.Items[_projectIndex].ToString()); }
+                    catch {}
+                }
+
+                // Переназначаем индекс
+                _projectIndex = ListBoxOfProjectNames.SelectedIndex;
+
                 try
                 {
                     Parallel.Invoke(
@@ -153,6 +164,7 @@ namespace kanbanboard.Forms
 
             // перемещение панельки выделения
             StripPanel.Location = TasksButton.Location;
+
             // изменение размера панельки выделения
             StripPanel.Size = new Size(StripPanel.Size.Width, TasksButton.Size.Height);
 
@@ -166,8 +178,10 @@ namespace kanbanboard.Forms
         {
             LabelHead.Text = "Профиль";
             UserPanel.BringToFront();
+
             // перемещение панельки выделения
             StripPanel.Location = UserControlsPanel.Location;
+
             // изменение размера панельки выделения
             StripPanel.Size = new Size(StripPanel.Size.Width, UserControlsPanel.Size.Height);
             ListBoxOfProjectNames.Visible = false;
@@ -194,10 +208,11 @@ namespace kanbanboard.Forms
         private void CalendarButton_Click(object sender, EventArgs e)
         {
             LabelHead.Text = "Календарь";
-
             CalendarPanel.BringToFront();
+
             // перемещение панельки выделения
             StripPanel.Location = CalendarButton.Location;
+
             // изменение размера панельки выделения
             StripPanel.Size = new Size(StripPanel.Size.Width, CalendarButton.Size.Height);
             ListBoxOfProjectNames.Visible = false;
