@@ -1,8 +1,8 @@
-﻿using kanbanboard.Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using kanbanboard.Classes;
 
 namespace kanbanboard.Forms
 {
@@ -33,8 +33,10 @@ namespace kanbanboard.Forms
         {
             // Получаем всех пользователей
             _users = Firebase.GetAllUsers();
+
             // Меняем размер на изначальный
-            this.Size = new Size(350, 245);
+            Size = new Size(350, 245);
+
             // Двигаем главную панельку на передний план
             MainPanel.BringToFront();
         }
@@ -73,19 +75,14 @@ namespace kanbanboard.Forms
         private void TextBoxPass_MouseLeave(object sender, EventArgs e) => PassLabel.ForeColor = Color.FromArgb(74, 79, 99);
         private void RegLoginTextBox_TextChanged(object sender, EventArgs e)
         {
-            var logintextbox = RegLoginTextBox.Text;
-            if (_users.ContainsKey(logintextbox) || logintextbox.ToString().Trim().Equals(""))
-            {
-                RegLoginCheck.ForeColor = Color.Red;
-            }
-            else
-            {
-                RegLoginCheck.ForeColor = Color.Green;
-            }
+            var loginTextBox = RegLoginTextBox.Text;
+            RegLoginCheck.ForeColor = _users.ContainsKey(loginTextBox) || loginTextBox.Trim().Equals("")
+                ? Color.Red
+                : Color.Green;
         }
         private void RegLoginTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(Char.IsLetter(e.KeyChar) || Char.IsControl(e.KeyChar) || Char.IsDigit(e.KeyChar)))
+            if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar) || char.IsDigit(e.KeyChar)))
                 e.Handled = true;
         }
     }

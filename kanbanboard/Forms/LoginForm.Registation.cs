@@ -1,9 +1,9 @@
-﻿using kanbanboard.Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using kanbanboard.Classes;
 
 namespace kanbanboard.Forms
 {
@@ -15,7 +15,7 @@ namespace kanbanboard.Forms
             // Главную панельку на передний план
             MainPanel.BringToFront();
             // Меняем размер панельки
-            this.Size = new Size(350, 245);
+            Size = new Size(350, 245);
             // Меняем текст окна
             Text = "Авторизация";
         }
@@ -105,7 +105,7 @@ namespace kanbanboard.Forms
             textBoxPassword.Clear();
             // Устанавливаем название окна - "Регистрация"
             Text = "Регистрация";
-            this.Size = new Size(350, 465);
+            Size = new Size(350, 465);
         }
     }
 }
