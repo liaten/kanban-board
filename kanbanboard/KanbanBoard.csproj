@@ -215,9 +215,6 @@
     <None Include="Resources\Images\user.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images\Icon1.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Retro_Mario_24707.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -554,7 +554,7 @@ namespace kanbanboard.Forms
             this.RegGMTLabelPanel.Margin = new System.Windows.Forms.Padding(0);
             this.RegGMTLabelPanel.Name = "RegGMTLabelPanel";
             this.RegGMTLabelPanel.Padding = new System.Windows.Forms.Padding(5, 15, 15, 0);
-            this.RegGMTLabelPanel.Size = new System.Drawing.Size(92, 45);
+            this.RegGMTLabelPanel.Size = new System.Drawing.Size(90, 45);
             this.RegGMTLabelPanel.TabIndex = 16;
             // 
             // RegGMTLabel
@@ -565,7 +565,7 @@ namespace kanbanboard.Forms
             this.RegGMTLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.RegGMTLabel.Location = new System.Drawing.Point(5, 15);
             this.RegGMTLabel.Name = "RegGMTLabel";
-            this.RegGMTLabel.Size = new System.Drawing.Size(72, 16);
+            this.RegGMTLabel.Size = new System.Drawing.Size(70, 16);
             this.RegGMTLabel.TabIndex = 4;
             this.RegGMTLabel.Text = "UTC зона";
             // 
