@@ -103,7 +103,7 @@ namespace kanbanboard.Forms
 
             // Устанавливаем название окна - "Регистрация"
             Text = "Регистрация";
-            Size = new Size(350, 400);
+            Size = new Size(350, 300);
         }
         private void RegLoginTextBox_TextChanged(object sender, EventArgs e)
         {
