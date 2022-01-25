@@ -104,6 +104,7 @@ namespace kanbanboard.Forms
             this.MessengerTextBoxPanel = new System.Windows.Forms.Panel();
             this.MessengerTextBox = new System.Windows.Forms.TextBox();
             this.HeadPanel = new System.Windows.Forms.Panel();
+            this.Projects_List_Label = new System.Windows.Forms.Label();
             this.ControlsPanel.SuspendLayout();
             this.ProjectsPanel.SuspendLayout();
             this.CreateProjectPanel.SuspendLayout();
@@ -165,20 +166,21 @@ namespace kanbanboard.Forms
             // ProjectsPanel
             // 
             this.ProjectsPanel.AutoSize = true;
+            this.ProjectsPanel.Controls.Add(this.ListBoxOfProjectNames);
+            this.ProjectsPanel.Controls.Add(this.Projects_List_Label);
             this.ProjectsPanel.Controls.Add(this.CreateProjectPanel);
             this.ProjectsPanel.Controls.Add(this.SaveProjectPanel);
-            this.ProjectsPanel.Controls.Add(this.ListBoxOfProjectNames);
             this.ProjectsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ProjectsPanel.Location = new System.Drawing.Point(0, 285);
+            this.ProjectsPanel.Location = new System.Drawing.Point(0, 260);
             this.ProjectsPanel.Name = "ProjectsPanel";
-            this.ProjectsPanel.Size = new System.Drawing.Size(205, 224);
+            this.ProjectsPanel.Size = new System.Drawing.Size(205, 249);
             this.ProjectsPanel.TabIndex = 7;
             // 
             // CreateProjectPanel
             // 
             this.CreateProjectPanel.Controls.Add(this.CreateProjectButton);
             this.CreateProjectPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.CreateProjectPanel.Location = new System.Drawing.Point(0, 112);
+            this.CreateProjectPanel.Location = new System.Drawing.Point(0, 137);
             this.CreateProjectPanel.Name = "CreateProjectPanel";
             this.CreateProjectPanel.Padding = new System.Windows.Forms.Padding(10);
             this.CreateProjectPanel.Size = new System.Drawing.Size(205, 56);
@@ -204,7 +206,7 @@ namespace kanbanboard.Forms
             // 
             this.SaveProjectPanel.Controls.Add(this.SaveProjectButton);
             this.SaveProjectPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SaveProjectPanel.Location = new System.Drawing.Point(0, 168);
+            this.SaveProjectPanel.Location = new System.Drawing.Point(0, 193);
             this.SaveProjectPanel.Name = "SaveProjectPanel";
             this.SaveProjectPanel.Padding = new System.Windows.Forms.Padding(10);
             this.SaveProjectPanel.Size = new System.Drawing.Size(205, 56);
@@ -243,7 +245,7 @@ namespace kanbanboard.Forms
             "4",
             "5",
             "6"});
-            this.ListBoxOfProjectNames.Location = new System.Drawing.Point(0, 0);
+            this.ListBoxOfProjectNames.Location = new System.Drawing.Point(0, 25);
             this.ListBoxOfProjectNames.Name = "ListBoxOfProjectNames";
             this.ListBoxOfProjectNames.Size = new System.Drawing.Size(205, 112);
             this.ListBoxOfProjectNames.Sorted = true;
@@ -1982,6 +1984,17 @@ namespace kanbanboard.Forms
             this.HeadPanel.Size = new System.Drawing.Size(979, 70);
             this.HeadPanel.TabIndex = 3;
             // 
+            // Projects_List_Label
+            // 
+            this.Projects_List_Label.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Projects_List_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Projects_List_Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.Projects_List_Label.Location = new System.Drawing.Point(0, 0);
+            this.Projects_List_Label.Name = "Projects_List_Label";
+            this.Projects_List_Label.Size = new System.Drawing.Size(205, 25);
+            this.Projects_List_Label.TabIndex = 9;
+            this.Projects_List_Label.Text = "Список проектов:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2136,6 +2149,7 @@ namespace kanbanboard.Forms
         private Panel LoadPanel;
         private Label LoadLabel;
         private Button TrashButton;
+        private Label Projects_List_Label;
     }
 }
 
