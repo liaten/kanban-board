@@ -46,22 +46,20 @@ namespace kanbanboard.Forms
 
             KeyDown += (_, a) =>
             {
-                if (a.KeyValue == (int)Keys.Enter || a.KeyValue == (int)Keys.Escape) Close();
+                if (a.KeyValue is ((int)Keys.Enter) or ((int)Keys.Escape)) Close();
             };
 
             // Сохранение
             FormClosing += async (_, _) =>
             {
-                if (!string.IsNullOrEmpty(ChangingTextBox.Text))
-                {
-                    if (await user.CreateProject(ChangingTextBox.Text) == "OK")
-                        Owner.Controls.OfType<ListBox>().Where(x => string.Equals(x.Name, "ListBoxOfProjectNames")).ToList().ForEach(
-                            x =>
-                            {
-                                x.Items.Clear();
-                                x.Items.AddRange(user.ProjectNames().Cast<object>().ToArray());
-                            });
-                }
+                if (!string.IsNullOrEmpty(ChangingTextBox.Text)
+                && await user.CreateProject(ChangingTextBox.Text) == "OK")
+                    Owner.Controls.OfType<ListBox>().Where(x => string.Equals(x.Name, "ListBoxOfProjectNames")).ToList().ForEach(
+                        x =>
+                        {
+                            x.Items.Clear();
+                            x.Items.AddRange(user.ProjectNames().Cast<object>().ToArray());
+                        });
             };
         }
     }

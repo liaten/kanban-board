@@ -44,7 +44,7 @@ namespace kanbanboard.Forms
         // Логин в приложение
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            var username = textBoxLogin.Text;
+            string username = textBoxLogin.Text;
 
             if (_users.ContainsKey(username) && _users[username].Password == MD5.Encrypt(textBoxPassword.Text))
             {
