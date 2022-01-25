@@ -108,5 +108,13 @@ namespace kanbanboard.Forms
                 e.Handled = true;
             }
         }
+
+        private void textBoxLogin_TextChanged(object sender, EventArgs e)
+        {
+            string loginTextBox = textBoxLogin.Text;
+            textBoxLoginCheck.ForeColor = _users.ContainsKey(loginTextBox) && !loginTextBox.Trim().Equals("")
+                ? Color.Green
+                : Color.Red;
+        }
     }
 }

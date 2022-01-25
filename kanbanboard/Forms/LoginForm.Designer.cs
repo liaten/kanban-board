@@ -151,6 +151,7 @@ namespace kanbanboard.Forms
             this.textBoxLogin.Size = new System.Drawing.Size(195, 19);
             this.textBoxLogin.TabIndex = 3;
             this.textBoxLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxLogin.TextChanged += new System.EventHandler(this.textBoxLogin_TextChanged);
             this.textBoxLogin.MouseEnter += new System.EventHandler(this.TextBoxLogin_MouseEnter);
             this.textBoxLogin.MouseLeave += new System.EventHandler(this.TextBoxLogin_MouseLeave);
             // 
@@ -908,8 +909,8 @@ namespace kanbanboard.Forms
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(334, 371);
-            this.Controls.Add(this.RegPanel);
             this.Controls.Add(this.MainPanel);
+            this.Controls.Add(this.RegPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
