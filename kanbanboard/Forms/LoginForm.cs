@@ -1,8 +1,8 @@
-﻿using System;
+﻿using kanbanboard.Classes;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using kanbanboard.Classes;
 
 namespace kanbanboard.Forms
 {

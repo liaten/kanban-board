@@ -1,9 +1,9 @@
-﻿using System;
+﻿using kanbanboard.Classes;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using kanbanboard.Classes;
 
 namespace kanbanboard.Forms
 {
@@ -66,7 +66,7 @@ namespace kanbanboard.Forms
             newUser.CreateUser();
 
             // Вопрос на выполнение логина после регистрации
-            if (MessageBox.Show($@"Пользователь зарегистрирован.{Environment.NewLine}Войти в созданную учётную запись?", "Регистрация", 
+            if (MessageBox.Show($@"Пользователь зарегистрирован.{Environment.NewLine}Войти в созданную учётную запись?", "Регистрация",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
                 MainPanel.BringToFront();

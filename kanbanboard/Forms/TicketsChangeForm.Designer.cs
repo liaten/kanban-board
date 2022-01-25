@@ -61,6 +61,8 @@ namespace kanbanboard.Forms
             // 
             // ChangingTicketTextBox
             // 
+            this.ChangingTicketTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.ChangingTicketTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ChangingTicketTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.ChangingTicketTextBox.Location = new System.Drawing.Point(84, 122);
             this.ChangingTicketTextBox.Multiline = true;
@@ -119,14 +121,18 @@ namespace kanbanboard.Forms
             // 
             // ChangingPeopleTextBox
             // 
+            this.ChangingPeopleTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.ChangingPeopleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ChangingPeopleTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.ChangingPeopleTextBox.Location = new System.Drawing.Point(84, 299);
             this.ChangingPeopleTextBox.Name = "ChangingPeopleTextBox";
-            this.ChangingPeopleTextBox.Size = new System.Drawing.Size(236, 26);
+            this.ChangingPeopleTextBox.Size = new System.Drawing.Size(236, 19);
             this.ChangingPeopleTextBox.TabIndex = 3;
             // 
             // ChangingTitleTextBox
             // 
+            this.ChangingTitleTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.ChangingTitleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ChangingTitleTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.ChangingTitleTextBox.Location = new System.Drawing.Point(84, 53);
             this.ChangingTitleTextBox.Multiline = true;
