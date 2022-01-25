@@ -131,7 +131,7 @@ namespace kanbanboard.Forms
             this.RegistrationButton.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.RegistrationButton.Location = new System.Drawing.Point(10, 0);
             this.RegistrationButton.Name = "RegistrationButton";
-            this.RegistrationButton.Size = new System.Drawing.Size(103, 24);
+            this.RegistrationButton.Size = new System.Drawing.Size(83, 24);
             this.RegistrationButton.TabIndex = 2;
             this.RegistrationButton.Text = "Регистрация";
             this.RegistrationButton.UseVisualStyleBackColor = false;
@@ -272,10 +272,10 @@ namespace kanbanboard.Forms
             this.LoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LoginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LoginButton.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.LoginButton.Location = new System.Drawing.Point(60, 0);
+            this.LoginButton.Location = new System.Drawing.Point(80, 0);
             this.LoginButton.Margin = new System.Windows.Forms.Padding(0);
             this.LoginButton.Name = "LoginButton";
-            this.LoginButton.Size = new System.Drawing.Size(91, 24);
+            this.LoginButton.Size = new System.Drawing.Size(71, 24);
             this.LoginButton.TabIndex = 1;
             this.LoginButton.Text = "Войти";
             this.LoginButton.UseVisualStyleBackColor = false;
@@ -323,7 +323,7 @@ namespace kanbanboard.Forms
             this.RegButtonPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.RegButtonPanel.Location = new System.Drawing.Point(161, 0);
             this.RegButtonPanel.Name = "RegButtonPanel";
-            this.RegButtonPanel.Padding = new System.Windows.Forms.Padding(10, 0, 60, 0);
+            this.RegButtonPanel.Padding = new System.Windows.Forms.Padding(10, 0, 80, 0);
             this.RegButtonPanel.Size = new System.Drawing.Size(173, 24);
             this.RegButtonPanel.TabIndex = 4;
             // 
@@ -333,7 +333,7 @@ namespace kanbanboard.Forms
             this.LoginPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.LoginPanel.Location = new System.Drawing.Point(0, 0);
             this.LoginPanel.Name = "LoginPanel";
-            this.LoginPanel.Padding = new System.Windows.Forms.Padding(60, 0, 10, 0);
+            this.LoginPanel.Padding = new System.Windows.Forms.Padding(80, 0, 10, 0);
             this.LoginPanel.Size = new System.Drawing.Size(161, 24);
             this.LoginPanel.TabIndex = 3;
             // 
@@ -346,7 +346,7 @@ namespace kanbanboard.Forms
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(334, 361);
+            this.MainPanel.Size = new System.Drawing.Size(334, 206);
             this.MainPanel.TabIndex = 13;
             // 
             // HeaderPanel
@@ -409,7 +409,7 @@ namespace kanbanboard.Forms
             this.RegPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RegPanel.Location = new System.Drawing.Point(0, 0);
             this.RegPanel.Name = "RegPanel";
-            this.RegPanel.Size = new System.Drawing.Size(334, 361);
+            this.RegPanel.Size = new System.Drawing.Size(334, 206);
             this.RegPanel.TabIndex = 13;
             // 
             // RegButtonsPanel
@@ -875,7 +875,7 @@ namespace kanbanboard.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(334, 361);
+            this.ClientSize = new System.Drawing.Size(334, 206);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.RegPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
