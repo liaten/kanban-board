@@ -122,7 +122,9 @@ namespace kanbanboard.Forms
         public static void SetDoubleBuffered(Control c)
         {
             if (SystemInformation.TerminalServerSession)
+            {
                 return;
+            }
             PropertyInfo aProp = typeof(Control).GetProperty("DoubleBuffered",
                 BindingFlags.NonPublic |
                 BindingFlags.Instance);
@@ -133,6 +135,7 @@ namespace kanbanboard.Forms
         private async void CreateProjectButton_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
+            {
                 if (!Application.OpenForms.OfType<ChangeForm>().Any())
                 {
                     ChangeForm changeForm = new ChangeForm(this, _user);
@@ -151,25 +154,24 @@ namespace kanbanboard.Forms
 
                     SetUserProjectNames();
                 }
+            }
 
             if (e.Button == MouseButtons.Right)
+            {
                 try { TrashButton.PerformClick(); }
                 finally { SetUserProjectNames(); }
+            }
         }
 
         // Обработчик задач
         private void TasksButton_Click(object sender, EventArgs e)
         {
             LabelHead.Text = "Задачи";
-
             // перемещение панельки выделения
             StripPanel.Location = TasksButton.Location;
-
             // изменение размера панельки выделения
             StripPanel.Size = new Size(StripPanel.Size.Width, TasksButton.Size.Height);
-
             PanelWithTable.BringToFront();
-
             ListBoxOfProjectNames.Visible = true;
         }
 
@@ -178,10 +180,8 @@ namespace kanbanboard.Forms
         {
             LabelHead.Text = "Профиль";
             UserPanel.BringToFront();
-
             // перемещение панельки выделения
             StripPanel.Location = UserControlsPanel.Location;
-
             // изменение размера панельки выделения
             StripPanel.Size = new Size(StripPanel.Size.Width, UserControlsPanel.Size.Height);
             ListBoxOfProjectNames.Visible = false;
@@ -192,15 +192,11 @@ namespace kanbanboard.Forms
         {
             LabelHead.Text = "Мессенджер";
             MessengerPanel.BringToFront();
-
             // перемещение панельки выделения
             StripPanel.Location = MessengerButton.Location;
-
             // изменение размера панельки выделения
             StripPanel.Size = new Size(StripPanel.Size.Width, MessengerButton.Size.Height);
-
             MessengerTextBox.Focus();
-
             ListBoxOfProjectNames.Visible = true;
         }
 
@@ -209,10 +205,8 @@ namespace kanbanboard.Forms
         {
             LabelHead.Text = "Календарь";
             CalendarPanel.BringToFront();
-
             // перемещение панельки выделения
             StripPanel.Location = CalendarButton.Location;
-
             // изменение размера панельки выделения
             StripPanel.Size = new Size(StripPanel.Size.Width, CalendarButton.Size.Height);
             ListBoxOfProjectNames.Visible = false;
@@ -229,16 +223,16 @@ namespace kanbanboard.Forms
         // Показать пароль
         private void PasswordShowLinkLabel_Click(object sender, EventArgs e)
         {
-            if (!PasswordShowLabel.Visible)
+            if (PasswordShowLabel.Visible)
+            {
+                PasswordShowLabel.Visible = false;
+                PasswordShowLinkLabel.Text = "Показать";
+            }
+            else
             {
                 PasswordShowLabel.Text = MD5.Decrypt(_user.Password);
                 PasswordShowLabel.Visible = true;
                 PasswordShowLinkLabel.Text = "Скрыть";
-            }
-            else
-            {
-                PasswordShowLabel.Visible = false;
-                PasswordShowLinkLabel.Text = "Показать";
             }
         }
 
