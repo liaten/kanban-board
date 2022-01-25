@@ -346,7 +346,7 @@ namespace kanbanboard.Forms
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(334, 464);
+            this.MainPanel.Size = new System.Drawing.Size(334, 361);
             this.MainPanel.TabIndex = 13;
             // 
             // HeaderPanel
@@ -409,7 +409,7 @@ namespace kanbanboard.Forms
             this.RegPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RegPanel.Location = new System.Drawing.Point(0, 0);
             this.RegPanel.Name = "RegPanel";
-            this.RegPanel.Size = new System.Drawing.Size(334, 464);
+            this.RegPanel.Size = new System.Drawing.Size(334, 361);
             this.RegPanel.TabIndex = 13;
             // 
             // RegButtonsPanel
@@ -419,7 +419,7 @@ namespace kanbanboard.Forms
             this.RegButtonsPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.RegButtonsPanel.Location = new System.Drawing.Point(0, 330);
             this.RegButtonsPanel.Name = "RegButtonsPanel";
-            this.RegButtonsPanel.Size = new System.Drawing.Size(334, 54);
+            this.RegButtonsPanel.Size = new System.Drawing.Size(334, 33);
             this.RegButtonsPanel.TabIndex = 14;
             // 
             // RegOfRegPanel
@@ -428,20 +428,22 @@ namespace kanbanboard.Forms
             this.RegOfRegPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.RegOfRegPanel.Location = new System.Drawing.Point(167, 0);
             this.RegOfRegPanel.Name = "RegOfRegPanel";
-            this.RegOfRegPanel.Padding = new System.Windows.Forms.Padding(15, 15, 50, 15);
-            this.RegOfRegPanel.Size = new System.Drawing.Size(167, 54);
+            this.RegOfRegPanel.Padding = new System.Windows.Forms.Padding(15, 0, 70, 5);
+            this.RegOfRegPanel.Size = new System.Drawing.Size(167, 33);
             this.RegOfRegPanel.TabIndex = 16;
             // 
             // RegOfRegButton
             // 
+            this.RegOfRegButton.AutoSize = true;
+            this.RegOfRegButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.RegOfRegButton.BackColor = System.Drawing.Color.Transparent;
-            this.RegOfRegButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RegOfRegButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.RegOfRegButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RegOfRegButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.RegOfRegButton.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.RegOfRegButton.Location = new System.Drawing.Point(15, 15);
+            this.RegOfRegButton.Location = new System.Drawing.Point(15, 0);
             this.RegOfRegButton.Name = "RegOfRegButton";
-            this.RegOfRegButton.Size = new System.Drawing.Size(102, 24);
+            this.RegOfRegButton.Size = new System.Drawing.Size(82, 25);
             this.RegOfRegButton.TabIndex = 4;
             this.RegOfRegButton.Text = "Регистрация";
             this.RegOfRegButton.UseVisualStyleBackColor = false;
@@ -453,20 +455,22 @@ namespace kanbanboard.Forms
             this.RegBackPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.RegBackPanel.Location = new System.Drawing.Point(0, 0);
             this.RegBackPanel.Name = "RegBackPanel";
-            this.RegBackPanel.Padding = new System.Windows.Forms.Padding(50, 15, 15, 15);
-            this.RegBackPanel.Size = new System.Drawing.Size(167, 54);
+            this.RegBackPanel.Padding = new System.Windows.Forms.Padding(70, 0, 15, 5);
+            this.RegBackPanel.Size = new System.Drawing.Size(167, 33);
             this.RegBackPanel.TabIndex = 15;
             // 
             // RegOfRegBackButton
             // 
+            this.RegOfRegBackButton.AutoSize = true;
+            this.RegOfRegBackButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.RegOfRegBackButton.BackColor = System.Drawing.Color.Transparent;
-            this.RegOfRegBackButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RegOfRegBackButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.RegOfRegBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RegOfRegBackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.RegOfRegBackButton.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.RegOfRegBackButton.Location = new System.Drawing.Point(50, 15);
+            this.RegOfRegBackButton.Location = new System.Drawing.Point(70, 0);
             this.RegOfRegBackButton.Name = "RegOfRegBackButton";
-            this.RegOfRegBackButton.Size = new System.Drawing.Size(102, 24);
+            this.RegOfRegBackButton.Size = new System.Drawing.Size(82, 25);
             this.RegOfRegBackButton.TabIndex = 4;
             this.RegOfRegBackButton.Text = "Назад";
             this.RegOfRegBackButton.UseVisualStyleBackColor = false;
@@ -871,7 +875,7 @@ namespace kanbanboard.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(334, 464);
+            this.ClientSize = new System.Drawing.Size(334, 361);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.RegPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -909,7 +913,9 @@ namespace kanbanboard.Forms
             this.RegPanel.ResumeLayout(false);
             this.RegButtonsPanel.ResumeLayout(false);
             this.RegOfRegPanel.ResumeLayout(false);
+            this.RegOfRegPanel.PerformLayout();
             this.RegBackPanel.ResumeLayout(false);
+            this.RegBackPanel.PerformLayout();
             this.RegOrgPanel.ResumeLayout(false);
             this.RegOrgPanel.PerformLayout();
             this.RegFullNamePanel.ResumeLayout(false);

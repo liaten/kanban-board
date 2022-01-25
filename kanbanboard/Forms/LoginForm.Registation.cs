@@ -103,7 +103,7 @@ namespace kanbanboard.Forms
 
             // Устанавливаем название окна - "Регистрация"
             Text = "Регистрация";
-            Size = new Size(350, 421);
+            Size = new Size(350, 400);
         }
     }
 }
