@@ -11,7 +11,7 @@ namespace kanbanboard.Forms
     public partial class MainForm : Form
     {
         private static User _user;
-        private static int _projectIndex = 0;
+        private static int _projectIndex;
 
         public MainForm(User user)
         {
