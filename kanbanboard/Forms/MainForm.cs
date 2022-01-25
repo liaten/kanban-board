@@ -47,7 +47,7 @@ namespace kanbanboard.Forms
             OrganizationLabel.Text = _user.Organization;
             NickNameLabel.Text = _user.Username;
             FullNameLabel.Text = _user.FullName;
-            var utc = TimeZone.CurrentTimeZone.GetUtcOffset(DateTime.Now).Hours;
+            int utc = TimeZone.CurrentTimeZone.GetUtcOffset(DateTime.Now).Hours;
             TimeZoneLabel.Text = utc >= 0 ? $"UTC+{utc}" : $"UTC-{utc}";
 
             // Событие при изменении выбранной строки в listbox
