@@ -19,9 +19,31 @@ namespace kanbanboard.Forms
             // Регистрация по Enter
             KeyDown += (_, a) =>
             {
-                if (MainPanel.IsControlAtFront() && a.KeyValue == (int)Keys.Enter) LoginButton.PerformClick();
-                else if (RegPanel.IsControlAtFront() && a.KeyValue == (int)Keys.Escape) MainPanel.BringToFront();
-                else if (RegPanel.IsControlAtFront() && a.KeyValue == (int)Keys.Enter) RegOfRegBackButton.PerformClick();
+                if (MainPanel.IsControlAtFront()
+                    && a.KeyValue == (int)Keys.Enter)
+                {
+                    LoginButton.PerformClick();
+                }
+                else
+                {
+                    if (RegPanel.IsControlAtFront()
+                        && a.KeyValue == (int)Keys.Escape)
+                    {
+                        // Меняем размер панельки
+                        Size = new Size(350, 245);
+
+                        // Меняем текст окна
+                        Text = "Авторизация";
+
+                        // Двигаем главную панельку на передний план
+                        MainPanel.BringToFront();
+                    }
+                    else if (RegPanel.IsControlAtFront()
+                        && a.KeyValue == (int)Keys.Enter)
+                    {
+                        RegOfRegBackButton.PerformClick();
+                    }
+                }
             };
 
             ToolTip toolTipForProjectNames = new() { AutomaticDelay = 100 };
@@ -46,7 +68,8 @@ namespace kanbanboard.Forms
         {
             string username = textBoxLogin.Text;
 
-            if (_users.ContainsKey(username) && _users[username].Password == MD5.Encrypt(textBoxPassword.Text))
+            if (_users.ContainsKey(username)
+                && _users[username].Password == MD5.Encrypt(textBoxPassword.Text))
             {
                 MainForm mainForm = new(_users[username]);
                 Hide();

@@ -41,7 +41,9 @@ namespace kanbanboard.Forms
             this.LoginPasswordMailPanel = new System.Windows.Forms.Panel();
             this.PanelOfTextBoxes = new System.Windows.Forms.Panel();
             this.PasswordTextBoxPanel = new System.Windows.Forms.Panel();
+            this.textBoxPasswordCheck = new System.Windows.Forms.Label();
             this.LoginTextBoxPanel = new System.Windows.Forms.Panel();
+            this.textBoxLoginCheck = new System.Windows.Forms.Label();
             this.LabelsPanel = new System.Windows.Forms.Panel();
             this.PasswordLabelPanel = new System.Windows.Forms.Panel();
             this.loginLabelPanel = new System.Windows.Forms.Panel();
@@ -92,8 +94,6 @@ namespace kanbanboard.Forms
             this.RegLoginTextBox = new System.Windows.Forms.TextBox();
             this.RegLoginCheck = new System.Windows.Forms.Label();
             this.RegLoginLabel = new System.Windows.Forms.Label();
-            this.textBoxLoginCheck = new System.Windows.Forms.Label();
-            this.textBoxPasswordCheck = new System.Windows.Forms.Label();
             this.LoginPasswordMailPanel.SuspendLayout();
             this.PanelOfTextBoxes.SuspendLayout();
             this.PasswordTextBoxPanel.SuspendLayout();
@@ -228,6 +228,20 @@ namespace kanbanboard.Forms
             this.PasswordTextBoxPanel.Size = new System.Drawing.Size(224, 40);
             this.PasswordTextBoxPanel.TabIndex = 10;
             // 
+            // textBoxPasswordCheck
+            // 
+            this.textBoxPasswordCheck.AutoSize = true;
+            this.textBoxPasswordCheck.Dock = System.Windows.Forms.DockStyle.Right;
+            this.textBoxPasswordCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.textBoxPasswordCheck.ForeColor = System.Drawing.Color.Red;
+            this.textBoxPasswordCheck.Location = new System.Drawing.Point(206, 10);
+            this.textBoxPasswordCheck.Margin = new System.Windows.Forms.Padding(3);
+            this.textBoxPasswordCheck.Name = "textBoxPasswordCheck";
+            this.textBoxPasswordCheck.Padding = new System.Windows.Forms.Padding(3, 4, 3, 3);
+            this.textBoxPasswordCheck.Size = new System.Drawing.Size(18, 23);
+            this.textBoxPasswordCheck.TabIndex = 7;
+            this.textBoxPasswordCheck.Text = "*";
+            // 
             // LoginTextBoxPanel
             // 
             this.LoginTextBoxPanel.Controls.Add(this.textBoxLogin);
@@ -238,6 +252,20 @@ namespace kanbanboard.Forms
             this.LoginTextBoxPanel.Padding = new System.Windows.Forms.Padding(15, 10, 0, 5);
             this.LoginTextBoxPanel.Size = new System.Drawing.Size(224, 40);
             this.LoginTextBoxPanel.TabIndex = 9;
+            // 
+            // textBoxLoginCheck
+            // 
+            this.textBoxLoginCheck.AutoSize = true;
+            this.textBoxLoginCheck.Dock = System.Windows.Forms.DockStyle.Right;
+            this.textBoxLoginCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.textBoxLoginCheck.ForeColor = System.Drawing.Color.Red;
+            this.textBoxLoginCheck.Location = new System.Drawing.Point(206, 10);
+            this.textBoxLoginCheck.Margin = new System.Windows.Forms.Padding(3);
+            this.textBoxLoginCheck.Name = "textBoxLoginCheck";
+            this.textBoxLoginCheck.Padding = new System.Windows.Forms.Padding(3, 4, 3, 3);
+            this.textBoxLoginCheck.Size = new System.Drawing.Size(18, 23);
+            this.textBoxLoginCheck.TabIndex = 6;
+            this.textBoxLoginCheck.Text = "*";
             // 
             // LabelsPanel
             // 
@@ -872,34 +900,6 @@ namespace kanbanboard.Forms
             this.RegLoginLabel.Size = new System.Drawing.Size(46, 16);
             this.RegLoginLabel.TabIndex = 4;
             this.RegLoginLabel.Text = "Логин";
-            // 
-            // textBoxLoginCheck
-            // 
-            this.textBoxLoginCheck.AutoSize = true;
-            this.textBoxLoginCheck.Dock = System.Windows.Forms.DockStyle.Right;
-            this.textBoxLoginCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.textBoxLoginCheck.ForeColor = System.Drawing.Color.Red;
-            this.textBoxLoginCheck.Location = new System.Drawing.Point(206, 10);
-            this.textBoxLoginCheck.Margin = new System.Windows.Forms.Padding(3);
-            this.textBoxLoginCheck.Name = "textBoxLoginCheck";
-            this.textBoxLoginCheck.Padding = new System.Windows.Forms.Padding(3, 4, 3, 3);
-            this.textBoxLoginCheck.Size = new System.Drawing.Size(18, 23);
-            this.textBoxLoginCheck.TabIndex = 6;
-            this.textBoxLoginCheck.Text = "*";
-            // 
-            // textBoxPasswordCheck
-            // 
-            this.textBoxPasswordCheck.AutoSize = true;
-            this.textBoxPasswordCheck.Dock = System.Windows.Forms.DockStyle.Right;
-            this.textBoxPasswordCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.textBoxPasswordCheck.ForeColor = System.Drawing.Color.Red;
-            this.textBoxPasswordCheck.Location = new System.Drawing.Point(206, 10);
-            this.textBoxPasswordCheck.Margin = new System.Windows.Forms.Padding(3);
-            this.textBoxPasswordCheck.Name = "textBoxPasswordCheck";
-            this.textBoxPasswordCheck.Padding = new System.Windows.Forms.Padding(3, 4, 3, 3);
-            this.textBoxPasswordCheck.Size = new System.Drawing.Size(18, 23);
-            this.textBoxPasswordCheck.TabIndex = 7;
-            this.textBoxPasswordCheck.Text = "*";
             // 
             // LoginForm
             // 
