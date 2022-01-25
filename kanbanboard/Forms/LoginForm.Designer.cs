@@ -146,9 +146,9 @@ namespace kanbanboard.Forms
             this.textBoxLogin.Dock = System.Windows.Forms.DockStyle.Right;
             this.textBoxLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.textBoxLogin.Location = new System.Drawing.Point(16, 10);
+            this.textBoxLogin.Location = new System.Drawing.Point(11, 10);
             this.textBoxLogin.Name = "textBoxLogin";
-            this.textBoxLogin.Size = new System.Drawing.Size(175, 19);
+            this.textBoxLogin.Size = new System.Drawing.Size(195, 19);
             this.textBoxLogin.TabIndex = 3;
             this.textBoxLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxLogin.MouseEnter += new System.EventHandler(this.TextBoxLogin_MouseEnter);
@@ -161,10 +161,10 @@ namespace kanbanboard.Forms
             this.textBoxPassword.Dock = System.Windows.Forms.DockStyle.Right;
             this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.textBoxPassword.Location = new System.Drawing.Point(16, 10);
+            this.textBoxPassword.Location = new System.Drawing.Point(11, 10);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '*';
-            this.textBoxPassword.Size = new System.Drawing.Size(175, 19);
+            this.textBoxPassword.Size = new System.Drawing.Size(195, 19);
             this.textBoxPassword.TabIndex = 4;
             this.textBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxPassword.MouseEnter += new System.EventHandler(this.TextBoxPass_MouseEnter);
@@ -224,7 +224,7 @@ namespace kanbanboard.Forms
             this.PasswordTextBoxPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.PasswordTextBoxPanel.Location = new System.Drawing.Point(0, 40);
             this.PasswordTextBoxPanel.Name = "PasswordTextBoxPanel";
-            this.PasswordTextBoxPanel.Padding = new System.Windows.Forms.Padding(15, 10, 15, 5);
+            this.PasswordTextBoxPanel.Padding = new System.Windows.Forms.Padding(15, 10, 0, 5);
             this.PasswordTextBoxPanel.Size = new System.Drawing.Size(224, 40);
             this.PasswordTextBoxPanel.TabIndex = 10;
             // 
@@ -235,7 +235,7 @@ namespace kanbanboard.Forms
             this.LoginTextBoxPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.LoginTextBoxPanel.Location = new System.Drawing.Point(0, 0);
             this.LoginTextBoxPanel.Name = "LoginTextBoxPanel";
-            this.LoginTextBoxPanel.Padding = new System.Windows.Forms.Padding(15, 10, 15, 5);
+            this.LoginTextBoxPanel.Padding = new System.Windows.Forms.Padding(15, 10, 0, 5);
             this.LoginTextBoxPanel.Size = new System.Drawing.Size(224, 40);
             this.LoginTextBoxPanel.TabIndex = 9;
             // 
@@ -879,7 +879,7 @@ namespace kanbanboard.Forms
             this.textBoxLoginCheck.Dock = System.Windows.Forms.DockStyle.Right;
             this.textBoxLoginCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.textBoxLoginCheck.ForeColor = System.Drawing.Color.Red;
-            this.textBoxLoginCheck.Location = new System.Drawing.Point(191, 10);
+            this.textBoxLoginCheck.Location = new System.Drawing.Point(206, 10);
             this.textBoxLoginCheck.Margin = new System.Windows.Forms.Padding(3);
             this.textBoxLoginCheck.Name = "textBoxLoginCheck";
             this.textBoxLoginCheck.Padding = new System.Windows.Forms.Padding(3, 4, 3, 3);
@@ -893,7 +893,7 @@ namespace kanbanboard.Forms
             this.textBoxPasswordCheck.Dock = System.Windows.Forms.DockStyle.Right;
             this.textBoxPasswordCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.textBoxPasswordCheck.ForeColor = System.Drawing.Color.Red;
-            this.textBoxPasswordCheck.Location = new System.Drawing.Point(191, 10);
+            this.textBoxPasswordCheck.Location = new System.Drawing.Point(206, 10);
             this.textBoxPasswordCheck.Margin = new System.Windows.Forms.Padding(3);
             this.textBoxPasswordCheck.Name = "textBoxPasswordCheck";
             this.textBoxPasswordCheck.Padding = new System.Windows.Forms.Padding(3, 4, 3, 3);
