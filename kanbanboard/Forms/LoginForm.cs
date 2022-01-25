@@ -103,5 +103,13 @@ namespace kanbanboard.Forms
                 ? Color.Green
                 : Color.Red;
         }
+
+        private void textBoxPassword_TextChanged(object sender, EventArgs e)
+        {
+            string passwordTextBox = textBoxPassword.Text;
+            textBoxPasswordCheck.ForeColor = !passwordTextBox.Trim().Equals("")
+                ? Color.Green
+                : Color.Red;
+        }
     }
 }

@@ -168,6 +168,7 @@ namespace kanbanboard.Forms
             this.textBoxPassword.Size = new System.Drawing.Size(195, 19);
             this.textBoxPassword.TabIndex = 4;
             this.textBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
             this.textBoxPassword.MouseEnter += new System.EventHandler(this.TextBoxPass_MouseEnter);
             this.textBoxPassword.MouseLeave += new System.EventHandler(this.TextBoxPass_MouseLeave);
             // 
