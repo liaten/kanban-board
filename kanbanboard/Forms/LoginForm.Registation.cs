@@ -105,5 +105,19 @@ namespace kanbanboard.Forms
             Text = "Регистрация";
             Size = new Size(350, 400);
         }
+        private void RegLoginTextBox_TextChanged(object sender, EventArgs e)
+        {
+            string loginTextBox = RegLoginTextBox.Text;
+            RegLoginCheck.ForeColor = _users.ContainsKey(loginTextBox) || loginTextBox.Trim().Equals("")
+                ? Color.Red
+                : Color.Green;
+        }
+        private void RegLoginTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar) || char.IsDigit(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

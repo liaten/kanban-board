@@ -94,20 +94,7 @@ namespace kanbanboard.Forms
         private void TextBoxLogin_MouseLeave(object sender, EventArgs e) => LoginLabel.ForeColor = Color.FromArgb(74, 79, 99);
         private void TextBoxPass_MouseEnter(object sender, EventArgs e) => PassLabel.ForeColor = Color.FromArgb(114, 119, 139);
         private void TextBoxPass_MouseLeave(object sender, EventArgs e) => PassLabel.ForeColor = Color.FromArgb(74, 79, 99);
-        private void RegLoginTextBox_TextChanged(object sender, EventArgs e)
-        {
-            string loginTextBox = RegLoginTextBox.Text;
-            RegLoginCheck.ForeColor = _users.ContainsKey(loginTextBox) || loginTextBox.Trim().Equals("")
-                ? Color.Red
-                : Color.Green;
-        }
-        private void RegLoginTextBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar) || char.IsDigit(e.KeyChar)))
-            {
-                e.Handled = true;
-            }
-        }
+    
 
         private void textBoxLogin_TextChanged(object sender, EventArgs e)
         {
