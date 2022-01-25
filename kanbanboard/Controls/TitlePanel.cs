@@ -53,8 +53,8 @@ namespace kanbanboard.Controls
                 x.Size = new Size(25, 25);
                 x.FlatStyle = FlatStyle.Flat;
                 x.FlatAppearance.BorderSize = 0;
-                x.MouseEnter += (s, a) => x.ForeColor = Color.Red;
-                x.MouseLeave += (s, a) => x.ForeColor = TicketPanel.GetColor();
+                x.MouseEnter += (_, _) => x.ForeColor = Color.Red;
+                x.MouseLeave += (_, _) => x.ForeColor = TicketPanel.GetColor();
             });
 
             Controls.AddRange(new Control[] { TitleColumnLabel, PlusButton, DelColumnButton});

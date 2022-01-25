@@ -18,20 +18,20 @@ namespace kanbanboard.Forms
 
             Text = "Изменение заголовка";
 
-            KeyDown += (s, a) =>
+            KeyDown += (_, a) =>
             {
                 if (a.KeyValue == (int)Keys.Enter || a.KeyValue == (int)Keys.Escape) Close();
             };
 
             // Начальный текст
-            Load += (sender, args) =>
+            Load += (_, _) =>
             {
                 ChangingTextBox.Text = _titlePanel.TitleColumnLabel.Text;
                 ChangingTextBox.Focus();
             };
 
             // Сохранение
-            FormClosing += (sender, args) =>
+            FormClosing += (_, _) =>
             {
                 _titlePanel.TitleColumnLabel.Text = ChangingTextBox.Text;
             };
@@ -44,13 +44,13 @@ namespace kanbanboard.Forms
 
             Text = "Создать новый проект";
 
-            KeyDown += (s, a) =>
+            KeyDown += (_, a) =>
             {
                 if (a.KeyValue == (int)Keys.Enter || a.KeyValue == (int)Keys.Escape) Close();
             };
 
             // Сохранение
-            FormClosing += async (sender, args) =>
+            FormClosing += async (_, _) =>
             {
                 if (!string.IsNullOrEmpty(ChangingTextBox.Text))
                 {

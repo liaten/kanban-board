@@ -21,7 +21,6 @@ namespace kanbanboard.Classes
         public string Email { get; set; }
         public string Organization { get; set; }
         public string FullName { get; set; }
-        public string UTC { get; set; }
 
         public Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>> GetProjectsData() => this.GetDataForAllProjects();
         public List<string> ProjectNames() => this.GetProjectNames();
@@ -33,7 +32,7 @@ namespace kanbanboard.Classes
             Password = this.GetPassword();
         }
         [JsonConstructor]
-        public User(string username, string password, string email, List<string> projects, Roles role, string organization, string fullname, string utc)
+        public User(string username, string password, string email, List<string> projects, Roles role, string organization, string fullname)
         {
             Username = username;
             Password = password;
@@ -42,7 +41,6 @@ namespace kanbanboard.Classes
             Role = role;
             Organization = organization;
             FullName = fullname;
-            UTC = utc;
         }
     }
 }

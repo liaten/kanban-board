@@ -14,8 +14,10 @@ namespace kanbanboard.Forms
         {
             // Главную панельку на передний план
             MainPanel.BringToFront();
+
             // Меняем размер панельки
             Size = new Size(350, 245);
+
             // Меняем текст окна
             Text = "Авторизация";
         }
@@ -31,15 +33,7 @@ namespace kanbanboard.Forms
             var org = RegOrgTextBox.Text;
             var fullname = RegFullNameTextBox.Text;
 
-            var currentTimeZoneHours = TimeZone.CurrentTimeZone.GetUtcOffset(DateTime.Now).Hours;
-            var utc = currentTimeZoneHours switch
-            {
-                > 0 => $"+{currentTimeZoneHours}",
-                < 0 => $"-{currentTimeZoneHours}",
-                0 => $"{currentTimeZoneHours}"
-            };
-
-            if (new List<string> { login, email, password, role, projects, utc, org, fullname }.Any(x => string.IsNullOrEmpty(x)))
+            if (new List<string> { login, email, password, role, projects, org, fullname }.Any(x => string.IsNullOrEmpty(x)))
             {
                 MessageBox.Show(@"Не все поля заполнены.");
                 return;
@@ -65,22 +59,21 @@ namespace kanbanboard.Forms
                     projects.Split(' ').ToList(),
                     role.ToEnum<Roles>(),
                     org,
-                    fullname,
-                    utc
+                    fullname
                 );
 
             _users.Add(newUser.Username, newUser);
             newUser.CreateUser();
 
             // Вопрос на выполнение логина после регистрации
-            if (MessageBox.Show($@"Пользователь зарегистрирован.{Environment.NewLine}Войти в созданную учётную запись?", "Регистрация", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            if (MessageBox.Show($@"Пользователь зарегистрирован.{Environment.NewLine}Войти в созданную учётную запись?", "Регистрация", 
+                MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
                 MainPanel.BringToFront();
                 textBoxLogin.Text = login;
                 textBoxPassword.Text = password;
                 LoginButton.PerformClick();
             }
-            else MainPanel.BringToFront();
 
             // Очистка введенного текста
             new List<TextBox>
@@ -88,7 +81,9 @@ namespace kanbanboard.Forms
                 RegLoginTextBox,
                 RegEmailTextBox,
                 RegPasswordTextBox,
-                RegProjectsTextBox
+                RegProjectsTextBox,
+                RegFullNameTextBox,
+                RegOrgTextBox
             }.ForEach(x => x.Text = "");
             RegRoleComboBox.SelectedIndex = -1;
         }
@@ -98,14 +93,17 @@ namespace kanbanboard.Forms
             RegLoginTextBox.Text = textBoxLogin.Text.ValidEmail() ? "" : textBoxLogin.Text;
             RegEmailTextBox.Text = textBoxLogin.Text.ValidEmail() ? textBoxLogin.Text : "";
             RegPasswordTextBox.Text = textBoxPassword.Text;
+
             // Переносим панельку с регистрацией на передний план
             RegPanel.BringToFront();
+
             // Чистим текстбоксы
             textBoxLogin.Clear();
             textBoxPassword.Clear();
+
             // Устанавливаем название окна - "Регистрация"
             Text = "Регистрация";
-            Size = new Size(350, 465);
+            Size = new Size(350, 421);
         }
     }
 }

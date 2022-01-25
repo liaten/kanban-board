@@ -11,26 +11,27 @@ namespace kanbanboard.Forms
     public partial class MainForm : Form
     {
         private static User _user;
+        private static int _projectIndex;
 
-        public MainForm(string username)
+        public MainForm(User user)
         {
             InitializeComponent();
 
             // Вернуться в LoginForm по ESC
-            KeyDown += (s, a) =>
+            KeyDown += (_, a) =>
             {
                 if (a.KeyValue == (int)Keys.Escape) ExitButton.PerformClick();
             };
 
             // Отправить сообщение по Enter
-            MessengerTextBox.KeyPress += (fsa, key) =>
+            MessengerTextBox.KeyPress += (_, key) =>
             {
                 if (key.KeyChar == (int)Keys.Enter)
                     SendMessageButton.PerformClick();
             };
 
             // Событие при изменении размера таблицы
-            TableLayoutPanel.Resize += (s, a) => ResizeTable();
+            TableLayoutPanel.Resize += (_, _) => ResizeTable();
 
             // Установка двойной буферизации для устранения мерцания
             SetDoubleBuffered(TableLayoutPanel);
@@ -38,15 +39,31 @@ namespace kanbanboard.Forms
             SetDoubleBuffered(MessengerListBox);
             SetDoubleBuffered(ListBoxOfProjectNames);
 
-            // Создаём экземпляр через который будем работать с базой
-            _user = new User(username);
+            // Данные пользователя
+            _user = user;
+
             UserInfoLabel.Text = $"Роль: {_user.Role}";
-            UsernameLabel.Text = username;
+            UsernameLabel.Text = _user.Username;
+            OrganizationLabel.Text = _user.Organization;
+            NickNameLabel.Text = _user.Username;
+            FullNameLabel.Text = _user.FullName;
+            var utc = TimeZone.CurrentTimeZone.GetUtcOffset(DateTime.Now).Hours;
+            TimeZoneLabel.Text = utc >= 0 ? $"UTC+{utc}" : $"UTC-{utc}";
 
             // Событие при изменении выбранной строки в listbox
             ListBoxOfProjectNames.Items.Clear();
-            ListBoxOfProjectNames.SelectedIndexChanged += (ss, aa) =>
+            ListBoxOfProjectNames.SelectedIndexChanged += (_, _) =>
             {
+                // Сохраняем предыдущий проект, с которым работали
+                if (ListBoxOfProjectNames.SelectedItem != null)
+                {
+                    try { Upload(ListBoxOfProjectNames.Items[_projectIndex].ToString()); }
+                    catch {}
+                }
+
+                // Переназначаем индекс
+                _projectIndex = ListBoxOfProjectNames.SelectedIndex;
+
                 try
                 {
                     Parallel.Invoke(
@@ -59,7 +76,7 @@ namespace kanbanboard.Forms
 
             // Сохранение данных в базу
             // Сохраняется только активная таблица (выбранная в listbox)
-            FormClosing += (b, q) =>
+            FormClosing += (_, _) =>
             {
                 if (ListBoxOfProjectNames.SelectedItem != null)
                 {
@@ -71,24 +88,25 @@ namespace kanbanboard.Forms
             // Подсказка на кнопку с плюсом
             new ToolTip().SetToolTip(AddTitleButton, "Добавить столбец");
 
-            Load += (s, a) =>
+            Load += (_, _) =>
             {
-                if (string.IsNullOrEmpty(username))
+                if (string.IsNullOrEmpty(user.ToString()))
                 {
                     UsernameLabel.Text = "Гость";
                     UserInfoLabel.Text = "";
                     return;
                 }
 
-                // Загоняем в listbox проектов названия проектов текущего пользователя
+                // Загоняем в listbox названия проектов текущего пользователя
                 SetUserProjectNames();
 
                 // Стартовый вид -> панель с профилем
                 UserControlsPanel_Click(null, null);
 
-                //// Загрузка первого элемента из списка
-                //try { ListBoxOfProjectNames.SelectedIndex = 0; }
-                //catch { }
+                // Начальное состояние после входа
+                try { ListBoxOfProjectNames.SelectedIndex = 0; }
+                catch {}
+                finally { UserPanel.BringToFront();}
             };
         }
 
@@ -146,6 +164,7 @@ namespace kanbanboard.Forms
 
             // перемещение панельки выделения
             StripPanel.Location = TasksButton.Location;
+
             // изменение размера панельки выделения
             StripPanel.Size = new Size(StripPanel.Size.Width, TasksButton.Size.Height);
 
@@ -159,8 +178,10 @@ namespace kanbanboard.Forms
         {
             LabelHead.Text = "Профиль";
             UserPanel.BringToFront();
+
             // перемещение панельки выделения
             StripPanel.Location = UserControlsPanel.Location;
+
             // изменение размера панельки выделения
             StripPanel.Size = new Size(StripPanel.Size.Width, UserControlsPanel.Size.Height);
             ListBoxOfProjectNames.Visible = false;
@@ -187,10 +208,11 @@ namespace kanbanboard.Forms
         private void CalendarButton_Click(object sender, EventArgs e)
         {
             LabelHead.Text = "Календарь";
-
             CalendarPanel.BringToFront();
+
             // перемещение панельки выделения
             StripPanel.Location = CalendarButton.Location;
+
             // изменение размера панельки выделения
             StripPanel.Size = new Size(StripPanel.Size.Width, CalendarButton.Size.Height);
             ListBoxOfProjectNames.Visible = false;
