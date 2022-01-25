@@ -24,7 +24,7 @@ namespace kanbanboard.Forms
                 else if (RegPanel.IsControlAtFront() && a.KeyValue == (int)Keys.Enter) RegOfRegBackButton.PerformClick();
             };
 
-            var toolTipForProjectNames = new ToolTip { AutomaticDelay = 100 };
+            ToolTip toolTipForProjectNames = new() { AutomaticDelay = 100 };
             toolTipForProjectNames.SetToolTip(RegProjectsTextBox, "Формат ввода строго через пробел: Проект1 Проект2 Проект3...");
             toolTipForProjectNames.SetToolTip(RegProjectsLabel, "Формат ввода строго через пробел: Проект1 Проект2 Проект3...");
         }
@@ -48,7 +48,7 @@ namespace kanbanboard.Forms
 
             if (_users.ContainsKey(username) && _users[username].Password == MD5.Encrypt(textBoxPassword.Text))
             {
-                var mainForm = new MainForm(_users[username]);
+                MainForm mainForm = new(_users[username]);
                 Hide();
                 mainForm.Show();
                 return;
@@ -73,7 +73,7 @@ namespace kanbanboard.Forms
         private void TextBoxPass_MouseLeave(object sender, EventArgs e) => PassLabel.ForeColor = Color.FromArgb(74, 79, 99);
         private void RegLoginTextBox_TextChanged(object sender, EventArgs e)
         {
-            var loginTextBox = RegLoginTextBox.Text;
+            string loginTextBox = RegLoginTextBox.Text;
             RegLoginCheck.ForeColor = _users.ContainsKey(loginTextBox) || loginTextBox.Trim().Equals("")
                 ? Color.Red
                 : Color.Green;
@@ -81,7 +81,9 @@ namespace kanbanboard.Forms
         private void RegLoginTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar) || char.IsDigit(e.KeyChar)))
+            {
                 e.Handled = true;
+            }
         }
     }
 }
