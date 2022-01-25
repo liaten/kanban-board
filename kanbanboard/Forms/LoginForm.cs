@@ -1,8 +1,8 @@
-﻿using System;
+﻿using kanbanboard.Classes;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using kanbanboard.Classes;
 
 namespace kanbanboard.Forms
 {
@@ -19,12 +19,34 @@ namespace kanbanboard.Forms
             // Регистрация по Enter
             KeyDown += (_, a) =>
             {
-                if (MainPanel.IsControlAtFront() && a.KeyValue == (int)Keys.Enter) LoginButton.PerformClick();
-                else if (RegPanel.IsControlAtFront() && a.KeyValue == (int)Keys.Escape) MainPanel.BringToFront();
-                else if (RegPanel.IsControlAtFront() && a.KeyValue == (int)Keys.Enter) RegOfRegBackButton.PerformClick();
+                if (MainPanel.IsControlAtFront()
+                    && a.KeyValue == (int)Keys.Enter)
+                {
+                    LoginButton.PerformClick();
+                }
+                else
+                {
+                    if (RegPanel.IsControlAtFront()
+                        && a.KeyValue == (int)Keys.Escape)
+                    {
+                        // Меняем размер панельки
+                        Size = new Size(350, 245);
+
+                        // Меняем текст окна
+                        Text = "Авторизация";
+
+                        // Двигаем главную панельку на передний план
+                        MainPanel.BringToFront();
+                    }
+                    else if (RegPanel.IsControlAtFront()
+                        && a.KeyValue == (int)Keys.Enter)
+                    {
+                        RegOfRegBackButton.PerformClick();
+                    }
+                }
             };
 
-            var toolTipForProjectNames = new ToolTip { AutomaticDelay = 100 };
+            ToolTip toolTipForProjectNames = new() { AutomaticDelay = 100 };
             toolTipForProjectNames.SetToolTip(RegProjectsTextBox, "Формат ввода строго через пробел: Проект1 Проект2 Проект3...");
             toolTipForProjectNames.SetToolTip(RegProjectsLabel, "Формат ввода строго через пробел: Проект1 Проект2 Проект3...");
         }
@@ -44,11 +66,12 @@ namespace kanbanboard.Forms
         // Логин в приложение
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            var username = textBoxLogin.Text;
+            string username = textBoxLogin.Text;
 
-            if (_users.ContainsKey(username) && _users[username].Password == MD5.Encrypt(textBoxPassword.Text))
+            if (_users.ContainsKey(username)
+                && _users[username].Password == MD5.Encrypt(textBoxPassword.Text))
             {
-                var mainForm = new MainForm(_users[username]);
+                MainForm mainForm = new(_users[username]);
                 Hide();
                 mainForm.Show();
                 return;
@@ -71,17 +94,22 @@ namespace kanbanboard.Forms
         private void TextBoxLogin_MouseLeave(object sender, EventArgs e) => LoginLabel.ForeColor = Color.FromArgb(74, 79, 99);
         private void TextBoxPass_MouseEnter(object sender, EventArgs e) => PassLabel.ForeColor = Color.FromArgb(114, 119, 139);
         private void TextBoxPass_MouseLeave(object sender, EventArgs e) => PassLabel.ForeColor = Color.FromArgb(74, 79, 99);
-        private void RegLoginTextBox_TextChanged(object sender, EventArgs e)
+    
+
+        private void textBoxLogin_TextChanged(object sender, EventArgs e)
         {
-            var loginTextBox = RegLoginTextBox.Text;
-            RegLoginCheck.ForeColor = _users.ContainsKey(loginTextBox) || loginTextBox.Trim().Equals("")
-                ? Color.Red
-                : Color.Green;
+            string loginTextBox = textBoxLogin.Text;
+            textBoxLoginCheck.ForeColor = _users.ContainsKey(loginTextBox) && !loginTextBox.Trim().Equals("")
+                ? Color.Green
+                : Color.Red;
         }
-        private void RegLoginTextBox_KeyPress(object sender, KeyPressEventArgs e)
+
+        private void textBoxPassword_TextChanged(object sender, EventArgs e)
         {
-            if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar) || char.IsDigit(e.KeyChar)))
-                e.Handled = true;
+            string passwordTextBox = textBoxPassword.Text;
+            textBoxPasswordCheck.ForeColor = !passwordTextBox.Trim().Equals("")
+                ? Color.Green
+                : Color.Red;
         }
     }
 }

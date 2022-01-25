@@ -1,9 +1,9 @@
-﻿using System;
+﻿using kanbanboard.Classes;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using kanbanboard.Classes;
 
 namespace kanbanboard.Forms
 {
@@ -66,7 +66,7 @@ namespace kanbanboard.Forms
             newUser.CreateUser();
 
             // Вопрос на выполнение логина после регистрации
-            if (MessageBox.Show($@"Пользователь зарегистрирован.{Environment.NewLine}Войти в созданную учётную запись?", "Регистрация", 
+            if (MessageBox.Show($@"Пользователь зарегистрирован.{Environment.NewLine}Войти в созданную учётную запись?", "Регистрация",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
                 MainPanel.BringToFront();
@@ -103,7 +103,21 @@ namespace kanbanboard.Forms
 
             // Устанавливаем название окна - "Регистрация"
             Text = "Регистрация";
-            Size = new Size(350, 421);
+            Size = new Size(350, 300);
+        }
+        private void RegLoginTextBox_TextChanged(object sender, EventArgs e)
+        {
+            string loginTextBox = RegLoginTextBox.Text;
+            RegLoginCheck.ForeColor = _users.ContainsKey(loginTextBox) || loginTextBox.Trim().Equals("")
+                ? Color.Red
+                : Color.Green;
+        }
+        private void RegLoginTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar) || char.IsDigit(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

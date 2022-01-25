@@ -37,11 +37,12 @@ namespace kanbanboard.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ControlsPanel = new System.Windows.Forms.Panel();
             this.ProjectsPanel = new System.Windows.Forms.Panel();
+            this.ListBoxOfProjectNames = new System.Windows.Forms.ListBox();
+            this.Projects_List_Label = new System.Windows.Forms.Label();
             this.CreateProjectPanel = new System.Windows.Forms.Panel();
             this.CreateProjectButton = new System.Windows.Forms.Button();
             this.SaveProjectPanel = new System.Windows.Forms.Panel();
             this.SaveProjectButton = new System.Windows.Forms.Button();
-            this.ListBoxOfProjectNames = new System.Windows.Forms.ListBox();
             this.ExitButtonPanel = new System.Windows.Forms.Panel();
             this.ExitButton = new System.Windows.Forms.Button();
             this.StripPanel = new System.Windows.Forms.Panel();
@@ -104,7 +105,6 @@ namespace kanbanboard.Forms
             this.MessengerTextBoxPanel = new System.Windows.Forms.Panel();
             this.MessengerTextBox = new System.Windows.Forms.TextBox();
             this.HeadPanel = new System.Windows.Forms.Panel();
-            this.Projects_List_Label = new System.Windows.Forms.Label();
             this.ControlsPanel.SuspendLayout();
             this.ProjectsPanel.SuspendLayout();
             this.CreateProjectPanel.SuspendLayout();
@@ -176,6 +176,40 @@ namespace kanbanboard.Forms
             this.ProjectsPanel.Size = new System.Drawing.Size(205, 249);
             this.ProjectsPanel.TabIndex = 7;
             // 
+            // ListBoxOfProjectNames
+            // 
+            this.ListBoxOfProjectNames.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.ListBoxOfProjectNames.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ListBoxOfProjectNames.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ListBoxOfProjectNames.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.ListBoxOfProjectNames.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.ListBoxOfProjectNames.FormattingEnabled = true;
+            this.ListBoxOfProjectNames.IntegralHeight = false;
+            this.ListBoxOfProjectNames.ItemHeight = 18;
+            this.ListBoxOfProjectNames.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"});
+            this.ListBoxOfProjectNames.Location = new System.Drawing.Point(0, 25);
+            this.ListBoxOfProjectNames.Name = "ListBoxOfProjectNames";
+            this.ListBoxOfProjectNames.Size = new System.Drawing.Size(205, 112);
+            this.ListBoxOfProjectNames.Sorted = true;
+            this.ListBoxOfProjectNames.TabIndex = 6;
+            // 
+            // Projects_List_Label
+            // 
+            this.Projects_List_Label.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Projects_List_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Projects_List_Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.Projects_List_Label.Location = new System.Drawing.Point(0, 0);
+            this.Projects_List_Label.Name = "Projects_List_Label";
+            this.Projects_List_Label.Size = new System.Drawing.Size(205, 25);
+            this.Projects_List_Label.TabIndex = 9;
+            this.Projects_List_Label.Text = "Список проектов:";
+            // 
             // CreateProjectPanel
             // 
             this.CreateProjectPanel.Controls.Add(this.CreateProjectButton);
@@ -227,29 +261,6 @@ namespace kanbanboard.Forms
             this.SaveProjectButton.Text = "Сохранить проект";
             this.SaveProjectButton.UseVisualStyleBackColor = true;
             this.SaveProjectButton.Click += new System.EventHandler(this.SaveProjectButton_Click);
-            // 
-            // ListBoxOfProjectNames
-            // 
-            this.ListBoxOfProjectNames.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.ListBoxOfProjectNames.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ListBoxOfProjectNames.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ListBoxOfProjectNames.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.ListBoxOfProjectNames.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.ListBoxOfProjectNames.FormattingEnabled = true;
-            this.ListBoxOfProjectNames.IntegralHeight = false;
-            this.ListBoxOfProjectNames.ItemHeight = 18;
-            this.ListBoxOfProjectNames.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6"});
-            this.ListBoxOfProjectNames.Location = new System.Drawing.Point(0, 25);
-            this.ListBoxOfProjectNames.Name = "ListBoxOfProjectNames";
-            this.ListBoxOfProjectNames.Size = new System.Drawing.Size(205, 112);
-            this.ListBoxOfProjectNames.Sorted = true;
-            this.ListBoxOfProjectNames.TabIndex = 6;
             // 
             // ExitButtonPanel
             // 
@@ -1983,17 +1994,6 @@ namespace kanbanboard.Forms
             this.HeadPanel.Name = "HeadPanel";
             this.HeadPanel.Size = new System.Drawing.Size(979, 70);
             this.HeadPanel.TabIndex = 3;
-            // 
-            // Projects_List_Label
-            // 
-            this.Projects_List_Label.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Projects_List_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Projects_List_Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.Projects_List_Label.Location = new System.Drawing.Point(0, 0);
-            this.Projects_List_Label.Name = "Projects_List_Label";
-            this.Projects_List_Label.Size = new System.Drawing.Size(205, 25);
-            this.Projects_List_Label.TabIndex = 9;
-            this.Projects_List_Label.Text = "Список проектов:";
             // 
             // MainForm
             // 
