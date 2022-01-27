@@ -1,12 +1,17 @@
 ﻿
-namespace kanbanboard.Windows
+using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace kanbanboard.Forms
 {
     partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Освободить все используемые ресурсы.
@@ -32,11 +37,12 @@ namespace kanbanboard.Windows
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ControlsPanel = new System.Windows.Forms.Panel();
             this.ProjectsPanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.ListBoxOfProjectNames = new System.Windows.Forms.ListBox();
+            this.Projects_List_Label = new System.Windows.Forms.Label();
+            this.CreateProjectPanel = new System.Windows.Forms.Panel();
             this.CreateProjectButton = new System.Windows.Forms.Button();
             this.SaveProjectPanel = new System.Windows.Forms.Panel();
             this.SaveProjectButton = new System.Windows.Forms.Button();
-            this.ListBoxOfProjectNames = new System.Windows.Forms.ListBox();
             this.ExitButtonPanel = new System.Windows.Forms.Panel();
             this.ExitButton = new System.Windows.Forms.Button();
             this.StripPanel = new System.Windows.Forms.Panel();
@@ -54,18 +60,6 @@ namespace kanbanboard.Windows
             this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.BasicPanel = new System.Windows.Forms.Panel();
             this.BasicContentPanel = new System.Windows.Forms.Panel();
-            this.MessengerPanel = new System.Windows.Forms.Panel();
-            this.MessengerMainPanel = new System.Windows.Forms.Panel();
-            this.MessengerShowPanel = new System.Windows.Forms.Panel();
-            this.MessengerListBox = new System.Windows.Forms.ListBox();
-            this.MessengerSendPanel = new System.Windows.Forms.Panel();
-            this.SendMessageButtonPanel = new System.Windows.Forms.Panel();
-            this.SendMessageButton = new System.Windows.Forms.Button();
-            this.MessengerTextBoxPanel = new System.Windows.Forms.Panel();
-            this.MessengerTextBox = new System.Windows.Forms.TextBox();
-            this.PanelWithTable = new System.Windows.Forms.Panel();
-            this.AddingPanel = new System.Windows.Forms.Panel();
-            this.AddTitleButton = new System.Windows.Forms.Button();
             this.UserPanel = new System.Windows.Forms.Panel();
             this.PasswordPanel = new System.Windows.Forms.Panel();
             this.PasswordShowPanel = new System.Windows.Forms.Panel();
@@ -93,12 +87,27 @@ namespace kanbanboard.Windows
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.FullNameLabelPanel = new System.Windows.Forms.Panel();
             this.FullNameTitleLabel = new System.Windows.Forms.Label();
+            this.PanelWithTable = new System.Windows.Forms.Panel();
+            this.AddingPanel = new System.Windows.Forms.Panel();
+            this.TrashButton = new System.Windows.Forms.Button();
+            this.AddTitleButton = new System.Windows.Forms.Button();
+            this.LoadPanel = new System.Windows.Forms.Panel();
+            this.LoadLabel = new System.Windows.Forms.Label();
             this.CalendarPanel = new System.Windows.Forms.Panel();
-            this.CalendarLabel = new System.Windows.Forms.Label();
+            this.CalendarDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.MessengerPanel = new System.Windows.Forms.Panel();
+            this.MessengerMainPanel = new System.Windows.Forms.Panel();
+            this.MessengerShowPanel = new System.Windows.Forms.Panel();
+            this.MessengerListBox = new System.Windows.Forms.ListBox();
+            this.MessengerSendPanel = new System.Windows.Forms.Panel();
+            this.SendMessageButtonPanel = new System.Windows.Forms.Panel();
+            this.SendMessageButton = new System.Windows.Forms.Button();
+            this.MessengerTextBoxPanel = new System.Windows.Forms.Panel();
+            this.MessengerTextBox = new System.Windows.Forms.TextBox();
             this.HeadPanel = new System.Windows.Forms.Panel();
             this.ControlsPanel.SuspendLayout();
             this.ProjectsPanel.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.CreateProjectPanel.SuspendLayout();
             this.SaveProjectPanel.SuspendLayout();
             this.ExitButtonPanel.SuspendLayout();
             this.UserControlsPanel.SuspendLayout();
@@ -108,14 +117,6 @@ namespace kanbanboard.Windows
             ((System.ComponentModel.ISupportInitialize)(this.UserPictureBox)).BeginInit();
             this.BasicPanel.SuspendLayout();
             this.BasicContentPanel.SuspendLayout();
-            this.MessengerPanel.SuspendLayout();
-            this.MessengerMainPanel.SuspendLayout();
-            this.MessengerShowPanel.SuspendLayout();
-            this.MessengerSendPanel.SuspendLayout();
-            this.SendMessageButtonPanel.SuspendLayout();
-            this.MessengerTextBoxPanel.SuspendLayout();
-            this.PanelWithTable.SuspendLayout();
-            this.AddingPanel.SuspendLayout();
             this.UserPanel.SuspendLayout();
             this.PasswordPanel.SuspendLayout();
             this.PasswordShowPanel.SuspendLayout();
@@ -132,7 +133,16 @@ namespace kanbanboard.Windows
             this.FullNamePanel.SuspendLayout();
             this.FullNameGetLabelPanel.SuspendLayout();
             this.FullNameLabelPanel.SuspendLayout();
+            this.PanelWithTable.SuspendLayout();
+            this.AddingPanel.SuspendLayout();
+            this.LoadPanel.SuspendLayout();
             this.CalendarPanel.SuspendLayout();
+            this.MessengerPanel.SuspendLayout();
+            this.MessengerMainPanel.SuspendLayout();
+            this.MessengerShowPanel.SuspendLayout();
+            this.MessengerSendPanel.SuspendLayout();
+            this.SendMessageButtonPanel.SuspendLayout();
+            this.MessengerTextBoxPanel.SuspendLayout();
             this.HeadPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -156,24 +166,59 @@ namespace kanbanboard.Windows
             // ProjectsPanel
             // 
             this.ProjectsPanel.AutoSize = true;
-            this.ProjectsPanel.Controls.Add(this.panel1);
-            this.ProjectsPanel.Controls.Add(this.SaveProjectPanel);
             this.ProjectsPanel.Controls.Add(this.ListBoxOfProjectNames);
+            this.ProjectsPanel.Controls.Add(this.Projects_List_Label);
+            this.ProjectsPanel.Controls.Add(this.CreateProjectPanel);
+            this.ProjectsPanel.Controls.Add(this.SaveProjectPanel);
             this.ProjectsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ProjectsPanel.Location = new System.Drawing.Point(0, 285);
+            this.ProjectsPanel.Location = new System.Drawing.Point(0, 260);
             this.ProjectsPanel.Name = "ProjectsPanel";
-            this.ProjectsPanel.Size = new System.Drawing.Size(205, 224);
+            this.ProjectsPanel.Size = new System.Drawing.Size(205, 249);
             this.ProjectsPanel.TabIndex = 7;
             // 
-            // panel1
+            // ListBoxOfProjectNames
             // 
-            this.panel1.Controls.Add(this.CreateProjectButton);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 112);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(10);
-            this.panel1.Size = new System.Drawing.Size(205, 56);
-            this.panel1.TabIndex = 8;
+            this.ListBoxOfProjectNames.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.ListBoxOfProjectNames.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ListBoxOfProjectNames.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ListBoxOfProjectNames.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.ListBoxOfProjectNames.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.ListBoxOfProjectNames.FormattingEnabled = true;
+            this.ListBoxOfProjectNames.IntegralHeight = false;
+            this.ListBoxOfProjectNames.ItemHeight = 18;
+            this.ListBoxOfProjectNames.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"});
+            this.ListBoxOfProjectNames.Location = new System.Drawing.Point(0, 25);
+            this.ListBoxOfProjectNames.Name = "ListBoxOfProjectNames";
+            this.ListBoxOfProjectNames.Size = new System.Drawing.Size(205, 112);
+            this.ListBoxOfProjectNames.Sorted = true;
+            this.ListBoxOfProjectNames.TabIndex = 6;
+            // 
+            // Projects_List_Label
+            // 
+            this.Projects_List_Label.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Projects_List_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Projects_List_Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.Projects_List_Label.Location = new System.Drawing.Point(0, 0);
+            this.Projects_List_Label.Name = "Projects_List_Label";
+            this.Projects_List_Label.Size = new System.Drawing.Size(205, 25);
+            this.Projects_List_Label.TabIndex = 9;
+            this.Projects_List_Label.Text = "Список проектов:";
+            // 
+            // CreateProjectPanel
+            // 
+            this.CreateProjectPanel.Controls.Add(this.CreateProjectButton);
+            this.CreateProjectPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.CreateProjectPanel.Location = new System.Drawing.Point(0, 137);
+            this.CreateProjectPanel.Name = "CreateProjectPanel";
+            this.CreateProjectPanel.Padding = new System.Windows.Forms.Padding(10);
+            this.CreateProjectPanel.Size = new System.Drawing.Size(205, 56);
+            this.CreateProjectPanel.TabIndex = 8;
             // 
             // CreateProjectButton
             // 
@@ -189,13 +234,13 @@ namespace kanbanboard.Windows
             this.CreateProjectButton.TabIndex = 5;
             this.CreateProjectButton.Text = "Создать проект";
             this.CreateProjectButton.UseVisualStyleBackColor = true;
-            this.CreateProjectButton.Click += new System.EventHandler(this.CreateProjectButton_Click);
+            this.CreateProjectButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CreateProjectButton_MouseDown);
             // 
             // SaveProjectPanel
             // 
             this.SaveProjectPanel.Controls.Add(this.SaveProjectButton);
             this.SaveProjectPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SaveProjectPanel.Location = new System.Drawing.Point(0, 168);
+            this.SaveProjectPanel.Location = new System.Drawing.Point(0, 193);
             this.SaveProjectPanel.Name = "SaveProjectPanel";
             this.SaveProjectPanel.Padding = new System.Windows.Forms.Padding(10);
             this.SaveProjectPanel.Size = new System.Drawing.Size(205, 56);
@@ -216,29 +261,6 @@ namespace kanbanboard.Windows
             this.SaveProjectButton.Text = "Сохранить проект";
             this.SaveProjectButton.UseVisualStyleBackColor = true;
             this.SaveProjectButton.Click += new System.EventHandler(this.SaveProjectButton_Click);
-            // 
-            // ListBoxOfProjectNames
-            // 
-            this.ListBoxOfProjectNames.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.ListBoxOfProjectNames.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ListBoxOfProjectNames.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ListBoxOfProjectNames.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.ListBoxOfProjectNames.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.ListBoxOfProjectNames.FormattingEnabled = true;
-            this.ListBoxOfProjectNames.IntegralHeight = false;
-            this.ListBoxOfProjectNames.ItemHeight = 18;
-            this.ListBoxOfProjectNames.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6"});
-            this.ListBoxOfProjectNames.Location = new System.Drawing.Point(0, 0);
-            this.ListBoxOfProjectNames.Name = "ListBoxOfProjectNames";
-            this.ListBoxOfProjectNames.Size = new System.Drawing.Size(205, 112);
-            this.ListBoxOfProjectNames.Sorted = true;
-            this.ListBoxOfProjectNames.TabIndex = 6;
             // 
             // ExitButtonPanel
             // 
@@ -353,7 +375,7 @@ namespace kanbanboard.Windows
             this.UsernameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.UsernameLabel.Location = new System.Drawing.Point(3, 3);
             this.UsernameLabel.Name = "UsernameLabel";
-            this.UsernameLabel.Size = new System.Drawing.Size(132, 16);
+            this.UsernameLabel.Size = new System.Drawing.Size(131, 16);
             this.UsernameLabel.TabIndex = 1;
             this.UsernameLabel.Text = "USERNAME_GET";
             this.UsernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1456,15 +1478,406 @@ namespace kanbanboard.Windows
             // 
             // BasicContentPanel
             // 
-            this.BasicContentPanel.Controls.Add(this.MessengerPanel);
-            this.BasicContentPanel.Controls.Add(this.PanelWithTable);
             this.BasicContentPanel.Controls.Add(this.UserPanel);
+            this.BasicContentPanel.Controls.Add(this.PanelWithTable);
+            this.BasicContentPanel.Controls.Add(this.LoadPanel);
             this.BasicContentPanel.Controls.Add(this.CalendarPanel);
+            this.BasicContentPanel.Controls.Add(this.MessengerPanel);
             this.BasicContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BasicContentPanel.Location = new System.Drawing.Point(0, 70);
             this.BasicContentPanel.Name = "BasicContentPanel";
             this.BasicContentPanel.Size = new System.Drawing.Size(979, 495);
             this.BasicContentPanel.TabIndex = 2;
+            // 
+            // UserPanel
+            // 
+            this.UserPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
+            this.UserPanel.Controls.Add(this.PasswordPanel);
+            this.UserPanel.Controls.Add(this.TimeZonePanel);
+            this.UserPanel.Controls.Add(this.OrganizationPanel);
+            this.UserPanel.Controls.Add(this.NickNamePanel);
+            this.UserPanel.Controls.Add(this.FullNamePanel);
+            this.UserPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UserPanel.Location = new System.Drawing.Point(0, 0);
+            this.UserPanel.Name = "UserPanel";
+            this.UserPanel.Size = new System.Drawing.Size(979, 495);
+            this.UserPanel.TabIndex = 2;
+            // 
+            // PasswordPanel
+            // 
+            this.PasswordPanel.Controls.Add(this.PasswordShowPanel);
+            this.PasswordPanel.Controls.Add(this.PasswordGetPanel);
+            this.PasswordPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PasswordPanel.Location = new System.Drawing.Point(0, 144);
+            this.PasswordPanel.Name = "PasswordPanel";
+            this.PasswordPanel.Size = new System.Drawing.Size(979, 36);
+            this.PasswordPanel.TabIndex = 6;
+            // 
+            // PasswordShowPanel
+            // 
+            this.PasswordShowPanel.Controls.Add(this.PasswordShowLabel);
+            this.PasswordShowPanel.Controls.Add(this.PasswordShowLinkLabel);
+            this.PasswordShowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PasswordShowPanel.Location = new System.Drawing.Point(80, 0);
+            this.PasswordShowPanel.Name = "PasswordShowPanel";
+            this.PasswordShowPanel.Padding = new System.Windows.Forms.Padding(5);
+            this.PasswordShowPanel.Size = new System.Drawing.Size(899, 36);
+            this.PasswordShowPanel.TabIndex = 4;
+            // 
+            // PasswordShowLabel
+            // 
+            this.PasswordShowLabel.AutoSize = true;
+            this.PasswordShowLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
+            this.PasswordShowLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.PasswordShowLabel.Location = new System.Drawing.Point(113, 8);
+            this.PasswordShowLabel.Name = "PasswordShowLabel";
+            this.PasswordShowLabel.Size = new System.Drawing.Size(0, 20);
+            this.PasswordShowLabel.TabIndex = 1;
+            this.PasswordShowLabel.Visible = false;
+            // 
+            // PasswordShowLinkLabel
+            // 
+            this.PasswordShowLinkLabel.AutoSize = true;
+            this.PasswordShowLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
+            this.PasswordShowLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.PasswordShowLinkLabel.Location = new System.Drawing.Point(10, 8);
+            this.PasswordShowLinkLabel.Name = "PasswordShowLinkLabel";
+            this.PasswordShowLinkLabel.Size = new System.Drawing.Size(98, 20);
+            this.PasswordShowLinkLabel.TabIndex = 0;
+            this.PasswordShowLinkLabel.TabStop = true;
+            this.PasswordShowLinkLabel.Text = "Показать";
+            this.PasswordShowLinkLabel.Click += new System.EventHandler(this.PasswordShowLinkLabel_Click);
+            // 
+            // PasswordGetPanel
+            // 
+            this.PasswordGetPanel.AutoSize = true;
+            this.PasswordGetPanel.Controls.Add(this.PasswordGetLabel);
+            this.PasswordGetPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.PasswordGetPanel.Location = new System.Drawing.Point(0, 0);
+            this.PasswordGetPanel.Name = "PasswordGetPanel";
+            this.PasswordGetPanel.Padding = new System.Windows.Forms.Padding(5);
+            this.PasswordGetPanel.Size = new System.Drawing.Size(80, 36);
+            this.PasswordGetPanel.TabIndex = 3;
+            // 
+            // PasswordGetLabel
+            // 
+            this.PasswordGetLabel.AutoSize = true;
+            this.PasswordGetLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PasswordGetLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.PasswordGetLabel.Location = new System.Drawing.Point(5, 9);
+            this.PasswordGetLabel.Name = "PasswordGetLabel";
+            this.PasswordGetLabel.Size = new System.Drawing.Size(67, 20);
+            this.PasswordGetLabel.TabIndex = 0;
+            this.PasswordGetLabel.Text = "Пароль";
+            // 
+            // TimeZonePanel
+            // 
+            this.TimeZonePanel.Controls.Add(this.TimeZoneGetPanel);
+            this.TimeZonePanel.Controls.Add(this.TimeZoneLabelPanel);
+            this.TimeZonePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TimeZonePanel.Location = new System.Drawing.Point(0, 108);
+            this.TimeZonePanel.Name = "TimeZonePanel";
+            this.TimeZonePanel.Size = new System.Drawing.Size(979, 36);
+            this.TimeZonePanel.TabIndex = 4;
+            // 
+            // TimeZoneGetPanel
+            // 
+            this.TimeZoneGetPanel.Controls.Add(this.TimeZoneLabel);
+            this.TimeZoneGetPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TimeZoneGetPanel.Location = new System.Drawing.Point(142, 0);
+            this.TimeZoneGetPanel.Name = "TimeZoneGetPanel";
+            this.TimeZoneGetPanel.Padding = new System.Windows.Forms.Padding(3);
+            this.TimeZoneGetPanel.Size = new System.Drawing.Size(837, 36);
+            this.TimeZoneGetPanel.TabIndex = 4;
+            // 
+            // TimeZoneLabel
+            // 
+            this.TimeZoneLabel.AutoSize = true;
+            this.TimeZoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TimeZoneLabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.TimeZoneLabel.Location = new System.Drawing.Point(3, 7);
+            this.TimeZoneLabel.Name = "TimeZoneLabel";
+            this.TimeZoneLabel.Size = new System.Drawing.Size(145, 20);
+            this.TimeZoneLabel.TabIndex = 1;
+            this.TimeZoneLabel.Text = "TIMEZONE_GET";
+            // 
+            // TimeZoneLabelPanel
+            // 
+            this.TimeZoneLabelPanel.AutoSize = true;
+            this.TimeZoneLabelPanel.Controls.Add(this.TimeZoneTitleLabel);
+            this.TimeZoneLabelPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TimeZoneLabelPanel.Location = new System.Drawing.Point(0, 0);
+            this.TimeZoneLabelPanel.Name = "TimeZoneLabelPanel";
+            this.TimeZoneLabelPanel.Padding = new System.Windows.Forms.Padding(3);
+            this.TimeZoneLabelPanel.Size = new System.Drawing.Size(142, 36);
+            this.TimeZoneLabelPanel.TabIndex = 3;
+            // 
+            // TimeZoneTitleLabel
+            // 
+            this.TimeZoneTitleLabel.AutoSize = true;
+            this.TimeZoneTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TimeZoneTitleLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.TimeZoneTitleLabel.Location = new System.Drawing.Point(3, 7);
+            this.TimeZoneTitleLabel.Name = "TimeZoneTitleLabel";
+            this.TimeZoneTitleLabel.Size = new System.Drawing.Size(133, 20);
+            this.TimeZoneTitleLabel.TabIndex = 0;
+            this.TimeZoneTitleLabel.Text = "Временная зона";
+            // 
+            // OrganizationPanel
+            // 
+            this.OrganizationPanel.Controls.Add(this.OrganizationGetPanel);
+            this.OrganizationPanel.Controls.Add(this.OrganizationLabelPanel);
+            this.OrganizationPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.OrganizationPanel.Location = new System.Drawing.Point(0, 72);
+            this.OrganizationPanel.Name = "OrganizationPanel";
+            this.OrganizationPanel.Size = new System.Drawing.Size(979, 36);
+            this.OrganizationPanel.TabIndex = 5;
+            // 
+            // OrganizationGetPanel
+            // 
+            this.OrganizationGetPanel.Controls.Add(this.OrganizationLabel);
+            this.OrganizationGetPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OrganizationGetPanel.Location = new System.Drawing.Point(117, 0);
+            this.OrganizationGetPanel.Name = "OrganizationGetPanel";
+            this.OrganizationGetPanel.Padding = new System.Windows.Forms.Padding(3);
+            this.OrganizationGetPanel.Size = new System.Drawing.Size(862, 36);
+            this.OrganizationGetPanel.TabIndex = 4;
+            // 
+            // OrganizationLabel
+            // 
+            this.OrganizationLabel.AutoSize = true;
+            this.OrganizationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.OrganizationLabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.OrganizationLabel.Location = new System.Drawing.Point(3, 7);
+            this.OrganizationLabel.Name = "OrganizationLabel";
+            this.OrganizationLabel.Size = new System.Drawing.Size(189, 20);
+            this.OrganizationLabel.TabIndex = 1;
+            this.OrganizationLabel.Text = "ORGANIZATION_GET";
+            // 
+            // OrganizationLabelPanel
+            // 
+            this.OrganizationLabelPanel.AutoSize = true;
+            this.OrganizationLabelPanel.Controls.Add(this.OrganizationTitleLabel);
+            this.OrganizationLabelPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.OrganizationLabelPanel.Location = new System.Drawing.Point(0, 0);
+            this.OrganizationLabelPanel.Name = "OrganizationLabelPanel";
+            this.OrganizationLabelPanel.Padding = new System.Windows.Forms.Padding(3);
+            this.OrganizationLabelPanel.Size = new System.Drawing.Size(117, 36);
+            this.OrganizationLabelPanel.TabIndex = 3;
+            // 
+            // OrganizationTitleLabel
+            // 
+            this.OrganizationTitleLabel.AutoSize = true;
+            this.OrganizationTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.OrganizationTitleLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.OrganizationTitleLabel.Location = new System.Drawing.Point(3, 7);
+            this.OrganizationTitleLabel.Name = "OrganizationTitleLabel";
+            this.OrganizationTitleLabel.Size = new System.Drawing.Size(108, 20);
+            this.OrganizationTitleLabel.TabIndex = 0;
+            this.OrganizationTitleLabel.Text = "Организация";
+            // 
+            // NickNamePanel
+            // 
+            this.NickNamePanel.Controls.Add(this.NickNameGetPanel);
+            this.NickNamePanel.Controls.Add(this.NickNameLabelPanel);
+            this.NickNamePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.NickNamePanel.Location = new System.Drawing.Point(0, 36);
+            this.NickNamePanel.Name = "NickNamePanel";
+            this.NickNamePanel.Size = new System.Drawing.Size(979, 36);
+            this.NickNamePanel.TabIndex = 3;
+            // 
+            // NickNameGetPanel
+            // 
+            this.NickNameGetPanel.Controls.Add(this.NickNameLabel);
+            this.NickNameGetPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NickNameGetPanel.Location = new System.Drawing.Point(141, 0);
+            this.NickNameGetPanel.Name = "NickNameGetPanel";
+            this.NickNameGetPanel.Padding = new System.Windows.Forms.Padding(3);
+            this.NickNameGetPanel.Size = new System.Drawing.Size(838, 36);
+            this.NickNameGetPanel.TabIndex = 4;
+            // 
+            // NickNameLabel
+            // 
+            this.NickNameLabel.AutoSize = true;
+            this.NickNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NickNameLabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.NickNameLabel.Location = new System.Drawing.Point(3, 7);
+            this.NickNameLabel.Name = "NickNameLabel";
+            this.NickNameLabel.Size = new System.Drawing.Size(146, 20);
+            this.NickNameLabel.TabIndex = 1;
+            this.NickNameLabel.Text = "NICKNAME_GET";
+            // 
+            // NickNameLabelPanel
+            // 
+            this.NickNameLabelPanel.AutoSize = true;
+            this.NickNameLabelPanel.Controls.Add(this.NickNameTitleLabel);
+            this.NickNameLabelPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.NickNameLabelPanel.Location = new System.Drawing.Point(0, 0);
+            this.NickNameLabelPanel.Name = "NickNameLabelPanel";
+            this.NickNameLabelPanel.Padding = new System.Windows.Forms.Padding(3);
+            this.NickNameLabelPanel.Size = new System.Drawing.Size(141, 36);
+            this.NickNameLabelPanel.TabIndex = 3;
+            // 
+            // NickNameTitleLabel
+            // 
+            this.NickNameTitleLabel.AutoSize = true;
+            this.NickNameTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NickNameTitleLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.NickNameTitleLabel.Location = new System.Drawing.Point(3, 7);
+            this.NickNameTitleLabel.Name = "NickNameTitleLabel";
+            this.NickNameTitleLabel.Size = new System.Drawing.Size(132, 20);
+            this.NickNameTitleLabel.TabIndex = 0;
+            this.NickNameTitleLabel.Text = "Никнейм / логин";
+            // 
+            // FullNamePanel
+            // 
+            this.FullNamePanel.Controls.Add(this.FullNameGetLabelPanel);
+            this.FullNamePanel.Controls.Add(this.FullNameLabelPanel);
+            this.FullNamePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.FullNamePanel.Location = new System.Drawing.Point(0, 0);
+            this.FullNamePanel.Name = "FullNamePanel";
+            this.FullNamePanel.Size = new System.Drawing.Size(979, 36);
+            this.FullNamePanel.TabIndex = 2;
+            // 
+            // FullNameGetLabelPanel
+            // 
+            this.FullNameGetLabelPanel.Controls.Add(this.FullNameLabel);
+            this.FullNameGetLabelPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FullNameGetLabelPanel.Location = new System.Drawing.Point(60, 0);
+            this.FullNameGetLabelPanel.Name = "FullNameGetLabelPanel";
+            this.FullNameGetLabelPanel.Padding = new System.Windows.Forms.Padding(5);
+            this.FullNameGetLabelPanel.Size = new System.Drawing.Size(919, 36);
+            this.FullNameGetLabelPanel.TabIndex = 4;
+            // 
+            // FullNameLabel
+            // 
+            this.FullNameLabel.AutoSize = true;
+            this.FullNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FullNameLabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.FullNameLabel.Location = new System.Drawing.Point(5, 9);
+            this.FullNameLabel.Name = "FullNameLabel";
+            this.FullNameLabel.Size = new System.Drawing.Size(149, 20);
+            this.FullNameLabel.TabIndex = 1;
+            this.FullNameLabel.Text = "FULLNAME_GET";
+            // 
+            // FullNameLabelPanel
+            // 
+            this.FullNameLabelPanel.AutoSize = true;
+            this.FullNameLabelPanel.Controls.Add(this.FullNameTitleLabel);
+            this.FullNameLabelPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.FullNameLabelPanel.Location = new System.Drawing.Point(0, 0);
+            this.FullNameLabelPanel.Name = "FullNameLabelPanel";
+            this.FullNameLabelPanel.Padding = new System.Windows.Forms.Padding(5);
+            this.FullNameLabelPanel.Size = new System.Drawing.Size(60, 36);
+            this.FullNameLabelPanel.TabIndex = 3;
+            // 
+            // FullNameTitleLabel
+            // 
+            this.FullNameTitleLabel.AutoSize = true;
+            this.FullNameTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FullNameTitleLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.FullNameTitleLabel.Location = new System.Drawing.Point(5, 8);
+            this.FullNameTitleLabel.Name = "FullNameTitleLabel";
+            this.FullNameTitleLabel.Size = new System.Drawing.Size(47, 20);
+            this.FullNameTitleLabel.TabIndex = 0;
+            this.FullNameTitleLabel.Text = "ФИО";
+            // 
+            // PanelWithTable
+            // 
+            this.PanelWithTable.AutoSize = true;
+            this.PanelWithTable.Controls.Add(this.TableLayoutPanel);
+            this.PanelWithTable.Controls.Add(this.AddingPanel);
+            this.PanelWithTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelWithTable.Location = new System.Drawing.Point(0, 0);
+            this.PanelWithTable.Name = "PanelWithTable";
+            this.PanelWithTable.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
+            this.PanelWithTable.Size = new System.Drawing.Size(979, 495);
+            this.PanelWithTable.TabIndex = 0;
+            // 
+            // AddingPanel
+            // 
+            this.AddingPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.AddingPanel.Controls.Add(this.TrashButton);
+            this.AddingPanel.Controls.Add(this.AddTitleButton);
+            this.AddingPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.AddingPanel.Location = new System.Drawing.Point(937, 0);
+            this.AddingPanel.Name = "AddingPanel";
+            this.AddingPanel.Size = new System.Drawing.Size(42, 494);
+            this.AddingPanel.TabIndex = 0;
+            // 
+            // TrashButton
+            // 
+            this.TrashButton.BackColor = System.Drawing.Color.Transparent;
+            this.TrashButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TrashButton.FlatAppearance.BorderSize = 0;
+            this.TrashButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TrashButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F);
+            this.TrashButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.TrashButton.Location = new System.Drawing.Point(0, 36);
+            this.TrashButton.Name = "TrashButton";
+            this.TrashButton.Size = new System.Drawing.Size(42, 42);
+            this.TrashButton.TabIndex = 2;
+            this.TrashButton.Text = "🗑";
+            this.TrashButton.UseVisualStyleBackColor = false;
+            this.TrashButton.Click += new System.EventHandler(this.TrashButton_Click);
+            // 
+            // AddTitleButton
+            // 
+            this.AddTitleButton.BackColor = System.Drawing.Color.Transparent;
+            this.AddTitleButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.AddTitleButton.FlatAppearance.BorderSize = 0;
+            this.AddTitleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddTitleButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F);
+            this.AddTitleButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.AddTitleButton.Location = new System.Drawing.Point(0, 0);
+            this.AddTitleButton.Name = "AddTitleButton";
+            this.AddTitleButton.Size = new System.Drawing.Size(42, 36);
+            this.AddTitleButton.TabIndex = 3;
+            this.AddTitleButton.Text = "+";
+            this.AddTitleButton.UseVisualStyleBackColor = false;
+            this.AddTitleButton.Click += new System.EventHandler(this.AddTitleButton_Click);
+            // 
+            // LoadPanel
+            // 
+            this.LoadPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
+            this.LoadPanel.Controls.Add(this.LoadLabel);
+            this.LoadPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LoadPanel.Location = new System.Drawing.Point(0, 0);
+            this.LoadPanel.Name = "LoadPanel";
+            this.LoadPanel.Size = new System.Drawing.Size(979, 495);
+            this.LoadPanel.TabIndex = 3;
+            this.LoadPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.LoadPanel_Paint);
+            // 
+            // LoadLabel
+            // 
+            this.LoadLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LoadLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LoadLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.LoadLabel.Location = new System.Drawing.Point(0, 0);
+            this.LoadLabel.Name = "LoadLabel";
+            this.LoadLabel.Size = new System.Drawing.Size(979, 495);
+            this.LoadLabel.TabIndex = 3;
+            this.LoadLabel.Text = "Загрузка...";
+            this.LoadLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // CalendarPanel
+            // 
+            this.CalendarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
+            this.CalendarPanel.Controls.Add(this.CalendarDateTimePicker);
+            this.CalendarPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CalendarPanel.Location = new System.Drawing.Point(0, 0);
+            this.CalendarPanel.Name = "CalendarPanel";
+            this.CalendarPanel.Size = new System.Drawing.Size(979, 495);
+            this.CalendarPanel.TabIndex = 1;
+            // 
+            // CalendarDateTimePicker
+            // 
+            this.CalendarDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.CalendarDateTimePicker.Location = new System.Drawing.Point(35, 36);
+            this.CalendarDateTimePicker.MinDate = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
+            this.CalendarDateTimePicker.Name = "CalendarDateTimePicker";
+            this.CalendarDateTimePicker.Size = new System.Drawing.Size(161, 24);
+            this.CalendarDateTimePicker.TabIndex = 2;
             // 
             // MessengerPanel
             // 
@@ -1572,364 +1985,6 @@ namespace kanbanboard.Windows
             this.MessengerTextBox.Size = new System.Drawing.Size(919, 20);
             this.MessengerTextBox.TabIndex = 3;
             // 
-            // PanelWithTable
-            // 
-            this.PanelWithTable.AutoSize = true;
-            this.PanelWithTable.Controls.Add(this.TableLayoutPanel);
-            this.PanelWithTable.Controls.Add(this.AddingPanel);
-            this.PanelWithTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelWithTable.Location = new System.Drawing.Point(0, 0);
-            this.PanelWithTable.Name = "PanelWithTable";
-            this.PanelWithTable.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
-            this.PanelWithTable.Size = new System.Drawing.Size(979, 495);
-            this.PanelWithTable.TabIndex = 0;
-            // 
-            // AddingPanel
-            // 
-            this.AddingPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.AddingPanel.Controls.Add(this.AddTitleButton);
-            this.AddingPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.AddingPanel.Location = new System.Drawing.Point(937, 0);
-            this.AddingPanel.Name = "AddingPanel";
-            this.AddingPanel.Size = new System.Drawing.Size(42, 494);
-            this.AddingPanel.TabIndex = 0;
-            // 
-            // AddTitleButton
-            // 
-            this.AddTitleButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.AddTitleButton.FlatAppearance.BorderSize = 0;
-            this.AddTitleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddTitleButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AddTitleButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.AddTitleButton.Location = new System.Drawing.Point(0, 0);
-            this.AddTitleButton.Name = "AddTitleButton";
-            this.AddTitleButton.Size = new System.Drawing.Size(42, 36);
-            this.AddTitleButton.TabIndex = 3;
-            this.AddTitleButton.Text = "+";
-            this.AddTitleButton.UseVisualStyleBackColor = true;
-            this.AddTitleButton.Click += new System.EventHandler(this.AddTitleButton_Click);
-            // 
-            // UserPanel
-            // 
-            this.UserPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
-            this.UserPanel.Controls.Add(this.PasswordPanel);
-            this.UserPanel.Controls.Add(this.TimeZonePanel);
-            this.UserPanel.Controls.Add(this.OrganizationPanel);
-            this.UserPanel.Controls.Add(this.NickNamePanel);
-            this.UserPanel.Controls.Add(this.FullNamePanel);
-            this.UserPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UserPanel.Location = new System.Drawing.Point(0, 0);
-            this.UserPanel.Name = "UserPanel";
-            this.UserPanel.Size = new System.Drawing.Size(979, 495);
-            this.UserPanel.TabIndex = 2;
-            // 
-            // PasswordPanel
-            // 
-            this.PasswordPanel.Controls.Add(this.PasswordShowPanel);
-            this.PasswordPanel.Controls.Add(this.PasswordGetPanel);
-            this.PasswordPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PasswordPanel.Location = new System.Drawing.Point(0, 144);
-            this.PasswordPanel.Name = "PasswordPanel";
-            this.PasswordPanel.Size = new System.Drawing.Size(979, 36);
-            this.PasswordPanel.TabIndex = 6;
-            // 
-            // PasswordShowPanel
-            // 
-            this.PasswordShowPanel.Controls.Add(this.PasswordShowLabel);
-            this.PasswordShowPanel.Controls.Add(this.PasswordShowLinkLabel);
-            this.PasswordShowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PasswordShowPanel.Location = new System.Drawing.Point(88, 0);
-            this.PasswordShowPanel.Name = "PasswordShowPanel";
-            this.PasswordShowPanel.Padding = new System.Windows.Forms.Padding(5);
-            this.PasswordShowPanel.Size = new System.Drawing.Size(891, 36);
-            this.PasswordShowPanel.TabIndex = 4;
-            // 
-            // PasswordShowLabel
-            // 
-            this.PasswordShowLabel.AutoSize = true;
-            this.PasswordShowLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
-            this.PasswordShowLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.PasswordShowLabel.Location = new System.Drawing.Point(113, 5);
-            this.PasswordShowLabel.Name = "PasswordShowLabel";
-            this.PasswordShowLabel.Size = new System.Drawing.Size(0, 20);
-            this.PasswordShowLabel.TabIndex = 1;
-            this.PasswordShowLabel.Visible = false;
-            // 
-            // PasswordShowLinkLabel
-            // 
-            this.PasswordShowLinkLabel.AutoSize = true;
-            this.PasswordShowLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
-            this.PasswordShowLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.PasswordShowLinkLabel.Location = new System.Drawing.Point(10, 5);
-            this.PasswordShowLinkLabel.Name = "PasswordShowLinkLabel";
-            this.PasswordShowLinkLabel.Size = new System.Drawing.Size(98, 20);
-            this.PasswordShowLinkLabel.TabIndex = 0;
-            this.PasswordShowLinkLabel.TabStop = true;
-            this.PasswordShowLinkLabel.Text = "Показать";
-            this.PasswordShowLinkLabel.Click += new System.EventHandler(this.PasswordShowLinkLabel_Click);
-            // 
-            // PasswordGetPanel
-            // 
-            this.PasswordGetPanel.AutoSize = true;
-            this.PasswordGetPanel.Controls.Add(this.PasswordGetLabel);
-            this.PasswordGetPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.PasswordGetPanel.Location = new System.Drawing.Point(0, 0);
-            this.PasswordGetPanel.Name = "PasswordGetPanel";
-            this.PasswordGetPanel.Padding = new System.Windows.Forms.Padding(5);
-            this.PasswordGetPanel.Size = new System.Drawing.Size(88, 36);
-            this.PasswordGetPanel.TabIndex = 3;
-            // 
-            // PasswordGetLabel
-            // 
-            this.PasswordGetLabel.AutoSize = true;
-            this.PasswordGetLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PasswordGetLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
-            this.PasswordGetLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.PasswordGetLabel.Location = new System.Drawing.Point(5, 5);
-            this.PasswordGetLabel.Name = "PasswordGetLabel";
-            this.PasswordGetLabel.Size = new System.Drawing.Size(78, 20);
-            this.PasswordGetLabel.TabIndex = 0;
-            this.PasswordGetLabel.Text = "Пароль";
-            // 
-            // TimeZonePanel
-            // 
-            this.TimeZonePanel.Controls.Add(this.TimeZoneGetPanel);
-            this.TimeZonePanel.Controls.Add(this.TimeZoneLabelPanel);
-            this.TimeZonePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TimeZonePanel.Location = new System.Drawing.Point(0, 108);
-            this.TimeZonePanel.Name = "TimeZonePanel";
-            this.TimeZonePanel.Size = new System.Drawing.Size(979, 36);
-            this.TimeZonePanel.TabIndex = 4;
-            // 
-            // TimeZoneGetPanel
-            // 
-            this.TimeZoneGetPanel.Controls.Add(this.TimeZoneLabel);
-            this.TimeZoneGetPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TimeZoneGetPanel.Location = new System.Drawing.Point(167, 0);
-            this.TimeZoneGetPanel.Name = "TimeZoneGetPanel";
-            this.TimeZoneGetPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.TimeZoneGetPanel.Size = new System.Drawing.Size(812, 36);
-            this.TimeZoneGetPanel.TabIndex = 4;
-            // 
-            // TimeZoneLabel
-            // 
-            this.TimeZoneLabel.AutoSize = true;
-            this.TimeZoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.TimeZoneLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.TimeZoneLabel.Location = new System.Drawing.Point(3, 3);
-            this.TimeZoneLabel.Name = "TimeZoneLabel";
-            this.TimeZoneLabel.Size = new System.Drawing.Size(136, 20);
-            this.TimeZoneLabel.TabIndex = 1;
-            this.TimeZoneLabel.Text = "TIMEZONE_GET";
-            // 
-            // TimeZoneLabelPanel
-            // 
-            this.TimeZoneLabelPanel.AutoSize = true;
-            this.TimeZoneLabelPanel.Controls.Add(this.TimeZoneTitleLabel);
-            this.TimeZoneLabelPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.TimeZoneLabelPanel.Location = new System.Drawing.Point(0, 0);
-            this.TimeZoneLabelPanel.Name = "TimeZoneLabelPanel";
-            this.TimeZoneLabelPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.TimeZoneLabelPanel.Size = new System.Drawing.Size(167, 36);
-            this.TimeZoneLabelPanel.TabIndex = 3;
-            // 
-            // TimeZoneTitleLabel
-            // 
-            this.TimeZoneTitleLabel.AutoSize = true;
-            this.TimeZoneTitleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TimeZoneTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
-            this.TimeZoneTitleLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.TimeZoneTitleLabel.Location = new System.Drawing.Point(3, 3);
-            this.TimeZoneTitleLabel.Name = "TimeZoneTitleLabel";
-            this.TimeZoneTitleLabel.Size = new System.Drawing.Size(161, 20);
-            this.TimeZoneTitleLabel.TabIndex = 0;
-            this.TimeZoneTitleLabel.Text = "Временная зона";
-            // 
-            // OrganizationPanel
-            // 
-            this.OrganizationPanel.Controls.Add(this.OrganizationGetPanel);
-            this.OrganizationPanel.Controls.Add(this.OrganizationLabelPanel);
-            this.OrganizationPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.OrganizationPanel.Location = new System.Drawing.Point(0, 72);
-            this.OrganizationPanel.Name = "OrganizationPanel";
-            this.OrganizationPanel.Size = new System.Drawing.Size(979, 36);
-            this.OrganizationPanel.TabIndex = 5;
-            // 
-            // OrganizationGetPanel
-            // 
-            this.OrganizationGetPanel.Controls.Add(this.OrganizationLabel);
-            this.OrganizationGetPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OrganizationGetPanel.Location = new System.Drawing.Point(136, 0);
-            this.OrganizationGetPanel.Name = "OrganizationGetPanel";
-            this.OrganizationGetPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.OrganizationGetPanel.Size = new System.Drawing.Size(843, 36);
-            this.OrganizationGetPanel.TabIndex = 4;
-            // 
-            // OrganizationLabel
-            // 
-            this.OrganizationLabel.AutoSize = true;
-            this.OrganizationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.OrganizationLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.OrganizationLabel.Location = new System.Drawing.Point(3, 3);
-            this.OrganizationLabel.Name = "OrganizationLabel";
-            this.OrganizationLabel.Size = new System.Drawing.Size(176, 20);
-            this.OrganizationLabel.TabIndex = 1;
-            this.OrganizationLabel.Text = "ORGANIZATION_GET";
-            // 
-            // OrganizationLabelPanel
-            // 
-            this.OrganizationLabelPanel.AutoSize = true;
-            this.OrganizationLabelPanel.Controls.Add(this.OrganizationTitleLabel);
-            this.OrganizationLabelPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.OrganizationLabelPanel.Location = new System.Drawing.Point(0, 0);
-            this.OrganizationLabelPanel.Name = "OrganizationLabelPanel";
-            this.OrganizationLabelPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.OrganizationLabelPanel.Size = new System.Drawing.Size(136, 36);
-            this.OrganizationLabelPanel.TabIndex = 3;
-            // 
-            // OrganizationTitleLabel
-            // 
-            this.OrganizationTitleLabel.AutoSize = true;
-            this.OrganizationTitleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OrganizationTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
-            this.OrganizationTitleLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.OrganizationTitleLabel.Location = new System.Drawing.Point(3, 3);
-            this.OrganizationTitleLabel.Name = "OrganizationTitleLabel";
-            this.OrganizationTitleLabel.Size = new System.Drawing.Size(130, 20);
-            this.OrganizationTitleLabel.TabIndex = 0;
-            this.OrganizationTitleLabel.Text = "Организация";
-            // 
-            // NickNamePanel
-            // 
-            this.NickNamePanel.Controls.Add(this.NickNameGetPanel);
-            this.NickNamePanel.Controls.Add(this.NickNameLabelPanel);
-            this.NickNamePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.NickNamePanel.Location = new System.Drawing.Point(0, 36);
-            this.NickNamePanel.Name = "NickNamePanel";
-            this.NickNamePanel.Size = new System.Drawing.Size(979, 36);
-            this.NickNamePanel.TabIndex = 3;
-            // 
-            // NickNameGetPanel
-            // 
-            this.NickNameGetPanel.Controls.Add(this.NickNameLabel);
-            this.NickNameGetPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NickNameGetPanel.Location = new System.Drawing.Point(167, 0);
-            this.NickNameGetPanel.Name = "NickNameGetPanel";
-            this.NickNameGetPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.NickNameGetPanel.Size = new System.Drawing.Size(812, 36);
-            this.NickNameGetPanel.TabIndex = 4;
-            // 
-            // NickNameLabel
-            // 
-            this.NickNameLabel.AutoSize = true;
-            this.NickNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.NickNameLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.NickNameLabel.Location = new System.Drawing.Point(3, 3);
-            this.NickNameLabel.Name = "NickNameLabel";
-            this.NickNameLabel.Size = new System.Drawing.Size(139, 20);
-            this.NickNameLabel.TabIndex = 1;
-            this.NickNameLabel.Text = "NICKNAME_GET";
-            // 
-            // NickNameLabelPanel
-            // 
-            this.NickNameLabelPanel.AutoSize = true;
-            this.NickNameLabelPanel.Controls.Add(this.NickNameTitleLabel);
-            this.NickNameLabelPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.NickNameLabelPanel.Location = new System.Drawing.Point(0, 0);
-            this.NickNameLabelPanel.Name = "NickNameLabelPanel";
-            this.NickNameLabelPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.NickNameLabelPanel.Size = new System.Drawing.Size(167, 36);
-            this.NickNameLabelPanel.TabIndex = 3;
-            // 
-            // NickNameTitleLabel
-            // 
-            this.NickNameTitleLabel.AutoSize = true;
-            this.NickNameTitleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NickNameTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
-            this.NickNameTitleLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.NickNameTitleLabel.Location = new System.Drawing.Point(3, 3);
-            this.NickNameTitleLabel.Name = "NickNameTitleLabel";
-            this.NickNameTitleLabel.Size = new System.Drawing.Size(161, 20);
-            this.NickNameTitleLabel.TabIndex = 0;
-            this.NickNameTitleLabel.Text = "Никнейм / логин";
-            // 
-            // FullNamePanel
-            // 
-            this.FullNamePanel.Controls.Add(this.FullNameGetLabelPanel);
-            this.FullNamePanel.Controls.Add(this.FullNameLabelPanel);
-            this.FullNamePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.FullNamePanel.Location = new System.Drawing.Point(0, 0);
-            this.FullNamePanel.Name = "FullNamePanel";
-            this.FullNamePanel.Size = new System.Drawing.Size(979, 36);
-            this.FullNamePanel.TabIndex = 2;
-            // 
-            // FullNameGetLabelPanel
-            // 
-            this.FullNameGetLabelPanel.Controls.Add(this.FullNameLabel);
-            this.FullNameGetLabelPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FullNameGetLabelPanel.Location = new System.Drawing.Point(62, 0);
-            this.FullNameGetLabelPanel.Name = "FullNameGetLabelPanel";
-            this.FullNameGetLabelPanel.Padding = new System.Windows.Forms.Padding(5);
-            this.FullNameGetLabelPanel.Size = new System.Drawing.Size(917, 36);
-            this.FullNameGetLabelPanel.TabIndex = 4;
-            // 
-            // FullNameLabel
-            // 
-            this.FullNameLabel.AutoSize = true;
-            this.FullNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.FullNameLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.FullNameLabel.Location = new System.Drawing.Point(5, 5);
-            this.FullNameLabel.Name = "FullNameLabel";
-            this.FullNameLabel.Size = new System.Drawing.Size(142, 20);
-            this.FullNameLabel.TabIndex = 1;
-            this.FullNameLabel.Text = "FULLNAME_GET";
-            // 
-            // FullNameLabelPanel
-            // 
-            this.FullNameLabelPanel.AutoSize = true;
-            this.FullNameLabelPanel.Controls.Add(this.FullNameTitleLabel);
-            this.FullNameLabelPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.FullNameLabelPanel.Location = new System.Drawing.Point(0, 0);
-            this.FullNameLabelPanel.Name = "FullNameLabelPanel";
-            this.FullNameLabelPanel.Padding = new System.Windows.Forms.Padding(5);
-            this.FullNameLabelPanel.Size = new System.Drawing.Size(62, 36);
-            this.FullNameLabelPanel.TabIndex = 3;
-            // 
-            // FullNameTitleLabel
-            // 
-            this.FullNameTitleLabel.AutoSize = true;
-            this.FullNameTitleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FullNameTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
-            this.FullNameTitleLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.FullNameTitleLabel.Location = new System.Drawing.Point(5, 5);
-            this.FullNameTitleLabel.Name = "FullNameTitleLabel";
-            this.FullNameTitleLabel.Size = new System.Drawing.Size(52, 20);
-            this.FullNameTitleLabel.TabIndex = 0;
-            this.FullNameTitleLabel.Text = "ФИО";
-            // 
-            // CalendarPanel
-            // 
-            this.CalendarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
-            this.CalendarPanel.Controls.Add(this.CalendarLabel);
-            this.CalendarPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CalendarPanel.Location = new System.Drawing.Point(0, 0);
-            this.CalendarPanel.Name = "CalendarPanel";
-            this.CalendarPanel.Size = new System.Drawing.Size(979, 495);
-            this.CalendarPanel.TabIndex = 1;
-            this.CalendarPanel.Resize += new System.EventHandler(this.CalendarPanel_Resize);
-            // 
-            // CalendarLabel
-            // 
-            this.CalendarLabel.AutoSize = true;
-            this.CalendarLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CalendarLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.CalendarLabel.Location = new System.Drawing.Point(28, 148);
-            this.CalendarLabel.MaximumSize = new System.Drawing.Size(800, 480);
-            this.CalendarLabel.Name = "CalendarLabel";
-            this.CalendarLabel.Size = new System.Drawing.Size(764, 78);
-            this.CalendarLabel.TabIndex = 1;
-            this.CalendarLabel.Text = "Здесь должен быть календарь, но его пока что нет.";
-            // 
             // HeadPanel
             // 
             this.HeadPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
@@ -1957,11 +2012,10 @@ namespace kanbanboard.Windows
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Канбан-доска";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.ControlsPanel.ResumeLayout(false);
             this.ControlsPanel.PerformLayout();
             this.ProjectsPanel.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.CreateProjectPanel.ResumeLayout(false);
             this.SaveProjectPanel.ResumeLayout(false);
             this.ExitButtonPanel.ResumeLayout(false);
             this.UserControlsPanel.ResumeLayout(false);
@@ -1974,16 +2028,6 @@ namespace kanbanboard.Windows
             this.BasicPanel.ResumeLayout(false);
             this.BasicContentPanel.ResumeLayout(false);
             this.BasicContentPanel.PerformLayout();
-            this.MessengerPanel.ResumeLayout(false);
-            this.MessengerMainPanel.ResumeLayout(false);
-            this.MessengerShowPanel.ResumeLayout(false);
-            this.MessengerSendPanel.ResumeLayout(false);
-            this.SendMessageButtonPanel.ResumeLayout(false);
-            this.MessengerTextBoxPanel.ResumeLayout(false);
-            this.MessengerTextBoxPanel.PerformLayout();
-            this.PanelWithTable.ResumeLayout(false);
-            this.PanelWithTable.PerformLayout();
-            this.AddingPanel.ResumeLayout(false);
             this.UserPanel.ResumeLayout(false);
             this.PasswordPanel.ResumeLayout(false);
             this.PasswordPanel.PerformLayout();
@@ -2015,8 +2059,18 @@ namespace kanbanboard.Windows
             this.FullNameGetLabelPanel.PerformLayout();
             this.FullNameLabelPanel.ResumeLayout(false);
             this.FullNameLabelPanel.PerformLayout();
+            this.PanelWithTable.ResumeLayout(false);
+            this.PanelWithTable.PerformLayout();
+            this.AddingPanel.ResumeLayout(false);
+            this.LoadPanel.ResumeLayout(false);
             this.CalendarPanel.ResumeLayout(false);
-            this.CalendarPanel.PerformLayout();
+            this.MessengerPanel.ResumeLayout(false);
+            this.MessengerMainPanel.ResumeLayout(false);
+            this.MessengerShowPanel.ResumeLayout(false);
+            this.MessengerSendPanel.ResumeLayout(false);
+            this.SendMessageButtonPanel.ResumeLayout(false);
+            this.MessengerTextBoxPanel.ResumeLayout(false);
+            this.MessengerTextBoxPanel.PerformLayout();
             this.HeadPanel.ResumeLayout(false);
             this.HeadPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -2026,72 +2080,76 @@ namespace kanbanboard.Windows
 
         #endregion
 
-        private System.Windows.Forms.Panel ControlsPanel;
-        private System.Windows.Forms.Button TasksButton;
-        private System.Windows.Forms.Button CalendarButton;
-        private System.Windows.Forms.Button MessengerButton;
-        private System.Windows.Forms.Label LabelHead;
-        private System.Windows.Forms.Button ExitButton;
-        private System.Windows.Forms.Panel StripPanel;
-        private System.Windows.Forms.Panel BasicPanel;
-        private System.Windows.Forms.Panel HeadPanel;
-        private System.Windows.Forms.Panel ExitButtonPanel;
-        private System.Windows.Forms.TableLayoutPanel TableLayoutPanel;
-        private System.Windows.Forms.Panel BasicContentPanel;
-        private System.Windows.Forms.Panel MessengerPanel;
-        private System.Windows.Forms.Panel CalendarPanel;
-        private System.Windows.Forms.Label CalendarLabel;
-        private System.Windows.Forms.Panel UserPanel;
-        private System.Windows.Forms.Panel TimeZonePanel;
-        private System.Windows.Forms.Panel TimeZoneGetPanel;
-        private System.Windows.Forms.Label TimeZoneLabel;
-        private System.Windows.Forms.Panel TimeZoneLabelPanel;
-        private System.Windows.Forms.Label TimeZoneTitleLabel;
-        private System.Windows.Forms.Panel OrganizationPanel;
-        private System.Windows.Forms.Panel OrganizationGetPanel;
-        private System.Windows.Forms.Label OrganizationLabel;
-        private System.Windows.Forms.Panel OrganizationLabelPanel;
-        private System.Windows.Forms.Label OrganizationTitleLabel;
-        private System.Windows.Forms.Panel NickNamePanel;
-        private System.Windows.Forms.Panel NickNameGetPanel;
-        private System.Windows.Forms.Label NickNameLabel;
-        private System.Windows.Forms.Panel NickNameLabelPanel;
-        private System.Windows.Forms.Label NickNameTitleLabel;
-        private System.Windows.Forms.Panel FullNamePanel;
-        private System.Windows.Forms.Panel FullNameGetLabelPanel;
-        private System.Windows.Forms.Label FullNameLabel;
-        private System.Windows.Forms.Panel FullNameLabelPanel;
-        private System.Windows.Forms.Label FullNameTitleLabel;
-        private System.Windows.Forms.Panel UserControlsPanel;
-        private System.Windows.Forms.Panel UserNamePanel;
-        private System.Windows.Forms.Label UsernameLabel;
-        private System.Windows.Forms.Panel UserInfoPanel;
-        private System.Windows.Forms.Label UserInfoLabel;
-        private System.Windows.Forms.Panel UserPhotoPanel;
-        private System.Windows.Forms.PictureBox UserPictureBox;
-        private System.Windows.Forms.Panel AddingPanel;
-        private System.Windows.Forms.Button AddTitleButton;
-        private System.Windows.Forms.Panel PanelWithTable;
-        private System.Windows.Forms.ListBox ListBoxOfProjectNames;
-        private System.Windows.Forms.Panel ProjectsPanel;
-        private System.Windows.Forms.Panel SaveProjectPanel;
-        private System.Windows.Forms.Button SaveProjectButton;
-        private System.Windows.Forms.Panel PasswordPanel;
-        private System.Windows.Forms.Panel PasswordShowPanel;
-        private System.Windows.Forms.Panel PasswordGetPanel;
-        private System.Windows.Forms.Label PasswordGetLabel;
-        private System.Windows.Forms.Label PasswordShowLabel;
-        private System.Windows.Forms.LinkLabel PasswordShowLinkLabel;
-        private System.Windows.Forms.Panel MessengerMainPanel;
-        private System.Windows.Forms.Panel MessengerShowPanel;
-        private System.Windows.Forms.ListBox MessengerListBox;
-        private System.Windows.Forms.Panel MessengerSendPanel;
-        private System.Windows.Forms.TextBox MessengerTextBox;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button CreateProjectButton;
-        private System.Windows.Forms.Panel SendMessageButtonPanel;
-        private System.Windows.Forms.Button SendMessageButton;
-        private System.Windows.Forms.Panel MessengerTextBoxPanel;
+        private Panel ControlsPanel;
+        private Button TasksButton;
+        private Button CalendarButton;
+        private Button MessengerButton;
+        private Label LabelHead;
+        private Button ExitButton;
+        private Panel StripPanel;
+        private Panel BasicPanel;
+        private Panel HeadPanel;
+        private Panel ExitButtonPanel;
+        private TableLayoutPanel TableLayoutPanel;
+        private Panel BasicContentPanel;
+        private Panel MessengerPanel;
+        private Panel CalendarPanel;
+        private Panel UserPanel;
+        private Panel TimeZonePanel;
+        private Panel TimeZoneGetPanel;
+        private Label TimeZoneLabel;
+        private Panel TimeZoneLabelPanel;
+        private Label TimeZoneTitleLabel;
+        private Panel OrganizationPanel;
+        private Panel OrganizationGetPanel;
+        private Label OrganizationLabel;
+        private Panel OrganizationLabelPanel;
+        private Label OrganizationTitleLabel;
+        private Panel NickNamePanel;
+        private Panel NickNameGetPanel;
+        private Label NickNameLabel;
+        private Panel NickNameLabelPanel;
+        private Label NickNameTitleLabel;
+        private Panel FullNamePanel;
+        private Panel FullNameGetLabelPanel;
+        private Label FullNameLabel;
+        private Panel FullNameLabelPanel;
+        private Label FullNameTitleLabel;
+        private Panel UserControlsPanel;
+        private Panel UserNamePanel;
+        private Label UsernameLabel;
+        private Panel UserInfoPanel;
+        private Label UserInfoLabel;
+        private Panel UserPhotoPanel;
+        private PictureBox UserPictureBox;
+        private Panel AddingPanel;
+        private Button AddTitleButton;
+        private Panel PanelWithTable;
+        private ListBox ListBoxOfProjectNames;
+        private Panel ProjectsPanel;
+        private Panel SaveProjectPanel;
+        private Button SaveProjectButton;
+        private Panel PasswordPanel;
+        private Panel PasswordShowPanel;
+        private Panel PasswordGetPanel;
+        private Label PasswordGetLabel;
+        private Label PasswordShowLabel;
+        private LinkLabel PasswordShowLinkLabel;
+        private Panel MessengerMainPanel;
+        private Panel MessengerShowPanel;
+        private ListBox MessengerListBox;
+        private Panel MessengerSendPanel;
+        private TextBox MessengerTextBox;
+        private Panel CreateProjectPanel;
+        private Button CreateProjectButton;
+        private Panel SendMessageButtonPanel;
+        private Button SendMessageButton;
+        private Panel MessengerTextBoxPanel;
+        private DateTimePicker CalendarDateTimePicker;
+        private Panel LoadPanel;
+        private Label LoadLabel;
+        private Button TrashButton;
+        private Label Projects_List_Label;
     }
 }
 

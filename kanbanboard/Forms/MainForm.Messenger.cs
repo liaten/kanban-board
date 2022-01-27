@@ -1,6 +1,7 @@
-﻿using kanbanboard.Classes;
+﻿using System.Linq;
+using kanbanboard.Classes;
 
-namespace kanbanboard.Windows
+namespace kanbanboard.Forms
 {
     partial class MainForm
     {
@@ -23,19 +24,13 @@ namespace kanbanboard.Windows
         {
             MessengerListBox.Items.Clear();
             var messages = _user.GetMessages(ListBoxOfProjectNames.SelectedItem.ToString());
-            if (messages != null)
-            {
-                foreach (var dic in messages)
-                {
-                    foreach (var item in dic)
-                    {
-                        MessengerListBox.Items.Add($"{item.Key}: {item.Value}");
-                    }
-                }
+            
+            if (messages == null) return;
+            foreach (var item in messages.SelectMany(dic => dic))
+                MessengerListBox.Items.Add($"{item.Key}: {item.Value}");
 
-                try { MessengerListBox.TopIndex = MessengerListBox.Items.Count - 1; }
-                catch { }
-            }
+            try { MessengerListBox.TopIndex = MessengerListBox.Items.Count - 1; }
+            catch { }
         }
     }
 }

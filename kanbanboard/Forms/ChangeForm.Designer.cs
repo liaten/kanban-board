@@ -1,12 +1,15 @@
 ﻿
-namespace kanbanboard.Windows
+using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace kanbanboard.Forms
 {
     partial class ChangeForm
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -54,6 +57,7 @@ namespace kanbanboard.Windows
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "ChangeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Изменение заголовка";
@@ -65,6 +69,6 @@ namespace kanbanboard.Windows
 
         #endregion
 
-        private System.Windows.Forms.TextBox ChangingTextBox;
+        private TextBox ChangingTextBox;
     }
 }

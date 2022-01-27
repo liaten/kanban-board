@@ -121,7 +121,7 @@
   <data name="UserPictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EwAACxMBAJqcGAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAGpHSURBVHhe7Z0J
+        DAAACwwBP0AiyAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAGpHSURBVHhe7Z0J
         eJzlea5/y7ZibGMIuAeTGhKH0AR6EggpDUlIShxoQnoClKUkTVly4tNQWhJykpI2cDmYEwy5aN2mIQ6F
         EIJZzOIl2GBseZPlRbZly5K17xrt+z7aZ97z/PP/41n0SdYymn973uu6r7ZvNzTz6btvJM2MJiKEEJuj
         nThwDliunci4CqzUsjLuAg9oWQcfBevAy2CTdvzgdu34oV0gHWSCk9rxw/nascNlwAeaQKd27IgfjGpH
@@ -581,7 +581,7 @@
   <data name="SendMessageButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAB
-        2AAAAdgB+lymcgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAPjSURBVHhe5Zs7
+        1wAAAdcBjJIIaAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAPjSURBVHhe5Zs7
         aBRBGMfXZ3b3EowoiIoPFCtf+KpVtFBBCyWtWG1ud++IYmElRgsVtDClnQ+0sBLstIiFEYWQRnK3jyQX
         DaQQCzUBTSA5/7M3Ytj7Yrhkdnf29g8/UiQ33/+b3OzOfDOjMKmWe0Oz3ElQAVeVK2Na8IssSDOGtyLp
         WVCdw7hmekWl6LfwP2tetdr+7lDyc/mim56hGP2r+J83ofBfRqK/QomHGQ06ort3Jf9UcwkJ9oUSno+R

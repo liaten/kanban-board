@@ -1,8 +1,11 @@
 # kanban-board (в разработке)
 ## Скриншоты программы:
 ### 1. Desktop-клиент
-#### 1.1 Логин
-![image](https://user-images.githubusercontent.com/35489460/146372825-bd16b771-e36b-48af-a76b-58df5a0a5da2.png)
+#### 1.1 Логин / авторизация
+![image](https://user-images.githubusercontent.com/35489460/151055444-51b4fe83-cbe3-490d-9018-3105796c0908.png)
+
+#### 1.1.1 Регистрация
+![image](https://user-images.githubusercontent.com/35489460/151055504-b5c93272-14da-427d-8ab2-4e9607eeb776.png)
 
 #### 1.2 Профиль
 ![image](https://user-images.githubusercontent.com/35489460/146372892-88495b1b-f2f2-4491-a276-44ce3e7fb9e2.png)

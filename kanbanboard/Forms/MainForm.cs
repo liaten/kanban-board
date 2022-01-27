@@ -1,50 +1,69 @@
-﻿using kanbanboard.Classes;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using kanbanboard.Classes;
 
-namespace kanbanboard.Windows
+namespace kanbanboard.Forms
 {
     public partial class MainForm : Form
     {
         private static User _user;
+        private static int _projectIndex;
 
-        public MainForm(string username)
+        public MainForm(User user)
         {
             InitializeComponent();
 
             // Вернуться в LoginForm по ESC
-            KeyDown += (s, a) =>
+            KeyDown += (_, a) =>
             {
                 if (a.KeyValue == (int)Keys.Escape) ExitButton.PerformClick();
             };
 
             // Отправить сообщение по Enter
-            MessengerTextBox.KeyPress += (fsa, key) =>
+            MessengerTextBox.KeyPress += (_, key) =>
             {
                 if (key.KeyChar == (int)Keys.Enter)
                     SendMessageButton.PerformClick();
             };
 
-
             // Событие при изменении размера таблицы
-            TableLayoutPanel.Resize += (s, a) => ResizeTable();
+            TableLayoutPanel.Resize += (_, _) => ResizeTable();
 
             // Установка двойной буферизации для устранения мерцания
             SetDoubleBuffered(TableLayoutPanel);
             SetDoubleBuffered(BasicContentPanel);
             SetDoubleBuffered(MessengerListBox);
+            SetDoubleBuffered(ListBoxOfProjectNames);
 
-            // Создаём экземпляр через который будем работать с базой
-            _user = new User(username);
-            UserInfoLabel.Text = "Роль:" + _user.Role;
+            // Данные пользователя
+            _user = user;
+
+            UserInfoLabel.Text = $"Роль: {_user.Role}";
+            UsernameLabel.Text = _user.Username;
+            OrganizationLabel.Text = _user.Organization;
+            NickNameLabel.Text = _user.Username;
+            FullNameLabel.Text = _user.FullName;
+            int utc = TimeZone.CurrentTimeZone.GetUtcOffset(DateTime.Now).Hours;
+            TimeZoneLabel.Text = utc >= 0 ? $"UTC+{utc}" : $"UTC-{utc}";
 
             // Событие при изменении выбранной строки в listbox
             ListBoxOfProjectNames.Items.Clear();
-            ListBoxOfProjectNames.SelectedIndexChanged += (ss, aa) =>
+            ListBoxOfProjectNames.SelectedIndexChanged += (_, _) =>
             {
+                // Сохраняем предыдущий проект, с которым работали
+                if (ListBoxOfProjectNames.SelectedItem != null)
+                {
+                    try { Upload(ListBoxOfProjectNames.Items[_projectIndex].ToString()); }
+                    catch {}
+                }
+
+                // Переназначаем индекс
+                _projectIndex = ListBoxOfProjectNames.SelectedIndex;
+
                 try
                 {
                     Parallel.Invoke(
@@ -57,65 +76,102 @@ namespace kanbanboard.Windows
 
             // Сохранение данных в базу
             // Сохраняется только активная таблица (выбранная в listbox)
-            FormClosing += (b, q) =>
+            FormClosing += (_, _) =>
             {
-                if (ListBoxOfProjectNames.SelectedItem != null) Upload(ListBoxOfProjectNames.SelectedItem.ToString());
+                if (ListBoxOfProjectNames.SelectedItem != null)
+                {
+                    try { Upload(ListBoxOfProjectNames.SelectedItem.ToString()); }
+                    finally { Application.Exit(); }
+                }
             };
 
             // Подсказка на кнопку с плюсом
             new ToolTip().SetToolTip(AddTitleButton, "Добавить столбец");
 
-            Load += (s, a) =>
+            Load += (_, _) =>
             {
-                if (LoginForm.Username == "")
+                if (string.IsNullOrEmpty(user.ToString()))
                 {
                     UsernameLabel.Text = "Гость";
                     UserInfoLabel.Text = "";
                     return;
                 }
 
+                // Загоняем в listbox названия проектов текущего пользователя
                 SetUserProjectNames();
 
                 // Стартовый вид -> панель с профилем
                 UserControlsPanel_Click(null, null);
-                UsernameLabel.Text = LoginForm.Username;
 
-                // Загрузка первого элемента из списка
+                // Начальное состояние после входа
                 try { ListBoxOfProjectNames.SelectedIndex = 0; }
-                catch { }
+                catch {}
+                finally { UserPanel.BringToFront();}
             };
         }
 
         // Проекты пользователя
         private void SetUserProjectNames()
         {
-            ListBoxOfProjectNames.Items.AddRange(_user.ProjectNames.Cast<object>().ToArray());
+            ListBoxOfProjectNames.Items.Clear();
+            ListBoxOfProjectNames.Items.AddRange(_user.ProjectNames().Cast<object>().ToArray());
         }
 
-        // Устранение мерцания при изменении размеров таблицы
+
+        // Устранение мерцания
         public static void SetDoubleBuffered(Control c)
         {
             if (SystemInformation.TerminalServerSession)
+            {
                 return;
-            var aProp = typeof(Control).GetProperty("DoubleBuffered",
-                System.Reflection.BindingFlags.NonPublic |
-                System.Reflection.BindingFlags.Instance);
+            }
+            PropertyInfo aProp = typeof(Control).GetProperty("DoubleBuffered",
+                BindingFlags.NonPublic |
+                BindingFlags.Instance);
             aProp?.SetValue(c, true, null);
+        }
+
+        // Кпнока по создаю нового проекта
+        private async void CreateProjectButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (!Application.OpenForms.OfType<ChangeForm>().Any())
+                {
+                    ChangeForm changeForm = new ChangeForm(this, _user);
+                    changeForm.Show();
+
+                    while (true)
+                    {
+                        await Task.Delay(50);
+
+                        if (changeForm.IsDisposed)
+                        {
+                            SetUserProjectNames();
+                            break;
+                        }
+                    }
+
+                    SetUserProjectNames();
+                }
+            }
+
+            if (e.Button == MouseButtons.Right)
+            {
+                try { TrashButton.PerformClick(); }
+                finally { SetUserProjectNames(); }
+            }
         }
 
         // Обработчик задач
         private void TasksButton_Click(object sender, EventArgs e)
         {
             LabelHead.Text = "Задачи";
-
             // перемещение панельки выделения
             StripPanel.Location = TasksButton.Location;
             // изменение размера панельки выделения
             StripPanel.Size = new Size(StripPanel.Size.Width, TasksButton.Size.Height);
-
             PanelWithTable.BringToFront();
-
-
             ListBoxOfProjectNames.Visible = true;
         }
 
@@ -136,15 +192,11 @@ namespace kanbanboard.Windows
         {
             LabelHead.Text = "Мессенджер";
             MessengerPanel.BringToFront();
-
             // перемещение панельки выделения
             StripPanel.Location = MessengerButton.Location;
-
             // изменение размера панельки выделения
             StripPanel.Size = new Size(StripPanel.Size.Width, MessengerButton.Size.Height);
-
             MessengerTextBox.Focus();
-
             ListBoxOfProjectNames.Visible = true;
         }
 
@@ -152,9 +204,6 @@ namespace kanbanboard.Windows
         private void CalendarButton_Click(object sender, EventArgs e)
         {
             LabelHead.Text = "Календарь";
-
-            CalendarPanel_Resize(null, null);
-
             CalendarPanel.BringToFront();
             // перемещение панельки выделения
             StripPanel.Location = CalendarButton.Location;
@@ -162,45 +211,29 @@ namespace kanbanboard.Windows
             StripPanel.Size = new Size(StripPanel.Size.Width, CalendarButton.Size.Height);
             ListBoxOfProjectNames.Visible = false;
         }
-        private void CalendarPanel_Resize(object sender, EventArgs e)
-        {
-            CalendarLabel.ToCenter(CalendarPanel);
-            CalendarLabel.MaximumSize = CalendarPanel.Size;
-        }
-
-        // Кнопка по созданию проекта
-        private void CreateProjectButton_Click(object sender, EventArgs e)
-        {
-            if (!Application.OpenForms.OfType<ChangeForm>().Any()) new ChangeForm(this, _user.Username).Show();
-        }
 
         // Выход из мейнформы
         private void ExitButton_Click(object sender, EventArgs e)
         {
             Hide();
-            var LoginForm = new LoginForm();
+            LoginForm LoginForm = new LoginForm();
             LoginForm.Show();
         }
 
         // Показать пароль
         private void PasswordShowLinkLabel_Click(object sender, EventArgs e)
         {
-            if (!PasswordShowLabel.Visible)
+            if (PasswordShowLabel.Visible)
+            {
+                PasswordShowLabel.Visible = false;
+                PasswordShowLinkLabel.Text = "Показать";
+            }
+            else
             {
                 PasswordShowLabel.Text = MD5.Decrypt(_user.Password);
                 PasswordShowLabel.Visible = true;
                 PasswordShowLinkLabel.Text = "Скрыть";
             }
-            else
-            {
-                PasswordShowLabel.Visible = false;
-                PasswordShowLinkLabel.Text = "Показать";
-            }
-        }
-
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
         }
 
         private void SendMessageButton_Click(object sender, EventArgs e)

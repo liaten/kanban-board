@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using kanbanboard.Classes;
 
 namespace kanbanboard.Controls
 {
@@ -13,11 +14,11 @@ namespace kanbanboard.Controls
 
         public Label Title { get; set; }
         public Label Ticket { get; set; }
+        public List<User> Empoyees { get; set; }
         public Label People { get; set; }
         public Button DelButton { get; set; }
         public Button LeftButton { get; set; }
         public Button RightButton { get; set; }
-
 
         public TicketPanel()
         {
@@ -28,7 +29,7 @@ namespace kanbanboard.Controls
             DoubleBuffered = true;
 
             // Заголовок, текст, исполнители (может быть изменено). Из чего-то мб сделать другой контрол
-            Title = new Label()
+            Title = new Label
             {
                 Name = "Title",
                 Text = "Заголовок",
@@ -36,20 +37,22 @@ namespace kanbanboard.Controls
                 Location = new Point(Size.Width - Size.Width + 5, Size.Height - Size.Height + 5),
                 Margin = new Padding(20, 20, 40, 20),
             };
-            Ticket = new Label()
+            Ticket = new Label
             {
                 Name = "Ticket",
                 Text = "Текст тикета",
                 Margin = new Padding(5),
                 Location = new Point(Size.Width - Size.Width + 5, Size.Height / 2),
             };
-            People = new Label()
+
+            People = new Label
             {
                 Name = "People",
                 Text = "Разработчики",
                 Margin = new Padding(5),
                 Location = new Point(Size.Width - Size.Width + 5, Size.Height - 5),
             };
+
             new List<Label> { Title, Ticket, People }.ForEach(x =>
             {
                 x.ForeColor = Color.WhiteSmoke;
@@ -58,25 +61,25 @@ namespace kanbanboard.Controls
 
             // Добавляем панель с кнопками перемещений и удаления тикета
             // кнопка удаления тикета, перемещения ВПРАВО, перемещения ВЛЕВО
-            DelButton = new Button()
+            DelButton = new Button
             {
                 Name = "delButton",
                 Text = "✖",
                 Font = new Font("Tahoma", 7.5f),
             };
-            LeftButton = new Button()
+            LeftButton = new Button
             {
                 Name = "leftButton",
                 Text = "«",
                 Font = DelButton.Font,
             };
-            RightButton = new Button()
+            RightButton = new Button
             {
                 Name = "rightButton",
                 Text = "»",
                 Font = DelButton.Font
             };
-            new List<Button>() { DelButton, LeftButton, RightButton }.ForEach(x =>
+            new List<Button> { DelButton, LeftButton, RightButton }.ForEach(x =>
              {
                  x.BackColor = Color.Transparent;
                  x.FlatAppearance.MouseDownBackColor = Color.Transparent;
@@ -86,8 +89,8 @@ namespace kanbanboard.Controls
                  x.FlatStyle = FlatStyle.Flat;
                  x.FlatAppearance.BorderSize = 0;
                  x.ForeColor = Color.WhiteSmoke;
-                 x.MouseEnter += (s, a) => x.ForeColor = Color.Red;
-                 x.MouseLeave += (s, a) => x.ForeColor = Color.WhiteSmoke;
+                 x.MouseEnter += (_, _) => x.ForeColor = Color.Red;
+                 x.MouseLeave += (_, _) => x.ForeColor = Color.WhiteSmoke;
              });
 
             Controls.AddRange(new Control[] { DelButton, LeftButton, RightButton });
