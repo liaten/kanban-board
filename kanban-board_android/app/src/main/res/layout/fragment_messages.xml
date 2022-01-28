@@ -1,29 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Kanban_menu"
-    android:background="@color/back">
+    android:background="@color/back"
+    android:orientation="vertical"
+    android:id="@+id/messages_root_layout"
+    app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+    >
 
     <LinearLayout
-        android:id="@+id/view_auth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:layout_marginTop="55dp"
-        >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            style="@style/View_top"
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:id="@+id/message_title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Messages"
-            android:textAlignment="center"
- />
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            >
+
+            <TextView
+                style="@style/View_top"
+                android:id="@+id/headerMessages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Сообщения"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                style="@style/MySpinnerLook">
+
+                <Spinner
+                    android:id="@+id/spinnerBoardsMessages"
+                    style="@style/MySpinnerLook"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/spinner"></Spinner>
+
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/messageLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@id/spinnerLay"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="@color/back_2"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:backgroundTint="@color/back_2"
+                card_view:cardCornerRadius="10dp"
+                >
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/messageList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                </ScrollView>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sendMessageLay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="8"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentBottom="true"
+            >
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/sendMessageField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:hint="Введите сообщение"
+                android:inputType="text"
+                android:text=""
+                android:textSize="15sp"
+                app:met_baseColor="@color/btn_sing_in_stroke"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="@color/btn_sing_in_stroke"
+                app:met_singleLineEllipsis="true"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:id="@+id/sendButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_send"
+                android:background="@color/back"
+                app:tint="@color/btn_sing_in_stroke"
+                android:layout_weight="7">
+
+            </ImageButton>
+
+        </LinearLayout>
+
+
+
+
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".Kanban_menu"
     android:orientation="vertical"
-    android:weightSum="25">
+    android:weightSum="25"
+    >
 
 
     <androidx.fragment.app.FragmentContainerView
@@ -20,7 +21,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/nav_panel"
-        android:layout_weight="24"/>
+        android:layout_weight="24"
+        />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
