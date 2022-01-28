@@ -13,7 +13,8 @@
         android:theme="@style/Theme.Kanbanboard">
         <activity
             android:name=".Kanban_menu"
-            android:exported="true" />
+            android:exported="true"
+            />
         <activity
             android:name=".MainActivity"
             android:exported="true">

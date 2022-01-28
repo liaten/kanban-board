@@ -300,7 +300,6 @@ public class Calendar extends Fragment {
             }
         });
 
-
     }
 
     //получить тикеты
