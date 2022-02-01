@@ -214,7 +214,7 @@ public class Messages extends Fragment {
             public void onItemSelected(AdapterView<?> parent,
                                        View itemSelected, int selectedItemPosition, long selectedId) {
                 GetMessages();
-                Header.setText("Сообщения в " + boardName);
+                Header.setText("Доска " + boardName);
             }
 
             public void onNothingSelected(AdapterView<?> parent) {

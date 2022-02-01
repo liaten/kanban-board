@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -21,10 +22,14 @@ import android.widget.TextView;
 
 import com.example.kanban_board.Models.MyItemTouchHelperCallback;
 import com.example.kanban_board.Models.MyRecyclerAdapter;
+import com.example.kanban_board.Models.UserNew;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,9 +49,10 @@ public class Profile extends Fragment {
     private String mParam1;
     private String mParam2;
     private FirebaseAuth auth;
-    private TextView profileName;
+    private TextView profileName, login, org, pass, fullName;
     private FirebaseDatabase db;
     private DatabaseReference users;
+
 
     private Button logOut;
 
@@ -90,6 +96,10 @@ public class Profile extends Fragment {
         FirebaseUser cUser = auth.getCurrentUser();
 
         profileName = (TextView) viewGroup.findViewById(R.id.profile_name);
+        login = (TextView) viewGroup.findViewById(R.id.loginProfile);
+        org = (TextView) viewGroup.findViewById(R.id.orgProfile);
+        pass = (TextView) viewGroup.findViewById(R.id.passProfile);
+        fullName = (TextView) viewGroup.findViewById(R.id.nameProfile);
         logOut = (Button) viewGroup.findViewById(R.id.LogOut);
 
 
@@ -126,6 +136,25 @@ public class Profile extends Fragment {
         String usernamei = intent.getStringExtra("login");
         String userName = "Вы вошли как " + usernamei;
         profileName.setText(userName);
+
+        DatabaseReference userDB;
+        users.child(usernamei).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                UserNew user = snapshot.getValue(UserNew.class);
+
+                login.setText(user.getUsername());
+                org.setText(user.getOrganization());
+                pass.setText(user.getPassword());
+                fullName.setText(user.getFullName());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 }

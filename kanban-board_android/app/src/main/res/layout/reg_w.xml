@@ -19,15 +19,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/email_field"
-            android:hint="Email (необязательно)"
+            android:hint="Email"
             android:inputType="textEmailAddress"
             android:text=""
             android:textSize="20sp"
-            app:met_baseColor="@color/btn_sing_in_stroke"
             app:met_floatingLabel="highlight"
             app:met_primaryColor="@color/btn_sing_in_stroke"
             app:met_singleLineEllipsis="true"/>
 
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/fullname_field"
+            android:hint="Full name"
+            android:inputType="text"
+            android:text=""
+            android:textSize="20sp"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@color/btn_sing_in_stroke"
+            app:met_singleLineEllipsis="true"/>
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
@@ -37,11 +47,21 @@
             android:inputType="text"
             android:text=""
             android:textSize="20sp"
-            app:met_baseColor="@color/btn_sing_in_stroke"
             app:met_floatingLabel="highlight"
             app:met_primaryColor="@color/btn_sing_in_stroke"
             app:met_singleLineEllipsis="true"/>
 
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/org_field"
+            android:hint="Organization"
+            android:inputType="text"
+            android:text=""
+            android:textSize="20sp"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@color/btn_sing_in_stroke"
+            app:met_singleLineEllipsis="true"/>
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
@@ -51,11 +71,9 @@
             android:inputType="textPassword"
             android:text=""
             android:textSize="20sp"
-            app:met_baseColor="@color/btn_sing_in_stroke"
             app:met_floatingLabel="highlight"
             app:met_primaryColor="@color/btn_sing_in_stroke"
             app:met_singleLineEllipsis="true"/>
-
 
 
     </LinearLayout>
