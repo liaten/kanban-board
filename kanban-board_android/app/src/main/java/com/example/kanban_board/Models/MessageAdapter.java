@@ -29,32 +29,22 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         View v = LayoutInflater.from(context).inflate(R.layout.message_item, parent, false);
         return new MessageAdapter.ViewHolderForMessages(v);
     }
-
     @Override
     public void onBindViewHolder(@NonNull MessageAdapter.ViewHolderForMessages holder, int position) {
-
         UserMessage message = messageList.get(position);
         holder.Sender.setText(message.getSender());
         holder.Text.setText(message.getText());
-
     }
-
-
     @Override
     public int getItemCount() {
         return messageList.size();
     }
-
     public static class ViewHolderForMessages extends RecyclerView.ViewHolder{
-
         TextView Sender, Text;
-
         public ViewHolderForMessages(@NonNull View itemView) {
             super(itemView);
-
             Sender = itemView.findViewById(R.id.messageSender);
             Text = itemView.findViewById(R.id.messageText);
-
         }
 
     }

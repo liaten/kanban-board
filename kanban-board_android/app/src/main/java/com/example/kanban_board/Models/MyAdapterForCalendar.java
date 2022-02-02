@@ -1,14 +1,12 @@
 package com.example.kanban_board.Models;
 
 import android.content.Context;
-import android.icu.text.CaseMap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kanban_board.R;
@@ -39,10 +37,10 @@ public class MyAdapterForCalendar extends RecyclerView.Adapter<MyAdapterForCalen
     public void onBindViewHolder(@NonNull MyViewHolderForCalendar holder, int position) {
 
         Ticket ticket = list.get(position);
-        holder.Title.setText(ticket.gettitle());
-        holder.Ticket.setText(ticket.getticket());
-        holder.People.setText(ticket.getpeople());
-        holder.Status.setText(ticket.getstatus());
+        holder.Title.setText(ticket.getTitle());
+        holder.Ticket.setText(ticket.getTicket());
+        holder.People.setText(ticket.getPeople());
+        holder.Status.setText(ticket.getStatus());
 
     }
 

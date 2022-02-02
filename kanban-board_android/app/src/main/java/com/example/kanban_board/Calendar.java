@@ -2,7 +2,6 @@ package com.example.kanban_board;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.icu.text.CaseMap;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,27 +19,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kanban_board.Models.MyAdapterForCalendar;
 import com.example.kanban_board.Models.Ticket;
-import com.example.kanban_board.Models.User;
-import com.example.kanban_board.Models.UserNew;
-import com.google.android.gms.common.server.converter.StringToIntConverter;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthException;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
@@ -154,8 +143,8 @@ public class Calendar extends Fragment {
 
                     String ticketBoardName = spinner.getSelectedItem().toString();
                     Ticket ticket = list.get(position);
-                    String titleDB = ticket.gettitle();
-                    String ticketStatus = ticket.getstatus();
+                    String titleDB = ticket.getTitle();
+                    String ticketStatus = ticket.getStatus();
 
                     DatabaseReference dReference = FirebaseDatabase.getInstance().getReference();
 
