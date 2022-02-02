@@ -198,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
 
         DatabaseReference reference_login = FirebaseDatabase.getInstance().getReference("Users");
 
-        Query checkUser = reference_login.orderByChild("login").equalTo(login_e);
+        Query checkUser = reference_login.orderByChild("Username").equalTo(login_e);
 
 
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -208,12 +208,12 @@ public class MainActivity extends AppCompatActivity {
                 if(snapshot.exists()){
 
 
-                    String passFromDB = snapshot.child(login_e).child("password").getValue(String.class);
+                    String passFromDB = snapshot.child(login_e).child("Password").getValue(String.class);
 
                     if (passFromDB.equals(password_e)){
 
-                        String accName = snapshot.child(login_e).child("login").getValue(String.class);
-                        String accPass = snapshot.child(login_e).child("password").getValue(String.class);
+                        String accName = snapshot.child(login_e).child("Username").getValue(String.class);
+                        String accPass = snapshot.child(login_e).child("Password").getValue(String.class);
 
                         Intent intent = new Intent(MainActivity.this, Kanban_menu.class);
                         intent.putExtra("login", accName);
@@ -291,6 +291,8 @@ public class MainActivity extends AppCompatActivity {
         final MaterialEditText email = reg_window.findViewById(R.id.email_field);
         final MaterialEditText login = reg_window.findViewById(R.id.login_field);
         final MaterialEditText password = reg_window.findViewById(R.id.password_field);
+        final MaterialEditText fullName = reg_window.findViewById(R.id.fullname_field);
+        final MaterialEditText organization = reg_window.findViewById(R.id.org_field);
 
         reg.setNegativeButton("Назад", new DialogInterface.OnClickListener() {
             @Override
@@ -304,7 +306,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
 
 
-                    if (TextUtils.isEmpty(login.getText().toString())){
+                if (TextUtils.isEmpty(login.getText().toString())){
                     Snackbar.make(root, "Введите логин", Snackbar.LENGTH_SHORT).show();
                     return;
                 }
@@ -314,17 +316,38 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
+                if (TextUtils.isEmpty(fullName.getText().toString())){
+                    Snackbar.make(root, "Введите полное имя", Snackbar.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(organization.getText().toString())){
+                    Snackbar.make(root, "Введите организацию", Snackbar.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(email.getText().toString())){
+                    Snackbar.make(root, "Введите email", Snackbar.LENGTH_SHORT).show();
+                    return;
+                }
+
                 String login_u = login.getText().toString();
                 String password_u = password.getText().toString();
                 String email_u = email.getText().toString();
+                String fullName_u = fullName.getText().toString();
+                String org_u = organization.getText().toString();
 
-                UserNew user = new UserNew("User", password_u, login_u, email_u);
+                UserNew user = new UserNew("User", password_u, login_u, email_u, org_u, fullName_u);
+                
+                users.child(login_u).child("Email").setValue(user.getEmail());
+                users.child(login_u).child("FullName").setValue(user.getFullName());
+                users.child(login_u).child("Organization").setValue(user.getOrganization());
+                users.child(login_u).child("Password").setValue(user.getPassword());
+                users.child(login_u).child("Role").setValue(user.getRole());
+                users.child(login_u).child("Username").setValue(user.getUsername());
 
-
-                users.child(login_u).setValue(user);
-
+                //users.child(login_u).setValue(user);
                 users.child(login_u).child("Projects").child("1").setValue("info");
-
 
             }
        });
