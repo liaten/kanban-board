@@ -9,10 +9,10 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-//import com.google.firebase.auth.FirebaseAuth;
 
 public class Menu extends AppCompatActivity {
     Button logout;
+
     //FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

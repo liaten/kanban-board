@@ -141,6 +141,7 @@ public class Calendar extends Fragment {
         AddTicket();
         return viewGroup;
     }
+
     // Добавить тикет
     private void AddTicket() {
 
@@ -238,10 +239,12 @@ public class Calendar extends Fragment {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
 
     }
+
     // Получить тикеты
     private void GetTickets() {
 
@@ -292,6 +295,7 @@ public class Calendar extends Fragment {
             }
         });
     }
+
     // Вспомогательная для добавления досок
     private void TestGet() {
         Intent intent = getActivity().getIntent();
@@ -305,11 +309,13 @@ public class Calendar extends Fragment {
                     myNum = Integer.parseInt(increment);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
     }
+
     //вспомогательная для добавления тикетов
     private void TestGetTicket() {
         FirebaseDatabase db = FirebaseDatabase.getInstance();
@@ -322,10 +328,13 @@ public class Calendar extends Fragment {
                     myNumTicket = Integer.parseInt(increment) + 1;
                 }
             }
+
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
     }
+
     // Добавление доски
     private void AddBoard() {
         addBoardBtn.setOnClickListener(new View.OnClickListener() {

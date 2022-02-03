@@ -5,17 +5,14 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import kanban.board.Models.UserNew;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,6 +21,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import kanban.board.Models.UserNew;
 
 
 public class Profile extends Fragment {
@@ -69,7 +68,6 @@ public class Profile extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -81,21 +79,20 @@ public class Profile extends Fragment {
         users = db.getReference("Users");
         FirebaseUser cUser = auth.getCurrentUser();
 
-        profileName = (TextView) viewGroup.findViewById(R.id.profile_name);
-        login = (TextView) viewGroup.findViewById(R.id.loginProfile);
-        org = (TextView) viewGroup.findViewById(R.id.orgProfile);
-        pass = (TextView) viewGroup.findViewById(R.id.passProfile);
-        fullName = (TextView) viewGroup.findViewById(R.id.nameProfile);
-        logOut = (Button) viewGroup.findViewById(R.id.LogOut);
+        profileName = viewGroup.findViewById(R.id.profile_name);
+        login = viewGroup.findViewById(R.id.loginProfile);
+        org = viewGroup.findViewById(R.id.orgProfile);
+        pass = viewGroup.findViewById(R.id.passProfile);
+        fullName = viewGroup.findViewById(R.id.nameProfile);
+        logOut = viewGroup.findViewById(R.id.LogOut);
 
 
         GetCurUserInfo();
         LogOut();
 
 
-
         return viewGroup;
-       // return inflater.inflate(R.layout.fragment_profile, container, false);
+        // return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
     private void LogOut() {
@@ -107,7 +104,7 @@ public class Profile extends Fragment {
                 Intent mStartActivity = new Intent(getActivity(), Main.class);
                 int mPendingIntentId = 123456;
                 PendingIntent mPendingIntent = PendingIntent.getActivity(getActivity(), mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
-                AlarmManager mgr = (AlarmManager)getActivity().getSystemService(Context.ALARM_SERVICE);
+                AlarmManager mgr = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
                 mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
                 System.exit(0);
 

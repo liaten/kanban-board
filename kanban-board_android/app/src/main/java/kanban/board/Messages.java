@@ -2,12 +2,6 @@ package kanban.board;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +11,11 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import kanban.board.Models.MessageAdapter;
-import kanban.board.Models.UserMessage;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import kanban.board.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,6 +25,9 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import kanban.board.Models.MessageAdapter;
+import kanban.board.Models.UserMessage;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,29 +40,21 @@ public class Messages extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
     Spinner spinner;
     DatabaseReference dbBoards;
     RecyclerView recyclerView;
     DatabaseReference database;
     MessageAdapter adapter;
     ArrayList<UserMessage> list;
-
     String boardName = "";
-
     ImageButton sendButton;
     MaterialEditText messageText;
-
     TextView Header;
-
     Integer myNum = 0;
-
     Integer myNumTicket = 0;
-
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
 
 
     public Messages() {
@@ -104,11 +94,11 @@ public class Messages extends Fragment {
 
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_messages, container, false);
 
-        spinner = (Spinner) viewGroup.findViewById(R.id.spinnerBoardsMessages);
-        recyclerView = (RecyclerView) viewGroup.findViewById(R.id.messageList);
-        Header = (TextView) viewGroup.findViewById(R.id.headerMessages);
-        sendButton = (ImageButton) viewGroup.findViewById(R.id.sendButton);
-        messageText = (MaterialEditText) viewGroup.findViewById(R.id.sendMessageField);
+        spinner = viewGroup.findViewById(R.id.spinnerBoardsMessages);
+        recyclerView = viewGroup.findViewById(R.id.messageList);
+        Header = viewGroup.findViewById(R.id.headerMessages);
+        sendButton = viewGroup.findViewById(R.id.sendButton);
+        messageText = viewGroup.findViewById(R.id.sendMessageField);
 
 
         GetBoards();
@@ -164,7 +154,7 @@ public class Messages extends Fragment {
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     String number = dataSnapshot.getKey();
                     DatabaseReference databaseMessage = database.child(number);
@@ -219,7 +209,7 @@ public class Messages extends Fragment {
         });
     }
 
-    private void SendMessages(){
+    private void SendMessages() {
 
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -232,7 +222,7 @@ public class Messages extends Fragment {
                 database.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for(DataSnapshot ds : snapshot.getChildren()) {
+                        for (DataSnapshot ds : snapshot.getChildren()) {
                             String increment = ds.getKey();
 
                             myNum = Integer.parseInt(increment);
@@ -248,7 +238,7 @@ public class Messages extends Fragment {
                 Intent intent = getActivity().getIntent();
                 String usernamei = intent.getStringExtra("login");
 
-                DatabaseReference messageSend = database.child(String.valueOf(myNum+1)).child(usernamei);
+                DatabaseReference messageSend = database.child(String.valueOf(myNum + 1)).child(usernamei);
                 messageSend.setValue(text);
                 messageText.setText("");
 
@@ -257,8 +247,6 @@ public class Messages extends Fragment {
         });
 
     }
-
-
 
 
 }
