@@ -58,52 +58,45 @@ public class Calendar extends Fragment {
     //Свайпы(удаление)
     ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
         @Override
-        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+        public boolean onMove(@NonNull RecyclerView recyclerView,
+                              @NonNull RecyclerView.ViewHolder viewHolder,
+                              @NonNull RecyclerView.ViewHolder target) {
             return false;
         }
 
         @Override
-        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder,
+                             int direction) {
 
             int position = viewHolder.getAdapterPosition();
+            if (direction == ItemTouchHelper.LEFT) {
+                String ticketBoardName = spinner.getSelectedItem().toString();
+                Ticket ticket = list.get(position);
+                String titleDB = ticket.getTitle();
+                String ticketStatus = ticket.getStatus();
 
-            switch (direction) {
+                DatabaseReference dReference = FirebaseDatabase.getInstance().getReference();
 
-                case ItemTouchHelper.LEFT:
-
-                    String ticketBoardName = spinner.getSelectedItem().toString();
-                    Ticket ticket = list.get(position);
-                    String titleDB = ticket.getTitle();
-                    String ticketStatus = ticket.getStatus();
-
-                    DatabaseReference dReference = FirebaseDatabase.getInstance().getReference();
-
-                    Query delQuery = dReference.child("Projects").child(ticketBoardName).child("Kanban").child(ticketStatus).orderByChild("title").equalTo(titleDB);
-                    delQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            for (DataSnapshot delSnapshot : dataSnapshot.getChildren()) {
-                                delSnapshot.getRef().removeValue();
-                            }
+                Query delQuery = dReference.child("Projects").child(ticketBoardName).child("Kanban").child(ticketStatus).orderByChild("title").equalTo(titleDB);
+                delQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot delSnapshot : dataSnapshot.getChildren()) {
+                            delSnapshot.getRef().removeValue();
                         }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });
-                    list.remove(position);
-                    adapter.notifyItemRemoved(position);
-                    Toast.makeText(getActivity(), "Удалена задача " + titleDB, Toast.LENGTH_SHORT).show();
-                    break;
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
+                list.remove(position);
+                adapter.notifyItemRemoved(position);
+                Toast.makeText(getActivity(), "Удалена задача " + titleDB, Toast.LENGTH_SHORT).show();
             }
         }
     };
 
-    public Calendar() {
-        // Required empty public constructor
-    }
-
+    public Calendar() {}
     public static Calendar newInstance(String param1, String param2) {
         Calendar fragment = new Calendar();
         Bundle args = new Bundle();
@@ -123,7 +116,8 @@ public class Calendar extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_calendar, container, false);
         recyclerView = viewGroup.findViewById(R.id.ticketList);
@@ -145,60 +139,49 @@ public class Calendar extends Fragment {
     // Добавить тикет
     private void AddTicket() {
 
-        addTicketBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        addTicketBtn.setOnClickListener(view -> {
 
-                AlertDialog.Builder addT = new AlertDialog.Builder(getActivity());
-                addT.setTitle("Добавление нового тикета");
-                addT.setMessage("Введите название тикета");
+            AlertDialog.Builder addT = new AlertDialog.Builder(getActivity());
+            addT.setTitle("Добавление нового тикета");
+            addT.setMessage("Введите название тикета");
 
-                LayoutInflater inflater = LayoutInflater.from(getActivity());
-                View addT_window = inflater.inflate(R.layout.add_new_ticket, null);
-                addT.setView(addT_window);
+            LayoutInflater inflater = LayoutInflater.from(getActivity());
+            View addT_window = inflater.inflate(R.layout.add_new_ticket, null);
+            addT.setView(addT_window);
 
-                final MaterialEditText name = addT_window.findViewById(R.id.addTicketName);
-                final MaterialEditText text = addT_window.findViewById(R.id.addTicketText);
-                final MaterialEditText people = addT_window.findViewById(R.id.addTicketPeople);
-                final MaterialEditText status = addT_window.findViewById(R.id.addTicketStatus);
+            final MaterialEditText name = addT_window.findViewById(R.id.addTicketName);
+            final MaterialEditText text = addT_window.findViewById(R.id.addTicketText);
+            final MaterialEditText people = addT_window.findViewById(R.id.addTicketPeople);
+            final MaterialEditText status = addT_window.findViewById(R.id.addTicketStatus);
 
-                addT.setNegativeButton("Назад", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                });
-                addT.setPositiveButton("Отправить", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        if (TextUtils.isEmpty(name.getText().toString().trim())) {
-                            Snackbar.make(root, "Введите название!", Snackbar.LENGTH_SHORT).show();
-                            return;
-                        }
-                        if (TextUtils.isEmpty(text.getText().toString().trim())) {
-                            Snackbar.make(root, "Введите текст тикета!", Snackbar.LENGTH_SHORT).show();
-                            return;
-                        }
-                        if (TextUtils.isEmpty(people.getText().toString().trim())) {
-                            Snackbar.make(root, "Введите разработчиков!", Snackbar.LENGTH_SHORT).show();
-                            return;
-                        }
-                        if (TextUtils.isEmpty(status.getText().toString().trim())) {
-                            Snackbar.make(root, "Введите статус!", Snackbar.LENGTH_SHORT).show();
-                            return;
-                        }
-                        ticketName = name.getText().toString();
-                        ticketText = text.getText().toString();
-                        ticketPeople = people.getText().toString();
-                        ticketStatus = status.getText().toString();
-                        ticketBoardName = spinner.getSelectedItem().toString();
-                        Ticket ticket = new Ticket(ticketPeople, ticketText, ticketName);
-                        TestGetTicket();
-                        tickets.child(String.valueOf(myNumTicket)).setValue(ticket);
-                    }
-                });
-                addT.show();
-            }
+            addT.setNegativeButton("Назад", (dialogInterface, i) -> dialogInterface.dismiss());
+            addT.setPositiveButton("Отправить", (dialogInterface, i) -> {
+                if (TextUtils.isEmpty(name.getText().toString().trim())) {
+                    Snackbar.make(root, "Введите название!", Snackbar.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(text.getText().toString().trim())) {
+                    Snackbar.make(root, "Введите текст тикета!", Snackbar.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(people.getText().toString().trim())) {
+                    Snackbar.make(root, "Введите разработчиков!", Snackbar.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(status.getText().toString().trim())) {
+                    Snackbar.make(root, "Введите статус!", Snackbar.LENGTH_SHORT).show();
+                    return;
+                }
+                ticketName = name.getText().toString();
+                ticketText = text.getText().toString();
+                ticketPeople = people.getText().toString();
+                ticketStatus = status.getText().toString();
+                ticketBoardName = spinner.getSelectedItem().toString();
+                Ticket ticket = new Ticket(ticketPeople, ticketText, ticketName);
+                TestGetTicket();
+                tickets.child(String.valueOf(myNumTicket)).setValue(ticket);
+            });
+            addT.show();
         });
     }
 

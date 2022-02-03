@@ -7,7 +7,12 @@ public class UserNew {
     public UserNew() {
     }
 
-    public UserNew(String Role, String Password, String Username, String Email, String Organization, String FullName) {
+    public UserNew(String Role,
+                   String Password,
+                   String Username,
+                   String Email,
+                   String Organization,
+                   String FullName) {
         this.Role = Role;
         this.Password = Password;
         this.Username = Username;

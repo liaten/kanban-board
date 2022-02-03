@@ -10,7 +10,7 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Kanbanboard">
+        android:theme="@style/Theme.KanbanBoard">
         <activity
             android:name="kanban.board.Menu"
             android:exported="true"
