@@ -1,4 +1,4 @@
-package kanban.board.ui.dashboard;
+package kanban.board.ui.Dashboard;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

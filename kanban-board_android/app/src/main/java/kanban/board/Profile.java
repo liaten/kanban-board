@@ -17,7 +17,6 @@ import android.widget.TextView;
 
 import kanban.board.Models.UserNew;
 
-import kanban.board.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -105,7 +104,7 @@ public class Profile extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Intent mStartActivity = new Intent(getActivity(), MainActivity.class);
+                Intent mStartActivity = new Intent(getActivity(), Main.class);
                 int mPendingIntentId = 123456;
                 PendingIntent mPendingIntent = PendingIntent.getActivity(getActivity(), mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
                 AlarmManager mgr = (AlarmManager)getActivity().getSystemService(Context.ALARM_SERVICE);

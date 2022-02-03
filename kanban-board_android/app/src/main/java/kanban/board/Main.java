@@ -30,214 +30,137 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
-public class MainActivity extends AppCompatActivity {
+public class Main extends AppCompatActivity {
 
     Button ButtonSign, ButtonReg, ButtonSignAuth, ButtonLogOut;
-    TextView view_f, pNameAuth;
+    TextView ForgotTextView, ProfileNameAuth;
 
-    FirebaseAuth auth;
-    FirebaseDatabase db;
-    DatabaseReference users;
-    DatabaseReference newUser;
+    FirebaseAuth FirebaseAuth;
+    FirebaseDatabase FirebaseDatabase;
+    DatabaseReference FirebaseUsers;
 
-    RelativeLayout root;
-    LinearLayout enterlog, ButtonsLinearLayout, frgt;
+    RelativeLayout MainLayout;
+    LinearLayout EnterLogin, ButtonsLinearLayout, CheckBoxLayout;
 
-    MaterialEditText log_f;
-    MaterialEditText pas_f;
+    MaterialEditText LoginField, PasswordField;
 
-
+    private static final String DEFAULT_LOGIN = "dsyt17";
+    private static final String DEFAULT_PASSWORD = "pass";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main);
 
-        log_f = findViewById(R.id.login_field_e);
-        pas_f = findViewById(R.id.password_field_e);
-
+        // Находим вьюшки
+        LoginField = findViewById(R.id.login_field_e);
+        PasswordField = findViewById(R.id.password_field_e);
         ButtonSign = findViewById(R.id.SingIn);
         ButtonReg = findViewById(R.id.Register);
         ButtonSignAuth = findViewById(R.id.SingInAuth);
         ButtonLogOut = findViewById(R.id.SingOut);
-
-        view_f = findViewById(R.id.forgot_view);
-        pNameAuth = findViewById(R.id.profile_name_auth);
-
-        auth = FirebaseAuth.getInstance();
-        db = FirebaseDatabase.getInstance();
-        users = db.getReference("Users");
-
-        root = findViewById(R.id.main_layout);
-
-        enterlog = findViewById(R.id.enter_login);
+        ForgotTextView = findViewById(R.id.forgot_view);
+        ProfileNameAuth = findViewById(R.id.profile_name_auth);
+        FirebaseAuth = FirebaseAuth.getInstance();
+        FirebaseDatabase = FirebaseDatabase.getInstance();
+        FirebaseUsers = FirebaseDatabase.getReference("Users");
+        MainLayout = findViewById(R.id.main_layout);
+        EnterLogin = findViewById(R.id.enter_login);
         ButtonsLinearLayout = findViewById(R.id.buttons_e);
-        frgt = findViewById(R.id.check_box_l);
+        CheckBoxLayout = findViewById(R.id.check_box_layout);
 
-        log_f.setText("dsyt17");
-        pas_f.setText("pass");
+        LoginField.setText(DEFAULT_LOGIN);
+        PasswordField.setText(DEFAULT_PASSWORD);
 
         //Кнопки
 
-        ButtonReg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showRegisterWindow();
-            }
-        });
-
-        view_f.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showForgotWindow();
-            }
-        });
-
-        ButtonSign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showMainWindow();
-            }
-        });
-
-        ButtonSignAuth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new  Intent(MainActivity.this, Kanban_menu.class));
-            }
-        });
-
-        ButtonLogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signOut();
-            }
-        });
-
-
-
+        ButtonReg.setOnClickListener(view -> showRegisterWindow());
+        ForgotTextView.setOnClickListener(view -> showForgotWindow());
+        ButtonSign.setOnClickListener(view -> showMainWindow());
+        ButtonSignAuth.setOnClickListener(view -> startActivity(new  Intent(Main.this, Menu.class)));
+        ButtonLogOut.setOnClickListener(view -> signOut());
     }
 
     private void signOut() {
-
         FirebaseAuth.getInstance().signOut();
-
         ButtonSignAuth.setVisibility(View.GONE);
-        pNameAuth.setVisibility(View.GONE);
+        ProfileNameAuth.setVisibility(View.GONE);
         ButtonLogOut.setVisibility(View.GONE);
 
-        enterlog.setVisibility(View.VISIBLE);
+        EnterLogin.setVisibility(View.VISIBLE);
         ButtonsLinearLayout.setVisibility(View.VISIBLE);
-        frgt.setVisibility(View.VISIBLE);
+        CheckBoxLayout.setVisibility(View.VISIBLE);
     }
 
     @Override
     protected void onStart(){
         super.onStart();
-        FirebaseUser cUser = auth.getCurrentUser();
-        if(cUser != null){
+        FirebaseUser currentUser = FirebaseAuth.getCurrentUser();
+        if(currentUser != null){
             ButtonSignAuth.setVisibility(View.VISIBLE);
-            pNameAuth.setVisibility(View.VISIBLE);
+            ProfileNameAuth.setVisibility(View.VISIBLE);
             ButtonLogOut.setVisibility(View.VISIBLE);
-
-            enterlog.setVisibility(View.GONE);
+            EnterLogin.setVisibility(View.GONE);
             ButtonsLinearLayout.setVisibility(View.GONE);
-            frgt.setVisibility(View.GONE);
-
-            String userName = "Вы вошли как " + cUser.getEmail();
-            pNameAuth.setText(userName);
+            CheckBoxLayout.setVisibility(View.GONE);
+            String userName = "Вы вошли как " + currentUser.getEmail();
+            ProfileNameAuth.setText(userName);
         }
-
         else {
             ButtonSignAuth.setVisibility(View.GONE);
-            pNameAuth.setVisibility(View.GONE);
+            ProfileNameAuth.setVisibility(View.GONE);
             ButtonLogOut.setVisibility(View.GONE);
-
-            enterlog.setVisibility(View.VISIBLE);
+            EnterLogin.setVisibility(View.VISIBLE);
             ButtonsLinearLayout.setVisibility(View.VISIBLE);
-            frgt.setVisibility(View.VISIBLE);
-
+            CheckBoxLayout.setVisibility(View.VISIBLE);
         }
-
-
     }
-
-
     //Войти
-
     private void showMainWindow() {
-
         LayoutInflater inflater = LayoutInflater.from(this);
-        View enter_window = inflater.inflate(R.layout.activity_main, null);
-
+        View enter_window = inflater.inflate(R.layout.main, null);
         final MaterialEditText login = findViewById(R.id.login_field_e);
         final MaterialEditText password = findViewById(R.id.password_field_e);
-
-
-        if (TextUtils.isEmpty(login.getText().toString())){
-            Snackbar.make(root, "Введите логин", Snackbar.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(login.getText().toString().trim())){
+            Snackbar.make(MainLayout, "Введите логин", Snackbar.LENGTH_SHORT).show();
             return;
         }
-
-        if (TextUtils.isEmpty(password.getText().toString())){
-            Snackbar.make(root, "Введите пароль", Snackbar.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(password.getText().toString().trim())){
+            Snackbar.make(MainLayout, "Введите пароль", Snackbar.LENGTH_SHORT).show();
             return;
         }
-
-
         String login_e = login.getText().toString().trim();
         String password_e = password.getText().toString().trim();
-
         DatabaseReference reference_login = FirebaseDatabase.getInstance().getReference("Users");
-
         Query checkUser = reference_login.orderByChild("Username").equalTo(login_e);
-
-
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                 if(snapshot.exists()){
-
-
                     String passFromDB = snapshot.child(login_e).child("Password").getValue(String.class);
-
                     if (passFromDB.equals(password_e)){
-
                         String accName = snapshot.child(login_e).child("Username").getValue(String.class);
                         String accPass = snapshot.child(login_e).child("Password").getValue(String.class);
-
-                        Intent intent = new Intent(MainActivity.this, Kanban_menu.class);
+                        Intent intent = new Intent(Main.this, Menu.class);
                         intent.putExtra("login", accName);
                         intent.putExtra("password", accPass);
-
                         startActivity(intent);
-
-
                     }
                     else {
-                        Toast.makeText(MainActivity.this,"Неправильный пароль",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Main.this,"Неправильный пароль",Toast.LENGTH_SHORT).show();
                     }
-
                 }
                 else {
-                    Toast.makeText(MainActivity.this,"Неправильный логин",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Main.this,"Неправильный логин",Toast.LENGTH_SHORT).show();
                 }
-
-
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
-
-
     }
 
-    //Забыл пароль (доделать)
+    //TODO: Забыл пароль
 
     private void showForgotWindow() {
         AlertDialog.Builder forgot = new AlertDialog.Builder(this);
@@ -277,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
         reg.setMessage("Заполните все поля");
 
         LayoutInflater inflater = LayoutInflater.from(this);
-        View reg_window = inflater.inflate(R.layout.reg_w, null);
+        View reg_window = inflater.inflate(R.layout.registration, null);
         reg.setView(reg_window);
 
         final MaterialEditText email = reg_window.findViewById(R.id.email_field);
@@ -299,27 +222,27 @@ public class MainActivity extends AppCompatActivity {
 
 
                 if (TextUtils.isEmpty(login.getText().toString())){
-                    Snackbar.make(root, "Введите логин", Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(MainLayout, "Введите логин", Snackbar.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (password.getText().toString().length() < 4){
-                    Snackbar.make(root, "Введите пароль не менее 4 символов", Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(MainLayout, "Введите пароль не менее 4 символов", Snackbar.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(fullName.getText().toString())){
-                    Snackbar.make(root, "Введите полное имя", Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(MainLayout, "Введите полное имя", Snackbar.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(organization.getText().toString())){
-                    Snackbar.make(root, "Введите организацию", Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(MainLayout, "Введите организацию", Snackbar.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(email.getText().toString())){
-                    Snackbar.make(root, "Введите email", Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(MainLayout, "Введите email", Snackbar.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -331,15 +254,15 @@ public class MainActivity extends AppCompatActivity {
 
                 UserNew user = new UserNew("User", password_u, login_u, email_u, org_u, fullName_u);
                 
-                users.child(login_u).child("Email").setValue(user.getEmail());
-                users.child(login_u).child("FullName").setValue(user.getFullName());
-                users.child(login_u).child("Organization").setValue(user.getOrganization());
-                users.child(login_u).child("Password").setValue(user.getPassword());
-                users.child(login_u).child("Role").setValue(user.getRole());
-                users.child(login_u).child("Username").setValue(user.getUsername());
+                FirebaseUsers.child(login_u).child("Email").setValue(user.getEmail());
+                FirebaseUsers.child(login_u).child("FullName").setValue(user.getFullName());
+                FirebaseUsers.child(login_u).child("Organization").setValue(user.getOrganization());
+                FirebaseUsers.child(login_u).child("Password").setValue(user.getPassword());
+                FirebaseUsers.child(login_u).child("Role").setValue(user.getRole());
+                FirebaseUsers.child(login_u).child("Username").setValue(user.getUsername());
 
                 //users.child(login_u).setValue(user);
-                users.child(login_u).child("Projects").child("1").setValue("info");
+                FirebaseUsers.child(login_u).child("Projects").child("1").setValue("info");
 
             }
        });

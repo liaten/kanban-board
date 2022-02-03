@@ -1,4 +1,4 @@
-package kanban.board.ui.notifications;
+package kanban.board.ui.Notifications;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

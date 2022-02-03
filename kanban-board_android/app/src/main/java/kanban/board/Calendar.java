@@ -3,14 +3,6 @@ package kanban.board;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,8 +15,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import kanban.board.Models.MyAdapterForCalendar;
-import kanban.board.Models.Ticket;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
@@ -38,6 +34,8 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 import java.util.ArrayList;
 import java.util.List;
 
+import kanban.board.Models.MyAdapterForCalendar;
+import kanban.board.Models.Ticket;
 
 public class Calendar extends Fragment {
 
@@ -45,34 +43,62 @@ public class Calendar extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     RecyclerView recyclerView;
-    DatabaseReference database;
     MyAdapterForCalendar adapter;
     ArrayList<Ticket> list;
-
     Spinner spinner;
-    DatabaseReference dbBoards;
+    Button addBoardBtn, addTicketBtn;
+    LinearLayout root;
+    TextView Header;
+    DatabaseReference itemsRef, boards, tickets, dbBoards, database;
+    int myNumTicket = 0;
+    int myNum = 0;
+    String ticketName, ticketText, ticketPeople, ticketStatus, ticketBoardName;
     String boardName = "";
 
-    Button addBoardBtn;
-    LinearLayout root;
-    DatabaseReference boards;
+    //Свайпы(удаление)
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
 
-    Button addTicketBtn;
-    DatabaseReference tickets;
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
 
-    TextView Header;
+            int position = viewHolder.getAdapterPosition();
 
-    Integer myNum = 0;
-    DatabaseReference itemsRef;
+            switch (direction) {
 
-    Integer myNumTicket = 0;
+                case ItemTouchHelper.LEFT:
 
+                    String ticketBoardName = spinner.getSelectedItem().toString();
+                    Ticket ticket = list.get(position);
+                    String titleDB = ticket.getTitle();
+                    String ticketStatus = ticket.getStatus();
 
-    String ticketName;
-    String ticketText;
-    String ticketPeople;
-    String ticketStatus;
-    String ticketBoardName;
+                    DatabaseReference dReference = FirebaseDatabase.getInstance().getReference();
+
+                    Query delQuery = dReference.child("Projects").child(ticketBoardName).child("Kanban").child(ticketStatus).orderByChild("title").equalTo(titleDB);
+                    delQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            for (DataSnapshot delSnapshot : dataSnapshot.getChildren()) {
+                                delSnapshot.getRef().removeValue();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+                    list.remove(position);
+                    adapter.notifyItemRemoved(position);
+                    Toast.makeText(getActivity(), "Удалена задача " + titleDB, Toast.LENGTH_SHORT).show();
+                    break;
+            }
+        }
+    };
 
     public Calendar() {
         // Required empty public constructor
@@ -100,77 +126,22 @@ public class Calendar extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_calendar, container, false);
-
-        recyclerView = (RecyclerView) viewGroup.findViewById(R.id.ticketList);
-        spinner = (Spinner) viewGroup.findViewById(R.id.spinnerBoards);
-        addBoardBtn = (Button) viewGroup.findViewById(R.id.addBoardBtn);
-        addTicketBtn = (Button) viewGroup.findViewById(R.id.addTicketBtn);
-        root = (LinearLayout) viewGroup.findViewById(R.id.calendar_root_layout);
-        Header = (TextView) viewGroup.findViewById(R.id.headerCalender);
-
+        recyclerView = viewGroup.findViewById(R.id.ticketList);
+        spinner = viewGroup.findViewById(R.id.spinnerBoards);
+        addBoardBtn = viewGroup.findViewById(R.id.addBoardBtn);
+        addTicketBtn = viewGroup.findViewById(R.id.addTicketBtn);
+        root = viewGroup.findViewById(R.id.calendar_root_layout);
+        Header = viewGroup.findViewById(R.id.headerCalender);
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(recyclerView);
-
-
         TestGet();
         GetBoards();
         GetTicketsFromSpinner();
         AddBoard();
         AddTicket();
-
-
         return viewGroup;
-        //return inflater.inflate(R.layout.fragment_calendar, container, false);
     }
-
-    //Свайпы(удаление)
-    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
-        @Override
-        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-            return false;
-        }
-
-        @Override
-        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-
-            int position = viewHolder.getAdapterPosition();
-
-            switch (direction){
-
-                case ItemTouchHelper.LEFT:
-
-                    String ticketBoardName = spinner.getSelectedItem().toString();
-                    Ticket ticket = list.get(position);
-                    String titleDB = ticket.getTitle();
-                    String ticketStatus = ticket.getStatus();
-
-                    DatabaseReference dReference = FirebaseDatabase.getInstance().getReference();
-
-                    Query delQuery = dReference.child("Projects").child(ticketBoardName).child("Kanban").child(ticketStatus).orderByChild("title").equalTo(titleDB);
-                    delQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            for (DataSnapshot delSnapshot: dataSnapshot.getChildren()) {
-                                delSnapshot.getRef().removeValue();
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });
-                    list.remove(position);
-                    adapter.notifyItemRemoved(position);
-                    Toast.makeText(getActivity(),"Удалена задача " + titleDB,Toast.LENGTH_SHORT).show();
-                    break;
-
-            }
-
-        }
-    };
-
-    //добавить тикет
+    // Добавить тикет
     private void AddTicket() {
 
         addTicketBtn.setOnClickListener(new View.OnClickListener() {
@@ -196,54 +167,41 @@ public class Calendar extends Fragment {
                         dialogInterface.dismiss();
                     }
                 });
-
                 addT.setPositiveButton("Отправить", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
-                        if (TextUtils.isEmpty(name.getText().toString())){
+                        if (TextUtils.isEmpty(name.getText().toString().trim())) {
                             Snackbar.make(root, "Введите название!", Snackbar.LENGTH_SHORT).show();
                             return;
                         }
-                        if (TextUtils.isEmpty(text.getText().toString())){
+                        if (TextUtils.isEmpty(text.getText().toString().trim())) {
                             Snackbar.make(root, "Введите текст тикета!", Snackbar.LENGTH_SHORT).show();
                             return;
                         }
-                        if (TextUtils.isEmpty(people.getText().toString())){
+                        if (TextUtils.isEmpty(people.getText().toString().trim())) {
                             Snackbar.make(root, "Введите разработчиков!", Snackbar.LENGTH_SHORT).show();
                             return;
                         }
-                        if (TextUtils.isEmpty(status.getText().toString())){
+                        if (TextUtils.isEmpty(status.getText().toString().trim())) {
                             Snackbar.make(root, "Введите статус!", Snackbar.LENGTH_SHORT).show();
                             return;
                         }
-
                         ticketName = name.getText().toString();
                         ticketText = text.getText().toString();
                         ticketPeople = people.getText().toString();
                         ticketStatus = status.getText().toString();
-
                         ticketBoardName = spinner.getSelectedItem().toString();
-
                         Ticket ticket = new Ticket(ticketPeople, ticketText, ticketName);
-
                         TestGetTicket();
-
                         tickets.child(String.valueOf(myNumTicket)).setValue(ticket);
-
-
                     }
                 });
-
                 addT.show();
-
             }
         });
-
-
     }
 
-    //тикеты получить из спинера
+    // Получить тикеты из спиннера
     private void GetTicketsFromSpinner() {
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -258,7 +216,7 @@ public class Calendar extends Fragment {
         });
     }
 
-    //получить доски
+    // Получить доски
     private void GetBoards() {
 
         Intent intent = getActivity().getIntent();
@@ -273,23 +231,18 @@ public class Calendar extends Fragment {
                 for (DataSnapshot areaSnapshot : snapshot.getChildren()) {
                     String boardNameS = areaSnapshot.getValue(String.class);
                     boardsList.add(boardNameS);
-            }
+                }
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, boardsList);
                 arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(arrayAdapter);
             }
 
-
-
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
+            public void onCancelled(@NonNull DatabaseError error) {}
         });
 
     }
-
-    //получить тикеты
+    // Получить тикеты
     private void GetTickets() {
 
         boardName = spinner.getSelectedItem().toString();
@@ -306,28 +259,28 @@ public class Calendar extends Fragment {
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
-                        String ticketStatus = dataSnapshot.getKey();
-                        DatabaseReference databaseStatus = database.child(ticketStatus);
+                    String ticketStatus = dataSnapshot.getKey();
+                    DatabaseReference databaseStatus = database.child(ticketStatus);
 
-                        databaseStatus.addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshotT) {
-                                for (DataSnapshot statusSnapshot : snapshotT.getChildren()) {
-                                    Ticket ticket = statusSnapshot.getValue(Ticket.class);
-                                    String newStatus = ticketStatus.substring(2, ticketStatus.length());
-                                    ticket.setStatus(newStatus);
-                                    list.add(ticket);
-                                }
-                                adapter.notifyDataSetChanged();
+                    databaseStatus.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshotT) {
+                            for (DataSnapshot statusSnapshot : snapshotT.getChildren()) {
+                                Ticket ticket = statusSnapshot.getValue(Ticket.class);
+                                String newStatus = ticketStatus.substring(2);
+                                ticket.setStatus(newStatus);
+                                list.add(ticket);
                             }
+                            adapter.notifyDataSetChanged();
+                        }
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                            }
-                        });
+                        }
+                    });
 
                 }
 
@@ -338,78 +291,53 @@ public class Calendar extends Fragment {
 
             }
         });
-
     }
-
-    //вспомогательная для добавления досок
-    private void TestGet(){
-
+    // Вспомогательная для добавления досок
+    private void TestGet() {
         Intent intent = getActivity().getIntent();
         String userNameTestGet = intent.getStringExtra("login");
-
         itemsRef = FirebaseDatabase.getInstance().getReference("Users").child(userNameTestGet).child("Projects");
-
         itemsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot ds : snapshot.getChildren()) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
                     String increment = ds.getKey();
-
                     myNum = Integer.parseInt(increment);
-
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
-
     }
-
     //вспомогательная для добавления тикетов
-    private void TestGetTicket(){
-
+    private void TestGetTicket() {
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         tickets = db.getReference("Projects").child(ticketBoardName).child("Kanban").child(ticketStatus);
-
         tickets.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot ds : snapshot.getChildren()) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
                     String increment = ds.getKey();
-
                     myNumTicket = Integer.parseInt(increment) + 1;
-
                 }
             }
-
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
+            public void onCancelled(@NonNull DatabaseError error) {}
         });
-
     }
-
-    //добавление доски
-    private void AddBoard(){
-
+    // Добавление доски
+    private void AddBoard() {
         addBoardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 AlertDialog.Builder addB = new AlertDialog.Builder(getActivity());
                 addB.setTitle("Добавление новой доски");
                 addB.setMessage("Введите название доски");
-
                 LayoutInflater inflater = LayoutInflater.from(getActivity());
                 View addB_window = inflater.inflate(R.layout.add_new_board, null);
                 addB.setView(addB_window);
-
                 final MaterialEditText name = addB_window.findViewById(R.id.addBoardName);
-
                 addB.setNegativeButton("Назад", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -419,28 +347,18 @@ public class Calendar extends Fragment {
                 addB.setPositiveButton("Отправить", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                if (TextUtils.isEmpty(name.getText().toString())){
-                    Snackbar.make(root, "Введите название!", Snackbar.LENGTH_SHORT).show();
-                    return;
-                }
-
+                        if (TextUtils.isEmpty(name.getText().toString())) {
+                            Snackbar.make(root, "Введите название!", Snackbar.LENGTH_SHORT).show();
+                            return;
+                        }
                         String boardName = name.getText().toString();
-
                         TestGet();
-
-                        //FirebaseDatabase db = FirebaseDatabase.getInstance();
-                        DatabaseReference boardsNew = itemsRef.child(String.valueOf(myNum+1));
+                        DatabaseReference boardsNew = itemsRef.child(String.valueOf(myNum + 1));
                         boardsNew.setValue(boardName);
-
                     }
                 });
-
                 addB.show();
-
             }
         });
-
     }
-
-
 }

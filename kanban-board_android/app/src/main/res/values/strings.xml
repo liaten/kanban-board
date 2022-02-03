@@ -35,4 +35,7 @@
     <string name="organization">Organization</string>
     <string name="password_en">Password</string>
     <string name="name">Название</string>
+    <string name="profile_user_login">user_login</string>
+    <string name="email_hint">Email</string>
+    <string name="content_description_send">Send</string>
 </resources>

@@ -12,11 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Kanbanboard">
         <activity
-            android:name="kanban.board.Kanban_menu"
+            android:name="kanban.board.Menu"
             android:exported="true"
             />
         <activity
-            android:name="kanban.board.MainActivity"
+            android:name="kanban.board.Main"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

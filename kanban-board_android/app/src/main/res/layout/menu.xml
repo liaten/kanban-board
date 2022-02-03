@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="kanban.board.Kanban_menu"
     android:orientation="vertical"
     android:weightSum="25"
-    >
+    tools:context="kanban.board.Menu">
 
 
     <androidx.fragment.app.FragmentContainerView
@@ -15,27 +14,27 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="24"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/nav_panel"
-        android:layout_weight="24"
-        />
+        app:navGraph="@navigation/nav_panel" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:background="@color/back_2"
+        app:itemIconTint="@color/btn_sing_in_stroke"
+        app:itemTextColor="@color/btn_sing_in_stroke"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/my_botom_menu"
-        app:itemTextColor="@color/btn_sing_in_stroke"
-        app:itemIconTint="@color/btn_sing_in_stroke"
-        android:layout_weight="1"/>
+        />
 
 
 </LinearLayout>

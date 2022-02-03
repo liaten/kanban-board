@@ -14,13 +14,8 @@ import kanban.board.R;
 import java.util.ArrayList;
 
 public class MyAdapterForCalendar extends RecyclerView.Adapter<MyAdapterForCalendar.MyViewHolderForCalendar> {
-
-
     Context context;
-
     ArrayList<Ticket> list;
-
-
     public MyAdapterForCalendar(Context context, ArrayList<Ticket> list) {
         this.context = context;
         this.list = list;
@@ -35,40 +30,25 @@ public class MyAdapterForCalendar extends RecyclerView.Adapter<MyAdapterForCalen
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolderForCalendar holder, int position) {
-
         Ticket ticket = list.get(position);
         holder.Title.setText(ticket.getTitle());
         holder.Ticket.setText(ticket.getTicket());
         holder.People.setText(ticket.getPeople());
         holder.Status.setText(ticket.getStatus());
-
     }
-
 
     @Override
     public int getItemCount() {
         return list.size();
     }
-
     public static class MyViewHolderForCalendar extends RecyclerView.ViewHolder{
-
         TextView Title, Ticket, People, Status;
-
-
         public MyViewHolderForCalendar(@NonNull View itemView) {
             super(itemView);
-
             Title = itemView.findViewById(R.id.ticketTitle);
             Ticket = itemView.findViewById(R.id.ticketText);
             People = itemView.findViewById(R.id.ticketPeople);
             Status = itemView.findViewById(R.id.ticketStatus);
-
         }
-
-
     }
-
-
-
-
 }
