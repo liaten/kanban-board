@@ -1,29 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/messages_root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Kanban_menu"
-    android:background="@color/back">
-
-    <LinearLayout
-        android:id="@+id/view_auth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:layout_marginTop="55dp"
-        >
+    android:background="@color/back"
+    android:orientation="vertical"
+    app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+    tools:context="kanban.board.Menu">
 
         <TextView
+            android:id="@+id/headerMessages"
             style="@style/View_top"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Messages"
+            android:text="@string/messages"
             android:textAlignment="center"
- />
+            android:layout_gravity="center"
+            />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            style="@style/MySpinnerLook"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/spinnerBoardsMessages"
+                style="@style/MySpinnerLook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/spinner" />
+        </RelativeLayout>
     </LinearLayout>
 
-</RelativeLayout>
+    <LinearLayout
+        android:id="@+id/messageLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/back_2"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:backgroundTint="@color/back_2"
+            card_view:cardCornerRadius="10dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/messageList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </ScrollView>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sendMessageLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal"
+        android:weightSum="8">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/sendMessageField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:hint="@string/import_message"
+            android:inputType="text"
+            android:text=""
+            android:textSize="15sp"
+            app:met_baseColor="@color/btn_sing_in_stroke"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@color/btn_sing_in_stroke"
+            app:met_singleLineEllipsis="true" />
+
+        <ImageButton
+            android:id="@+id/sendButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:background="@color/back"
+            android:contentDescription="@string/content_description_send"
+            android:src="@drawable/ic_send"
+            app:tint="@color/btn_sing_in_stroke" />
+    </LinearLayout>
+</LinearLayout>

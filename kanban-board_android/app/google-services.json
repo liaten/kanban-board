@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:814728290101:android:452102561bd2abae7b367c",
         "android_client_info": {
-          "package_name": "com.example.kanban_board"
+          "package_name": "kanban.board"
         }
       },
       "oauth_client": [

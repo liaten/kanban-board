@@ -9,11 +9,6 @@
         android:icon="@drawable/ic_profile"/>
 
     <item
-        android:id="@+id/tasks"
-        android:title="@string/s_tasks"
-        android:icon="@drawable/ic_work"/>
-
-    <item
         android:id="@+id/messages"
         android:title="@string/s_messages"
         android:icon="@drawable/ic_message"/>
