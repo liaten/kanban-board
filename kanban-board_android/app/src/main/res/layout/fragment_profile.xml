@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Kanban_menu"
+    tools:context="kanban.board.Kanban_menu"
     android:background="@color/back">
 
     <LinearLayout
@@ -18,7 +18,6 @@
         android:id="@+id/Profile_kanban"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
@@ -28,7 +27,7 @@
             style="@style/View_top"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Profile"
+            android:text="@string/profile"
             android:textAlignment="center"
             />
 

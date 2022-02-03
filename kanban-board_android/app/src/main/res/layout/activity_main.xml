@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context="kanban.board.MainActivity"
     android:background="@color/back"
     android:id="@+id/main_layout">
 
@@ -24,7 +24,7 @@
             style="@style/View_top"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/login"
+            android:text="@string/authorization"
             android:textAlignment="center"
  />
     </LinearLayout>
@@ -45,9 +45,9 @@
             android:id="@+id/profile_name_auth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/singinas"
+            android:text="@string/signed_as"
             android:textAlignment="center"
-            android:textSize="20dp"
+            android:textSize="20sp"
             />
 
         <Button
@@ -56,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="@string/SingIn" />
+            android:text="@string/to_sign_in" />
 
         <Button
             android:id="@+id/SingOut"
@@ -86,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:hint="Логин"
+            android:hint="@string/login_login"
             android:inputType="text"
             android:text=""
             android:textSize="20sp"
@@ -103,7 +103,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:hint="Пароль"
+            android:hint="@string/password"
             android:inputType="textPassword"
             android:text=""
             android:textSize="20sp"
@@ -131,8 +131,8 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="@string/remember_me"
-        android:textSize="17dp"
-        android:layout_marginLeft="6dp"
+        android:textSize="17sp"
+        android:layout_marginStart="6dp"
         android:textColor="@color/btn_sing_in_stroke"
         android:fontFamily="@font/montserrat"
         android:buttonTint="@color/btn_sing_in_stroke"
@@ -144,10 +144,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"
-            android:text="@string/Forgot"
+            android:text="@string/forgot"
             android:textAlignment="textEnd"
             android:textColor="@color/btn_sing_in_stroke"
-            android:textSize="17dp"
+            android:textSize="17sp"
             android:layout_marginEnd="18dp"
             android:layout_weight="1"
             />
@@ -175,9 +175,9 @@
             style="@style/Buttons_def"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="6dp"
+            android:layout_marginEnd="6dp"
             android:layout_weight="1"
-            android:text="@string/SingIn"
+            android:text="@string/to_sign_in"
             android:visibility="visible" />
 
         <Button
@@ -185,9 +185,9 @@
             style="@style/Buttons_def"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="6dp"
+            android:layout_marginStart="6dp"
             android:layout_weight="1"
-            android:text="@string/Register"
+            android:text="@string/register"
             android:visibility="visible" />
     </LinearLayout>
 

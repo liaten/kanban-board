@@ -5,7 +5,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Kanban_menu"
+    tools:context="kanban.board.Kanban_menu"
     android:background="@color/back"
     android:orientation="vertical"
     android:id="@+id/messages_root_layout"
@@ -22,7 +22,6 @@
             android:id="@+id/message_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:gravity="center"
             android:orientation="vertical"
             android:layout_marginTop="10dp"
@@ -33,7 +32,7 @@
                 android:id="@+id/headerMessages"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Сообщения"
+                android:text="@string/messages"
                 android:textAlignment="center" />
 
         </LinearLayout>
@@ -43,7 +42,6 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:layout_centerHorizontal="true"
             android:gravity="center"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
@@ -73,12 +71,10 @@
             android:id="@+id/messageLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:gravity="center"
             android:orientation="vertical"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_below="@id/spinnerLay"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:backgroundTint="@color/back_2"
@@ -118,9 +114,7 @@
             android:orientation="horizontal"
             android:weightSum="8"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_alignParentBottom="true"
-            >
+            android:layout_marginEnd="10dp">
 
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/sendMessageField"
@@ -128,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                android:hint="Введите сообщение"
+                android:hint="@string/import_message"
                 android:inputType="text"
                 android:text=""
                 android:textSize="15sp"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Kanban_menu"
+    tools:context="kanban.board.Kanban_menu"
     android:background="@color/back"
     android:orientation="vertical"
     android:id="@+id/calendar_root_layout"
@@ -22,7 +22,6 @@
         android:id="@+id/calendar_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:gravity="center"
         android:orientation="vertical"
         android:layout_marginTop="10dp"
@@ -33,7 +32,7 @@
             android:id="@+id/headerCalender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Тикеты"
+            android:text="@string/tickets"
             android:textAlignment="center" />
 
     </LinearLayout>
@@ -42,7 +41,6 @@
         android:id="@+id/spinnerLay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
@@ -55,7 +53,7 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:layout_weight="2"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp"
                     style="@style/MySpinnerLook">
 
                     <Spinner
@@ -73,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:textSize="15dp"
-            android:text="@string/addBoard"
+            android:text="@string/add_board"
             style="@style/Buttons_def"
             android:textAllCaps="false"
             android:layout_marginRight="5dp"
@@ -87,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:textSize="15dp"
-            android:text="@string/addticket"
+            android:text="@string/add_ticket"
             style="@style/Buttons_def"
             android:textAllCaps="false"
             android:layout_marginRight="5dp"

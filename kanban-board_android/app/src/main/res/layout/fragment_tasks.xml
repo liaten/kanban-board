@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".Kanban_menu"
+    tools:context="kanban.board.Kanban_menu"
     android:background="@color/back"
     android:id="@+id/container"
     >
 
 <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/back"
     android:padding="10dp">
 
@@ -29,7 +29,7 @@
                 <TextView
                     style="@style/textview"
                     android:paddingStart="10dp"
-                    android:paddingRight="10dp"
+                    android:paddingEnd="10dp"
                     android:text="@string/todo">
 
                 </TextView>
@@ -37,14 +37,14 @@
                 <TextView
                     style="@style/textview"
                     android:text="@string/exec"
-                    android:paddingRight="10dp">
+                    android:paddingEnd="10dp">
 
                 </TextView>
 
                 <TextView
                     style="@style/textview"
                     android:text="@string/view"
-                    android:paddingRight="10dp">
+                    android:paddingEnd="10dp">
 
                 </TextView>
 
@@ -86,7 +86,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/addticket"
+                    android:text="@string/add_ticket"
                     />
 
 
