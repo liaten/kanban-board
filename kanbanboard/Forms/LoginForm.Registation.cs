@@ -23,7 +23,7 @@ namespace kanbanboard.Forms
         }
 
         // Кнопка регистрации после кнопки регистрации
-        private void RegPanelButton_Click(object sender, EventArgs e)
+        private async void RegPanelButton_Click(object sender, EventArgs e)
         {
             var login = RegLoginTextBox.Text;
             var email = RegEmailTextBox.Text;
@@ -63,7 +63,7 @@ namespace kanbanboard.Forms
                 );
 
             _users.Add(newUser.Username, newUser);
-            newUser.CreateUser();
+            await newUser.CreateUser();
 
             // Вопрос на выполнение логина после регистрации
             if (MessageBox.Show($@"Пользователь зарегистрирован.{Environment.NewLine}Войти в созданную учётную запись?", "Регистрация",

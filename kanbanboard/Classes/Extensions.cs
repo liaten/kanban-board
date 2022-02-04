@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -12,6 +13,8 @@ namespace kanbanboard.Classes
             control.Top = (where.Height - control.Height) / 2;
         }
 
+        public static void RemoveNullsFromData(this List<string> data) => data.RemoveAll(x => x is null);
+
         /// <summary> Из string в enum </summary>
         public static T ToEnum<T>(this string value)
         {
@@ -24,7 +27,7 @@ namespace kanbanboard.Classes
             switch (input)
             {
                 case null: throw new ArgumentNullException(nameof(input));
-                case "": throw new ArgumentException($"{nameof(input)}", nameof(input));
+                case "": throw new ArgumentException($@"{nameof(input)}", nameof(input));
                 default: return input[0].ToString().ToUpper() + input.Substring(1);
             }
         }
