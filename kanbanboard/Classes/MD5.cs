@@ -7,7 +7,7 @@ namespace kanbanboard.Classes
     internal static class MD5
     {
         // Расшифровка
-        static public string Decrypt(string line)
+        public static string Decrypt(string line)
         {
             byte[] data = Convert.FromBase64String(line);
             using (TripleDESCryptoServiceProvider tripleDes = new TripleDESCryptoServiceProvider
@@ -20,7 +20,7 @@ namespace kanbanboard.Classes
         }
 
         // Зашифровка
-        static public string Encrypt(string line)
+        public static string Encrypt(string line)
         {
             byte[] data = Encoding.UTF8.GetBytes(line);
             using (TripleDESCryptoServiceProvider tripleDes = new TripleDESCryptoServiceProvider

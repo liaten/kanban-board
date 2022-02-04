@@ -31,6 +31,7 @@ namespace kanbanboard.Classes
             Role = this.GetRole();
             Password = this.GetPassword();
         }
+
         [JsonConstructor]
         public User(string username, string password, string email, List<string> projects, Roles role, string organization, string fullname)
         {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -11,6 +12,7 @@ namespace kanbanboard.Classes
             control.Left = (where.Width - control.Width) / 2;
             control.Top = (where.Height - control.Height) / 2;
         }
+        public static void RemoveNullsFromData(this List<string> data) => data.RemoveAll(x => x is null);
 
         /// <summary> Из string в enum </summary>
         public static T ToEnum<T>(this string value)
