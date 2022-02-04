@@ -12,6 +12,7 @@ namespace kanbanboard.Classes
             control.Left = (where.Width - control.Width) / 2;
             control.Top = (where.Height - control.Height) / 2;
         }
+
         public static void RemoveNullsFromData(this List<string> data) => data.RemoveAll(x => x is null);
 
         /// <summary> Из string в enum </summary>
@@ -26,7 +27,7 @@ namespace kanbanboard.Classes
             switch (input)
             {
                 case null: throw new ArgumentNullException(nameof(input));
-                case "": throw new ArgumentException($"{nameof(input)}", nameof(input));
+                case "": throw new ArgumentException($@"{nameof(input)}", nameof(input));
                 default: return input[0].ToString().ToUpper() + input.Substring(1);
             }
         }

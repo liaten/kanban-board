@@ -7,13 +7,13 @@ namespace kanbanboard.Forms
     {
         // Мессенджер
         // Отправка сообщений
-        private void SendMessage()
+        private async void SendMessage()
         {
             // Проверка валидности текста
             if (string.IsNullOrEmpty(MessengerTextBox.Text) || string.IsNullOrWhiteSpace(MessengerTextBox.Text)) return;
             MessengerListBox.Items.Add($"{_user.Username}: {MessengerTextBox.Text.Trim()}");
 
-            _user.SaveMessage(ListBoxOfProjectNames.SelectedItem.ToString(), MessengerTextBox.Text);
+            await _user.SaveMessage(ListBoxOfProjectNames.SelectedItem.ToString(), MessengerTextBox.Text);
 
             // В конец сообщений
             MessengerListBox.TopIndex = MessengerListBox.Items.Count - 1;

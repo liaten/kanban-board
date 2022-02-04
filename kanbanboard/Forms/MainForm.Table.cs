@@ -348,7 +348,7 @@ namespace kanbanboard.Forms
                     TableLayoutPanel.Refresh();
             }
 
-            catch (Exception) { }
+            catch { }
         }
 
         // Доп. ручное сохранение таблицы

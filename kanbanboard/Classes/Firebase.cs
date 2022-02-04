@@ -177,17 +177,22 @@ namespace kanbanboard.Classes
         }
 
         // Сохранить сообщение в базу
-        public static async void SaveMessage(this User user, string projectName, string message)
+        public static async Task<string> SaveMessage(this User user, string projectName, string message)
         {
             List<Dictionary<string, string>> list =
                 user.GetMessages(projectName) ?? new List<Dictionary<string, string>>();
             list.Add(new Dictionary<string, string> { { user.Username, message } });
-            await Client.SetAsync($"Projects/{projectName}/Chat/", list);
+            
+            var result = await Client.SetAsync($"Projects/{projectName}/Chat/", list);
+
+            return result.StatusCode.ToString();
         }
 
-        public static async void CreateUser(this User user)
+        public static async Task<string> CreateUser(this User user)
         {
-            await Client.SetAsync($"Users/{user.Username}/", user);
+            var result = await Client.SetAsync($"Users/{user.Username}/", user);
+
+            return result.StatusCode.ToString();
         }
     }
 }
