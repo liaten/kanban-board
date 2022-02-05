@@ -63,6 +63,8 @@ namespace kanbanboard.Forms
             this.SaveProjectButton = new System.Windows.Forms.Button();
             this.TrashButton = new System.Windows.Forms.Button();
             this.AddTitleButton = new System.Windows.Forms.Button();
+            this.CalendarPanel = new System.Windows.Forms.Panel();
+            this.CalendarDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.UserPanel = new System.Windows.Forms.Panel();
             this.PasswordPanel = new System.Windows.Forms.Panel();
             this.PasswordShowPanel = new System.Windows.Forms.Panel();
@@ -92,8 +94,6 @@ namespace kanbanboard.Forms
             this.FullNameTitleLabel = new System.Windows.Forms.Label();
             this.LoadPanel = new System.Windows.Forms.Panel();
             this.LoadLabel = new System.Windows.Forms.Label();
-            this.CalendarPanel = new System.Windows.Forms.Panel();
-            this.CalendarDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.MessengerPanel = new System.Windows.Forms.Panel();
             this.MessengerMainPanel = new System.Windows.Forms.Panel();
             this.MessengerShowPanel = new System.Windows.Forms.Panel();
@@ -117,6 +117,7 @@ namespace kanbanboard.Forms
             this.BasicContentPanel.SuspendLayout();
             this.PanelWithTable.SuspendLayout();
             this.AddingPanel.SuspendLayout();
+            this.CalendarPanel.SuspendLayout();
             this.UserPanel.SuspendLayout();
             this.PasswordPanel.SuspendLayout();
             this.PasswordShowPanel.SuspendLayout();
@@ -134,7 +135,6 @@ namespace kanbanboard.Forms
             this.FullNameGetLabelPanel.SuspendLayout();
             this.FullNameLabelPanel.SuspendLayout();
             this.LoadPanel.SuspendLayout();
-            this.CalendarPanel.SuspendLayout();
             this.MessengerPanel.SuspendLayout();
             this.MessengerMainPanel.SuspendLayout();
             this.MessengerShowPanel.SuspendLayout();
@@ -223,6 +223,7 @@ namespace kanbanboard.Forms
             this.CreateProjectButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CreateProjectButton.FlatAppearance.BorderColor = System.Drawing.Color.Indigo;
             this.CreateProjectButton.FlatAppearance.BorderSize = 2;
+            this.CreateProjectButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
             this.CreateProjectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CreateProjectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CreateProjectButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
@@ -1451,9 +1452,9 @@ namespace kanbanboard.Forms
             // BasicContentPanel
             // 
             this.BasicContentPanel.Controls.Add(this.PanelWithTable);
+            this.BasicContentPanel.Controls.Add(this.CalendarPanel);
             this.BasicContentPanel.Controls.Add(this.UserPanel);
             this.BasicContentPanel.Controls.Add(this.LoadPanel);
-            this.BasicContentPanel.Controls.Add(this.CalendarPanel);
             this.BasicContentPanel.Controls.Add(this.MessengerPanel);
             this.BasicContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BasicContentPanel.Location = new System.Drawing.Point(0, 70);
@@ -1490,6 +1491,8 @@ namespace kanbanboard.Forms
             this.SaveProjectButton.BackColor = System.Drawing.Color.Transparent;
             this.SaveProjectButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.SaveProjectButton.FlatAppearance.BorderSize = 0;
+            this.SaveProjectButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
+            this.SaveProjectButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.SaveProjectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveProjectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F);
             this.SaveProjectButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
@@ -1506,6 +1509,8 @@ namespace kanbanboard.Forms
             this.TrashButton.BackColor = System.Drawing.Color.Transparent;
             this.TrashButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.TrashButton.FlatAppearance.BorderSize = 0;
+            this.TrashButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
+            this.TrashButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.TrashButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TrashButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F);
             this.TrashButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
@@ -1522,6 +1527,8 @@ namespace kanbanboard.Forms
             this.AddTitleButton.BackColor = System.Drawing.Color.Transparent;
             this.AddTitleButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.AddTitleButton.FlatAppearance.BorderSize = 0;
+            this.AddTitleButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
+            this.AddTitleButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.AddTitleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddTitleButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F);
             this.AddTitleButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
@@ -1532,6 +1539,25 @@ namespace kanbanboard.Forms
             this.AddTitleButton.Text = "+";
             this.AddTitleButton.UseVisualStyleBackColor = false;
             this.AddTitleButton.Click += new System.EventHandler(this.AddTitleButton_Click);
+            // 
+            // CalendarPanel
+            // 
+            this.CalendarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
+            this.CalendarPanel.Controls.Add(this.CalendarDateTimePicker);
+            this.CalendarPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CalendarPanel.Location = new System.Drawing.Point(0, 0);
+            this.CalendarPanel.Name = "CalendarPanel";
+            this.CalendarPanel.Size = new System.Drawing.Size(979, 495);
+            this.CalendarPanel.TabIndex = 1;
+            // 
+            // CalendarDateTimePicker
+            // 
+            this.CalendarDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.CalendarDateTimePicker.Location = new System.Drawing.Point(35, 36);
+            this.CalendarDateTimePicker.MinDate = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
+            this.CalendarDateTimePicker.Name = "CalendarDateTimePicker";
+            this.CalendarDateTimePicker.Size = new System.Drawing.Size(161, 24);
+            this.CalendarDateTimePicker.TabIndex = 2;
             // 
             // UserPanel
             // 
@@ -1849,25 +1875,6 @@ namespace kanbanboard.Forms
             this.LoadLabel.Text = "Загрузка...";
             this.LoadLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // CalendarPanel
-            // 
-            this.CalendarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
-            this.CalendarPanel.Controls.Add(this.CalendarDateTimePicker);
-            this.CalendarPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CalendarPanel.Location = new System.Drawing.Point(0, 0);
-            this.CalendarPanel.Name = "CalendarPanel";
-            this.CalendarPanel.Size = new System.Drawing.Size(979, 495);
-            this.CalendarPanel.TabIndex = 1;
-            // 
-            // CalendarDateTimePicker
-            // 
-            this.CalendarDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.CalendarDateTimePicker.Location = new System.Drawing.Point(35, 36);
-            this.CalendarDateTimePicker.MinDate = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
-            this.CalendarDateTimePicker.Name = "CalendarDateTimePicker";
-            this.CalendarDateTimePicker.Size = new System.Drawing.Size(161, 24);
-            this.CalendarDateTimePicker.TabIndex = 2;
-            // 
             // MessengerPanel
             // 
             this.MessengerPanel.Controls.Add(this.MessengerMainPanel);
@@ -2019,6 +2026,7 @@ namespace kanbanboard.Forms
             this.PanelWithTable.ResumeLayout(false);
             this.PanelWithTable.PerformLayout();
             this.AddingPanel.ResumeLayout(false);
+            this.CalendarPanel.ResumeLayout(false);
             this.UserPanel.ResumeLayout(false);
             this.PasswordPanel.ResumeLayout(false);
             this.PasswordPanel.PerformLayout();
@@ -2051,7 +2059,6 @@ namespace kanbanboard.Forms
             this.FullNameLabelPanel.ResumeLayout(false);
             this.FullNameLabelPanel.PerformLayout();
             this.LoadPanel.ResumeLayout(false);
-            this.CalendarPanel.ResumeLayout(false);
             this.MessengerPanel.ResumeLayout(false);
             this.MessengerMainPanel.ResumeLayout(false);
             this.MessengerShowPanel.ResumeLayout(false);

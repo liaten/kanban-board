@@ -361,8 +361,14 @@ namespace kanbanboard.Forms
         // Удалить выбранный проект
         private async void TrashButton_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Удалить доску из твоего профиля? (действие отменить невозможно)", "Удаление доски", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) 
+                return;
+
             if (await _user.DeleteProject(ListBoxOfProjectNames.SelectedItem?.ToString()) == "OK")
+            {
                 SetUserProjectNames();
+                TableLayoutPanel.Controls.Clear();
+            }
         }
     }
 }
