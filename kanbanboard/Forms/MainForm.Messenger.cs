@@ -1,22 +1,27 @@
-﻿using System.Linq;
+﻿using System;
+using System.Drawing;
+using System.Linq;
+using System.Threading.Tasks;
 using kanbanboard.Classes;
 
 namespace kanbanboard.Forms
 {
     partial class MainForm
     {
-        // Мессенджер
-        // Отправка сообщений
-        private async void SendMessage()
+        // Мессенджер отправка сообщений
+        private async void SendMessageButton_Click(object sender, EventArgs e)
         {
             // Проверка валидности текста
             if (string.IsNullOrEmpty(MessengerTextBox.Text) || string.IsNullOrWhiteSpace(MessengerTextBox.Text)) return;
-            MessengerListBox.Items.Add($"{_user.Username}: {MessengerTextBox.Text.Trim()}");
 
-            await _user.SaveMessage(ListBoxOfProjectNames.SelectedItem.ToString(), MessengerTextBox.Text);
+            var msg = MessengerTextBox.Text.Trim();
+            MessengerListBox.Items.Add($"{_user.Username}: {msg}");
+            MessengerTextBox.Clear();
 
             // В конец сообщений
             MessengerListBox.TopIndex = MessengerListBox.Items.Count - 1;
+
+            await _user.SaveMessage(ListBoxOfProjectNames.SelectedItem.ToString(), msg).ConfigureAwait(false);
         }
 
         // Показ сообщений
@@ -31,6 +36,11 @@ namespace kanbanboard.Forms
 
             try { MessengerListBox.TopIndex = MessengerListBox.Items.Count - 1; }
             catch { }
+        }
+
+        private void SendMessageButton_MouseEnter(object sender, EventArgs e)
+        {
+            SendMessageButton.ForeColor = Color.FromArgb(46, 51, 73);
         }
     }
 }

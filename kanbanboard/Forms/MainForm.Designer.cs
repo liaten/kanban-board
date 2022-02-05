@@ -38,11 +38,9 @@ namespace kanbanboard.Forms
             this.ControlsPanel = new System.Windows.Forms.Panel();
             this.ProjectsPanel = new System.Windows.Forms.Panel();
             this.ListBoxOfProjectNames = new System.Windows.Forms.ListBox();
-            this.Projects_List_Label = new System.Windows.Forms.Label();
+            this.ProjectsListLabel = new System.Windows.Forms.Label();
             this.CreateProjectPanel = new System.Windows.Forms.Panel();
             this.CreateProjectButton = new System.Windows.Forms.Button();
-            this.SaveProjectPanel = new System.Windows.Forms.Panel();
-            this.SaveProjectButton = new System.Windows.Forms.Button();
             this.ExitButtonPanel = new System.Windows.Forms.Panel();
             this.ExitButton = new System.Windows.Forms.Button();
             this.StripPanel = new System.Windows.Forms.Panel();
@@ -60,6 +58,11 @@ namespace kanbanboard.Forms
             this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.BasicPanel = new System.Windows.Forms.Panel();
             this.BasicContentPanel = new System.Windows.Forms.Panel();
+            this.PanelWithTable = new System.Windows.Forms.Panel();
+            this.AddingPanel = new System.Windows.Forms.Panel();
+            this.SaveProjectButton = new System.Windows.Forms.Button();
+            this.TrashButton = new System.Windows.Forms.Button();
+            this.AddTitleButton = new System.Windows.Forms.Button();
             this.UserPanel = new System.Windows.Forms.Panel();
             this.PasswordPanel = new System.Windows.Forms.Panel();
             this.PasswordShowPanel = new System.Windows.Forms.Panel();
@@ -87,10 +90,6 @@ namespace kanbanboard.Forms
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.FullNameLabelPanel = new System.Windows.Forms.Panel();
             this.FullNameTitleLabel = new System.Windows.Forms.Label();
-            this.PanelWithTable = new System.Windows.Forms.Panel();
-            this.AddingPanel = new System.Windows.Forms.Panel();
-            this.TrashButton = new System.Windows.Forms.Button();
-            this.AddTitleButton = new System.Windows.Forms.Button();
             this.LoadPanel = new System.Windows.Forms.Panel();
             this.LoadLabel = new System.Windows.Forms.Label();
             this.CalendarPanel = new System.Windows.Forms.Panel();
@@ -108,7 +107,6 @@ namespace kanbanboard.Forms
             this.ControlsPanel.SuspendLayout();
             this.ProjectsPanel.SuspendLayout();
             this.CreateProjectPanel.SuspendLayout();
-            this.SaveProjectPanel.SuspendLayout();
             this.ExitButtonPanel.SuspendLayout();
             this.UserControlsPanel.SuspendLayout();
             this.UserNamePanel.SuspendLayout();
@@ -117,6 +115,8 @@ namespace kanbanboard.Forms
             ((System.ComponentModel.ISupportInitialize)(this.UserPictureBox)).BeginInit();
             this.BasicPanel.SuspendLayout();
             this.BasicContentPanel.SuspendLayout();
+            this.PanelWithTable.SuspendLayout();
+            this.AddingPanel.SuspendLayout();
             this.UserPanel.SuspendLayout();
             this.PasswordPanel.SuspendLayout();
             this.PasswordShowPanel.SuspendLayout();
@@ -133,8 +133,6 @@ namespace kanbanboard.Forms
             this.FullNamePanel.SuspendLayout();
             this.FullNameGetLabelPanel.SuspendLayout();
             this.FullNameLabelPanel.SuspendLayout();
-            this.PanelWithTable.SuspendLayout();
-            this.AddingPanel.SuspendLayout();
             this.LoadPanel.SuspendLayout();
             this.CalendarPanel.SuspendLayout();
             this.MessengerPanel.SuspendLayout();
@@ -167,13 +165,12 @@ namespace kanbanboard.Forms
             // 
             this.ProjectsPanel.AutoSize = true;
             this.ProjectsPanel.Controls.Add(this.ListBoxOfProjectNames);
-            this.ProjectsPanel.Controls.Add(this.Projects_List_Label);
+            this.ProjectsPanel.Controls.Add(this.ProjectsListLabel);
             this.ProjectsPanel.Controls.Add(this.CreateProjectPanel);
-            this.ProjectsPanel.Controls.Add(this.SaveProjectPanel);
             this.ProjectsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ProjectsPanel.Location = new System.Drawing.Point(0, 260);
+            this.ProjectsPanel.Location = new System.Drawing.Point(0, 316);
             this.ProjectsPanel.Name = "ProjectsPanel";
-            this.ProjectsPanel.Size = new System.Drawing.Size(205, 249);
+            this.ProjectsPanel.Size = new System.Drawing.Size(205, 193);
             this.ProjectsPanel.TabIndex = 7;
             // 
             // ListBoxOfProjectNames
@@ -199,16 +196,17 @@ namespace kanbanboard.Forms
             this.ListBoxOfProjectNames.Sorted = true;
             this.ListBoxOfProjectNames.TabIndex = 6;
             // 
-            // Projects_List_Label
+            // ProjectsListLabel
             // 
-            this.Projects_List_Label.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Projects_List_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Projects_List_Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.Projects_List_Label.Location = new System.Drawing.Point(0, 0);
-            this.Projects_List_Label.Name = "Projects_List_Label";
-            this.Projects_List_Label.Size = new System.Drawing.Size(205, 25);
-            this.Projects_List_Label.TabIndex = 9;
-            this.Projects_List_Label.Text = "Список проектов:";
+            this.ProjectsListLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ProjectsListLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ProjectsListLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.ProjectsListLabel.Location = new System.Drawing.Point(0, 0);
+            this.ProjectsListLabel.Name = "ProjectsListLabel";
+            this.ProjectsListLabel.Size = new System.Drawing.Size(205, 25);
+            this.ProjectsListLabel.TabIndex = 9;
+            this.ProjectsListLabel.Text = "Список проектов:";
+            this.ProjectsListLabel.Visible = false;
             // 
             // CreateProjectPanel
             // 
@@ -235,32 +233,6 @@ namespace kanbanboard.Forms
             this.CreateProjectButton.Text = "Создать проект";
             this.CreateProjectButton.UseVisualStyleBackColor = true;
             this.CreateProjectButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CreateProjectButton_MouseDown);
-            // 
-            // SaveProjectPanel
-            // 
-            this.SaveProjectPanel.Controls.Add(this.SaveProjectButton);
-            this.SaveProjectPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SaveProjectPanel.Location = new System.Drawing.Point(0, 193);
-            this.SaveProjectPanel.Name = "SaveProjectPanel";
-            this.SaveProjectPanel.Padding = new System.Windows.Forms.Padding(10);
-            this.SaveProjectPanel.Size = new System.Drawing.Size(205, 56);
-            this.SaveProjectPanel.TabIndex = 7;
-            // 
-            // SaveProjectButton
-            // 
-            this.SaveProjectButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SaveProjectButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(77)))), ((int)(((byte)(109)))));
-            this.SaveProjectButton.FlatAppearance.BorderSize = 2;
-            this.SaveProjectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SaveProjectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SaveProjectButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.SaveProjectButton.Location = new System.Drawing.Point(10, 10);
-            this.SaveProjectButton.Name = "SaveProjectButton";
-            this.SaveProjectButton.Size = new System.Drawing.Size(185, 36);
-            this.SaveProjectButton.TabIndex = 5;
-            this.SaveProjectButton.Text = "Сохранить проект";
-            this.SaveProjectButton.UseVisualStyleBackColor = true;
-            this.SaveProjectButton.Click += new System.EventHandler(this.SaveProjectButton_Click);
             // 
             // ExitButtonPanel
             // 
@@ -375,7 +347,7 @@ namespace kanbanboard.Forms
             this.UsernameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.UsernameLabel.Location = new System.Drawing.Point(3, 3);
             this.UsernameLabel.Name = "UsernameLabel";
-            this.UsernameLabel.Size = new System.Drawing.Size(131, 16);
+            this.UsernameLabel.Size = new System.Drawing.Size(132, 16);
             this.UsernameLabel.TabIndex = 1;
             this.UsernameLabel.Text = "USERNAME_GET";
             this.UsernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1478,8 +1450,8 @@ namespace kanbanboard.Forms
             // 
             // BasicContentPanel
             // 
-            this.BasicContentPanel.Controls.Add(this.UserPanel);
             this.BasicContentPanel.Controls.Add(this.PanelWithTable);
+            this.BasicContentPanel.Controls.Add(this.UserPanel);
             this.BasicContentPanel.Controls.Add(this.LoadPanel);
             this.BasicContentPanel.Controls.Add(this.CalendarPanel);
             this.BasicContentPanel.Controls.Add(this.MessengerPanel);
@@ -1488,6 +1460,78 @@ namespace kanbanboard.Forms
             this.BasicContentPanel.Name = "BasicContentPanel";
             this.BasicContentPanel.Size = new System.Drawing.Size(979, 495);
             this.BasicContentPanel.TabIndex = 2;
+            // 
+            // PanelWithTable
+            // 
+            this.PanelWithTable.AutoSize = true;
+            this.PanelWithTable.Controls.Add(this.TableLayoutPanel);
+            this.PanelWithTable.Controls.Add(this.AddingPanel);
+            this.PanelWithTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelWithTable.Location = new System.Drawing.Point(0, 0);
+            this.PanelWithTable.Name = "PanelWithTable";
+            this.PanelWithTable.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
+            this.PanelWithTable.Size = new System.Drawing.Size(979, 495);
+            this.PanelWithTable.TabIndex = 0;
+            // 
+            // AddingPanel
+            // 
+            this.AddingPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.AddingPanel.Controls.Add(this.SaveProjectButton);
+            this.AddingPanel.Controls.Add(this.TrashButton);
+            this.AddingPanel.Controls.Add(this.AddTitleButton);
+            this.AddingPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.AddingPanel.Location = new System.Drawing.Point(937, 0);
+            this.AddingPanel.Name = "AddingPanel";
+            this.AddingPanel.Size = new System.Drawing.Size(42, 494);
+            this.AddingPanel.TabIndex = 0;
+            // 
+            // SaveProjectButton
+            // 
+            this.SaveProjectButton.BackColor = System.Drawing.Color.Transparent;
+            this.SaveProjectButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.SaveProjectButton.FlatAppearance.BorderSize = 0;
+            this.SaveProjectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveProjectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F);
+            this.SaveProjectButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.SaveProjectButton.Location = new System.Drawing.Point(0, 78);
+            this.SaveProjectButton.Name = "SaveProjectButton";
+            this.SaveProjectButton.Size = new System.Drawing.Size(42, 42);
+            this.SaveProjectButton.TabIndex = 4;
+            this.SaveProjectButton.Text = "💾";
+            this.SaveProjectButton.UseVisualStyleBackColor = true;
+            this.SaveProjectButton.Click += new System.EventHandler(this.SaveProjectButton_Click);
+            // 
+            // TrashButton
+            // 
+            this.TrashButton.BackColor = System.Drawing.Color.Transparent;
+            this.TrashButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TrashButton.FlatAppearance.BorderSize = 0;
+            this.TrashButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TrashButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F);
+            this.TrashButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.TrashButton.Location = new System.Drawing.Point(0, 36);
+            this.TrashButton.Name = "TrashButton";
+            this.TrashButton.Size = new System.Drawing.Size(42, 42);
+            this.TrashButton.TabIndex = 2;
+            this.TrashButton.Text = "🗑";
+            this.TrashButton.UseVisualStyleBackColor = false;
+            this.TrashButton.Click += new System.EventHandler(this.TrashButton_Click);
+            // 
+            // AddTitleButton
+            // 
+            this.AddTitleButton.BackColor = System.Drawing.Color.Transparent;
+            this.AddTitleButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.AddTitleButton.FlatAppearance.BorderSize = 0;
+            this.AddTitleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddTitleButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F);
+            this.AddTitleButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.AddTitleButton.Location = new System.Drawing.Point(0, 0);
+            this.AddTitleButton.Name = "AddTitleButton";
+            this.AddTitleButton.Size = new System.Drawing.Size(42, 36);
+            this.AddTitleButton.TabIndex = 3;
+            this.AddTitleButton.Text = "+";
+            this.AddTitleButton.UseVisualStyleBackColor = false;
+            this.AddTitleButton.Click += new System.EventHandler(this.AddTitleButton_Click);
             // 
             // UserPanel
             // 
@@ -1782,61 +1826,6 @@ namespace kanbanboard.Forms
             this.FullNameTitleLabel.TabIndex = 0;
             this.FullNameTitleLabel.Text = "ФИО";
             // 
-            // PanelWithTable
-            // 
-            this.PanelWithTable.AutoSize = true;
-            this.PanelWithTable.Controls.Add(this.TableLayoutPanel);
-            this.PanelWithTable.Controls.Add(this.AddingPanel);
-            this.PanelWithTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelWithTable.Location = new System.Drawing.Point(0, 0);
-            this.PanelWithTable.Name = "PanelWithTable";
-            this.PanelWithTable.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
-            this.PanelWithTable.Size = new System.Drawing.Size(979, 495);
-            this.PanelWithTable.TabIndex = 0;
-            // 
-            // AddingPanel
-            // 
-            this.AddingPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.AddingPanel.Controls.Add(this.TrashButton);
-            this.AddingPanel.Controls.Add(this.AddTitleButton);
-            this.AddingPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.AddingPanel.Location = new System.Drawing.Point(937, 0);
-            this.AddingPanel.Name = "AddingPanel";
-            this.AddingPanel.Size = new System.Drawing.Size(42, 494);
-            this.AddingPanel.TabIndex = 0;
-            // 
-            // TrashButton
-            // 
-            this.TrashButton.BackColor = System.Drawing.Color.Transparent;
-            this.TrashButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TrashButton.FlatAppearance.BorderSize = 0;
-            this.TrashButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.TrashButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F);
-            this.TrashButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.TrashButton.Location = new System.Drawing.Point(0, 36);
-            this.TrashButton.Name = "TrashButton";
-            this.TrashButton.Size = new System.Drawing.Size(42, 42);
-            this.TrashButton.TabIndex = 2;
-            this.TrashButton.Text = "🗑";
-            this.TrashButton.UseVisualStyleBackColor = false;
-            this.TrashButton.Click += new System.EventHandler(this.TrashButton_Click);
-            // 
-            // AddTitleButton
-            // 
-            this.AddTitleButton.BackColor = System.Drawing.Color.Transparent;
-            this.AddTitleButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.AddTitleButton.FlatAppearance.BorderSize = 0;
-            this.AddTitleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddTitleButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F);
-            this.AddTitleButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.AddTitleButton.Location = new System.Drawing.Point(0, 0);
-            this.AddTitleButton.Name = "AddTitleButton";
-            this.AddTitleButton.Size = new System.Drawing.Size(42, 36);
-            this.AddTitleButton.TabIndex = 3;
-            this.AddTitleButton.Text = "+";
-            this.AddTitleButton.UseVisualStyleBackColor = false;
-            this.AddTitleButton.Click += new System.EventHandler(this.AddTitleButton_Click);
-            // 
             // LoadPanel
             // 
             this.LoadPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
@@ -2016,7 +2005,6 @@ namespace kanbanboard.Forms
             this.ControlsPanel.PerformLayout();
             this.ProjectsPanel.ResumeLayout(false);
             this.CreateProjectPanel.ResumeLayout(false);
-            this.SaveProjectPanel.ResumeLayout(false);
             this.ExitButtonPanel.ResumeLayout(false);
             this.UserControlsPanel.ResumeLayout(false);
             this.UserNamePanel.ResumeLayout(false);
@@ -2028,6 +2016,9 @@ namespace kanbanboard.Forms
             this.BasicPanel.ResumeLayout(false);
             this.BasicContentPanel.ResumeLayout(false);
             this.BasicContentPanel.PerformLayout();
+            this.PanelWithTable.ResumeLayout(false);
+            this.PanelWithTable.PerformLayout();
+            this.AddingPanel.ResumeLayout(false);
             this.UserPanel.ResumeLayout(false);
             this.PasswordPanel.ResumeLayout(false);
             this.PasswordPanel.PerformLayout();
@@ -2059,9 +2050,6 @@ namespace kanbanboard.Forms
             this.FullNameGetLabelPanel.PerformLayout();
             this.FullNameLabelPanel.ResumeLayout(false);
             this.FullNameLabelPanel.PerformLayout();
-            this.PanelWithTable.ResumeLayout(false);
-            this.PanelWithTable.PerformLayout();
-            this.AddingPanel.ResumeLayout(false);
             this.LoadPanel.ResumeLayout(false);
             this.CalendarPanel.ResumeLayout(false);
             this.MessengerPanel.ResumeLayout(false);
@@ -2127,8 +2115,6 @@ namespace kanbanboard.Forms
         private Panel PanelWithTable;
         private ListBox ListBoxOfProjectNames;
         private Panel ProjectsPanel;
-        private Panel SaveProjectPanel;
-        private Button SaveProjectButton;
         private Panel PasswordPanel;
         private Panel PasswordShowPanel;
         private Panel PasswordGetPanel;
@@ -2149,7 +2135,8 @@ namespace kanbanboard.Forms
         private Panel LoadPanel;
         private Label LoadLabel;
         private Button TrashButton;
-        private Label Projects_List_Label;
+        private Label ProjectsListLabel;
+        private Button SaveProjectButton;
     }
 }
 
