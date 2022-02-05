@@ -172,7 +172,8 @@ namespace kanbanboard.Forms
             // изменение размера панельки выделения
             StripPanel.Size = new Size(StripPanel.Size.Width, TasksButton.Size.Height);
             PanelWithTable.BringToFront();
-            ListBoxOfProjectNames.Visible = true;
+
+            HideOrShowProjectListBox(true);
         }
 
         // Клик на профиль. Открытие панели с данными текущего профиля
@@ -184,7 +185,8 @@ namespace kanbanboard.Forms
             StripPanel.Location = UserControlsPanel.Location;
             // изменение размера панельки выделения
             StripPanel.Size = new Size(StripPanel.Size.Width, UserControlsPanel.Size.Height);
-            ListBoxOfProjectNames.Visible = false;
+
+            HideOrShowProjectListBox();
         }
 
         // Обработчик мессенджера
@@ -197,7 +199,8 @@ namespace kanbanboard.Forms
             // изменение размера панельки выделения
             StripPanel.Size = new Size(StripPanel.Size.Width, MessengerButton.Size.Height);
             MessengerTextBox.Focus();
-            ListBoxOfProjectNames.Visible = true;
+
+            HideOrShowProjectListBox(true);
         }
 
         // Обработчик календаря
@@ -209,7 +212,8 @@ namespace kanbanboard.Forms
             StripPanel.Location = CalendarButton.Location;
             // изменение размера панельки выделения
             StripPanel.Size = new Size(StripPanel.Size.Width, CalendarButton.Size.Height);
-            ListBoxOfProjectNames.Visible = false;
+
+            HideOrShowProjectListBox(true);
         }
 
         // Выход из мейнформы
@@ -235,16 +239,10 @@ namespace kanbanboard.Forms
                 PasswordShowLinkLabel.Text = "Скрыть";
             }
         }
-
-        private void SendMessageButton_Click(object sender, EventArgs e)
+        private void HideOrShowProjectListBox(bool show = false)
         {
-            SendMessage();
-            MessengerTextBox.Clear();
-        }
-
-        private void SendMessageButton_MouseEnter(object sender, EventArgs e)
-        {
-            SendMessageButton.ForeColor = Color.FromArgb(46, 51, 73);
+            ListBoxOfProjectNames.Visible = show;
+            ProjectsListLabel.Visible = show;
         }
     }
 }
