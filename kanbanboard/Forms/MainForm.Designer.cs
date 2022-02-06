@@ -58,13 +58,16 @@ namespace kanbanboard.Forms
             this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.BasicPanel = new System.Windows.Forms.Panel();
             this.BasicContentPanel = new System.Windows.Forms.Panel();
+            this.CalendarPanel = new System.Windows.Forms.Panel();
+            this.EmployeesListBox = new System.Windows.Forms.ListBox();
+            this.EmployeesLabel = new System.Windows.Forms.Label();
+            this.CalendarDeadlineLabel = new System.Windows.Forms.Label();
+            this.CalendarDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.PanelWithTable = new System.Windows.Forms.Panel();
             this.AddingPanel = new System.Windows.Forms.Panel();
             this.SaveProjectButton = new System.Windows.Forms.Button();
             this.TrashButton = new System.Windows.Forms.Button();
             this.AddTitleButton = new System.Windows.Forms.Button();
-            this.CalendarPanel = new System.Windows.Forms.Panel();
-            this.CalendarDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.UserPanel = new System.Windows.Forms.Panel();
             this.PasswordPanel = new System.Windows.Forms.Panel();
             this.PasswordShowPanel = new System.Windows.Forms.Panel();
@@ -115,9 +118,9 @@ namespace kanbanboard.Forms
             ((System.ComponentModel.ISupportInitialize)(this.UserPictureBox)).BeginInit();
             this.BasicPanel.SuspendLayout();
             this.BasicContentPanel.SuspendLayout();
+            this.CalendarPanel.SuspendLayout();
             this.PanelWithTable.SuspendLayout();
             this.AddingPanel.SuspendLayout();
-            this.CalendarPanel.SuspendLayout();
             this.UserPanel.SuspendLayout();
             this.PasswordPanel.SuspendLayout();
             this.PasswordShowPanel.SuspendLayout();
@@ -233,7 +236,7 @@ namespace kanbanboard.Forms
             this.CreateProjectButton.TabIndex = 5;
             this.CreateProjectButton.Text = "Создать проект";
             this.CreateProjectButton.UseVisualStyleBackColor = true;
-            this.CreateProjectButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CreateProjectButton_MouseDown);
+            this.CreateProjectButton.Click += new System.EventHandler(this.CreateProjectButton_Click);
             // 
             // ExitButtonPanel
             // 
@@ -1451,8 +1454,8 @@ namespace kanbanboard.Forms
             // 
             // BasicContentPanel
             // 
-            this.BasicContentPanel.Controls.Add(this.PanelWithTable);
             this.BasicContentPanel.Controls.Add(this.CalendarPanel);
+            this.BasicContentPanel.Controls.Add(this.PanelWithTable);
             this.BasicContentPanel.Controls.Add(this.UserPanel);
             this.BasicContentPanel.Controls.Add(this.LoadPanel);
             this.BasicContentPanel.Controls.Add(this.MessengerPanel);
@@ -1461,6 +1464,85 @@ namespace kanbanboard.Forms
             this.BasicContentPanel.Name = "BasicContentPanel";
             this.BasicContentPanel.Size = new System.Drawing.Size(979, 495);
             this.BasicContentPanel.TabIndex = 2;
+            // 
+            // CalendarPanel
+            // 
+            this.CalendarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
+            this.CalendarPanel.Controls.Add(this.EmployeesListBox);
+            this.CalendarPanel.Controls.Add(this.EmployeesLabel);
+            this.CalendarPanel.Controls.Add(this.CalendarDeadlineLabel);
+            this.CalendarPanel.Controls.Add(this.CalendarDateTimePicker);
+            this.CalendarPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CalendarPanel.Location = new System.Drawing.Point(0, 0);
+            this.CalendarPanel.Name = "CalendarPanel";
+            this.CalendarPanel.Padding = new System.Windows.Forms.Padding(15);
+            this.CalendarPanel.Size = new System.Drawing.Size(979, 495);
+            this.CalendarPanel.TabIndex = 1;
+            // 
+            // EmployeesListBox
+            // 
+            this.EmployeesListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
+            this.EmployeesListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.EmployeesListBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.EmployeesListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.EmployeesListBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.EmployeesListBox.FormattingEnabled = true;
+            this.EmployeesListBox.IntegralHeight = false;
+            this.EmployeesListBox.ItemHeight = 18;
+            this.EmployeesListBox.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"});
+            this.EmployeesListBox.Location = new System.Drawing.Point(214, 99);
+            this.EmployeesListBox.Margin = new System.Windows.Forms.Padding(15);
+            this.EmployeesListBox.Name = "EmployeesListBox";
+            this.EmployeesListBox.Size = new System.Drawing.Size(750, 193);
+            this.EmployeesListBox.TabIndex = 12;
+            // 
+            // EmployeesLabel
+            // 
+            this.EmployeesLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.EmployeesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.EmployeesLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.EmployeesLabel.Location = new System.Drawing.Point(214, 40);
+            this.EmployeesLabel.Name = "EmployeesLabel";
+            this.EmployeesLabel.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.EmployeesLabel.Size = new System.Drawing.Size(750, 59);
+            this.EmployeesLabel.TabIndex = 11;
+            this.EmployeesLabel.Text = "Исполнители:";
+            this.EmployeesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // CalendarDeadlineLabel
+            // 
+            this.CalendarDeadlineLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CalendarDeadlineLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.CalendarDeadlineLabel.ForeColor = System.Drawing.Color.Red;
+            this.CalendarDeadlineLabel.Location = new System.Drawing.Point(214, 15);
+            this.CalendarDeadlineLabel.Name = "CalendarDeadlineLabel";
+            this.CalendarDeadlineLabel.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.CalendarDeadlineLabel.Size = new System.Drawing.Size(750, 25);
+            this.CalendarDeadlineLabel.TabIndex = 10;
+            this.CalendarDeadlineLabel.Text = "Дедлайн:";
+            this.CalendarDeadlineLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // CalendarDateTimePicker
+            // 
+            this.CalendarDateTimePicker.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.CalendarDateTimePicker.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
+            this.CalendarDateTimePicker.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
+            this.CalendarDateTimePicker.CalendarTitleForeColor = System.Drawing.Color.Azure;
+            this.CalendarDateTimePicker.Dock = System.Windows.Forms.DockStyle.Left;
+            this.CalendarDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.CalendarDateTimePicker.Location = new System.Drawing.Point(15, 15);
+            this.CalendarDateTimePicker.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
+            this.CalendarDateTimePicker.MinDate = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
+            this.CalendarDateTimePicker.Name = "CalendarDateTimePicker";
+            this.CalendarDateTimePicker.Size = new System.Drawing.Size(199, 24);
+            this.CalendarDateTimePicker.TabIndex = 2;
+            this.CalendarDateTimePicker.CloseUp += new System.EventHandler(this.CalendarDateTimePicker_CloseUp);
             // 
             // PanelWithTable
             // 
@@ -1539,25 +1621,6 @@ namespace kanbanboard.Forms
             this.AddTitleButton.Text = "+";
             this.AddTitleButton.UseVisualStyleBackColor = false;
             this.AddTitleButton.Click += new System.EventHandler(this.AddTitleButton_Click);
-            // 
-            // CalendarPanel
-            // 
-            this.CalendarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
-            this.CalendarPanel.Controls.Add(this.CalendarDateTimePicker);
-            this.CalendarPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CalendarPanel.Location = new System.Drawing.Point(0, 0);
-            this.CalendarPanel.Name = "CalendarPanel";
-            this.CalendarPanel.Size = new System.Drawing.Size(979, 495);
-            this.CalendarPanel.TabIndex = 1;
-            // 
-            // CalendarDateTimePicker
-            // 
-            this.CalendarDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.CalendarDateTimePicker.Location = new System.Drawing.Point(35, 36);
-            this.CalendarDateTimePicker.MinDate = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
-            this.CalendarDateTimePicker.Name = "CalendarDateTimePicker";
-            this.CalendarDateTimePicker.Size = new System.Drawing.Size(161, 24);
-            this.CalendarDateTimePicker.TabIndex = 2;
             // 
             // UserPanel
             // 
@@ -2023,10 +2086,10 @@ namespace kanbanboard.Forms
             this.BasicPanel.ResumeLayout(false);
             this.BasicContentPanel.ResumeLayout(false);
             this.BasicContentPanel.PerformLayout();
+            this.CalendarPanel.ResumeLayout(false);
             this.PanelWithTable.ResumeLayout(false);
             this.PanelWithTable.PerformLayout();
             this.AddingPanel.ResumeLayout(false);
-            this.CalendarPanel.ResumeLayout(false);
             this.UserPanel.ResumeLayout(false);
             this.PasswordPanel.ResumeLayout(false);
             this.PasswordPanel.PerformLayout();
@@ -2144,6 +2207,9 @@ namespace kanbanboard.Forms
         private Button TrashButton;
         private Label ProjectsListLabel;
         private Button SaveProjectButton;
+        private Label CalendarDeadlineLabel;
+        private ListBox EmployeesListBox;
+        private Label EmployeesLabel;
     }
 }
 

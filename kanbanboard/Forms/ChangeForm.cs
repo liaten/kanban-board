@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using kanbanboard.Classes;
 using kanbanboard.Controls;
 
@@ -58,16 +57,8 @@ namespace kanbanboard.Forms
             // Сохранение
             FormClosing += async (_, _) =>
             {
-                if (!string.IsNullOrEmpty(ChangingTextBox.Text)
-                    && await user.CreateProject(ChangingTextBox.Text) == "OK")
-                {
-                    Owner.Controls.OfType<ListBox>().Where(x => string.Equals(x.Name, "ListBoxOfProjectNames")).ToList().ForEach(
-                        x =>
-                        {
-                            x.Items.Clear();
-                            x.Items.AddRange(user.ProjectNames().Cast<object>().ToArray());
-                        });
-                }
+                if (!string.IsNullOrEmpty(ChangingTextBox.Text))
+                    await user.CreateProject(ChangingTextBox.Text);
             };
         }
     }

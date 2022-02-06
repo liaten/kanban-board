@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using FireSharp;
 using FireSharp.Config;
 using FireSharp.Interfaces;
@@ -50,8 +51,7 @@ namespace kanbanboard.Classes
             foreach (string p in projects)
             {
                 // Получаем канбан-доску проекта, если он есть в базе
-                Dictionary<string, List<Dictionary<string, string>>> kanban =
-                    Client.GetAsync($"Projects/{p}/Kanban").Result.ResultAs<Dictionary<string, List<Dictionary<string, string>>>>();
+                Dictionary<string, List<Dictionary<string, string>>> kanban = Client.GetAsync($"Projects/{p}/Kanban").Result.ResultAs<Dictionary<string, List<Dictionary<string, string>>>>();
                 if (kanban == null)
                 {
                     continue;
@@ -66,8 +66,6 @@ namespace kanbanboard.Classes
 
             return dataOfProjects;
         }
-
-        // Получить данные одного проекта
 
         // Загрузить данные
         public static void UploadData(Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>> dataDictionary)
@@ -103,18 +101,6 @@ namespace kanbanboard.Classes
             }
         }
 
-        public static string GetPassword(this string username)
-        {
-            try
-            {
-                return Client.GetAsync($"Users/{username}/Password").Result.ResultAs<string>();
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
         // Создает проект в базе пользователя.
         public static async Task<string> CreateProject(this User user, string projectName)
         {
@@ -136,15 +122,17 @@ namespace kanbanboard.Classes
 
                 return result.StatusCode.ToString();
             }
-            await Client.SetAsync($"Users/{user.Username}/Projects", new List<string> { projectName });
-            return null;
+
+            var response = await Client.SetAsync($"Users/{user.Username}/Projects", new List<string> { projectName });
+
+            return response.StatusCode.ToString();
         }
 
         // Удаляет проект из базы пользователя.
         public static async Task<string> DeleteProject(this User user, string projectName)
         {
             // Вытаскиваем данные
-            List<string> data = Client.GetAsync($"Users/{user.Username}/Projects").Result.ResultAs<List<string>>();
+            var data = Client.GetAsync($"Users/{user.Username}/Projects").Result.ResultAs<List<string>>();
 
             data.RemoveAll(x => x == projectName);
 
@@ -179,8 +167,7 @@ namespace kanbanboard.Classes
         // Сохранить сообщение в базу
         public static async Task<string> SaveMessage(this User user, string projectName, string message)
         {
-            List<Dictionary<string, string>> list =
-                user.GetMessages(projectName) ?? new List<Dictionary<string, string>>();
+            var list = user.GetMessages(projectName) ?? new List<Dictionary<string, string>>();
             list.Add(new Dictionary<string, string> { { user.Username, message } });
             
             var result = await Client.SetAsync($"Projects/{projectName}/Chat/", list);
@@ -190,9 +177,23 @@ namespace kanbanboard.Classes
 
         public static async Task<string> CreateUser(this User user)
         {
-            var result = await Client.SetAsync($"Users/{user.Username}/", user);
+            var response = await Client.SetAsync($"Users/{user.Username}/", user);
 
-            return result.StatusCode.ToString();
+            return response.StatusCode.ToString();
+        }
+
+        public static async Task<string> GetDeadline(string projectName)
+        {
+            var response = await Client.GetAsync($"Projects/{projectName}/Deadline");
+
+            return response.ResultAs<string>();
+        }
+
+        public static async Task<string> SetDeadline(DateTime date, string projectName)
+        {
+            var response = await Client.SetAsync($"Projects/{projectName}/Deadline", $"{date.Day}.{date.Month}.{date.Year}");
+
+            return response.StatusCode.ToString();
         }
     }
 }

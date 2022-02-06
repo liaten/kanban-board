@@ -8,7 +8,7 @@ namespace kanbanboard.Forms
 {
     public partial class LoginForm : Form
     {
-        private static Dictionary<string, User> _users;
+        internal static Dictionary<string, User> _users;
 
         public LoginForm()
         {
@@ -96,7 +96,7 @@ namespace kanbanboard.Forms
         private void TextBoxPass_MouseLeave(object sender, EventArgs e) => PassLabel.ForeColor = Color.FromArgb(74, 79, 99);
     
 
-        private void textBoxLogin_TextChanged(object sender, EventArgs e)
+        private void TextBoxLogin_TextChanged(object sender, EventArgs e)
         {
             string loginTextBox = textBoxLogin.Text;
             textBoxLoginCheck.ForeColor = _users.ContainsKey(loginTextBox) && !loginTextBox.Trim().Equals("")
@@ -104,7 +104,7 @@ namespace kanbanboard.Forms
                 : Color.Red;
         }
 
-        private void textBoxPassword_TextChanged(object sender, EventArgs e)
+        private void TextBoxPassword_TextChanged(object sender, EventArgs e)
         {
             string passwordTextBox = textBoxPassword.Text;
             textBoxPasswordCheck.ForeColor = !passwordTextBox.Trim().Equals("")

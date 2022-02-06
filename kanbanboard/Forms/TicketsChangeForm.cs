@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using kanbanboard.Classes;
 using kanbanboard.Controls;
@@ -38,6 +40,9 @@ namespace kanbanboard.Forms
             ChangingTitleTextBox.Text = _ticket.Title.Text;
             ChangingTicketTextBox.Text = _ticket.Ticket.Text;
             ChangingPeopleTextBox.Text = _ticket.People.Text;
+            TicketDateTimePicker.Value = _ticket.Deadline;
+
+            ShowDeadline();
         }
 
         // Сохранить при закрытии
@@ -46,6 +51,23 @@ namespace kanbanboard.Forms
             _ticket.Title.Text = ChangingTitleTextBox.Text;
             _ticket.Ticket.Text = ChangingTicketTextBox.Text;
             _ticket.People.Text = ChangingPeopleTextBox.Text;
+            TicketDateTimePicker.Value = _ticket.Deadline;
+        }
+
+        private async void TicketDateTimePicker_CloseUp(object sender, EventArgs e)
+        {
+            _ticket.Deadline = TicketDateTimePicker.Value;
+            await ShowDeadline().ConfigureAwait(false);
+        }
+
+        private Task ShowDeadline()
+        {
+            var date = TicketDateTimePicker.Value;
+
+            TicketDeadlineLabel.Text = $"Дедлайн: {date}";
+            TicketDeadlineLabel.ForeColor = TicketDateTimePicker.Value >= DateTime.Now ? Color.LimeGreen : Color.Red;
+
+            return Task.CompletedTask;
         }
     }
 }

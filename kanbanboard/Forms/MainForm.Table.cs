@@ -26,12 +26,29 @@ namespace kanbanboard.Forms
                 for (var row = 1; row < TableLayoutPanel.RowStyles.Count; row++)
                 {
                     if (TableLayoutPanel.GetControlFromPosition(column, row) != null)
+                    {
+
                         ticket.Add(new Dictionary<string, string>
                         {
-                            {"Title", ((TicketPanel)TableLayoutPanel.GetControlFromPosition(column, row)).Title.Text},
-                            {"Ticket", ((TicketPanel)TableLayoutPanel.GetControlFromPosition(column, row)).Ticket.Text},
-                            {"People", ((TicketPanel)TableLayoutPanel.GetControlFromPosition(column, row)).People.Text}
+                            {
+                                "Title", 
+                                ((TicketPanel) TableLayoutPanel.GetControlFromPosition(column, row)).Title.Text},
+                            {
+                                "Ticket",
+                                ((TicketPanel) TableLayoutPanel.GetControlFromPosition(column, row)).Ticket.Text
+                            },
+                            {
+                                "People",
+                                ((TicketPanel) TableLayoutPanel.GetControlFromPosition(column, row)).People.Text
+                            },
+                            {
+                                "Deadline", 
+                                $"{((TicketPanel)TableLayoutPanel.GetControlFromPosition(column, row)).Deadline.Day}." +
+                                $"{((TicketPanel)TableLayoutPanel.GetControlFromPosition(column, row)).Deadline.Month}." +
+                                $"{((TicketPanel)TableLayoutPanel.GetControlFromPosition(column, row)).Deadline.Year}"
+                            },
                         });
+                    }
                 }
 
                 if ((TitlePanel)TableLayoutPanel.GetControlFromPosition(column, 0) != null)
@@ -50,7 +67,7 @@ namespace kanbanboard.Forms
         }
 
         // Загрузить данные в tablelayoutpanel
-        private void TableFromFirebase(string selectedProject)
+        private async void TableFromFirebase(string selectedProject)
         {
             LoadPanel.BringToFront();
 
@@ -75,10 +92,11 @@ namespace kanbanboard.Forms
                             ticket.Title.Text = tasks["Title"] ?? ""; 
                             ticket.Ticket.Text = tasks["Ticket"] ?? ""; 
                             ticket.People.Text = tasks["People"] ?? "";
+                            ticket.Deadline = DateTime.Parse(tasks["Deadline"]);
                         }
                         catch { }
 
-                        AddControlToPanel(ticket.Title.Text, ticket.Ticket.Text, ticket.People.Text, column, row++);
+                        AddControlToPanel(ticket.Title.Text, ticket.Ticket.Text, ticket.People.Text, ticket.Deadline, column, row++);
                     }
                     column++;
                     row = 1;
@@ -87,8 +105,12 @@ namespace kanbanboard.Forms
 
             ResizeTable();
 
+            // Показываем всех работников на странице календаря
+            await ShowEmployees().ConfigureAwait(false);
+
             if (BasicContentPanel.Controls.GetChildIndex(PanelWithTable) == 1) PanelWithTable.BringToFront();
             else if (BasicContentPanel.Controls.GetChildIndex(MessengerPanel) == 1) MessengerPanel.BringToFront();
+            else if (BasicContentPanel.Controls.GetChildIndex(CalendarPanel) == 1) CalendarPanel.BringToFront();
         }
 
         // События на кнопки
@@ -168,7 +190,7 @@ namespace kanbanboard.Forms
                     for (var row = 1; row <= TableLayoutPanel.RowStyles.Count; row++)
                     {
                         if (!(TableLayoutPanel.GetControlFromPosition(column, row) is null)) continue;
-                        AddControlToPanel("Заголовок", "Описание", "Разработчики", column, row);
+                        AddControlToPanel("Заголовок", "Описание", "Разработчики", DateTime.Now, column, row);
                         break;
                     }
                 };
@@ -239,7 +261,7 @@ namespace kanbanboard.Forms
 
             if (TableLayoutPanel.ColumnStyles.Count >= 1 && column == 0) column = TableLayoutPanel.ColumnStyles.Count;
 
-            AddControlToPanel("Заголовок", "Описание", "Разработчики", column, 1);
+            AddControlToPanel("Заголовок", "Описание", "Разработчики", DateTime.Now, column, 1);
             AddTitleToPanel("Это тайтл", column);
         }
 
@@ -270,12 +292,13 @@ namespace kanbanboard.Forms
         }
 
         // Добавить тикет в таблицу
-        private void AddControlToPanel(string title, string ticket, string people, int column, int row)
+        private void AddControlToPanel(string title, string ticket, string people, DateTime date, int column, int row)
         {
             var control = new TicketPanel();
             control.Title.Text = title;
             control.Ticket.Text = ticket;
             control.People.Text = people;
+            control.Deadline = date;
 
             // Добавляем события на кнопки, если пользователь соответствующей роли
             if (_user.Role is Roles.Admin || _user.Role is Roles.Manager) SetEventsOnTicket(control);

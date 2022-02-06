@@ -19,6 +19,7 @@ namespace kanbanboard.Controls
         public Button DelButton { get; set; }
         public Button LeftButton { get; set; }
         public Button RightButton { get; set; }
+        public DateTime Deadline { get; set; }
 
         public TicketPanel()
         {
@@ -37,6 +38,7 @@ namespace kanbanboard.Controls
                 Location = new Point(Size.Width - Size.Width + 5, Size.Height - Size.Height + 5),
                 Margin = new Padding(20, 20, 40, 20),
             };
+
             Ticket = new Label
             {
                 Name = "Ticket",

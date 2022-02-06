@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -46,6 +47,19 @@ namespace kanbanboard.Classes
                 else return false;
             }
             return false;
+        }
+
+        // Устранение мерцания
+        public static void SetDoubleBuffered(this Control c)
+        {
+            if (SystemInformation.TerminalServerSession)
+            {
+                return;
+            }
+            PropertyInfo aProp = typeof(Control).GetProperty("DoubleBuffered",
+                BindingFlags.NonPublic |
+                BindingFlags.Instance);
+            aProp?.SetValue(c, true, null);
         }
 
         /// <summary> Валидация email </summary>

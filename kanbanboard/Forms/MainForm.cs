@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using kanbanboard.Classes;
@@ -34,14 +33,13 @@ namespace kanbanboard.Forms
             TableLayoutPanel.Resize += (_, _) => ResizeTable();
 
             // Установка двойной буферизации для устранения мерцания
-            SetDoubleBuffered(TableLayoutPanel);
-            SetDoubleBuffered(BasicContentPanel);
-            SetDoubleBuffered(MessengerListBox);
-            SetDoubleBuffered(ListBoxOfProjectNames);
+            TableLayoutPanel.SetDoubleBuffered();
+            BasicContentPanel.SetDoubleBuffered();
+            MessengerListBox.SetDoubleBuffered();
+            ListBoxOfProjectNames.SetDoubleBuffered();
 
             // Данные пользователя
             _user = user;
-
             UserInfoLabel.Text = $"Роль: {_user.Role}";
             UsernameLabel.Text = _user.Username;
             OrganizationLabel.Text = _user.Organization;
@@ -68,7 +66,8 @@ namespace kanbanboard.Forms
                 {
                     Parallel.Invoke(
                         () => Invoke((MethodInvoker)(() => TableFromFirebase(ListBoxOfProjectNames.SelectedItem.ToString()))),
-                        () => Invoke((MethodInvoker)(() => ShowMessages()))
+                        () => Invoke((MethodInvoker)(() => ShowMessages())),
+                        () => Invoke((MethodInvoker) (async () => await ShowDeadline()))
                         );
                 }
                 catch { }
@@ -117,49 +116,27 @@ namespace kanbanboard.Forms
             ListBoxOfProjectNames.Items.AddRange(_user.ProjectNames().Cast<object>().ToArray());
         }
 
-
-        // Устранение мерцания
-        public static void SetDoubleBuffered(Control c)
-        {
-            if (SystemInformation.TerminalServerSession)
-            {
-                return;
-            }
-            PropertyInfo aProp = typeof(Control).GetProperty("DoubleBuffered",
-                BindingFlags.NonPublic |
-                BindingFlags.Instance);
-            aProp?.SetValue(c, true, null);
-        }
-
         // Кпнока по создаю нового проекта
-        private async void CreateProjectButton_MouseDown(object sender, MouseEventArgs e)
+        private async void CreateProjectButton_Click(object sender, EventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            if (!Application.OpenForms.OfType<ChangeForm>().Any())
             {
-                if (!Application.OpenForms.OfType<ChangeForm>().Any())
+                ChangeForm changeForm = new(this, _user);
+                changeForm.Show();
+
+                while (true)
                 {
-                    ChangeForm changeForm = new ChangeForm(this, _user);
-                    changeForm.Show();
+                    await Task.Delay(25);
 
-                    while (true)
+                    if (changeForm.IsDisposed)
                     {
-                        await Task.Delay(50);
-
-                        if (changeForm.IsDisposed)
-                        {
-                            SetUserProjectNames();
-                            break;
-                        }
+                        SetUserProjectNames();
+                        break;
                     }
-
-                    SetUserProjectNames();
                 }
-            }
 
-            if (e.Button == MouseButtons.Right)
-            {
-                try { TrashButton.PerformClick(); }
-                finally { SetUserProjectNames(); }
+                _projectIndex++;
+                SetUserProjectNames();
             }
         }
 
@@ -203,25 +180,12 @@ namespace kanbanboard.Forms
             HideOrShowProjectListBox(true);
         }
 
-        // Обработчик календаря
-        private void CalendarButton_Click(object sender, EventArgs e)
-        {
-            LabelHead.Text = "Календарь";
-            CalendarPanel.BringToFront();
-            // перемещение панельки выделения
-            StripPanel.Location = CalendarButton.Location;
-            // изменение размера панельки выделения
-            StripPanel.Size = new Size(StripPanel.Size.Width, CalendarButton.Size.Height);
-
-            HideOrShowProjectListBox(true);
-        }
-
         // Выход из мейнформы
         private void ExitButton_Click(object sender, EventArgs e)
         {
             Hide();
-            LoginForm LoginForm = new LoginForm();
-            LoginForm.Show();
+            LoginForm loginForm = new();
+            loginForm.Show();
         }
 
         // Показать пароль
@@ -239,6 +203,7 @@ namespace kanbanboard.Forms
                 PasswordShowLinkLabel.Text = "Скрыть";
             }
         }
+
         private void HideOrShowProjectListBox(bool show = false)
         {
             ListBoxOfProjectNames.Visible = show;
