@@ -1525,7 +1525,7 @@ namespace kanbanboard.Forms
             this.CalendarDeadlineLabel.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.CalendarDeadlineLabel.Size = new System.Drawing.Size(750, 25);
             this.CalendarDeadlineLabel.TabIndex = 10;
-            this.CalendarDeadlineLabel.Text = "Дедлайн:";
+            this.CalendarDeadlineLabel.Text = "Дедлайн проекта:";
             this.CalendarDeadlineLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // CalendarDateTimePicker

@@ -31,7 +31,7 @@ namespace kanbanboard.Forms
         {
             var date = await Firebase.GetDeadline(ListBoxOfProjectNames.SelectedItem.ToString());
 
-            CalendarDeadlineLabel.Text = $"Дедлайн: {date}";
+            CalendarDeadlineLabel.Text = $"Дедлайн проекта: {date}";
             CalendarDateTimePicker.Value = DateTime.Parse(date);
             CalendarDeadlineLabel.ForeColor = CalendarDateTimePicker.Value >= DateTime.Now ? Color.LimeGreen : Color.Red;
         }

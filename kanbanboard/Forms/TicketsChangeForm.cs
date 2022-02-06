@@ -64,7 +64,7 @@ namespace kanbanboard.Forms
         {
             var date = TicketDateTimePicker.Value;
 
-            TicketDeadlineLabel.Text = $"Дедлайн: {date}";
+            TicketDeadlineLabel.Text = $"Дедлайн тикета: {date}";
             TicketDeadlineLabel.ForeColor = TicketDateTimePicker.Value >= DateTime.Now ? Color.LimeGreen : Color.Red;
 
             return Task.CompletedTask;

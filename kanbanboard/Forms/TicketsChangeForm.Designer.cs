@@ -33,6 +33,8 @@ namespace kanbanboard.Forms
         private void InitializeComponent()
         {
             this.ChangingPanel = new System.Windows.Forms.Panel();
+            this.TicketDeadlineLabel = new System.Windows.Forms.Label();
+            this.TicketDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.SaveChangesButton = new System.Windows.Forms.Button();
             this.ChangingPeopleTextBox = new System.Windows.Forms.TextBox();
             this.ChangingPeopleLabel = new System.Windows.Forms.Label();
@@ -40,8 +42,6 @@ namespace kanbanboard.Forms
             this.ChangingTicketLabel = new System.Windows.Forms.Label();
             this.ChangingTitleTextBox = new System.Windows.Forms.TextBox();
             this.ChangingTitleLabel = new System.Windows.Forms.Label();
-            this.TicketDeadlineLabel = new System.Windows.Forms.Label();
-            this.TicketDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.ChangingPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,6 +64,33 @@ namespace kanbanboard.Forms
             this.ChangingPanel.Size = new System.Drawing.Size(641, 396);
             this.ChangingPanel.TabIndex = 1;
             // 
+            // TicketDeadlineLabel
+            // 
+            this.TicketDeadlineLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.TicketDeadlineLabel.ForeColor = System.Drawing.Color.Red;
+            this.TicketDeadlineLabel.Location = new System.Drawing.Point(323, 90);
+            this.TicketDeadlineLabel.Name = "TicketDeadlineLabel";
+            this.TicketDeadlineLabel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.TicketDeadlineLabel.Size = new System.Drawing.Size(271, 29);
+            this.TicketDeadlineLabel.TabIndex = 12;
+            this.TicketDeadlineLabel.Text = "Дедлайн тикета:";
+            this.TicketDeadlineLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // TicketDateTimePicker
+            // 
+            this.TicketDateTimePicker.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.TicketDateTimePicker.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
+            this.TicketDateTimePicker.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
+            this.TicketDateTimePicker.CalendarTitleForeColor = System.Drawing.Color.Azure;
+            this.TicketDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.TicketDateTimePicker.Location = new System.Drawing.Point(326, 53);
+            this.TicketDateTimePicker.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
+            this.TicketDateTimePicker.MinDate = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
+            this.TicketDateTimePicker.Name = "TicketDateTimePicker";
+            this.TicketDateTimePicker.Size = new System.Drawing.Size(268, 24);
+            this.TicketDateTimePicker.TabIndex = 11;
+            this.TicketDateTimePicker.CloseUp += new System.EventHandler(this.TicketDateTimePicker_CloseUp);
+            // 
             // SaveChangesButton
             // 
             this.SaveChangesButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -85,7 +112,7 @@ namespace kanbanboard.Forms
             this.ChangingPeopleTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.ChangingPeopleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ChangingPeopleTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.ChangingPeopleTextBox.Location = new System.Drawing.Point(58, 299);
+            this.ChangingPeopleTextBox.Location = new System.Drawing.Point(46, 299);
             this.ChangingPeopleTextBox.Multiline = true;
             this.ChangingPeopleTextBox.Name = "ChangingPeopleTextBox";
             this.ChangingPeopleTextBox.Size = new System.Drawing.Size(236, 43);
@@ -96,7 +123,7 @@ namespace kanbanboard.Forms
             this.ChangingPeopleLabel.AutoSize = true;
             this.ChangingPeopleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ChangingPeopleLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.ChangingPeopleLabel.Location = new System.Drawing.Point(78, 260);
+            this.ChangingPeopleLabel.Location = new System.Drawing.Point(66, 260);
             this.ChangingPeopleLabel.Name = "ChangingPeopleLabel";
             this.ChangingPeopleLabel.Size = new System.Drawing.Size(197, 29);
             this.ChangingPeopleLabel.TabIndex = 5;
@@ -108,7 +135,7 @@ namespace kanbanboard.Forms
             this.ChangingTicketTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.ChangingTicketTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ChangingTicketTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.ChangingTicketTextBox.Location = new System.Drawing.Point(58, 122);
+            this.ChangingTicketTextBox.Location = new System.Drawing.Point(46, 122);
             this.ChangingTicketTextBox.Multiline = true;
             this.ChangingTicketTextBox.Name = "ChangingTicketTextBox";
             this.ChangingTicketTextBox.Size = new System.Drawing.Size(236, 135);
@@ -119,7 +146,7 @@ namespace kanbanboard.Forms
             this.ChangingTicketLabel.AutoSize = true;
             this.ChangingTicketLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ChangingTicketLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.ChangingTicketLabel.Location = new System.Drawing.Point(107, 90);
+            this.ChangingTicketLabel.Location = new System.Drawing.Point(95, 90);
             this.ChangingTicketLabel.Name = "ChangingTicketLabel";
             this.ChangingTicketLabel.Size = new System.Drawing.Size(139, 29);
             this.ChangingTicketLabel.TabIndex = 4;
@@ -130,7 +157,7 @@ namespace kanbanboard.Forms
             this.ChangingTitleTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.ChangingTitleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ChangingTitleTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.ChangingTitleTextBox.Location = new System.Drawing.Point(58, 53);
+            this.ChangingTitleTextBox.Location = new System.Drawing.Point(46, 53);
             this.ChangingTitleTextBox.Multiline = true;
             this.ChangingTitleTextBox.Name = "ChangingTitleTextBox";
             this.ChangingTitleTextBox.Size = new System.Drawing.Size(236, 34);
@@ -141,39 +168,12 @@ namespace kanbanboard.Forms
             this.ChangingTitleLabel.AutoSize = true;
             this.ChangingTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ChangingTitleLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.ChangingTitleLabel.Location = new System.Drawing.Point(105, 21);
+            this.ChangingTitleLabel.Location = new System.Drawing.Point(93, 21);
             this.ChangingTitleLabel.Margin = new System.Windows.Forms.Padding(3);
             this.ChangingTitleLabel.Name = "ChangingTitleLabel";
             this.ChangingTitleLabel.Size = new System.Drawing.Size(143, 29);
             this.ChangingTitleLabel.TabIndex = 3;
             this.ChangingTitleLabel.Text = "Заголовок";
-            // 
-            // TicketDeadlineLabel
-            // 
-            this.TicketDeadlineLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.TicketDeadlineLabel.ForeColor = System.Drawing.Color.Red;
-            this.TicketDeadlineLabel.Location = new System.Drawing.Point(358, 94);
-            this.TicketDeadlineLabel.Name = "TicketDeadlineLabel";
-            this.TicketDeadlineLabel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.TicketDeadlineLabel.Size = new System.Drawing.Size(224, 25);
-            this.TicketDeadlineLabel.TabIndex = 12;
-            this.TicketDeadlineLabel.Text = "Дедлайн:";
-            this.TicketDeadlineLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // TicketDateTimePicker
-            // 
-            this.TicketDateTimePicker.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.TicketDateTimePicker.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
-            this.TicketDateTimePicker.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
-            this.TicketDateTimePicker.CalendarTitleForeColor = System.Drawing.Color.Azure;
-            this.TicketDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.TicketDateTimePicker.Location = new System.Drawing.Point(361, 56);
-            this.TicketDateTimePicker.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
-            this.TicketDateTimePicker.MinDate = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
-            this.TicketDateTimePicker.Name = "TicketDateTimePicker";
-            this.TicketDateTimePicker.Size = new System.Drawing.Size(221, 24);
-            this.TicketDateTimePicker.TabIndex = 11;
-            this.TicketDateTimePicker.CloseUp += new System.EventHandler(this.TicketDateTimePicker_CloseUp);
             // 
             // TicketsChangeForm
             // 
