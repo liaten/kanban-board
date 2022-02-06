@@ -1,10 +1,10 @@
-﻿using System;
+﻿using kanbanboard.Classes;
+using kanbanboard.Controls;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
-using kanbanboard.Classes;
-using kanbanboard.Controls;
 
 namespace kanbanboard.Forms
 {
@@ -40,7 +40,7 @@ namespace kanbanboard.Forms
         {
             var employees = new List<string>() { };
 
-            foreach (var ticket in TableLayoutPanel.Controls.OfType<TicketPanel>().ToList()) 
+            foreach (var ticket in TableLayoutPanel.Controls.OfType<TicketPanel>().ToList())
                 employees.AddRange(ticket.People.Text.Split(',', ' ', '.'));
 
             employees.AddRange(from item in LoginForm._users where item.Value.Projects.Contains(ListBoxOfProjectNames.SelectedItem.ToString()) select item.Key);

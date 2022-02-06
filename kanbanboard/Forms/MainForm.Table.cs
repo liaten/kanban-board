@@ -1,10 +1,10 @@
-﻿using System;
+﻿using kanbanboard.Classes;
+using kanbanboard.Controls;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using kanbanboard.Classes;
-using kanbanboard.Controls;
 
 namespace kanbanboard.Forms
 {
@@ -31,7 +31,7 @@ namespace kanbanboard.Forms
                         ticket.Add(new Dictionary<string, string>
                         {
                             {
-                                "Title", 
+                                "Title",
                                 ((TicketPanel) TableLayoutPanel.GetControlFromPosition(column, row)).Title.Text},
                             {
                                 "Ticket",
@@ -42,7 +42,7 @@ namespace kanbanboard.Forms
                                 ((TicketPanel) TableLayoutPanel.GetControlFromPosition(column, row)).People.Text
                             },
                             {
-                                "Deadline", 
+                                "Deadline",
                                 $"{((TicketPanel)TableLayoutPanel.GetControlFromPosition(column, row)).Deadline.Day}." +
                                 $"{((TicketPanel)TableLayoutPanel.GetControlFromPosition(column, row)).Deadline.Month}." +
                                 $"{((TicketPanel)TableLayoutPanel.GetControlFromPosition(column, row)).Deadline.Year}"
@@ -88,9 +88,10 @@ namespace kanbanboard.Forms
                     foreach (var tasks in titles.Value)
                     {
                         var ticket = new TicketPanel();
-                        try {  
-                            ticket.Title.Text = tasks["Title"] ?? ""; 
-                            ticket.Ticket.Text = tasks["Ticket"] ?? ""; 
+                        try
+                        {
+                            ticket.Title.Text = tasks["Title"] ?? "";
+                            ticket.Ticket.Text = tasks["Ticket"] ?? "";
                             ticket.People.Text = tasks["People"] ?? "";
                             ticket.Deadline = DateTime.Parse(tasks["Deadline"]);
                         }
@@ -347,7 +348,8 @@ namespace kanbanboard.Forms
         {
             try
             {
-                foreach (ColumnStyle column in TableLayoutPanel.ColumnStyles) {
+                foreach (ColumnStyle column in TableLayoutPanel.ColumnStyles)
+                {
                     column.SizeType = SizeType.Percent;
                     column.Width = 25;
                 }
@@ -356,13 +358,15 @@ namespace kanbanboard.Forms
 
                 TableLayoutPanel.RowStyles[0].SizeType = SizeType.Absolute;
                 TableLayoutPanel.RowStyles[0].Height = 25;
-                
-                foreach (var row in TableLayoutPanel.RowStyles.Cast<RowStyle>().ToList().Skip(1)) {
+
+                foreach (var row in TableLayoutPanel.RowStyles.Cast<RowStyle>().ToList().Skip(1))
+                {
                     row.SizeType = SizeType.Absolute;
                     row.Height = 150;
                 }
 
-                TableLayoutPanel.Controls.OfType<TicketPanel>().ToList().ForEach(x => {
+                TableLayoutPanel.Controls.OfType<TicketPanel>().ToList().ForEach(x =>
+                {
                     if (TableLayoutPanel.GetCellPosition(x).Row != 0)
                         x.Height = TableLayoutPanel.Height / TableLayoutPanel.RowCount;
                 });
@@ -384,7 +388,7 @@ namespace kanbanboard.Forms
         // Удалить выбранный проект
         private async void TrashButton_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Удалить доску из твоего профиля? (действие отменить невозможно)", "Удаление доски", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) 
+            if (MessageBox.Show("Удалить доску из твоего профиля? (действие отменить невозможно)", "Удаление доски", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
                 return;
 
             if (await _user.DeleteProject(ListBoxOfProjectNames.SelectedItem?.ToString()) == "OK")

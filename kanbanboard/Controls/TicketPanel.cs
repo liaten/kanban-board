@@ -1,9 +1,9 @@
-﻿using System;
+﻿using kanbanboard.Classes;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using kanbanboard.Classes;
 
 namespace kanbanboard.Controls
 {

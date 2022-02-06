@@ -1,9 +1,9 @@
-﻿using System;
+﻿using kanbanboard.Classes;
+using kanbanboard.Controls;
+using System;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using kanbanboard.Classes;
-using kanbanboard.Controls;
 
 namespace kanbanboard.Forms
 {

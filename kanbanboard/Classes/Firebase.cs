@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using FireSharp;
+﻿using FireSharp;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace kanbanboard.Classes
 {
@@ -169,7 +168,7 @@ namespace kanbanboard.Classes
         {
             var list = user.GetMessages(projectName) ?? new List<Dictionary<string, string>>();
             list.Add(new Dictionary<string, string> { { user.Username, message } });
-            
+
             var result = await Client.SetAsync($"Projects/{projectName}/Chat/", list);
 
             return result.StatusCode.ToString();

@@ -1,9 +1,9 @@
-﻿using System;
+﻿using kanbanboard.Classes;
+using System;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using kanbanboard.Classes;
 
 namespace kanbanboard.Forms
 {
@@ -56,7 +56,7 @@ namespace kanbanboard.Forms
                 if (ListBoxOfProjectNames.SelectedItem != null)
                 {
                     try { Upload(ListBoxOfProjectNames.Items[_projectIndex].ToString()); }
-                    catch {}
+                    catch { }
                 }
 
                 // Переназначаем индекс
@@ -67,7 +67,7 @@ namespace kanbanboard.Forms
                     Parallel.Invoke(
                         () => Invoke((MethodInvoker)(() => TableFromFirebase(ListBoxOfProjectNames.SelectedItem.ToString()))),
                         () => Invoke((MethodInvoker)(() => ShowMessages())),
-                        () => Invoke((MethodInvoker) (async () => await ShowDeadline()))
+                        () => Invoke((MethodInvoker)(async () => await ShowDeadline()))
                         );
                 }
                 catch { }
@@ -104,8 +104,8 @@ namespace kanbanboard.Forms
 
                 // Начальное состояние после входа
                 try { ListBoxOfProjectNames.SelectedIndex = 0; }
-                catch {}
-                finally { UserPanel.BringToFront();}
+                catch { }
+                finally { UserPanel.BringToFront(); }
             };
         }
 
