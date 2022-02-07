@@ -32,7 +32,7 @@ namespace kanbanboard.Controls
                 Dock = DockStyle.Right,
                 Text = "➕",
                 Font = new Font("Tahoma", 7.5f),
-                Size = new Size(15,15),
+                Size = new Size(15, 15),
                 ForeColor = TicketPanel.GetColor()
             };
             DelColumnButton = new Button
@@ -44,20 +44,20 @@ namespace kanbanboard.Controls
                 ForeColor = PlusButton.ForeColor
             };
 
-            new List<Button> { PlusButton, DelColumnButton}.ForEach(x =>
-            {
-                x.BackColor = Color.Transparent;
-                x.FlatAppearance.MouseDownBackColor = Color.Transparent;
-                x.FlatAppearance.MouseOverBackColor = Color.Transparent;
-                x.AutoSize = true;
-                x.Size = new Size(25, 25);
-                x.FlatStyle = FlatStyle.Flat;
-                x.FlatAppearance.BorderSize = 0;
-                x.MouseEnter += (_, _) => x.ForeColor = Color.Red;
-                x.MouseLeave += (_, _) => x.ForeColor = TicketPanel.GetColor();
-            });
+            new List<Button> { PlusButton, DelColumnButton }.ForEach(x =>
+             {
+                 x.BackColor = Color.Transparent;
+                 x.FlatAppearance.MouseDownBackColor = Color.Transparent;
+                 x.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                 x.AutoSize = true;
+                 x.Size = new Size(25, 25);
+                 x.FlatStyle = FlatStyle.Flat;
+                 x.FlatAppearance.BorderSize = 0;
+                 x.MouseEnter += (_, _) => x.ForeColor = Color.Red;
+                 x.MouseLeave += (_, _) => x.ForeColor = TicketPanel.GetColor();
+             });
 
-            Controls.AddRange(new Control[] { TitleColumnLabel, PlusButton, DelColumnButton});
+            Controls.AddRange(new Control[] { TitleColumnLabel, PlusButton, DelColumnButton });
         }
     }
 }

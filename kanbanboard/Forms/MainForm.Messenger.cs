@@ -1,8 +1,7 @@
-﻿using System;
+﻿using kanbanboard.Classes;
+using System;
 using System.Drawing;
 using System.Linq;
-using System.Threading.Tasks;
-using kanbanboard.Classes;
 
 namespace kanbanboard.Forms
 {
@@ -29,7 +28,7 @@ namespace kanbanboard.Forms
         {
             MessengerListBox.Items.Clear();
             var messages = _user.GetMessages(ListBoxOfProjectNames.SelectedItem.ToString());
-            
+
             if (messages == null) return;
             foreach (var item in messages.SelectMany(dic => dic))
                 MessengerListBox.Items.Add($"{item.Key}: {item.Value}");

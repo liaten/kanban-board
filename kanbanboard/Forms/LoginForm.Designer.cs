@@ -151,7 +151,7 @@ namespace kanbanboard.Forms
             this.textBoxLogin.Size = new System.Drawing.Size(195, 19);
             this.textBoxLogin.TabIndex = 3;
             this.textBoxLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxLogin.TextChanged += new System.EventHandler(this.textBoxLogin_TextChanged);
+            this.textBoxLogin.TextChanged += new System.EventHandler(this.TextBoxLogin_TextChanged);
             this.textBoxLogin.MouseEnter += new System.EventHandler(this.TextBoxLogin_MouseEnter);
             this.textBoxLogin.MouseLeave += new System.EventHandler(this.TextBoxLogin_MouseLeave);
             // 
@@ -168,7 +168,7 @@ namespace kanbanboard.Forms
             this.textBoxPassword.Size = new System.Drawing.Size(195, 19);
             this.textBoxPassword.TabIndex = 4;
             this.textBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
+            this.textBoxPassword.TextChanged += new System.EventHandler(this.TextBoxPassword_TextChanged);
             this.textBoxPassword.MouseEnter += new System.EventHandler(this.TextBoxPass_MouseEnter);
             this.textBoxPassword.MouseLeave += new System.EventHandler(this.TextBoxPass_MouseLeave);
             // 
